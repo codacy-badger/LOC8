@@ -1,4 +1,4 @@
-![cover photo.png](https://bitbucket.org/repo/gBnR8j/images/1470626271-cover%20photo.png)
+![cover photo.png](/docs/LOC8_COVER_PHOTO.png)
 
 # LOC8
  LOC8 is a mobile application project that's allow's the user to locate physical object including cars.
