@@ -9,7 +9,7 @@
 import Foundation
 
 
-//MARK: Generic functions
+//MARK: Generics
 
 
 /**
@@ -74,7 +74,6 @@ public func radiansToDegrees<T: NumericType>(angel: T) -> T {
     return angel *  T(57.29577951308232286465)
 }
 
-//MARk:- Radian
 /**
   # Radian
 
@@ -93,7 +92,6 @@ public extension Radian {
     }
 }
 
-//MARk:- Degree
 /**
   # Degree
 
@@ -112,7 +110,7 @@ public extension Degree {
     }
 }
 
-//MARK:- CartesianVector
+//MARK: Vectors
 /**
   # CartesianVector
 
@@ -185,7 +183,6 @@ extension CartesianVector:  CustomStringConvertible {
     }
 }
 
-//MARK:- PolarVector
 /**
   # PolarVector
 
@@ -257,7 +254,8 @@ extension PolarVector:  CustomStringConvertible {
 }
 
 
-//MARK:- EulerAngles
+//MARK: Rotations
+
 /**
   # EulerAngles
 
@@ -345,7 +343,6 @@ extension EulerAngles:  CustomStringConvertible {
     }
 }
 
-//MARK:- RotationMatrix
 /**
   # RotationMatrix
 
@@ -414,7 +411,7 @@ extension RotationMatrix:  CustomStringConvertible {
     }
 }
 
-//MARK:- Quaternion
+
 /**
   # Quaternion
 

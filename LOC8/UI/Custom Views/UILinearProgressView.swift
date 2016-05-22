@@ -8,7 +8,7 @@
 
 import UIKit
 
-//MARK:- UILinearProgressView
+//MARK: UILinearProgressView
 @IBDesignable
 public class UILinearProgressView: UIView {
     
@@ -113,7 +113,7 @@ public class UILinearProgressView: UIView {
     }
 }
 
-//MARK:- UIDifferentialLinearProgressView
+//MARK: UIDifferentialLinearProgressView
 @IBDesignable
 public class UIDifferentialLinearProgressView: UIView {
     
@@ -250,7 +250,7 @@ public class UIDifferentialLinearProgressView: UIView {
     }
 }
 
-//MARK:- UIDiscreteProgressView
+//MARK: UIDiscreteProgressView
 @IBDesignable
 public class UIDiscreteProgressView: UIView {
     

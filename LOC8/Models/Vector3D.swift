@@ -11,7 +11,7 @@ import Foundation
     import CoreMotion
 #endif
 
-//MARK:- Vector3D
+//MARK: Vectors
 
 /**
  # Vector3D
@@ -40,13 +40,13 @@ public class Vector3D: Measurement {
     /// A PolerVector object represent the vector in polar coordinate.
     private(set) var polarVector: PolarVector!
     
-    ///Radian value represent the distance of the vector.
+    ///Radian value represent the angle between the projection on z-axis and xy-plan.
     public var theta: Radian { return polarVector.theta }
     
     ///Radian value represent the angle between the projection on xy-plan and x-axis.
     public var lambda: Radian { return polarVector.lambda }
     
-    ///Double value represent the angle between the projection on z-axis and xy-plan.
+    ///Double value represent the distance of the vector.
     public var magnitude: Double { return polarVector.magnitude }
     
     //MARK: Vector Properties
@@ -149,7 +149,7 @@ public class Vector3D: Measurement {
     }
 }
 
-//MARK:- Vector3D Operators
+//MARK: Vector3D Operators
 
 //MARK:Vectors Operators
 

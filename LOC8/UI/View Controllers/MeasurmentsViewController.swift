@@ -66,7 +66,7 @@ public class MeasurmentsViewController: UITableViewController {
     }
 }
 
-//MARK:- Motion values
+//MARK: Motion values
 extension MeasurmentsViewController {
     
     //MARK: Receiving and handling motion values

@@ -10,8 +10,6 @@ import Foundation
 import CoreLocation
 import CoreMotion
 
-//MARK:- Estimation
-
 /**
  # Estimation Handler
  

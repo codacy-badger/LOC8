@@ -66,7 +66,7 @@ public class settingsViewController: UITableViewController {
         
     }
     
-    //MARK:- Initialization
+    //MARK: Initialization
     public func initializeCells() {
         
         let tabBarController = self.tabBarController! as! TabBarController
@@ -132,7 +132,7 @@ public class settingsViewController: UITableViewController {
     }
 }
 
-//MARK:- MCBrowserViewControllerDelegate
+//MARK: MCBrowserViewControllerDelegate
 extension settingsViewController: MCBrowserViewControllerDelegate {
     public func browserViewControllerDidFinish(browserViewController: MCBrowserViewController) {
         

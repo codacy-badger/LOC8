@@ -11,6 +11,8 @@ import Foundation
     import CoreMotion
 #endif
 
+//MARK: Physics
+
 /*
  # Library Fundamentals
  
@@ -83,7 +85,6 @@ public struct Physics {
 }
 
 
-//MARK:- Acceleration
 /**
  # Acceleration
  
@@ -94,7 +95,7 @@ public struct Physics {
     if its speed and/or direction is changing. The average acceleration is given by:
  
   ````
-     ͢    ∆v     v₂ - v₁
+    ͢     ∆v     v₂ - v₁
     a = –––– = –––––––––
          ∆t     t₂ - t₁
   ````
@@ -122,7 +123,6 @@ public typealias Acceleration = Vector3D
     }
 #endif
 
-//MARK:- Velocity
 
 /**
  # Velocity
@@ -135,15 +135,13 @@ public typealias Acceleration = Vector3D
     the average velocity is given by:
  
  ````
-     ͢    ∆x     x₂ - x₁
+    ͢     ∆x     x₂ - x₁
     v = –––– = –––––––––
          ∆t     t₂ - t₁
  ````
  */
 public typealias Velocity = Vector3D
 
-
-//MARK:- Distance
 
 /**
  # Distance

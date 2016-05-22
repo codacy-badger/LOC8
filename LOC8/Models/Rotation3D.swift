@@ -11,7 +11,7 @@ import Foundation
     import CoreMotion
 #endif
 
-//MARK:- Rotation3D
+//MARK: Rotations
 
 /**
  # Rotation3D
@@ -108,7 +108,7 @@ public class Rotation3D: Measurement {
     }
 }
 
-//MARK:- Rotation3D Operators
+//MARK: Rotation3D Operators
 
 //MARK:Arithmetic operators
 prefix func - (rotation: Rotation3D) -> Rotation3D {

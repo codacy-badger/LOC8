@@ -11,8 +11,6 @@ import Foundation
     import CoreMotion
 #endif
 
-//MARK:- MotionActivityConfidence
-
 /**
  # Motion Activity Confidence
  
@@ -55,8 +53,6 @@ extension MotionActivityConfidence:  CustomStringConvertible {
         }
     }
 }
-
-//MARK:- MotionActivityStatus
 
 /**
  # Motion Activity Status
@@ -127,8 +123,6 @@ extension MotionActivityStatus:  CustomStringConvertible {
         }
     }
 }
-
-//MARK:- Motion Activity
 
 /**
    # MotionActivity

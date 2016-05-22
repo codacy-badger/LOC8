@@ -8,7 +8,7 @@
 
 import UIKit
 
-//MARK:- UIRotationView
+//MARK: UIRotationView
 @IBDesignable
 public class UIRotationView: UIView {
     
@@ -174,7 +174,7 @@ public class UIRotationView: UIView {
     }
 }
 
-//MARK:- UIDirectionView
+//MARK: UIDirectionView
 @IBDesignable
 public class UIDirectionView: UIRotationView {
     
@@ -224,7 +224,7 @@ public class UIDirectionView: UIRotationView {
     }
 }
 
-//MARK:- UIHeadingView
+//MARK: UIHeadingView
 @IBDesignable
 public class UIHeadingView: UIRotationView {
     
@@ -262,7 +262,7 @@ public class UIHeadingView: UIRotationView {
     }
 }
 
-//MARK:- UICompassView
+//MARK: UICompassView
 @IBDesignable
 public class UICompassView: UIRotationView {
     

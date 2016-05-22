@@ -8,8 +8,6 @@
 
 import Foundation
 
-//MARK:- Filter Type
-
 /**
  # FilterType
  
@@ -42,8 +40,6 @@ public enum FilterType: String {
     ///No filter type just pass the data as it is.
     case Non = "Non"
 }
-
-//MARK:- Filter
 
 /**
  # Filter
@@ -188,8 +184,6 @@ public class Filter: NSObject {
         return (adaptive ? "Adaptive " : "") + (type != .Non ? "\(type) " : "") + "Filter"
     }
 }
-
-//MARK:- Acceleration Filter
 
 /**
  # Acceleration Filter

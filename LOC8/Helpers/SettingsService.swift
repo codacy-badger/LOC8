@@ -10,7 +10,7 @@ import Foundation
 
 public class SettingsService {
     
-    //MARK:- Properties
+    //MARK: Properties
     
     //MARK:Shortcuts
     private var defaults: NSUserDefaults {
@@ -140,7 +140,7 @@ public class SettingsService {
     }
     
     
-    //MARK:- Initialization
+    //MARK: Initialization
     
     /**
      * Get currently used SettingsService, singleton pattern
@@ -162,7 +162,7 @@ public class SettingsService {
         
     }
     
-    //MARK:- Controlles
+    //MARK: Controlles
     public func reset() {
         colorIndex = 0
         enableAnimation = false

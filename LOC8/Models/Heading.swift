@@ -8,8 +8,6 @@
 
 import Foundation
 
-//MARK:- Direction
-
 /**
   # Direction
  
@@ -123,9 +121,6 @@ extension Direction:  CustomStringConvertible {
 }
 
 
-//MARK:- Heading
-
-
 /**
  # Heading
  
@@ -197,8 +192,6 @@ public class Heading: Measurement {
         return result
     }
 }
-
-//MARK:- Heading Operators
 
 //MARK:Logical operators
 public func ==(lhs: Heading, rhs: Heading) -> Bool { return lhs.direction == rhs.direction }
