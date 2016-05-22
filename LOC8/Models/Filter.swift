@@ -11,51 +11,104 @@ import Foundation
 //MARK:- Filter Type
 
 /**
- * Heading FilterType
- *
- * - Lowpass
- * - Highpass
- * - Non
+ # FilterType
+ 
+ Enumerates the Filter types.
+ 
+  - Lowpass
+  - Highpass
+  - Non
  */
 public enum FilterType: String {
+    
+    /**
+     A low-pass filter is a filter that passes signals with a frequency lower than a certain cutoff frequency and attenuates signals with frequencies higher than the cutoff frequency.
+     
+    The amount of attenuation for each frequency depends on the filter design.
+     
+     - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/Low-pass_filter).
+     */
     case Lowpass = "Lowpass"
+    
+    /**
+     A high-pass filter is a filter that passes signals with a frequency higher than a certain cutoff frequency and attenuates signals with frequencies lower than the cutoff frequency.
+     
+     The amount of attenuation for each frequency depends on the filter design.
+     
+     - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/High-pass_filter).
+     */
     case Highpass = "Highpass"
+    
+    ///No filter type just pass the data as it is.
     case Non = "Non"
 }
 
 //MARK:- Filter
 
 /**
- * Filter
- *
- *  Discussion:
- *   A filter is a process that removes from a signal some unwanted component or feature.
- *
+ # Filter
+ 
+ An implentetion for a linear digital filter, that can be:
+ 
+ - Lowpass filter
+ - Highpass filter
+ 
+ Also you can spacify if the filter is adptive or not.
+ 
+  ### Discussion:
+    A filter is a process that removes from a signal some unwanted component or feature.
+ 
  */
 public class Filter: NSObject {
     
     //MARK: Properties
+    
+    ///`Double` value represent the filter minimum step.
     private let minStep = 0.02
     
+    ///`Double` value represent the filter noise attenuation.
     private let noiseAttenuation = 3.0
     
+    /**
+     A Boolean value that determines whether the filter is adaptive or not.
+     
+    Specify true for adaptive filter. otherwise, specify false.
+     
+     - Attention: The default value is __true__.
+     */
     public var adaptive: Bool = true
     
+    ///A `Double` value that represent the filter time constant.
     public let filterConstant: Double!
     
+    ///A `FilterType` value that represent the filter type.
     public let type: FilterType!
     
+    ///A `Double` value that represent the current value.
     private(set) var value: Double = 0
     
+    ///A `Double` value that represent the last value.
     private var lastValue: Double = 0
     
     //MARK: Initialaization
+    
+    /**
+     `Filter` Default initializer.
+     */
     public override init() {
         self.type = .Non
         filterConstant = 0
         super.init()
     }
     
+    /**
+      Initialize Filter object
+     
+      - Parameters:
+        - type: A `FilterType` value represent the filter type.
+        - rate: A `Double` value represent the date rate of the date.
+        - freq: A `Double` value represent the cutoff frequency.
+     */
     public init(type: FilterType, rate: Double, cutoffFrequency freq: Double) {
         
         self.type = type
@@ -73,6 +126,11 @@ public class Filter: NSObject {
     }
     
     //MARK: Methods
+    
+    /**
+     Add new value to the filter.
+     - Parameter value: A `Double` value represent the new value
+     */
     public func addValue(value: Double) {
         
         switch self.type! {
@@ -82,10 +140,18 @@ public class Filter: NSObject {
         }
     }
     
+    /**
+     Add new value without filtering any data.
+     - Parameter value: A `Double` value represent the new value
+     */
     private func addValueWithoutFilter(value: Double) {
         self.value = value
     }
     
+    /**
+     Add new value to a lowpass filter.
+     - Parameter value: A `Double` value represent the new value
+     */
     private func addValueToLowpass(value: Double) {
 
         var alpha: Double = filterConstant!
@@ -99,7 +165,11 @@ public class Filter: NSObject {
 
         lastValue = value
     }
-
+    
+    /**
+     Add new value to a highpass filter.
+     - Parameter value: A `Double` value represent the new value
+     */
     private func addValueToHighpass(value: Double){
 
         var alpha: Double = filterConstant!
@@ -113,42 +183,79 @@ public class Filter: NSObject {
 
         lastValue = value
     }
+    
+    public override var description: String {
+        return (adaptive ? "Adaptive " : "") + (type != .Non ? "\(type) " : "") + "Filter"
+    }
 }
 
 //MARK:- Acceleration Filter
 
 /**
- * Acceleration Filter
- *
- *  Discussion:
- *   A filter is a process that removes from a signal some unwanted component or feature.
- *   This object is responseabel of processing an acceleration data to remove noise.
- *
+ # Acceleration Filter
+ 
+ An implentetion for a linear digital filter, that is responsable for processing acceleration data, and remove thae noise. this filter can be:
+ 
+ - Lowpass filter
+ - Highpass filter
+ 
+ Also you can spacify if the filter is adptive or not.
+ 
+ ### Discussion:
+ A filter is a process that removes from a signal some unwanted component or feature.
+ This object is responseabel of processing an acceleration data to remove noise.
+ 
  */
 public class AccelerationFilter: NSObject {
     
     //MARK: Properties
+    
+    ///`Double` value represent the filter minimum step.
     private let minStep = 0.02
     
+    ///`Double` value represent the filter noise attenuation.
     private let noiseAttenuation = 3.0
     
+    /**
+     A Boolean value that determines whether the filter is adaptive or not.
+     
+     Specify true for adaptive filter. otherwise, specify false.
+     
+     - Attention: The default value is __true__.
+     */
     public var adaptive: Bool = true
     
+    ///A `Double` value that represent the filter time constant.
     public let filterConstant: Double!
     
+    ///A `FilterType` value that represent the filter type.
     public let type: FilterType!
     
+    ///A `Acceleration` value that represent the current acceleration.
     private(set) var value: Acceleration = Acceleration()
     
+    ///A `Acceleration` value that represent the last acceleration.
     private var lastValue: Acceleration = Acceleration()
     
     //MARK: Initialaization
+    
+    /**
+     `Filter` Default initializer.
+     */
     public override init() {
         self.type = .Non
         filterConstant = 0
         super.init()
     }
     
+    /**
+      Initialize Filter object
+     
+      - Parameters:
+        - type: A `FilterType` value represent the filter type.
+        - rate: A `Double` value represent the date rate of the date.
+        - freq: A `Double` value represent the cutoff frequency.
+     */
     public init(type: FilterType, rate: Double, cutoffFrequency freq: Double) {
         
         self.type = type
@@ -166,6 +273,11 @@ public class AccelerationFilter: NSObject {
     }
     
     //MARK: Methods
+    
+    /**
+     Add new value to the filter.
+     - Parameter value: A `Double` value represent the new value
+     */
     public func addValue(value: Acceleration) {
         
         switch self.type! {
@@ -175,10 +287,18 @@ public class AccelerationFilter: NSObject {
         }
     }
     
+    /**
+     Add new value without filtering any data.
+     - Parameter value: A `Double` value represent the new value
+     */
     private func addValueWithoutFilter(value: Acceleration) {
         self.value = value
     }
     
+    /**
+     Add new value to a lowpass filter.
+     - Parameter value: A `Double` value represent the new value
+     */
     private func addValueToLowpass(value: Acceleration) {
         // See http://en.wikipedia.org/wiki/Low-pass_filter for details low pass filtering
         
@@ -202,6 +322,10 @@ public class AccelerationFilter: NSObject {
         lastValue = value
     }
     
+    /**
+     Add new value to a highpass filter.
+     - Parameter value: A `Double` value represent the new value
+     */
     private func addValueToHighpass(value: Acceleration) {
         // See http://en.wikipedia.org/wiki/High-pass_filter for details on high pass filtering
         

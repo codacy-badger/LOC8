@@ -11,36 +11,51 @@ import CoreLocation
 import CoreMotion
 
 //MARK:- Estimation
+
+/**
+ # Estimation Handler
+ 
+ ### Discussion:
+ A closer type that take an `Estimation` object and retun nothing
+ */
 public typealias EstimationHandler = ((Estimation) -> Void)
 
+/**
+  # Estimation
+
+  ### Discussion:
+    Estimation is a model that is responseple to collect headings until distance value come up.
+ */
 public class Estimation: Measurement {
     
     //MARK: Properties
+    
+    /// `EstimationHandler` object act as a deleget.
     public var estimationHandler: EstimationHandler?
     
+    /// A list of `Heading` objects represent all the collected headings for the estimation.
     public lazy var headings: [Heading] = []
     
-    public var acceleration: Acceleration = Acceleration()
-    
+    /// A `Double` value represent the total distance for the estimation
     public var distance: Double = 0
     
-    var currentFloor: Int!
-    
-    var currentFloorValue: Int!
-    
+    /// A computed property return the last heading recieved.
     public var currentHeading: Heading? { return headings.last }
     
+    /// A computed property return the total wight for all the collected headings.
     public var wight: UInt {
         var totalWight: UInt = 0
         for heading in headings { totalWight += heading.wight }
         return totalWight
     }
     
+    /// A computed property return the sample mean for all the collected headings wight.
     public var mean: Double {
         if headings.count == 0 { return 0 }
         return Double(self.wight) / Double(headings.count)
     }
     
+    /// A computed property return the sample variance for all the collected headings wight
     public var variance: Double {
         if headings.count <= 1 { return 0 }
         var variance: Double = 0
@@ -51,6 +66,10 @@ public class Estimation: Measurement {
     
     
     //MARK:Initialization
+    
+    /**
+     `Estimation` Default initializer.
+     */
     public override init() {
         super.init()
     }
@@ -69,6 +88,8 @@ public class Estimation: Measurement {
     }
     
     //MARK: Motion Updates
+    
+    ///An action tregered whene the `SensorsManager` recieve a heading update.
     public func didUpdateHeading (notification: NSNotification) {
         
         let heading = notification.userInfo![DefaultKeys.HeadingKey] as! CLHeading
@@ -91,8 +112,10 @@ public class Estimation: Measurement {
                 }
             }
         }
+        self.estimationHandler?(self)
     }
     
+    ///An action tregered whene the `SensorsManager` recieve a device motion update.
     public func didUpdateDeviceMotion(notification: NSNotification) {
         
         let userInfo = notification.userInfo!
@@ -120,18 +143,16 @@ public class Estimation: Measurement {
                 }
             }
         }
-        
-    }
-    
-    public func newFloorUpdate(numberOfFloors: Int, direction: Direction) {
-        let heading = Heading(direction: direction)
-        heading.distance = Double(numberOfFloors) * DefaultValues.DefaultFloorHeight
-        heading.wight = 1
-        self.headings.append(heading)
-
+        self.estimationHandler?(self)
     }
     
     //MARK:Controlle
+    
+    /**
+     Starts a series of continuous heading updates to the estimation.
+     
+     - Parameter estimationHandler: `EstimationHandler` closer that will be called each time new heading is recived.
+     */
     public func startEstimation( estimationHandler: EstimationHandler? = nil) {
         
         self.estimationHandler =  estimationHandler
@@ -140,6 +161,11 @@ public class Estimation: Measurement {
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateDeviceMotion:", name: NotificationKey.DeviceMotionUpdate, object: nil)
     }
     
+    /**
+     Stop heading updates.
+     
+     - Parameter distance: `Double` value that represent the total distance update.
+     */
     public func stopEstimation(distance: Double){
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.HeadingUpdate, object: nil)

@@ -10,96 +10,47 @@ import Foundation
 import CoreMotion
 import CoreLocation
 
+/**
+ # TrackingSession
+ 
+ ### Discussion:
+ TrackingSession is a model that is responseple to create a series of estimations. also responseble for recieve distance from `SensorsManager` and update the estimations.
+ */
 public class TrackingSession: Measurement {
     
     //MARK: Properties
-    public var currentEstimation: Estimation? { return estimations.last }
     
-    public var previousEstimation: Estimation? { return (estimations.count > 1) ? estimations[estimations.count - 2] : nil }
-    
-    public lazy var estimations: [Estimation] = []
-    
-    public var distance: Double = 0
-    
-    public var lastFloorAscendedValue = 0
-    
-    public var lastFloorDescendedValue = 0
-    
-    public var lastFloorValue = 0
-    
-    public var acceleration: Acceleration = Acceleration()
-    
+    /// `EstimationHandler` object act as a deleget.
     public var estimationHandler: EstimationHandler?
     
+    /// A computed property return the last estimation that has been created.
+    public var currentEstimation: Estimation? { return estimations.last }
+    
+    /// A computed property return the previous estimation that has been created.
+    public var previousEstimation: Estimation? { return (estimations.count > 1) ? estimations[estimations.count - 2] : nil }
+    
+    /// A list of `Heading` objects represent all the collected headings for the estimation.
+    public lazy var estimations: [Estimation] = []
+    
+    /// A `Double` value represent the total distance for the session.
+    public var distance: Double = 0
+    
     //MARK:Initialization
+    
+    /**
+     `TrackingSession` Default initializer.
+     */
     public override init() {
         super.init()
-        SensorsManager.sharedInstance
     }
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK:Controlles
-    public func startTraking(estimationHandler: EstimationHandler? = nil) {
-        
-        self.estimationHandler = estimationHandler
-        
-        let newEstimation = Estimation()
-        newEstimation.startEstimation(estimationHandler)
-        self.estimations.append(newEstimation)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TrackingSession.didUpdateDistance(_:)), name: NotificationKey.DistanceUpdate, object: nil)
-        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateFloor:", name: NotificationKey.FloorUpdate, object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TrackingSession.didUpdateAltitude(_:)), name: NotificationKey.AltitudeUpdate, object: nil)
-        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TrackingSession.didUpdateDeviceMotion(_:)), name: NotificationKey.DeviceMotionUpdate, object: nil)
-    }
-    
-    public func stopTraking() {
-        
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DistanceUpdate, object: nil)
-        
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.FloorUpdate, object: nil)
-        
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.AltitudeUpdate, object: nil)
-        
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DeviceMotionUpdate, object: nil)
-        
-        self.estimations.removeLast()
-    }
-    
-    public func trackingMap() -> [Heading] {
-        
-        var temp: [Heading] = []
-        
-        var last: Heading?
-        
-        for estimation in estimations {
-            
-            if let last = last {
-                if let first = estimation.headings.first {
-                    if last.direction == first.direction {
-                        last.distance += first.distance
-                    }
-                }
-            }
-            
-            for heading in estimation.headings {
-                if heading.direction == last?.direction { continue }
-                temp.append(heading)
-            }
-            last = estimation.headings.last
-            
-        }
-        
-        return temp
-    }
-    
     //MARK: Motion Updates
+    
+    ///An action tregered whene the `SensorsManager` recieve a distance update.
     public func didUpdateDistance(notification: NSNotification) {
         let distance = notification.userInfo![DefaultKeys.DistanceKey] as! NSNumber
         
@@ -125,24 +76,7 @@ public class TrackingSession: Measurement {
         self.estimations.append(newEstimation)
     }
     
-    public func didUpdateAltitude(notification: NSNotification) {
-        
-        let altitude = notification.userInfo![DefaultKeys.AltitudeKey] as! NSNumber
-        
-        let floor = altitude.integerValue % Int(DefaultValues.DefaultFloorHeight)
-        
-        if floor != lastFloorValue {
-            let deltaFloor = floor - self.lastFloorValue
-            
-            if deltaFloor > 0 {
-                self.currentEstimation?.newFloorUpdate(deltaFloor, direction: .Up)
-            }
-            else {
-                self.currentEstimation?.newFloorUpdate(abs(deltaFloor), direction: .Down)
-            }
-        }
-    }
-    
+    ///An action tregered whene the `SensorsManager` recieve a device motion update.
     public func didUpdateDeviceMotion(notification: NSNotification) {
         
         let userInfo = notification.userInfo!
@@ -152,22 +86,72 @@ public class TrackingSession: Measurement {
 //        let gravity = userInfo[DefaultKeys.GravityKey] as! Vector3D
         let acceleration = userInfo[DefaultKeys.AccelerationKey] as! Vector3D
         
-        self.acceleration += acceleration
-        
     }
     
-    public func didUpdateFloor(notification: NSNotification) {
-        let floorsAscended = notification.userInfo![DefaultKeys.FloorsAscendedKey] as! NSNumber
-        let floorsDescended = notification.userInfo![DefaultKeys.FloorsDescendedKey] as! NSNumber
+    //MARK:Controlles
+    
+    /**
+     Starts a series of continuous estimation updates to the session. 
+     
+     - Parameter estimationHandler: `EstimationHandler` closer that will be called each time the new heading is recived.
+     */
+    public func startTraking(estimationHandler: EstimationHandler? = nil) {
         
-        if self.lastFloorAscendedValue != floorsAscended.integerValue {
-            self.currentEstimation?.newFloorUpdate(abs(floorsAscended.integerValue - self.lastFloorAscendedValue), direction: .Down)
-        }
-        if self.lastFloorDescendedValue != floorsDescended.integerValue {
-            self.currentEstimation?.newFloorUpdate(abs(floorsDescended.integerValue - self.lastFloorDescendedValue), direction: .Up)
+        self.estimationHandler = estimationHandler
+        
+        let newEstimation = Estimation()
+        newEstimation.startEstimation(estimationHandler)
+        self.estimations.append(newEstimation)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TrackingSession.didUpdateDistance(_:)), name: NotificationKey.DistanceUpdate, object: nil)
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TrackingSession.didUpdateDeviceMotion(_:)), name: NotificationKey.DeviceMotionUpdate, object: nil)
+    }
+    
+    /**
+     Stop estimation updates.
+     */
+    public func stopTraking() {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DistanceUpdate, object: nil)
+        
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.FloorUpdate, object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.AltitudeUpdate, object: nil)
+        
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DeviceMotionUpdate, object: nil)
+        
+        self.estimations.removeLast()
+    }
+    
+    /**
+     Method that mearge all estimations headings.
+     - Returns: A list of `Heading` objects represent the tracking map.
+     */
+    public func trackingMap() -> [Heading] {
+        
+        var temp: [Heading] = []
+        
+        var last: Heading?
+        
+        for estimation in estimations {
+            
+            if let last = last {
+                if let first = estimation.headings.first {
+                    if last.direction == first.direction {
+                        last.distance += first.distance
+                    }
+                }
+            }
+            
+            for heading in estimation.headings {
+                if heading.direction == last?.direction { continue }
+                temp.append(heading)
+            }
+            last = estimation.headings.last
+            
         }
         
-        self.lastFloorAscendedValue = floorsAscended.integerValue
-        self.lastFloorDescendedValue = floorsDescended.integerValue
+        return temp
     }
 }

@@ -11,19 +11,21 @@ import Foundation
 
 //MARK: Generic functions
 
+
 /**
- * Clamping of a value to a range of [max - min].
- *
- *  Discussion:
- *      Clamping is the process of limiting a position to an area.
- *
- * - Parameters:
- * 	- value: the current value.
- * 	- min: the minimum value.
- * 	- max: the maximum value.
- *
- * - Returns: A value between max and min.
- *
+  Clamping of a value to a range of [max - min].
+ 
+ 
+ ### Discussion:
+    Clamping is the process of limiting a position to an area.
+ 
+ - Parameters:
+ 	- value: the current value.
+ 	- min: the minimum value.
+ 	- max: the maximum value.
+
+ - Returns: A value between max and min.
+ 
  */
 public func clamp<T: Comparable>(value: T, min: T, max: T) -> T {
     if value > max { return max }
@@ -32,15 +34,15 @@ public func clamp<T: Comparable>(value: T, min: T, max: T) -> T {
 }
 
 /**
- * Wrapping of a value to a range of [0 - 1].
- *
- *  Discussion:
- *      Wrapping is the process of limiting a position to an area.
- *
- * - Parameters:
- * 	- value: a double represent the value  current value.
- *
- * - Returns: An integer value wrapped.
+ Wrapping of a value to a range of [0 - 1].
+ 
+ ### Discussion:
+    Wrapping is the process of limiting a position to an area.
+ 
+  - Parameters:
+  	- value: a double represent the value  current value.
+ 
+  - Returns: An integer value wrapped.
  */
 public func wrap(value: Double) -> Int {
     let intValue = Int(value)
@@ -49,24 +51,24 @@ public func wrap(value: Double) -> Int {
 }
 
 /**
- * Convert an angle from degrees to radians.
- *
- * - Parameters:
- * 	- angel: the angle in degrees.
- *
- * - Returns: the angle in radians.
+ Convert an angle from degrees to radians.
+
+ - Parameters:
+ 	- angel: the angle in degrees.
+
+ - Returns: the angle in radians.
  */
 public func degreesToRadians<T: NumericType>(angel: T) -> T {
     return angel * T(0.01745329251994329547)
 }
 
 /**
- * Convert an angle from radians to degrees.
- *
- * - Parameters:
- * 	- angel: the angle in radians.
- *
- * - Returns: the angle in degrees.
+ Convert an angle from radians to degrees.
+
+ - Parameters:
+ 	- angel: the angle in radians.
+
+ - Returns: the angle in degrees.
  */
 public func radiansToDegrees<T: NumericType>(angel: T) -> T {
     return angel *  T(57.29577951308232286465)
@@ -74,13 +76,13 @@ public func radiansToDegrees<T: NumericType>(angel: T) -> T {
 
 //MARk:- Radian
 /**
- *  Radian
- *
- *  Discussion:
- *    The radian is the standard unit of angular measure.
- *
- *    radians is numerically equal to the length of a corresponding arc of a unit circle;
- *    one radian is just under 57.3 degrees (when the arc length is equal to the radius).
+  # Radian
+
+  ### Discussion:
+    The radian is the standard unit of angular measure.
+
+    Radians is numerically equal to the length of a corresponding arc of a unit circle;
+    one radian is just under 57.3 degrees (when the arc length is equal to the radius).
  */
 public typealias Radian = Double
 
@@ -93,12 +95,12 @@ public extension Radian {
 
 //MARk:- Degree
 /**
- *  Degree
- *
- *  Discussion:
- *    The degree is the standard unit of angular measure.
- *
- *    degree is a measurement of plane angle, representing 1⁄360 of a full rotation.
+  # Degree
+
+  ### Discussion:
+    The degree is the standard unit of angular measure.
+
+    Degree is a measurement of plane angle, representing 1⁄360 of a full rotation.
  */
 public typealias Degree = Double
 
@@ -112,14 +114,16 @@ public extension Degree {
 
 //MARK:- CartesianVector
 /**
- *  CartesianVector
- *
- *  Discussion:
- *    Type represent a cartesian coordinate in three-dimensional coordinate system.
- *      If v is an instance of `CartesianVector`, mathematically it represents
- *      the following vector:
- *
- *      v = (x, y, z)
+  # CartesianVector
+
+  ### Discussion:
+    Type represent a cartesian coordinate in three-dimensional coordinate system.
+    If v is an instance of `CartesianVector`, mathematically it represents
+    the following vector:
+ 
+    ````
+      v = (x, y, z)
+    ````
  */
 public struct CartesianVector {
     
@@ -131,16 +135,18 @@ public struct CartesianVector {
     
     ///Double value represent the projection on z-axis.
     private(set) var z: Double = 0.0
-    
-    ///PolarVector object represent the vector in poler form.
-    ///```
-    ///      _____________
-    /// r = √ x² + y² + z²
-    ///
-    /// 𝜃 = tan⁻¹(y / x)
-    ///                ________
-    /// 𝜆 = tan⁻¹(z / √ x² + y² )
-    ///```
+    /**
+     PolarVector object represent the vector in poler form.
+     
+     ````
+           _____________
+      r = √ x² + y² + z²
+     
+      𝜃 = tan⁻¹(y / x)
+                     ________
+      𝜆 = tan⁻¹(z / √ x² + y² )
+     ````
+     */
     public var polarVector: PolarVector {
         let magnitude = sqrt(x * x + y * y + z * z)
         let theta = atan2(y, x)
@@ -151,15 +157,18 @@ public struct CartesianVector {
     
     //MARK: Initialaization
     
+    /**
+     `CartesianVector` Default initializer.
+     */
     public init(){ }
     
     /**
-     * Initialize CartesianVector object
-     *
-     * - Parameters:
-     * 	- x: Double value represent the projection on x-axis.
-     * 	- y: Double value represent the projection on y-axis.
-     * 	- z: Double value represent the projection on z-axis.
+     Initialize CartesianVector object
+    
+     - Parameters:
+     	- x: Double value represent the projection on x-axis.
+     	- y: Double value represent the projection on y-axis.
+     	- z: Double value represent the projection on z-axis.
      */
     public init(x: Double, y: Double, z: Double){
         self.x = x
@@ -178,14 +187,16 @@ extension CartesianVector:  CustomStringConvertible {
 
 //MARK:- PolarVector
 /**
- *  PolarVector
- *
- *  Discussion:
- *    Type represent a polar coordinate in three-dimensional coordinate system.
- *      If v is an instance of `PolarVector`, mathematically it represents the
- *      following vector:
- *
- *      v = (r, 𝜃, 𝜆)
+  # PolarVector
+
+  ### Discussion:
+    Type represent a polar coordinate in three-dimensional coordinate system.
+    If v is an instance of `PolarVector`, mathematically it represents the
+    following vector:
+ 
+   ````
+      v = (r, 𝜃, 𝜆)
+   ````
  */
 public struct PolarVector {
     
@@ -198,15 +209,15 @@ public struct PolarVector {
     ///Radian value represent the angle between the projection on z-axis and xy-plan.
     private(set) var lambda: Radian = 0.0
     
-    ///CartesianVector object represent the vector in cartesian form.
-    ///```
-    ///
-    /// x = cos(𝜃) * cos(𝜆) * r
-    ///
-    /// y = sin(𝜃) * cos(𝜆) * r
-    ///
-    /// z = sin(𝜆) * r
-    ///```
+    /**
+     CartesianVector object represent the vector in cartesian form.
+     
+    ```
+     x = cos(𝜃) * cos(𝜆) * r
+     y = sin(𝜃) * cos(𝜆) * r
+     z = sin(𝜆) * r
+    ```
+     */
     public var cartesianVector: CartesianVector {
         let x = cos(theta) * cos(lambda) * magnitude
         let y = sin(theta) * cos(lambda) * magnitude
@@ -217,15 +228,18 @@ public struct PolarVector {
     
     //MARK: Initialaization
     
+    /**
+     `PoolerVector` Default initializer.
+     */
     public init(){ }
     
     /**
-     * Initialize PolarVector object
-     *
-     * - Parameters:
-     * 	- magnitude: Double value represent the vector magnitude.
-     * 	- theta: Radian value represent the vector theta.
-     * 	- lambda: Radian value represent the vector lambda.
+     Initialize PolarVector object
+    
+     - Parameters:
+     	- magnitude: Double value represent the vector magnitude.
+     	- theta: Radian value represent the vector theta.
+     	- lambda: Radian value represent the vector lambda.
      */
     public init(magnitude: Double, theta: Radian, lambda: Radian){
         self.theta = theta
@@ -245,16 +259,17 @@ extension PolarVector:  CustomStringConvertible {
 
 //MARK:- EulerAngles
 /**
- *  EulerAngles
- *
- *  Discussion:
- *    Type represents a Euler angles (one way of parameterizing rotation).
- *      The Euler angles are three angles describe the orientation of a rigid body.
- *      To describe such an orientation in 3-dimensional Euclidean space three
- *      parameters are required:
- *
- *      [roll, pich, yaw]
- *
+  # EulerAngles
+
+  ### Discussion:
+    Type represents a Euler angles (one way of parameterizing rotation).
+    The Euler angles are three angles describe the orientation of a rigid body.
+    To describe such an orientation in 3-dimensional Euclidean space three
+    parameters are required:
+ 
+    ````
+      [roll, pich, yaw]
+    ````
  */
 public struct EulerAngles {
     
@@ -303,15 +318,19 @@ public struct EulerAngles {
     }
     
     //MARK: Initialaization
+    
+    /**
+     `EulerAngles` Default initializer.
+     */
     public init(){ }
     
     /**
-     * Initialize EulerAngles object
-     *
-     * - Parameters:
-     * 	- roll: Radian value represent a rotation around x-axis.
-     * 	- pitch: Radian value represent a rotation around y-axis.
-     * 	- yaw: Radian value represent a rotation around z-axis.
+     Initialize EulerAngles object
+    
+     - Parameters:
+     	- roll: Radian value represent a rotation around x-axis.
+     	- pitch: Radian value represent a rotation around y-axis.
+     	- yaw: Radian value represent a rotation around z-axis.
      */
     public init(roll: Radian, pitch: Radian, yaw: Radian){
         self.roll = roll
@@ -328,10 +347,10 @@ extension EulerAngles:  CustomStringConvertible {
 
 //MARK:- RotationMatrix
 /**
- *  RotationMatrix
- *
- *  Discussion:
- *      Type represents a rotation matrix in three-dimensional space.
+  # RotationMatrix
+
+  ### Discussion:
+    Type represents a rotation matrix in three-dimensional space.
  */
 public struct RotationMatrix {
     
@@ -382,11 +401,14 @@ public struct RotationMatrix {
     }
     
     //MARK: Initialaization
+    
+    /**
+     `RotationMatrix` Default initializer.
+     */
     public init(){ }
 }
 
 extension RotationMatrix:  CustomStringConvertible {
-    
     public var description: String {
         return String(format: "RotationMatrix:\n|%.2f,\t%.2f,\t%.2f\t|\n|%.2f,\t%.2f,\t%.2f\t|\n|%.2f,\t%.2f,\t%.2f\t|", m11, m12, m13, m21, m22, m23, m31, m32, m33)
     }
@@ -394,17 +416,20 @@ extension RotationMatrix:  CustomStringConvertible {
 
 //MARK:- Quaternion
 /**
- *  Quaternion
- *
- *  Discussion:
- *    Type represents a quaternion (one way of parameterizing rotation).
- *      If quaternion is an instance of `Quaternion`, mathematically it represents the
- *      following quaternion:
- *
- *      p = xi + yj + zk + w
- *      
- *      where: i² = j² = k² = ijk = −1
- *
+  # Quaternion
+
+  ### Discussion:
+    Type represents a quaternion (one way of parameterizing rotation).
+    If quaternion is an instance of `Quaternion`, mathematically it represents the
+    following quaternion:
+    ````
+      p = xi + yj + zk + w
+    ````
+      
+    __Where__: 
+    ````
+    i² = j² = k² = ijk = −1
+    ````
  */
 public struct Quaternion {
     
@@ -449,16 +474,20 @@ public struct Quaternion {
     }
     
     //MARK: Initialaization
+    
+    /**
+     `Quaternion` Default initializer.
+     */
     public init(){ }
     
     /**
-     * Initialize PolarVector object
-     *
-     * - Parameters:
-     * 	- x: Double value represent the unity vector projection on x-axis.
-     * 	- y: Double value represent the unity vector projection on y-axis.
-     * 	- z: Double value represent the unity vector projection on z-axis.
-     * 	- w: Double value represent the deference angel in rotation.
+     Initialize PolarVector object
+    
+     - Parameters:
+     	- x: Double value represent the unity vector projection on x-axis.
+     	- y: Double value represent the unity vector projection on y-axis.
+     	- z: Double value represent the unity vector projection on z-axis.
+     	- w: Double value represent the deference angel in rotation.
      */
     public init(x: Double, y: Double, z: Double, w: Double){
         self.x = x
@@ -479,6 +508,14 @@ extension Quaternion:  CustomStringConvertible {
     import CoreMotion
     
     extension EulerAngles {
+        
+        /**
+         Initialize `EulerAngles` object with `CMAttitude` in iOS Core Motion.
+         
+         - Parameter attitude: `CMAttitude` object represent the rotation.
+         - Warning: Please make note that this method is only available for iOS 8.1 or later.
+         */
+        @available(iOS 8.1, *)
         public init(attitude: CMAttitude){
             self.roll = attitude.roll
             self.pitch = attitude.pitch
@@ -488,6 +525,14 @@ extension Quaternion:  CustomStringConvertible {
     }
     
     extension Quaternion {
+        
+        /**
+         Initialize `Quaternion` object with `CMQuaternion` in iOS Core Motion.
+         
+         - Parameter quaternion: `CMQuaternion` object represent the rotation.
+         - Warning: Please make note that this method is only available for iOS 8.1 or later.
+         */
+        @available(iOS 8.1, *)
         public init(quaternion: CMQuaternion){
             self.x = quaternion.x
             self.y = quaternion.y
@@ -498,6 +543,14 @@ extension Quaternion:  CustomStringConvertible {
     }
     
     extension RotationMatrix {
+        
+        /**
+         Initialize `RotationMatrix` object with `CMRotationMatrix` in iOS Core Motion.
+         
+         - Parameter matrix: `CMAttitude` object represent the rotation.
+         - Warning: Please make note that this method is only available for iOS 8.1 or later.
+         */
+        @available(iOS 8.1, *)
         public init(matrix: CMRotationMatrix){
             self.m11 = matrix.m11
             self.m12 = matrix.m12

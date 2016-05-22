@@ -14,11 +14,10 @@ import Foundation
 //MARK:- Rotation3D
 
 /**
- * Rotation3D
- *
- *  Discussion:
- *   A transformation in which a plane figure turns around a fixed center point.
- *
+ # Rotation3D
+ 
+  ### Discussion:
+    A transformation in which a plane figure turns around a fixed center point.
  */
 public class Rotation3D: Measurement {
     
@@ -43,6 +42,10 @@ public class Rotation3D: Measurement {
     private(set) var rotationMatrix: RotationMatrix!
     
     //MARK: Initialaization
+    
+    /**
+     `Rotation3D` Default initializer.
+     */
     public override init() {
         super.init()
         self.eulerAngles = EulerAngles()
@@ -51,12 +54,12 @@ public class Rotation3D: Measurement {
     }
     
     /**
-     * Initialize Rotation3D object
-     *
-     * - Parameters:
-     * 	- roll: Radian value represent a rotation around x-axis.
-     * 	- pitch: Radian value represent a rotation around y-axis.
-     * 	- yaw: Radian value represent a rotation around z-axis.
+      Initialize Rotation3D object
+     
+      - Parameters:
+      	- roll: Radian value represent a rotation around x-axis.
+      	- pitch: Radian value represent a rotation around y-axis.
+      	- yaw: Radian value represent a rotation around z-axis.
      */
     public init(roll: Radian, pitch: Radian, yaw: Radian){
         super.init()
@@ -83,6 +86,15 @@ public class Rotation3D: Measurement {
     }
     
     #if os(iOS)
+    
+    
+    /**
+     Initialize `Rotation3D` object with `CMAttitude` in iOS Core Motion.
+     
+     - Parameter attitude: `CMAttitude` object represent the rotation.
+     - Warning: Please make note that this method is only available for iOS 8.0 or later.
+     */
+    @available(iOS 8.0, *)
     public init(attitude: CMAttitude){
         super.init()
         self.eulerAngles = EulerAngles(attitude: attitude)
@@ -103,35 +115,35 @@ prefix func - (rotation: Rotation3D) -> Rotation3D {
     return Rotation3D(roll: -rotation.roll, pitch: -rotation.pitch, yaw: -rotation.yaw)
 }
 
-func + (left: Rotation3D, right: Rotation3D) -> Rotation3D {
+public func + (left: Rotation3D, right: Rotation3D) -> Rotation3D {
     return Rotation3D(roll: left.roll + right.roll, pitch: left.pitch + right.pitch, yaw: left.yaw + right.yaw)
 }
 
-func - (left: Rotation3D, right: Rotation3D) -> Rotation3D {
+public func - (left: Rotation3D, right: Rotation3D) -> Rotation3D {
     return left + -right
 }
 
-func += (inout left: Rotation3D, right: Rotation3D) {
+public func += (inout left: Rotation3D, right: Rotation3D) {
     left = left + right
 }
 
-func -= (inout left: Rotation3D, right: Rotation3D) {
+public func -= (inout left: Rotation3D, right: Rotation3D) {
     left = left - right
 }
 
-func * (left: Rotation3D, right: Rotation3D) -> Rotation3D {
+public func * (left: Rotation3D, right: Rotation3D) -> Rotation3D {
     return Rotation3D(roll: left.roll * right.roll, pitch: left.pitch * right.pitch, yaw: left.yaw * right.yaw)
 }
 
-func / (left: Rotation3D, right: Rotation3D) -> Rotation3D {
+public func / (left: Rotation3D, right: Rotation3D) -> Rotation3D {
     return Rotation3D(roll: left.roll / right.roll, pitch: left.pitch / right.pitch, yaw: left.yaw / right.yaw)
 }
 
 //MARK:Logical operators
-func == (left: Rotation3D, right: Rotation3D) -> Bool {
+public func == (left: Rotation3D, right: Rotation3D) -> Bool {
     return (left.roll == right.roll) && (left.pitch == right.pitch) && (left.yaw == right.yaw)
 }
 
-func != (left: Rotation3D, right: Rotation3D) -> Bool {
+public func != (left: Rotation3D, right: Rotation3D) -> Bool {
     return !(left == right)
 }

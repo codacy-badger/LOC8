@@ -1,0 +1,37 @@
+module_name: LOC8
+author_name: Marwan Al Masri
+bitbucket_url:
+clean: true
+
+
+swift_version: 2.2
+
+copyright: 'Copyright © 2015 LOC8. All rights reserved.'
+
+docset_icon: LOC8/Assets.xcassets/AppIcon.appiconset/Icon.png
+
+# excluded_files: LOC8/UI
+
+# custom_categories:
+#   - name: Constants
+#     children:
+#     - Constants
+#
+#   - name: Models
+#     children:
+#     - Geometry
+#     - Physics
+#     - Measurement
+#     - Vector3D
+#     - Rotation3D
+#     - Heading
+#     - MotionActivity
+#     - Estimation
+#     - TrackingSession
+#     - Filter
+#
+#   - name: Graphics
+#     children:
+#     - Cylinder
+#     - Path
+#     - PathManager

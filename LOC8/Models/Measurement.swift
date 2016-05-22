@@ -11,12 +11,10 @@ import Foundation
 //MARK:- Measurement
 
 /**
- *
- * Measurement
- *
- *  Discussion:
- *   An objsect represent the size or amount of something related to a time.
- *
+ # Measurement
+ 
+  ### Discussion:
+    An object represent the size or amount of something with the relation to a time.
  */
 public class Measurement: NSObject, NSCoding {
     

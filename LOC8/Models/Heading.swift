@@ -11,21 +11,63 @@ import Foundation
 //MARK:- Direction
 
 /**
- * Direction
- *
- * - North
- * - NorthEast
- * - East
- * - SouthEast
- * - South
- * - SouthWest
- * - West
- * - NorthWest
- * - Up
- * - Down
+  # Direction
+ 
+  ### Discussion:
+    The four cardinal directions or cardinal points are the directions of north, east, south, and west, commonly denoted by their initials: N, E, S, W. East and west are at right angles to north and south, with east being in the clockwise direction of rotation from north and west being directly opposite east. 
+ 
+    Intermediate points between the four cardinal directions form the points of the compass. The intermediate (intercardinal, or ordinal) directions are northeast (NE), southeast (SE), southwest (SW), and northwest (NW).
+ 
+    Alos the two vertical directions or cardinal points are the directions of up and down.
+ 
+  - North
+  - NorthEast
+  - East
+  - SouthEast
+  - South
+  - SouthWest
+  - West
+  - NorthWest
+  - Up
+  - Down
  */
 public enum Direction: Int {
     
+    ///North (N): 0° = 360° in (x, y) plane
+    case North = 0
+    
+    ///North East (NE): 45° in (x, y) plane
+    case NorthEast = 1
+    
+    ///East (E): 90° in (x, y) plane
+    case East = 2
+    
+    ///South East (SE): 135° in (x, y) plane
+    case SouthEast = 3
+    
+    ///South (S): 180° in (x, y) plane
+    case South = 4
+    
+    ///South West (SW): 225° in (x, y) plane
+    case SouthWest = 5
+    
+    ///West (W): 270° in (x, y) plane
+    case West = 6
+    
+    ///North West (NW): 315° in (x, y) plane
+    case NorthWest = 7
+    
+    ///Up (U): 0° = 360° in (z, x) plane
+    case Up = 8
+    
+    ///Down (D): 180° in (z, x) plane
+    case Down = 9
+    
+    /**
+     Initialize `Direction` object with `Radian` angle.
+     
+     - Parameter angle: `Radian` value represent the direction angle.
+     */
     public init(angle: Radian) {
         
         let d = wrap(angle / (M_PI / 4))
@@ -49,17 +91,6 @@ public enum Direction: Int {
             self = .North
         }
     }
-    
-    case North = 0
-    case NorthEast = 1
-    case East = 2
-    case SouthEast = 3
-    case South = 4
-    case SouthWest = 5
-    case West = 6
-    case NorthWest = 7
-    case Up = 8
-    case Down = 9
     
 }
 
@@ -96,14 +127,12 @@ extension Direction:  CustomStringConvertible {
 
 
 /**
- * Heading
- *
- *  Discussion:
- *      In a contemporary land navigation context, heading is measured with true north,
- *      magnetic north, or grid north being 0° in a 360-degree system.
- *      This object contains distance and waight also to present the repetition of the 
- *      object along distance.
- *
+ # Heading
+ 
+   ### Discussion:
+    In a contemporary land navigation context, heading is measured with true north, magnetic north, or grid north being 0° in a 360-degree system.
+ 
+    This object contains distance and waight also to present the repetition of the object along distance.
  */
 public class Heading: Measurement {
     
@@ -122,10 +151,9 @@ public class Heading: Measurement {
     //MARK:Initialization
     
     /**
-     * Initialize Heading object with an angel
-     *
-     * - Parameters:
-     * 	- angle: the angel of the heading in radian.
+      Initialize Heading object with an angel
+     
+      - Parameter angle: the angel of the heading in radian.
      */
     public init(angle: Radian) {
         super.init()
@@ -133,10 +161,9 @@ public class Heading: Measurement {
     }
     
     /**
-     * Initialize Heading object with an angel
-     *
-     * - Parameters:
-     * 	- direction: the direction of the heading.
+      Initialize Heading object with an angel
+     
+      - Parameter direction: the direction of the heading.
      */
     public init(direction: Direction) {
         super.init()

@@ -14,11 +14,15 @@ import Foundation
 //MARK:- MotionActivityConfidence
 
 /**
- *  MotionActivityConfidence
- *
- * - Low
- * - Medium
- * - High
+ # Motion Activity Confidence
+ 
+ ### Discussion:
+ 
+    Enumerates the level of accuracy of the activity estimate.
+ 
+  - Low
+  - Medium
+  - High
  */
 public enum MotionActivityConfidence : Int {
     
@@ -55,25 +59,49 @@ extension MotionActivityConfidence:  CustomStringConvertible {
 //MARK:- MotionActivityStatus
 
 /**
- * Heading MotionActivityConfidence
- *
- * - walking
- * - running
- * - automotive
- * - stationary
- * - cycling
- * - unknown
+ # Motion Activity Status
+ 
+ ### Discussion:
+ 
+ An estimate of the user's activity based on the motion of the device.
+ 
+  - Walking
+  - Running
+  - Automotive
+  - Stationary
+  - Cycling
+  - Unknown
  */
 public enum MotionActivityStatus : Int {
     
+    ///The state when the device is on a walking person.
     case walking = 0
+    
+    ///The state when the device is on a running person.
     case running = 1
+    
+    ///The state when the device is in a vehicle.
     case automotive = 2
+    
+    ///The state when the device is not moving.
     case stationary = 3
+    
+    ///The state when the device is on a bicycle.
     case cycling = 4
+    
+    ///The state when there is no estimate of the current state.  
+    ///This can happen if the device was turned off.
     case unknown = 5
     
     #if os(iOS)
+    
+    /**
+     Initialize `MotionActivityState` object with `CMMotionActivity` in iOS Core Motion.
+     
+     - Parameter activity: `CMMotionActivity` object represent the motion activity.
+     - Warning: Please make note that this method is only available for iOS 7.0 or later.
+     */
+    @available(iOS 7.0, *)
     public init(activity: CMMotionActivity){
         if activity.walking { self = walking }
         else if activity.running { self = running }
@@ -103,21 +131,28 @@ extension MotionActivityStatus:  CustomStringConvertible {
 //MARK:- Motion Activity
 
 /**
- *  MotionActivity
- *
- *  Discussion:
- *    An estimate of the user's activity based on the motion of the device.
- *    This object contains the motion activity of the user with the confidence of this activity.
- *
+   # MotionActivity
+ 
+   ### Discussion:
+     An estimate of the user's activity based on the motion of the device.
+     This object contains the motion activity of the user along with the confidence of this activity.
+ 
  */
 public class MotionActivity: Measurement {
     
     //MARK:Properties
+    
+    ///`MotionActivityStatus` object represent the state of the activity.
     private(set) var status: MotionActivityStatus!
     
+    ///`MotionActivityConfidence` object represent the confidance of the activity state.
     private(set) var confidence: MotionActivityConfidence!
     
     //MARK:Initialaization
+    
+    /**
+     `MotionActivity` Default initializer.
+     */
     public override init() {
         super.init()
         status = .unknown
@@ -126,11 +161,11 @@ public class MotionActivity: Measurement {
     
     
     /**
-     * Initialize MotionActivity object
-     *
-     * - Parameters:
-     * 	- status: A MotionActivityStatus value represent the activity.
-     * 	- confidence: A MotionActivityConfidence value represent the confidence of the activity.
+      Initialize MotionActivity object
+     
+      - Parameters:
+      	- status: A MotionActivityStatus value represent the activity.
+      	- confidence: A MotionActivityConfidence value represent the confidence of the activity.
      */
     public init(status: MotionActivityStatus, confidence: MotionActivityConfidence) {
         super.init()
@@ -151,6 +186,14 @@ public class MotionActivity: Measurement {
     }
     
     #if os(iOS)
+    
+    /**
+     Initialize `MotionActivity` object with `CMMotionActivity` in iOS Core Motion.
+     
+     - Parameter activity: `CMMotionActivity` object represent the motion activity.
+     - Warning: Please make note that this method is only available for iOS 7.0 or later.
+     */
+    @available(iOS 7.0, *)
     public convenience init(activity: CMMotionActivity) {
         self.init(status: MotionActivityStatus(activity: activity), confidence: MotionActivityConfidence(activity: activity))
     }
