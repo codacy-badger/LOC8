@@ -10,6 +10,8 @@ copyright: 'Copyright © 2015 LOC8. All rights reserved.'
 
 docset_icon: LOC8/Assets.xcassets/AppIcon.appiconset/Icon.png
 
+output: doc/jazzy
+
 # excluded_files: LOC8/UI
 
 # custom_categories:
