@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Direction Enum Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/Direction" class="dashAnchor"></a>
+    <a title="Direction Enum Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">LOC8 Docs</a> (60% documented)</p>
+        <p class="header-right"><a href="https://bitbucket.org/loc8/loc8"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">LOC8 Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Direction Enum Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Geometry &amp; Physics.html">Geometry &amp; Physics</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:4LOC86Radian">Radian</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Radian.html">Radian</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:4LOC86Degree">Degree</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Degree.html">Degree</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CartesianVector.html">CartesianVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PolarVector.html">PolarVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EulerAngles.html">EulerAngles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RotationMatrix.html">RotationMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Quaternion.html">Quaternion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:C4LOC811Measurement">Measurement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Vector3D.html">Vector3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Rotation3D.html">Rotation3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:4LOC812Acceleration">Acceleration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Acceleration.html">Acceleration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:4LOC88Velocity">Velocity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:4LOC88Distance">Distance</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Physics.html">Physics</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Models.html">Models</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Filter.html">Filter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FilterType.html">FilterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AccelerationFilter.html">AccelerationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Direction.html">Direction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Heading.html">Heading</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Models.html#/s:O4LOC824MotionActivityConfidence">MotionActivityConfidence</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MotionActivityStatus.html">MotionActivityStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MotionActivity.html">MotionActivity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Models.html#/s:4LOC817EstimationHandler">EstimationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Estimation.html">Estimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TrackingSession.html">TrackingSession</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Functions.html">Other Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:ZF4LOC8oi1xFTCS_8Vector3DCS_10Rotation3D_S0_">^(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:F4LOC85clampuRxs10ComparablerFTx3minx3maxx_x">clamp(_:min:max:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:F4LOC816degreesToRadiansuRxS_11NumericTyperFxx">degreesToRadians(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:F4LOC816radiansToDegreesuRxS_11NumericTyperFxx">radiansToDegrees(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:F4LOC84wrapFSdSi">wrap(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:ZF4LOC8oi1tFTCS_8Vector3DS0__Sd">~(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Direction</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Direction</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                </div>
+              </div>
+            <p><a href='#direction' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='direction'>Direction</h1>
+<a href='#discussion' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='discussion'>Discussion:</h3></p>
+
+<p>The four cardinal directions or cardinal points are the directions of north, east, south, and west, commonly denoted by their initials: N, E, S, W. East and west are at right angles to north and south, with east being in the clockwise direction of rotation from north and west being directly opposite east. </p>
+
+<p>Intermediate points between the four cardinal directions form the points of the compass. The intermediate (intercardinal, or ordinal) directions are northeast (NE), southeast (SE), southwest (SW), and northwest (NW).</p>
+
+<p>Alos the two vertical directions or cardinal points are the directions of up and down.</p>
+
+<ul>
+<li>North</li>
+<li>NorthEast</li>
+<li>East</li>
+<li>SouthEast</li>
+<li>South</li>
+<li>SouthWest</li>
+<li>West</li>
+<li>NorthWest</li>
+<li>Up</li>
+<li>Down</li>
+</ul>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO4LOC89Direction5NorthFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/North" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO4LOC89Direction5NorthFMS0_S0_">North</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>North (N): 0° = 360° in (x, y) plane</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">North</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO4LOC89Direction9NorthEastFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/NorthEast" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO4LOC89Direction9NorthEastFMS0_S0_">NorthEast</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>North East (NE): 45° in (x, y) plane</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">NorthEast</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO4LOC89Direction4EastFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/East" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO4LOC89Direction4EastFMS0_S0_">East</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>East (E): 90° in (x, y) plane</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">East</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO4LOC89Direction9SouthEastFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/SouthEast" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO4LOC89Direction9SouthEastFMS0_S0_">SouthEast</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>South East (SE): 135° in (x, y) plane</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">SouthEast</span> <span class="o">=</span> <span class="mi">3</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO4LOC89Direction5SouthFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/South" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO4LOC89Direction5SouthFMS0_S0_">South</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>South (S): 180° in (x, y) plane</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">South</span> <span class="o">=</span> <span class="mi">4</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO4LOC89Direction9SouthWestFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/SouthWest" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO4LOC89Direction9SouthWestFMS0_S0_">SouthWest</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>South West (SW): 225° in (x, y) plane</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">SouthWest</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO4LOC89Direction4WestFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/West" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO4LOC89Direction4WestFMS0_S0_">West</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>West (W): 270° in (x, y) plane</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">West</span> <span class="o">=</span> <span class="mi">6</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO4LOC89Direction9NorthWestFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/NorthWest" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO4LOC89Direction9NorthWestFMS0_S0_">NorthWest</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>North West (NW): 315° in (x, y) plane</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">NorthWest</span> <span class="o">=</span> <span class="mi">7</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO4LOC89Direction2UpFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/Up" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO4LOC89Direction2UpFMS0_S0_">Up</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Up (U): 0° = 360° in (z, x) plane</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Up</span> <span class="o">=</span> <span class="mi">8</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO4LOC89Direction4DownFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/Down" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO4LOC89Direction4DownFMS0_S0_">Down</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Down (D): 180° in (z, x) plane</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Down</span> <span class="o">=</span> <span class="mi">9</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO4LOC89DirectioncFT5angleSd_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(angle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO4LOC89DirectioncFT5angleSd_S0_">init(angle:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize <code><a href="../Enums/Direction.html">Direction</a></code> object with <code><a href="../Geometry & Physics.html#/s:4LOC86Radian">Radian</a></code> angle.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter angle: <code><a href="../Geometry & Physics.html#/s:4LOC86Radian">Radian</a></code> value represent the direction angle.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">angle</span><span class="p">:</span> <span class="kt">Radian</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>angle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>Radian</code> value represent the direction angle.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright © 2015 LOC8. All rights reserved.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

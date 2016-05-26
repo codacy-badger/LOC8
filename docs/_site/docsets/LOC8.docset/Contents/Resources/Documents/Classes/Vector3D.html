@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vector3D Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Vector3D" class="dashAnchor"></a>
+    <a title="Vector3D Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">LOC8 Docs</a> (60% documented)</p>
+        <p class="header-right"><a href="https://bitbucket.org/loc8/loc8"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">LOC8 Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Vector3D Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Geometry &amp; Physics.html">Geometry &amp; Physics</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:4LOC86Radian">Radian</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Radian.html">Radian</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:4LOC86Degree">Degree</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Degree.html">Degree</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CartesianVector.html">CartesianVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PolarVector.html">PolarVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EulerAngles.html">EulerAngles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RotationMatrix.html">RotationMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Quaternion.html">Quaternion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:C4LOC811Measurement">Measurement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Vector3D.html">Vector3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Rotation3D.html">Rotation3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:4LOC812Acceleration">Acceleration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Acceleration.html">Acceleration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:4LOC88Velocity">Velocity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Geometry &amp; Physics.html#/s:4LOC88Distance">Distance</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Physics.html">Physics</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Models.html">Models</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Filter.html">Filter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FilterType.html">FilterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AccelerationFilter.html">AccelerationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Direction.html">Direction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Heading.html">Heading</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Models.html#/s:O4LOC824MotionActivityConfidence">MotionActivityConfidence</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MotionActivityStatus.html">MotionActivityStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MotionActivity.html">MotionActivity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Models.html#/s:4LOC817EstimationHandler">EstimationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Estimation.html">Estimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TrackingSession.html">TrackingSession</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Functions.html">Other Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:ZF4LOC8oi1xFTCS_8Vector3DCS_10Rotation3D_S0_">^(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:F4LOC85clampuRxs10ComparablerFTx3minx3maxx_x">clamp(_:min:max:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:F4LOC816degreesToRadiansuRxS_11NumericTyperFxx">degreesToRadians(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:F4LOC816radiansToDegreesuRxS_11NumericTyperFxx">radiansToDegrees(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:F4LOC84wrapFSdSi">wrap(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Functions.html#/s:ZF4LOC8oi1tFTCS_8Vector3DS0__Sd">~(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Vector3D</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Vector3D</span><span class="p">:</span> <span class="kt">Measurement</span></code></pre>
+
+                </div>
+              </div>
+            <p><a href='#vector3d' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='vector3d'>Vector3D</h1></p>
+
+<p>### Discussion:
+   A vector is an object that has both a magnitude and a direction. Geometrically.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Cartesian%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Cartesian Properties" class="dashAnchor"></a>
+                <a href="#/Cartesian%20Properties">
+                  <h3 class="section-name">Cartesian Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC4LOC88Vector3D1xSd"></a>
+                    <a name="//apple_ref/swift/Property/x" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC4LOC88Vector3D1xSd">x</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Double value represent the projection on x-axis.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">x</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">cartesianVector</span><span class="o">.</span><span class="n">x</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC4LOC88Vector3D1ySd"></a>
+                    <a name="//apple_ref/swift/Property/y" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC4LOC88Vector3D1ySd">y</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Double value represent the projection on y-axis.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">cartesianVector</span><span class="o">.</span><span class="n">y</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC4LOC88Vector3D1zSd"></a>
+                    <a name="//apple_ref/swift/Property/z" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC4LOC88Vector3D1zSd">z</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Double value represent the projection on z-axis.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">z</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">cartesianVector</span><span class="o">.</span><span class="n">z</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Polar%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Polar Properties" class="dashAnchor"></a>
+                <a href="#/Polar%20Properties">
+                  <h3 class="section-name">Polar Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC4LOC88Vector3D5thetaSd"></a>
+                    <a name="//apple_ref/swift/Property/theta" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC4LOC88Vector3D5thetaSd">theta</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Radian value represent the angle between the projection on z-axis and xy-plan.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">theta</span><span class="p">:</span> <span class="kt">Radian</span> <span class="p">{</span> <span class="k">return</span> <span class="n">polarVector</span><span class="o">.</span><span class="n">theta</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC4LOC88Vector3D6lambdaSd"></a>
+                    <a name="//apple_ref/swift/Property/lambda" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC4LOC88Vector3D6lambdaSd">lambda</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Radian value represent the angle between the projection on xy-plan and x-axis.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">lambda</span><span class="p">:</span> <span class="kt">Radian</span> <span class="p">{</span> <span class="k">return</span> <span class="n">polarVector</span><span class="o">.</span><span class="n">lambda</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC4LOC88Vector3D9magnitudeSd"></a>
+                    <a name="//apple_ref/swift/Property/magnitude" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC4LOC88Vector3D9magnitudeSd">magnitude</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Double value represent the distance of the vector.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">magnitude</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">polarVector</span><span class="o">.</span><span class="n">magnitude</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Vector%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Vector Properties" class="dashAnchor"></a>
+                <a href="#/Vector%20Properties">
+                  <h3 class="section-name">Vector Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC4LOC88Vector3D16headingDirectionOS_9Direction"></a>
+                    <a name="//apple_ref/swift/Property/headingDirection" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC4LOC88Vector3D16headingDirectionOS_9Direction">headingDirection</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return Direction that represent the vector heading.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">headingDirection</span><span class="p">:</span> <span class="kt">Direction</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initialaization"></a>
+                <a name="//apple_ref/swift/Section/Initialaization" class="dashAnchor"></a>
+                <a href="#/Initialaization">
+                  <h3 class="section-name">Initialaization</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4LOC88Vector3DcFT_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4LOC88Vector3DcFT_S0_">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code><a href="../Classes/Vector3D.html">Vector3D</a></code> Default initializer.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4LOC88Vector3DcFT1xSd1ySd1zSd_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(x:y:z:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4LOC88Vector3DcFT1xSd1ySd1zSd_S0_">init(x:y:z:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize Vector3D object in cartesian form.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>x: Double value represent the projection on x-axis.</li>
+<li>y: Double value represent the projection on y-axis.</li>
+<li>z: Double value represent the projection on z-axis.</li>
+</ul></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">z</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>x</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Double value represent the projection on x-axis.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>y</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Double value represent the projection on y-axis.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>z</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Double value represent the projection on z-axis.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4LOC88Vector3DcFT9magnitudeSd5thetaSd6lambdaSd_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(magnitude:theta:lambda:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4LOC88Vector3DcFT9magnitudeSd5thetaSd6lambdaSd_S0_">init(magnitude:theta:lambda:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize Vector3D object in polar form.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>magnitude: Double value represent the vector magnitude.</li>
+<li>theta: Radian value represent the vector theta.</li>
+<li>lambda: Radian value represent the vector lambda.</li>
+</ul></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">magnitude</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">theta</span><span class="p">:</span> <span class="kt">Radian</span><span class="p">,</span> <span class="nv">lambda</span><span class="p">:</span> <span class="kt">Radian</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>magnitude</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Double value represent the vector magnitude.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>theta</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Radian value represent the vector theta.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lambda</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Radian value represent the vector lambda.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4LOC88Vector3DcFT5valueSd_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4LOC88Vector3DcFT5valueSd_S0_">init(value:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize Vector3D object with a unit value.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>value: Double value represent the vector x y z value.</li>
+</ul></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Double value represent the vector x y z value.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4LOC88Vector3DcFT12rotationRateVSC14CMRotationRate_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(rotationRate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4LOC88Vector3DcFT12rotationRateVSC14CMRotationRate_S0_">init(rotationRate:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize <code>Vectro3D</code> object with <code>CMRotationRate</code> in iOS Core Motion.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter rotationRate: <code>CMRotationRate</code> object represent the rotation rate vector.
+
+</div>
+
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Please make note that this method is only available for iOS 8.1 or later.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rotationRate</span><span class="p">:</span> <span class="kt">CMRotationRate</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rotationRate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>CMRotationRate</code> object represent the rotation rate vector.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright © 2015 LOC8. All rights reserved.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
