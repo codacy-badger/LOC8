@@ -4,7 +4,6 @@ module: LOC8
 author: LOC8
 # author_url: https://www.LOC8.com
 copyright: 'Copyright © 2015 LOC8. All rights reserved.'
-github_url: https://github.com/mauriciosantos/Buckets-Swift
 github_url: https://bitbucket.org/loc8/loc8
 min_acl: public
 output: docs/jazzy
@@ -44,7 +43,7 @@ custom_categories:
         - EstimationHandler
         - Estimation
         - TrackingSession
-    - name: Generics
+    - name: Generic
       children:
       - degreesToRadians
       - degreesToRadians

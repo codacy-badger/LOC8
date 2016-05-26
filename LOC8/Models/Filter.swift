@@ -147,6 +147,8 @@ public class Filter: NSObject {
     /**
      Add new value to a lowpass filter.
      - Parameter value: A `Double` value represent the new value
+     
+     - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/Low-pass_filter).
      */
     private func addValueToLowpass(value: Double) {
 
@@ -165,6 +167,8 @@ public class Filter: NSObject {
     /**
      Add new value to a highpass filter.
      - Parameter value: A `Double` value represent the new value
+     
+     - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/High-pass_filter).
      */
     private func addValueToHighpass(value: Double){
 
@@ -292,6 +296,8 @@ public class AccelerationFilter: NSObject {
     /**
      Add new value to a lowpass filter.
      - Parameter value: A `Double` value represent the new value
+     
+     - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/Low-pass_filter).
      */
     private func addValueToLowpass(value: Acceleration) {
         // See http://en.wikipedia.org/wiki/Low-pass_filter for details low pass filtering
@@ -319,6 +325,8 @@ public class AccelerationFilter: NSObject {
     /**
      Add new value to a highpass filter.
      - Parameter value: A `Double` value represent the new value
+     
+     - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/High-pass_filter).
      */
     private func addValueToHighpass(value: Acceleration) {
         // See http://en.wikipedia.org/wiki/High-pass_filter for details on high pass filtering
