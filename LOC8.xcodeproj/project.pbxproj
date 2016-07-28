@@ -63,6 +63,8 @@
 		4DCDBC541CA79FDB00AB4885 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD61CA68A1B00AB4885 /* Heading.swift */; };
 		4DCDBC5C1CA7B2E800AB4885 /* MultipeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBC5B1CA7B2E800AB4885 /* MultipeerManager.swift */; };
 		4DCDBC5D1CA7BD1200AB4885 /* MultipeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBC5B1CA7B2E800AB4885 /* MultipeerManager.swift */; };
+		D52634391D4A1FFB00557E46 /* PlaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52634381D4A1FFB00557E46 /* PlaneViewController.swift */; };
+		D526343B1D4A246400557E46 /* UIPlaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526343A1D4A246400557E46 /* UIPlaneView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +130,8 @@
 		4DCDBC4F1CA773CC00AB4885 /* NSGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSGraphView.swift; sourceTree = "<group>"; };
 		4DCDBC511CA77A6600AB4885 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		4DCDBC5B1CA7B2E800AB4885 /* MultipeerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerManager.swift; sourceTree = "<group>"; };
+		D52634381D4A1FFB00557E46 /* PlaneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneViewController.swift; sourceTree = "<group>"; };
+		D526343A1D4A246400557E46 /* UIPlaneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPlaneView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +268,7 @@
 				4DCDBBE81CA68A1B00AB4885 /* UIGraphView.swift */,
 				4DCDBBE91CA68A1B00AB4885 /* UILinearProgressView.swift */,
 				4DCDBBEA1CA68A1B00AB4885 /* UIRotationView.swift */,
+				D526343A1D4A246400557E46 /* UIPlaneView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				4DCDBBEF1CA68A1B00AB4885 /* MeasurmentsViewController.swift */,
 				4DCDBBF01CA68A1B00AB4885 /* SettingsViewController.swift */,
 				4DCDBBF11CA68A1B00AB4885 /* TabBarController.swift */,
+				D52634381D4A1FFB00557E46 /* PlaneViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -344,7 +350,7 @@
 				TargetAttributes = {
 					4DCDBB911CA6895800AB4885 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 5USBGUT4GL;
+						DevelopmentTeam = ZUPPK5J9VH;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -412,6 +418,7 @@
 				4DCDBC031CA68A1B00AB4885 /* AdjustmentTableViewCell.swift in Sources */,
 				4DCDBC0D1CA68A1B00AB4885 /* UIGraphView.swift in Sources */,
 				4DCDBC0B1CA68A1B00AB4885 /* ValueTableViewCell.swift in Sources */,
+				D52634391D4A1FFB00557E46 /* PlaneViewController.swift in Sources */,
 				4DCDBBF91CA68A1B00AB4885 /* SettingsService.swift in Sources */,
 				4DCDBBFE1CA68A1B00AB4885 /* Heading.swift in Sources */,
 				4DCDBC521CA77A6600AB4885 /* Geometry.swift in Sources */,
@@ -432,6 +439,7 @@
 				4DCDBC141CA68A1B00AB4885 /* SettingsViewController.swift in Sources */,
 				4DCDBC121CA68A1B00AB4885 /* MapViewController.swift in Sources */,
 				4DCDBBF31CA68A1B00AB4885 /* Constants.swift in Sources */,
+				D526343B1D4A246400557E46 /* UIPlaneView.swift in Sources */,
 				4DCDBBFF1CA68A1B00AB4885 /* MotionActivity.swift in Sources */,
 				4DCDBC061CA68A1B00AB4885 /* FilterTypeTableViewCell.swift in Sources */,
 				4DCDBBF61CA68A1B00AB4885 /* Path.swift in Sources */,
@@ -591,11 +599,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LOC8/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bookyaCom.bookya.LOC8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -605,11 +615,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LOC8/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bookyaCom.bookya.LOC8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
