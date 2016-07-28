@@ -82,8 +82,8 @@ public class MapViewController: UIViewController {
         self.sceneView.backgroundColor = UIColor.blackColor()
         
         
-        let panGesture = UIPanGestureRecognizer(target: self.camera, action: Selector("pan:"))
-        self.sceneView.addGestureRecognizer(panGesture)
+//        let panGesture = UIPanGestureRecognizer(target: self.camera, action: Selector("pan:"))
+//        self.sceneView.addGestureRecognizer(panGesture)
         // add a tap gesture recognizer
 //        let tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
 //        self.sceneView.addGestureRecognizer(tapGesture)
