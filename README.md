@@ -1,6 +1,6 @@
 ![cover photo.png](/docs/LOC8_COVER_PHOTO.png)
 
-# LOC8
+# LOC8 [![Build Status](https://travis-ci.com/Marwan-Al-Masri/LOC8.svg?token=H9CZx6r8wEAXyxtfxAbz&branch=master)](https://travis-ci.com/Marwan-Al-Masri/LOC8)
  LOC8 is a mobile application project that's allow's the user to locate physical object including cars.
 
 ## Requirements
