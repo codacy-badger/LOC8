@@ -19,45 +19,45 @@ import Foundation
   ### Discussion:
     A vector is an object that has both a magnitude and a direction. Geometrically.
  */
-public class Vector3D: Measurement {
+open class Vector3D: Measurement {
     
     //MARK: Cartesian Properties
     
     /// A CartesianVector object represent the vector in cartesian coordinate.
-    private(set) var cartesianVector: CartesianVector!
+    fileprivate(set) var cartesianVector: CartesianVector!
     
     ///Double value represent the projection on x-axis.
-    public var x: Double { return cartesianVector.x }
+    open var x: Double { return cartesianVector.x }
     
     ///Double value represent the projection on y-axis.
-    public var y: Double { return cartesianVector.y }
+    open var y: Double { return cartesianVector.y }
     
     ///Double value represent the projection on z-axis.
-    public var z: Double { return cartesianVector.z }
+    open var z: Double { return cartesianVector.z }
     
     //MARK: Polar Properties
     
     /// A PolerVector object represent the vector in polar coordinate.
-    private(set) var polarVector: PolarVector!
+    fileprivate(set) var polarVector: PolarVector!
     
     ///Radian value represent the angle between the projection on z-axis and xy-plan.
-    public var theta: Radian { return polarVector.theta }
+    open var theta: Radian { return polarVector.theta }
     
     ///Radian value represent the angle between the projection on xy-plan and x-axis.
-    public var lambda: Radian { return polarVector.lambda }
+    open var lambda: Radian { return polarVector.lambda }
     
     ///Double value represent the distance of the vector.
-    public var magnitude: Double { return polarVector.magnitude }
+    open var magnitude: Double { return polarVector.magnitude }
     
     //MARK: Vector Properties
     
     ///Return Direction that represent the vector heading.
-    public var headingDirection: Direction {
+    open var headingDirection: Direction {
         let maxAngle = 30.0
         
-        if lambda > maxAngle { return .Up }
+        if lambda > maxAngle { return .up }
         
-        if lambda < -maxAngle { return .Down }
+        if lambda < -maxAngle { return .down }
         
         return Direction(angle: theta)
     }
@@ -115,19 +115,19 @@ public class Vector3D: Measurement {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        let x = aDecoder.decodeDoubleForKey("x")
-        let y = aDecoder.decodeDoubleForKey("y")
-        let z = aDecoder.decodeDoubleForKey("z")
+        let x = aDecoder.decodeDouble(forKey: "x")
+        let y = aDecoder.decodeDouble(forKey: "y")
+        let z = aDecoder.decodeDouble(forKey: "z")
         
         self.cartesianVector = CartesianVector(x: x, y: y, z: z)
         self.polarVector = cartesianVector.polarVector
     }
     
-    public override func encodeWithCoder(aCoder: NSCoder) {
-        super.encodeWithCoder(aCoder)
-        aCoder.encodeDouble(cartesianVector.x, forKey: "x")
-        aCoder.encodeDouble(cartesianVector.y, forKey: "y")
-        aCoder.encodeDouble(cartesianVector.z, forKey: "z")
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(cartesianVector.x, forKey: "x")
+        aCoder.encode(cartesianVector.y, forKey: "y")
+        aCoder.encode(cartesianVector.z, forKey: "z")
     }
     
     #if os(iOS)
@@ -144,7 +144,7 @@ public class Vector3D: Measurement {
     }
     #endif
     
-    public override var description: String {
+    open override var description: String {
         return "Vector3D[\n\t\(self.cartesianVector.description)\n\t\(self.polarVector.description)\n]"
     }
 }
@@ -153,7 +153,7 @@ public class Vector3D: Measurement {
 
 //MARK:Vectors Operators
 
-prefix operator ~ {}
+prefix operator ~
 /**
   A uniry operator calculate the length of a vector (Norm).
  
@@ -166,7 +166,7 @@ prefix func ~ (vector: Vector3D) -> Double {
     return sqrt(vector.x * vector.x + vector.y * vector.y + vector.z * vector.z)
 }
 
-infix operator ~ {}
+infix operator ~
 /**
   An operator that apply dot product for two vectors.
  
@@ -183,7 +183,7 @@ public func ~ (left: Vector3D, right: Vector3D) -> Double{
     return sqrt(x * x + y * y + z * z)
 }
 
-infix operator ^ {}
+infix operator ^
 /**
   An operator that apply cross product for two vectors.
  
@@ -214,11 +214,11 @@ public func - (left: Vector3D, right: Vector3D) -> Vector3D {
     return left + -right
 }
 
-public func += (inout left: Vector3D, right: Vector3D) {
+public func += (left: inout Vector3D, right: Vector3D) {
     left = left + right
 }
 
-public func -= (inout left: Vector3D, right: Vector3D) {
+public func -= (left: inout Vector3D, right: Vector3D) {
     left = left - right
 }
 

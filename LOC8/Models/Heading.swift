@@ -32,34 +32,34 @@ import Foundation
 public enum Direction: Int {
     
     ///North (N): 0° = 360° in (x, y) plane
-    case North = 0
+    case north = 0
     
     ///North East (NE): 45° in (x, y) plane
-    case NorthEast = 1
+    case northEast = 1
     
     ///East (E): 90° in (x, y) plane
-    case East = 2
+    case east = 2
     
     ///South East (SE): 135° in (x, y) plane
-    case SouthEast = 3
+    case southEast = 3
     
     ///South (S): 180° in (x, y) plane
-    case South = 4
+    case south = 4
     
     ///South West (SW): 225° in (x, y) plane
-    case SouthWest = 5
+    case southWest = 5
     
     ///West (W): 270° in (x, y) plane
-    case West = 6
+    case west = 6
     
     ///North West (NW): 315° in (x, y) plane
-    case NorthWest = 7
+    case northWest = 7
     
     ///Up (U): 0° = 360° in (z, x) plane
-    case Up = 8
+    case up = 8
     
     ///Down (D): 180° in (z, x) plane
-    case Down = 9
+    case down = 9
     
     /**
      Initialize `Direction` object with `Radian` angle.
@@ -68,25 +68,25 @@ public enum Direction: Int {
      */
     public init(angle: Radian) {
         
-        let d = wrap(angle / (M_PI / 4))
+        let d = wrap(angle / (Double.pi / 4))
         
         switch d {
         case 1:
-            self = .NorthEast
+            self = .northEast
         case 2:
-            self = .East
+            self = .east
         case 3:
-            self = .SouthEast
+            self = .southEast
         case 4:
-            self = .South
+            self = .south
         case 5:
-            self = .SouthWest
+            self = .southWest
         case 6:
-            self = .West
+            self = .west
         case 7:
-            self = .NorthWest
+            self = .northWest
         default:
-            self = .North
+            self = .north
         }
     }
     
@@ -96,25 +96,25 @@ extension Direction:  CustomStringConvertible {
     
     public var description: String {
         switch self {
-        case .North:
+        case .north:
             return "North"
-        case .NorthEast:
+        case .northEast:
             return "North East"
-        case .East:
+        case .east:
             return "East"
-        case .SouthEast:
+        case .southEast:
             return "South East"
-        case .South:
+        case .south:
             return "South"
-        case .SouthWest:
+        case .southWest:
             return "South West"
-        case .West:
+        case .west:
             return "West"
-        case .NorthWest:
+        case .northWest:
             return "North West"
-        case .Up:
+        case .up:
             return "Up"
-        case .Down:
+        case .down:
             return "Down"
         }
     }
@@ -129,18 +129,18 @@ extension Direction:  CustomStringConvertible {
  
     This object contains distance and waight also to present the repetition of the object along distance.
  */
-public class Heading: Measurement {
+open class Heading: Measurement {
     
     //MARK: Properties
     
     ///Direction value prosent the direction of the heading.
-    public var direction: Direction = .North
+    open var direction: Direction = .north
     
     ///Double value present the distance for the heading.
-    public var distance: Double = 0
+    open var distance: Double = 0
     
     ///Integer value present the wight of the heading.
-    public var wight: UInt = 0
+    open var wight: UInt = 0
     
     
     //MARK:Initialization
@@ -167,19 +167,19 @@ public class Heading: Measurement {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        direction = Direction(rawValue: aDecoder.decodeIntegerForKey("direction"))!
-        distance = aDecoder.decodeDoubleForKey("distance")
-        wight = UInt(aDecoder.decodeIntegerForKey("wight"))
+        direction = Direction(rawValue: aDecoder.decodeInteger(forKey: "direction"))!
+        distance = aDecoder.decodeDouble(forKey: "distance")
+        wight = UInt(aDecoder.decodeInteger(forKey: "wight"))
     }
     
-    public override func encodeWithCoder(aCoder: NSCoder) {
-        super.encodeWithCoder(aCoder)
-        aCoder.encodeInteger(direction.rawValue, forKey: "direction")
-        aCoder.encodeDouble(distance, forKey: "distance")
-        aCoder.encodeInteger(Int(wight), forKey: "wight")
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(direction.rawValue, forKey: "direction")
+        aCoder.encode(distance, forKey: "distance")
+        aCoder.encode(Int(wight), forKey: "wight")
     }
     
-    public override var description: String {
+    open override var description: String {
         var result = ""
         if distance == 0 {
             result = "Heading \(self.direction) with wight \(wight)."

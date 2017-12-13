@@ -27,7 +27,7 @@ import Foundation
  - Returns: A value between max and min.
  
  */
-public func clamp<T: Comparable>(value: T, min: T, max: T) -> T {
+public func clamp<T: Comparable>(_ value: T, min: T, max: T) -> T {
     if value > max { return max }
     else if value < min { return min }
     else { return value }
@@ -44,7 +44,7 @@ public func clamp<T: Comparable>(value: T, min: T, max: T) -> T {
  
   - Returns: An integer value wrapped.
  */
-public func wrap(value: Double) -> Int {
+public func wrap(_ value: Double) -> Int {
     let intValue = Int(value)
     let delta = value - Double(intValue)
     return delta >= 0.5 ? intValue + 1 : intValue
@@ -58,7 +58,7 @@ public func wrap(value: Double) -> Int {
 
  - Returns: the angle in radians.
  */
-public func degreesToRadians<T: NumericType>(angel: T) -> T {
+public func degreesToRadians<T: NumericType>(_ angel: T) -> T {
     return angel * T(0.01745329251994329547)
 }
 
@@ -70,7 +70,7 @@ public func degreesToRadians<T: NumericType>(angel: T) -> T {
 
  - Returns: the angle in degrees.
  */
-public func radiansToDegrees<T: NumericType>(angel: T) -> T {
+public func radiansToDegrees<T: NumericType>(_ angel: T) -> T {
     return angel *  T(57.29577951308232286465)
 }
 
@@ -126,13 +126,13 @@ public extension Degree {
 public struct CartesianVector {
     
     ///Double value represent the projection on x-axis.
-    private(set) var x: Double = 0.0
+    fileprivate(set) var x: Double = 0.0
     
     ///Double value represent the projection on y-axis.
-    private(set) var y: Double = 0.0
+    fileprivate(set) var y: Double = 0.0
     
     ///Double value represent the projection on z-axis.
-    private(set) var z: Double = 0.0
+    fileprivate(set) var z: Double = 0.0
     /**
      PolarVector object represent the vector in poler form.
      
@@ -198,13 +198,13 @@ extension CartesianVector:  CustomStringConvertible {
 public struct PolarVector {
     
     ///Double value represent the distance of the vector.
-    private(set) var magnitude: Double = 0.0
+    fileprivate(set) var magnitude: Double = 0.0
     
     ///Radian value represent the angle between the projection on xy-plan and x-axis.
-    private(set) var theta: Radian = 0.0
+    fileprivate(set) var theta: Radian = 0.0
     
     ///Radian value represent the angle between the projection on z-axis and xy-plan.
-    private(set) var lambda: Radian = 0.0
+    fileprivate(set) var lambda: Radian = 0.0
     
     /**
      CartesianVector object represent the vector in cartesian form.
@@ -272,13 +272,13 @@ extension PolarVector:  CustomStringConvertible {
 public struct EulerAngles {
     
     ///Radian value represent a rotation around x-axis.
-    private(set) var roll: Radian = 0
+    fileprivate(set) var roll: Radian = 0
     
     ///Radian value represent a rotation around y-axis.
-    private(set) var pitch: Radian = 0
+    fileprivate(set) var pitch: Radian = 0
     
     ///Radian value represent a rotation around z-axis.
-    private(set) var yaw: Radian = 0
+    fileprivate(set) var yaw: Radian = 0
     
     ///RotationMatrix object represent the rotation in matrix form.
     public var rotationMatrix: RotationMatrix {
@@ -371,12 +371,12 @@ public struct RotationMatrix {
         
         if (m21 > 0.998) { // singularity at north pole
             yaw = atan2(m13, m33)
-            pitch = M_PI_2 / 2
+            pitch = (Double.pi / 2) / 2
             roll = 0
         }
         if (m21 < -0.998) { // singularity at south pole
             yaw = atan2(m13, m33)
-            pitch = -M_PI_2 / 2
+            pitch = -(Double.pi / 2) / 2
             roll = 0
         }
         else {

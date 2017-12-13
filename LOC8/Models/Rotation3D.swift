@@ -19,27 +19,27 @@ import Foundation
   ### Discussion:
     A transformation in which a plane figure turns around a fixed center point.
  */
-public class Rotation3D: Measurement {
+open class Rotation3D: Measurement {
     
     //MARK: Properties
     
     ///Radian value represent a rotation around x-axis.
-    public var roll: Radian { return eulerAngles.roll }
+    open var roll: Radian { return eulerAngles.roll }
     
     ///Radian value represent a rotation around y-axis.
-    public var pitch: Radian { return eulerAngles.pitch }
+    open var pitch: Radian { return eulerAngles.pitch }
     
     ///Radian value represent a rotation around z-axis.
-    public var yaw: Radian { return eulerAngles.yaw }
+    open var yaw: Radian { return eulerAngles.yaw }
     
     /// An EulerAngles object represent the rotaion.
-    private(set) var eulerAngles: EulerAngles!
+    fileprivate(set) var eulerAngles: EulerAngles!
     
     /// An Quaternion object represent the rotaion.
-    private(set) var quaternion: Quaternion!
+    fileprivate(set) var quaternion: Quaternion!
     
     /// An RotationMatrix object represent the rotaion.
-    private(set) var rotationMatrix: RotationMatrix!
+    fileprivate(set) var rotationMatrix: RotationMatrix!
     
     //MARK: Initialaization
     
@@ -70,19 +70,19 @@ public class Rotation3D: Measurement {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        let roll = aDecoder.decodeDoubleForKey("roll")
-        let pitch = aDecoder.decodeDoubleForKey("pitch")
-        let yaw = aDecoder.decodeDoubleForKey("yaw")
+        let roll = aDecoder.decodeDouble(forKey: "roll")
+        let pitch = aDecoder.decodeDouble(forKey: "pitch")
+        let yaw = aDecoder.decodeDouble(forKey: "yaw")
         self.eulerAngles = EulerAngles(roll: roll, pitch: pitch, yaw: yaw)
         self.quaternion = eulerAngles.quaternion
         self.rotationMatrix = eulerAngles.rotationMatrix
     }
     
-    public override func encodeWithCoder(aCoder: NSCoder) {
-        super.encodeWithCoder(aCoder)
-        aCoder.encodeDouble(yaw, forKey: "yaw")
-        aCoder.encodeDouble(pitch, forKey: "pitch")
-        aCoder.encodeDouble(roll, forKey: "roll")
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(yaw, forKey: "yaw")
+        aCoder.encode(pitch, forKey: "pitch")
+        aCoder.encode(roll, forKey: "roll")
     }
     
     #if os(iOS)
@@ -103,7 +103,7 @@ public class Rotation3D: Measurement {
     }
     #endif
     
-    public override var description: String {
+    open override var description: String {
         return String(format: "Rotation3D[roll: %.2f, pitch: %.2f, yaw: %.2f]", Float(self.roll), Float(self.pitch), Float(self.yaw))
     }
 }
@@ -123,11 +123,11 @@ public func - (left: Rotation3D, right: Rotation3D) -> Rotation3D {
     return left + -right
 }
 
-public func += (inout left: Rotation3D, right: Rotation3D) {
+public func += (left: inout Rotation3D, right: Rotation3D) {
     left = left + right
 }
 
-public func -= (inout left: Rotation3D, right: Rotation3D) {
+public func -= (left: inout Rotation3D, right: Rotation3D) {
     left = left - right
 }
 

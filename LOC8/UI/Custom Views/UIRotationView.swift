@@ -10,10 +10,10 @@ import UIKit
 
 //MARK: UIRotationView
 @IBDesignable
-public class UIRotationView: UIView {
+open class UIRotationView: UIView {
     
     //MARK:UI Elements
-    @IBInspectable public var angle: CGFloat = 0 {
+    @IBInspectable open var angle: CGFloat = 0 {
         didSet {
             
             #if TARGET_INTERFACE_BUILDER
@@ -26,51 +26,51 @@ public class UIRotationView: UIView {
         }
     }
     
-    @IBInspectable public var startAngle: CGFloat = 0 {
+    @IBInspectable open var startAngle: CGFloat = 0 {
         didSet { self.setNeedsDisplay() }
     }
     
-    @IBInspectable public var pointerColor: UIColor = UIColor.blackColor() {
+    @IBInspectable open var pointerColor: UIColor = UIColor.black {
         didSet { self.setNeedsDisplay() }
     }
     
-    @IBInspectable public var textColor: UIColor = UIColor.lightGrayColor() {
+    @IBInspectable open var textColor: UIColor = UIColor.lightGray {
         didSet { self.setNeedsDisplay() }
     }
     
-    @IBInspectable public var enabelSymbols: Bool = true {
+    @IBInspectable open var enabelSymbols: Bool = true {
         didSet { self.setNeedsDisplay() }
     }
     
-    @IBInspectable public var enabelMarks: Bool = true {
+    @IBInspectable open var enabelMarks: Bool = true {
         didSet { self.setNeedsDisplay() }
     }
     
-    @IBInspectable public var upText: String = ""{
+    @IBInspectable open var upText: String = ""{
         didSet { self.setNeedsDisplay() }
     }
     
-    @IBInspectable public var rightText: String = ""{
+    @IBInspectable open var rightText: String = ""{
         didSet { self.setNeedsDisplay() }
     }
     
-    @IBInspectable public var downText: String = ""{
+    @IBInspectable open var downText: String = ""{
         didSet { self.setNeedsDisplay() }
     }
     
-    @IBInspectable public var leftText: String = ""{
+    @IBInspectable open var leftText: String = ""{
         didSet { self.setNeedsDisplay() }
     }
     
-    public var textFont: UIFont = UIFont.systemFontOfSize(10)
+    open var textFont: UIFont = UIFont.systemFont(ofSize: 10)
     
     //MARK:UI Objects
-    private var rotationLayer: CAShapeLayer!
-    private var marksLayer: CAShapeLayer!
+    fileprivate var rotationLayer: CAShapeLayer!
+    fileprivate var marksLayer: CAShapeLayer!
     
     //MARK:UI Drawings
-    public override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         drawView(rect)
         
@@ -78,28 +78,28 @@ public class UIRotationView: UIView {
             
             let center = CGPoint(x: rect.midX, y: rect.midY)
             
-            func getAttributesFor(alignment: NSTextAlignment) -> [String: AnyObject] {
+            func getAttributesFor(_ alignment: NSTextAlignment) -> [NSAttributedStringKey: AnyObject] {
                 let paraStyle = NSMutableParagraphStyle()
                 paraStyle.alignment = alignment
                 
                 return [
-                    NSForegroundColorAttributeName: textColor,
-                    NSParagraphStyleAttributeName: paraStyle,
-                    NSFontAttributeName: textFont
+                    NSAttributedStringKey.foregroundColor: textColor,
+                    NSAttributedStringKey.paragraphStyle: paraStyle,
+                    NSAttributedStringKey.font: textFont
                 ]
             }
             
             let h = CGFloat(textFont.pointSize)
             
-            upText.drawInRect(CGRectMake(0, 0, rect.width, h), withAttributes: getAttributesFor(NSTextAlignment.Center))
-            rightText.drawInRect(CGRectMake(center.x, center.y - h/2, rect.width/2, h), withAttributes: getAttributesFor(NSTextAlignment.Right))
-            downText.drawInRect(CGRectMake(0, rect.height - h, rect.width, h), withAttributes: getAttributesFor(NSTextAlignment.Center))
-            leftText.drawInRect(CGRectMake(0, center.y - h/2, 30, h), withAttributes: getAttributesFor(NSTextAlignment.Left))
+            upText.draw(in: CGRect(x: 0, y: 0, width: rect.width, height: h), withAttributes: getAttributesFor(NSTextAlignment.center))
+            rightText.draw(in: CGRect(x: center.x, y: center.y - h/2, width: rect.width/2, height: h), withAttributes: getAttributesFor(NSTextAlignment.right))
+            downText.draw(in: CGRect(x: 0, y: rect.height - h, width: rect.width, height: h), withAttributes: getAttributesFor(NSTextAlignment.center))
+            leftText.draw(in: CGRect(x: 0, y: center.y - h/2, width: 30, height: h), withAttributes: getAttributesFor(NSTextAlignment.left))
         }
         
         if enabelMarks {
             
-            func drawMark(a:CGFloat) {
+            func drawMark(_ a:CGFloat) {
                 
                 let c = CGPoint(x: rect.midX, y: rect.midY)
                 let r:CGFloat = rect.height / 2 - 5
@@ -108,28 +108,28 @@ public class UIRotationView: UIView {
                 self.marksLayer = CAShapeLayer()
                 self.marksLayer.bounds = rect
                 self.marksLayer.frame = rect
-                self.marksLayer.strokeColor = textColor.CGColor
+                self.marksLayer.strokeColor = textColor.cgColor
                 self.marksLayer.lineWidth = 1
                 self.marksLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 self.layer.addSublayer(self.marksLayer)
                 
                 let path = UIBezierPath()
-                path.moveToPoint(   CGPoint(x: c.x + r  * cos(a), y: c.y + r  * sin(a)))
-                path.addLineToPoint(CGPoint(x: c.x + rd * cos(a), y: c.y + rd * sin(a)))
-                path.closePath()
+                path.move(   to: CGPoint(x: c.x + r  * cos(a), y: c.y + r  * sin(a)))
+                path.addLine(to: CGPoint(x: c.x + rd * cos(a), y: c.y + rd * sin(a)))
+                path.close()
                 
-                marksLayer.path = path.CGPath
+                marksLayer.path = path.cgPath
             }
             
-            drawMark(CGFloat(M_PI * 0.25))
-            drawMark(CGFloat(M_PI * 0.75))
-            drawMark(CGFloat(M_PI * 1.25))
-            drawMark(CGFloat(M_PI * 1.75))
+            drawMark(CGFloat(Double.pi * 0.25))
+            drawMark(CGFloat(Double.pi * 0.75))
+            drawMark(CGFloat(Double.pi * 1.25))
+            drawMark(CGFloat(Double.pi * 1.75))
             
         }
     }
     
-    public func drawView(rect: CGRect) {
+    open func drawView(_ rect: CGRect) {
         
         let center = CGPoint(x: rect.midX, y: rect.midY)
         
@@ -141,45 +141,45 @@ public class UIRotationView: UIView {
         self.rotationLayer = CAShapeLayer()
         self.rotationLayer.bounds = rect
         self.rotationLayer.frame = rect
-        self.rotationLayer.fillColor = pointerColor.CGColor
+        self.rotationLayer.fillColor = pointerColor.cgColor
         self.rotationLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.layer.addSublayer(self.rotationLayer)
         
         let d: CGFloat = min(rect.height, rect.width)/8
         
         let path = UIBezierPath()
-        path.moveToPoint(   CGPoint(x: center.x - d/2, y: center.y))
-        path.addLineToPoint(CGPoint(x: center.x      , y: d       ))
-        path.addLineToPoint(CGPoint(x: center.x + d/2, y: center.y))
-        path.addArcWithCenter(center, radius: d/2, startAngle: -CGFloat(M_PI/2), endAngle: CGFloat(M_PI * 1.5), clockwise: true)
-        path.closePath()
+        path.move(   to: CGPoint(x: center.x - d/2, y: center.y))
+        path.addLine(to: CGPoint(x: center.x      , y: d       ))
+        path.addLine(to: CGPoint(x: center.x + d/2, y: center.y))
+        path.addArc(withCenter: center, radius: d/2, startAngle: -CGFloat(Double.pi / 2), endAngle: CGFloat(Double.pi * 1.5), clockwise: true)
+        path.close()
         
         #if TARGET_INTERFACE_BUILDER
             rotatPath(path, rect: rect)
         #endif
         
-        rotationLayer.path = path.CGPath
+        rotationLayer.path = path.cgPath
     }
     
-    func rotatPath(path: UIBezierPath, rect: CGRect) {
+    func rotatPath(_ path: UIBezierPath, rect: CGRect) {
         
         let center = CGPoint(x: rect.midX, y: rect.midY)
         
-        var transform = CGAffineTransformIdentity
-        transform = CGAffineTransformTranslate(transform, center.x, center.y)
-        transform = CGAffineTransformRotate(transform, degreesToRadians(startAngle + angle))
-        transform = CGAffineTransformTranslate(transform, -center.x, -center.y)
+        var transform = CGAffineTransform.identity
+        transform = transform.translatedBy(x: center.x, y: center.y)
+        transform = transform.rotated(by: degreesToRadians(startAngle + angle))
+        transform = transform.translatedBy(x: -center.x, y: -center.y)
         
-        path.applyTransform(transform)
+        path.apply(transform)
     }
 }
 
 //MARK: UIDirectionView
 @IBDesignable
-public class UIDirectionView: UIRotationView {
+open class UIDirectionView: UIRotationView {
     
     //MARK:Override Methods
-    public override func drawView(rect: CGRect) {
+    open override func drawView(_ rect: CGRect) {
         
         let center = CGPoint(x: rect.midX, y: rect.midY)
         
@@ -191,7 +191,7 @@ public class UIDirectionView: UIRotationView {
         self.rotationLayer = CAShapeLayer()
         self.rotationLayer.bounds = rect
         self.rotationLayer.frame = rect
-        self.rotationLayer.fillColor = pointerColor.CGColor
+        self.rotationLayer.fillColor = pointerColor.cgColor
         self.rotationLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.layer.addSublayer(self.rotationLayer)
         
@@ -206,30 +206,30 @@ public class UIDirectionView: UIRotationView {
         let y2: CGFloat = rect.height * 0.8
         
         let path = UIBezierPath()
-        path.moveToPoint(   CGPoint(x: x0, y: y1))
-        path.addLineToPoint(CGPoint(x: x2, y: y0))
-        path.addLineToPoint(CGPoint(x: x4, y: y1))
-        path.addLineToPoint(CGPoint(x: x3, y: y1))
-        path.addLineToPoint(CGPoint(x: x3, y: y2))
-        path.addLineToPoint(CGPoint(x: x1, y: y2))
-        path.addLineToPoint(CGPoint(x: x1, y: y1))
-        path.closePath()
+        path.move(   to: CGPoint(x: x0, y: y1))
+        path.addLine(to: CGPoint(x: x2, y: y0))
+        path.addLine(to: CGPoint(x: x4, y: y1))
+        path.addLine(to: CGPoint(x: x3, y: y1))
+        path.addLine(to: CGPoint(x: x3, y: y2))
+        path.addLine(to: CGPoint(x: x1, y: y2))
+        path.addLine(to: CGPoint(x: x1, y: y1))
+        path.close()
         
         #if TARGET_INTERFACE_BUILDER
             rotatPath(path, rect: rect)
         #endif
         
-        self.rotationLayer.path = path.CGPath
+        self.rotationLayer.path = path.cgPath
         self.rotationLayer.addSublayer(layer)
     }
 }
 
 //MARK: UIHeadingView
 @IBDesignable
-public class UIHeadingView: UIRotationView {
+open class UIHeadingView: UIRotationView {
     
     //MARK:Override Methods
-    public override func drawView(rect: CGRect) {
+    open override func drawView(_ rect: CGRect) {
         
         let center = CGPoint(x: rect.midX, y: rect.midY)
         
@@ -241,33 +241,33 @@ public class UIHeadingView: UIRotationView {
         self.rotationLayer = CAShapeLayer()
         self.rotationLayer.bounds = rect
         self.rotationLayer.frame = rect
-        self.rotationLayer.fillColor = pointerColor.CGColor
+        self.rotationLayer.fillColor = pointerColor.cgColor
         self.rotationLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.layer.addSublayer(self.rotationLayer)
         
         let d: CGFloat = min(rect.height, rect.width)
         
         let path = UIBezierPath()
-        path.moveToPoint(center)
-        path.addLineToPoint(CGPoint(x: d * 2/3,  y: d * 3/4))
-        path.addLineToPoint(CGPoint(x: center.x, y: d/4))
-        path.addLineToPoint(CGPoint(x: d/3,      y: d * 3/4))
-        path.closePath()
+        path.move(to: center)
+        path.addLine(to: CGPoint(x: d * 2/3,  y: d * 3/4))
+        path.addLine(to: CGPoint(x: center.x, y: d/4))
+        path.addLine(to: CGPoint(x: d/3,      y: d * 3/4))
+        path.close()
         
         #if TARGET_INTERFACE_BUILDER
             rotatPath(path, rect: rect)
         #endif
         
-        self.rotationLayer.path = path.CGPath
+        self.rotationLayer.path = path.cgPath
     }
 }
 
 //MARK: UICompassView
 @IBDesignable
-public class UICompassView: UIRotationView {
+open class UICompassView: UIRotationView {
     
     //MARK:Override Methods
-    public override func drawView(rect: CGRect) {
+    open override func drawView(_ rect: CGRect) {
         
         let center = CGPoint(x: rect.midX, y: rect.midY)
         
@@ -289,26 +289,26 @@ public class UICompassView: UIRotationView {
         let yd: CGFloat = center.y + (4*d)
         
         
-        func shapeLayer(color:UIColor, points:CGPoint...) -> CAShapeLayer {
+        func shapeLayer(_ color:UIColor, points:CGPoint...) -> CAShapeLayer {
             
             let layer = CAShapeLayer()
             layer.bounds = rect
             layer.frame = rect
-            layer.fillColor = color.CGColor
+            layer.fillColor = color.cgColor
             
             if points.count == 0 { return layer }
             
             let path = UIBezierPath()
             
-            path.moveToPoint(center)
-            for point in points { path.addLineToPoint(point) }
-            path.closePath()
+            path.move(to: center)
+            for point in points { path.addLine(to: point) }
+            path.close()
             
             #if TARGET_INTERFACE_BUILDER
                 rotatPath(path, rect: rect)
             #endif
             
-            layer.path = path.CGPath
+            layer.path = path.cgPath
             
             return layer
         }
@@ -322,10 +322,10 @@ public class UICompassView: UIRotationView {
         
         
         let path = UIBezierPath()
-        path.addArcWithCenter(center, radius: d/4, startAngle: 0, endAngle: CGFloat(M_PI * 2), clockwise: true)
-        path.closePath()
-        let layer = shapeLayer(UIColor.grayColor())
-        layer.path = path.CGPath
+        path.addArc(withCenter: center, radius: d/4, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+        path.close()
+        let layer = shapeLayer(UIColor.gray)
+        layer.path = path.cgPath
         self.rotationLayer.addSublayer(layer)
     }
 }

@@ -16,24 +16,24 @@ import CoreLocation
  ### Discussion:
  TrackingSession is a model that is responseple to create a series of estimations. also responseble for recieve distance from `SensorsManager` and update the estimations.
  */
-public class TrackingSession: Measurement {
+open class TrackingSession: Measurement {
     
     //MARK: Properties
     
     /// `EstimationHandler` object act as a deleget.
-    public var estimationHandler: EstimationHandler?
+    open var estimationHandler: EstimationHandler?
     
     /// A computed property return the last estimation that has been created.
-    public var currentEstimation: Estimation? { return estimations.last }
+    open var currentEstimation: Estimation? { return estimations.last }
     
     /// A computed property return the previous estimation that has been created.
-    public var previousEstimation: Estimation? { return (estimations.count > 1) ? estimations[estimations.count - 2] : nil }
+    open var previousEstimation: Estimation? { return (estimations.count > 1) ? estimations[estimations.count - 2] : nil }
     
     /// A list of `Heading` objects represent all the collected headings for the estimation.
-    public lazy var estimations: [Estimation] = []
+    open lazy var estimations: [Estimation] = []
     
     /// A `Double` value represent the total distance for the session.
-    public var distance: Double = 0
+    open var distance: Double = 0
     
     //MARK:Initialization
     
@@ -51,7 +51,7 @@ public class TrackingSession: Measurement {
     //MARK: Motion Updates
     
     ///An action tregered whene the `SensorsManager` recieve a distance update.
-    public func didUpdateDistance(notification: NSNotification) {
+    @objc open func didUpdateDistance(_ notification: Notification) {
         let distance = notification.userInfo![DefaultKeys.DistanceKey] as! NSNumber
         
         if let oldEstimation = self.currentEstimation {
@@ -77,7 +77,7 @@ public class TrackingSession: Measurement {
     }
     
     ///An action tregered whene the `SensorsManager` recieve a device motion update.
-    public func didUpdateDeviceMotion(notification: NSNotification) {
+    open func didUpdateDeviceMotion(_ notification: Notification) {
         
         let userInfo = notification.userInfo!
 
@@ -95,7 +95,7 @@ public class TrackingSession: Measurement {
      
      - Parameter estimationHandler: `EstimationHandler` closer that will be called each time the new heading is recived.
      */
-    public func startTraking(estimationHandler: EstimationHandler? = nil) {
+    open func startTraking(_ estimationHandler: EstimationHandler? = nil) {
         
         self.estimationHandler = estimationHandler
         
@@ -103,7 +103,7 @@ public class TrackingSession: Measurement {
         newEstimation.startEstimation(estimationHandler)
         self.estimations.append(newEstimation)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TrackingSession.didUpdateDistance(_:)), name: NotificationKey.DistanceUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TrackingSession.didUpdateDistance(_:)), name: NSNotification.Name(rawValue: NotificationKey.DistanceUpdate), object: nil)
         
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TrackingSession.didUpdateDeviceMotion(_:)), name: NotificationKey.DeviceMotionUpdate, object: nil)
     }
@@ -111,13 +111,13 @@ public class TrackingSession: Measurement {
     /**
      Stop estimation updates.
      */
-    public func stopTraking() {
+    open func stopTraking() {
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DistanceUpdate, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.DistanceUpdate), object: nil)
         
 //        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.FloorUpdate, object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.AltitudeUpdate, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.AltitudeUpdate), object: nil)
         
 //        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DeviceMotionUpdate, object: nil)
         
@@ -128,7 +128,7 @@ public class TrackingSession: Measurement {
      Method that mearge all estimations headings.
      - Returns: A list of `Heading` objects represent the tracking map.
      */
-    public func trackingMap() -> [Heading] {
+    open func trackingMap() -> [Heading] {
         
         var temp: [Heading] = []
         

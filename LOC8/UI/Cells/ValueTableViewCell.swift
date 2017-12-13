@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class ValueTableViewCell: UITableViewCell {
+open class ValueTableViewCell: UITableViewCell {
     
     @IBOutlet weak var value_Progress: UIDifferentialLinearProgressView!
     
-    public var value: Double = 0 {
+    open var value: Double = 0 {
         didSet {
             
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.value_Progress.value = Float(self.value)
             }
         }

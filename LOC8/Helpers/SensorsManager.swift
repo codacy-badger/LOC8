@@ -10,48 +10,48 @@ import Foundation
 import CoreMotion
 import CoreLocation
 
-public class SensorsManager: NSObject {
+open class SensorsManager: NSObject {
     
     //MARK:Filters
     
     //Motion Manager
-    public var motionManagerSamplingFrequency: Double = SettingsService.sharedInstance.motionManagerSamplingFrequency {
+    open var motionManagerSamplingFrequency: Double = SettingsService.sharedInstance.motionManagerSamplingFrequency {
         didSet { setupMotionManager() }
     }
     
     //MARK:Current Measurements
     
-    private(set) var currentAcceleration: Acceleration!
+    fileprivate(set) var currentAcceleration: Acceleration!
     
-    private(set) var currentGravity: Acceleration!
+    fileprivate(set) var currentGravity: Acceleration!
     
-    private(set) var currentRotationRat: Vector3D!
+    fileprivate(set) var currentRotationRat: Vector3D!
     
-    private(set) var currentHeading: CLHeading?
+    fileprivate(set) var currentHeading: CLHeading?
     
-    private(set) var currentAltitude: Double!
+    fileprivate(set) var currentAltitude: Double!
     
-    private(set) var totalDistance: Double!
+    fileprivate(set) var totalDistance: Double!
     
-    private(set) var currentFloorsDescended: Int!
+    fileprivate(set) var currentFloorsDescended: Int!
     
-    private(set) var currentFloorsAscended: Int!
+    fileprivate(set) var currentFloorsAscended: Int!
     
-    private(set) var currentNumberOfSteps: Int!
+    fileprivate(set) var currentNumberOfSteps: Int!
     
-    private(set) var currentMotionActivity: MotionActivity = MotionActivity()
+    fileprivate(set) var currentMotionActivity: MotionActivity = MotionActivity()
     
     //MARK:Properties
     
-    private var pedometer: CMPedometer!
+    fileprivate var pedometer: CMPedometer!
     
-    private var altimeter: CMAltimeter!
+    fileprivate var altimeter: CMAltimeter!
     
-    private var motionManager: CMMotionManager!
+    fileprivate var motionManager: CMMotionManager!
     
-    private var locationManager: CLLocationManager!
+    fileprivate var locationManager: CLLocationManager!
     
-    private var motionActivityManager: CMMotionActivityManager!
+    fileprivate var motionActivityManager: CMMotionActivityManager!
     
     //MARK:Initialization
     
@@ -73,7 +73,7 @@ public class SensorsManager: NSObject {
         clear()
     }
     
-    private func setupAltimeter() {
+    fileprivate func setupAltimeter() {
         
         if CMAltimeter.isRelativeAltitudeAvailable() {
             
@@ -83,9 +83,9 @@ public class SensorsManager: NSObject {
             
             altimeter = CMAltimeter()
             
-            let queue = NSOperationQueue.mainQueue()
+            let queue = OperationQueue.main
             
-            self.altimeter.startRelativeAltitudeUpdatesToQueue(queue, withHandler: { (data, error) -> Void in
+            self.altimeter.startRelativeAltitudeUpdates(to: queue, withHandler: { (data, error) -> Void in
                 
                 guard let data = data else{ return }
                 
@@ -97,24 +97,24 @@ public class SensorsManager: NSObject {
                 
                 self.currentAltitude = altitude.doubleValue
                 
-                let userInfo: [NSObject: AnyObject] = [DefaultKeys.AltitudeKey: altitude]
+                let userInfo: [AnyHashable: Any] = [DefaultKeys.AltitudeKey: altitude]
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(NotificationKey.AltitudeUpdate, object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.AltitudeUpdate), object: nil, userInfo: userInfo)
                 
             })
                 
         }
     }
     
-    private func setupPedometer() {
+    fileprivate func setupPedometer() {
         
         if pedometer != nil {
-            pedometer.stopPedometerUpdates()
+            pedometer.stopUpdates()
         }
         
         pedometer = CMPedometer()
         
-        self.pedometer.startPedometerUpdatesFromDate(NSDate(timeIntervalSinceNow: 0.0), withHandler: { (data, error) -> Void in
+        self.pedometer.startUpdates(from: Date(timeIntervalSinceNow: 0.0), withHandler: { (data, error) -> Void in
             
             guard let data = data else { return }
             
@@ -128,9 +128,9 @@ public class SensorsManager: NSObject {
                 
                 self.totalDistance = distance.doubleValue
                 
-                let userInfo: [NSObject: AnyObject] = [DefaultKeys.DistanceKey: distance]
+                let userInfo: [AnyHashable: Any] = [DefaultKeys.DistanceKey: distance]
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(NotificationKey.DistanceUpdate, object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.DistanceUpdate), object: nil, userInfo: userInfo)
             }
             
             if CMPedometer.isFloorCountingAvailable() {
@@ -138,29 +138,29 @@ public class SensorsManager: NSObject {
                 let floorsDescended = data.floorsDescended!
                 let floorsAscended = data.floorsAscended!
                 
-                self.currentFloorsDescended = floorsDescended.integerValue
-                self.currentFloorsAscended = floorsAscended.integerValue
+                self.currentFloorsDescended = floorsDescended.intValue
+                self.currentFloorsAscended = floorsAscended.intValue
                 
-                let userInfo: [NSObject: AnyObject] = [DefaultKeys.FloorsAscendedKey: floorsAscended, DefaultKeys.FloorsDescendedKey:floorsDescended]
+                let userInfo: [AnyHashable: Any] = [DefaultKeys.FloorsAscendedKey: floorsAscended, DefaultKeys.FloorsDescendedKey:floorsDescended]
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(NotificationKey.FloorUpdate, object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.FloorUpdate), object: nil, userInfo: userInfo)
             }
             
             if CMPedometer.isStepCountingAvailable() {
                 
                 let numberOfSteps = data.numberOfSteps
                 
-                self.currentNumberOfSteps = numberOfSteps.integerValue
+                self.currentNumberOfSteps = numberOfSteps.intValue
                 
-                let userInfo: [NSObject: AnyObject] = [DefaultKeys.StepCountKey: numberOfSteps]
+                let userInfo: [AnyHashable: Any] = [DefaultKeys.StepCountKey: numberOfSteps]
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(NotificationKey.StepCountUpdate, object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.StepCountUpdate), object: nil, userInfo: userInfo)
             }
             
             })
     }
     
-    private func setupMotionManager() {
+    fileprivate func setupMotionManager() {
             
         if motionManager != nil {
             motionManager.stopDeviceMotionUpdates()
@@ -168,13 +168,13 @@ public class SensorsManager: NSObject {
         
         motionManager = CMMotionManager()
         
-        if motionManager.deviceMotionAvailable {
+        if motionManager.isDeviceMotionAvailable {
             
             motionManager.deviceMotionUpdateInterval = 1 / motionManagerSamplingFrequency
             
-            let queue = NSOperationQueue.mainQueue
+            let queue = OperationQueue.main
             
-            motionManager.startDeviceMotionUpdatesToQueue(queue(), withHandler: { (data, error) -> Void in
+            motionManager.startDeviceMotionUpdates(to: queue, withHandler: { (data, error) -> Void in
                 
                 guard let data = data else{ return }
                 
@@ -191,19 +191,19 @@ public class SensorsManager: NSObject {
                 self.currentGravity = gravity
                 self.currentAcceleration = acceleration
                 
-                let userInfo: [NSObject: AnyObject] = [
+                let userInfo: [AnyHashable: Any] = [
                     DefaultKeys.AttitudeKey: attitude,
                     DefaultKeys.RotationRateKey: self.currentRotationRat,
                     DefaultKeys.GravityKey: self.currentGravity,
                     DefaultKeys.AccelerationKey: self.currentAcceleration,
                 ]
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(NotificationKey.DeviceMotionUpdate, object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.DeviceMotionUpdate), object: nil, userInfo: userInfo)
             })
         }
     }
     
-    private func setupLocationManager() {
+    fileprivate func setupLocationManager() {
         
         if locationManager != nil {
             locationManager.stopUpdatingHeading()
@@ -215,7 +215,7 @@ public class SensorsManager: NSObject {
         locationManager.startUpdatingHeading()
     }
     
-    private func setupMotionActivityManager() {
+    fileprivate func setupMotionActivityManager() {
         
         if motionActivityManager != nil {
             motionActivityManager.stopActivityUpdates()
@@ -224,28 +224,28 @@ public class SensorsManager: NSObject {
         motionActivityManager = CMMotionActivityManager()
         
         if (CMMotionActivityManager.isActivityAvailable()) {
-            let queue = NSOperationQueue.mainQueue
-            motionActivityManager.startActivityUpdatesToQueue(queue(), withHandler: { (data) -> Void in
+            let queue = OperationQueue.main
+            motionActivityManager.startActivityUpdates(to: queue, withHandler: { (data) -> Void in
                 guard let data = data else{ return }
                 
                 let activity = MotionActivity(activity: data)
                 
                 self.currentMotionActivity = activity
                 
-                let userInfo: [NSObject: AnyObject] = [DefaultKeys.MotionActivityKey: activity]
+                let userInfo: [AnyHashable: Any] = [DefaultKeys.MotionActivityKey: activity]
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(NotificationKey.MotionActivityUpdate, object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.MotionActivityUpdate), object: nil, userInfo: userInfo)
             })
         }
     }
     
     //MARK:Controlles
     
-    public func reset() {
+    open func reset() {
         motionManagerSamplingFrequency = DefaultValues.DefaultSamplingFrequency
     }
     
-    public func clear() {
+    open func clear() {
         
         self.currentAltitude = 0
         self.totalDistance = 0
@@ -268,7 +268,7 @@ public class SensorsManager: NSObject {
     
     //MARK:Data Display
     
-    private func printPedometerData(data: CMPedometerData) -> String {
+    fileprivate func printPedometerData(_ data: CMPedometerData) -> String {
         
         var log = "[Pedometer Data] = {\n"
         
@@ -295,7 +295,7 @@ public class SensorsManager: NSObject {
         return log
     }
     
-    private func printDeviceMotionData(data: [NSObject: AnyObject]) -> String {
+    fileprivate func printDeviceMotionData(_ data: [AnyHashable: Any]) -> String {
         
         var log = "[Device Motion Dat] = {\n"
         log += "\tAttitude: \(data[DefaultKeys.AttitudeKey]!),\n"
@@ -312,14 +312,14 @@ public class SensorsManager: NSObject {
 //MARK:Location Manager Delegate
 extension SensorsManager: CLLocationManagerDelegate {
 
-    public func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+    public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
         currentHeading = newHeading
         
-        let userInfo: [NSObject: AnyObject] = [DefaultKeys.HeadingKey: newHeading]
+        let userInfo: [AnyHashable: Any] = [DefaultKeys.HeadingKey: newHeading]
         
-        NSNotificationCenter.defaultCenter().postNotificationName(NotificationKey.HeadingUpdate, object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil, userInfo: userInfo)
     }
     
-    public func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager) -> Bool { return currentHeading == nil }
+    public func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool { return currentHeading == nil }
 }

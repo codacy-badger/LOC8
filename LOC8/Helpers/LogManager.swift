@@ -8,18 +8,18 @@
 
 import Foundation
 
-public class LogRecord : NSObject,  NSCoding {
+open class LogRecord : NSObject,  NSCoding {
     
     //MARK: Properties
-    private(set) var sender: AnyObject!
+    fileprivate(set) var sender: AnyObject!
     
-    private(set) var message: String!
+    fileprivate(set) var message: String!
     
-    private(set) var time: NSTimeInterval!
+    fileprivate(set) var time: TimeInterval!
     
     
     //MARK:Initialization
-    public init(sender: AnyObject, message: String , time: NSTimeInterval? = nil) {
+    public init(sender: AnyObject, message: String , time: TimeInterval? = nil) {
         super.init()
         self.sender = sender
         self.message = message
@@ -27,50 +27,50 @@ public class LogRecord : NSObject,  NSCoding {
             self.time = time
         }
         else {
-            self.time = NSDate().timeIntervalSince1970
+            self.time = Date().timeIntervalSince1970
         }
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        self.sender = aDecoder.decodeObjectForKey("sender")
-        self.message = aDecoder.decodeObjectForKey("message") as! String
-        self.time = aDecoder.decodeObjectForKey("time") as! NSTimeInterval
+        self.sender = aDecoder.decodeObject(forKey: "sender") as AnyObject
+        self.message = aDecoder.decodeObject(forKey: "message") as! String
+        self.time = aDecoder.decodeObject(forKey: "time") as! TimeInterval
     }
     
-    public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(sender, forKey: "sender")
-        aCoder.encodeObject(message, forKey: "message")
-        aCoder.encodeObject(time, forKey: "time")
+    open func encode(with aCoder: NSCoder) {
+        aCoder.encode(sender, forKey: "sender")
+        aCoder.encode(message, forKey: "message")
+        aCoder.encode(time, forKey: "time")
     }
     
-    public override var description: String {
-        let components = NSCalendar.currentCalendar().components(NSCalendarUnit.Hour.union( NSCalendarUnit.Minute.union( NSCalendarUnit.Second)), fromDate: NSDate(timeIntervalSince1970: time))
-        return "\(sender!.dynamicType)~\(components.hour):\(components.minute):\(components.second)> \(self.message)"
+    open override var description: String {
+        let components = (Calendar.current as NSCalendar).components(NSCalendar.Unit.hour.union( NSCalendar.Unit.minute.union( NSCalendar.Unit.second)), from: Date(timeIntervalSince1970: time))
+        return "\(type(of: sender!))~\(components.hour):\(components.minute):\(components.second)> \(self.message)"
     }
 }
 
-public class LogManager {
+open class LogManager {
     
     //MARK:Shortcuts
-    private var defaults: NSUserDefaults {
-        return NSUserDefaults.standardUserDefaults()
+    fileprivate var defaults: UserDefaults {
+        return UserDefaults.standard
     }
     
-    public static let LogKey: String = "system-log"
-    public static let LogUpdateNotificationKey: String = "com.LOC8.LogUpdateNotificationKey"
+    open static let LogKey: String = "system-log"
+    open static let LogUpdateNotificationKey: String = "com.LOC8.LogUpdateNotificationKey"
     
     //MARK: Properties
-    private(set) var logRecords: [LogRecord]! {
+    fileprivate(set) var logRecords: [LogRecord]! {
         didSet { self.saveLog() }
     }
     
-    public var logText: String {
+    open var logText: String {
         var text = ""
         for record in logRecords { text += "\n\(record.description)" }
         return text
     }
     
-    private let filename: String!
+    fileprivate let filename: String!
     
     //MARK:Initialization
     
@@ -91,12 +91,12 @@ public class LogManager {
         
         self.logRecords = []
         
-        let components = NSCalendar.currentCalendar().components(NSCalendarUnit.Year.union( NSCalendarUnit.Month).union( NSCalendarUnit.Day).union(NSCalendarUnit.Hour).union( NSCalendarUnit.Minute), fromDate: NSDate())
+        let components = (Calendar.current as NSCalendar).components(NSCalendar.Unit.year.union( NSCalendar.Unit.month).union( NSCalendar.Unit.day).union(NSCalendar.Unit.hour).union( NSCalendar.Unit.minute), from: Date())
         filename = "Log[\(components.year)-\(components.month)-\(components.day)-\(components.hour)-\(components.minute)].txt"
     }
     
     //MARK:Controlles
-    public func print(sender: AnyObject, message: String , time: NSTimeInterval? = nil){
+    open func print(_ sender: AnyObject, message: String , time: TimeInterval? = nil){
         
         let record = LogRecord(sender: sender, message: message, time: time)
         self.logRecords.append(record)
@@ -104,7 +104,7 @@ public class LogManager {
         notifyObservers()
     }
     
-    public func print(sender: AnyObject, message: CustomStringConvertible , time: NSTimeInterval? = nil){
+    open func print(_ sender: AnyObject, message: CustomStringConvertible , time: TimeInterval? = nil){
         
         let record = LogRecord(sender: sender, message: message.description, time: time)
         self.logRecords.append(record)
@@ -112,7 +112,7 @@ public class LogManager {
         notifyObservers()
     }
     
-    public func clear() {
+    open func clear() {
         
         self.logRecords = []
         
@@ -120,18 +120,18 @@ public class LogManager {
     }
     
     //MARK: Methods
-    private func saveLog() {
-        if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
-            let path = dir.stringByAppendingPathComponent(filename)
+    fileprivate func saveLog() {
+        if let dir : NSString = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first as! NSString {
+            let path = dir.appendingPathComponent(filename)
             
-            do { try logText.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding) }
+            do { try logText.write(toFile: path, atomically: false, encoding: String.Encoding.utf8) }
             catch { debugPrint(error) }
         }
     }
     
-    private func notifyObservers() {
-        let userInfo: [NSObject: AnyObject] = [LogManager.LogKey: logText]
+    fileprivate func notifyObservers() {
+        let userInfo: [AnyHashable: Any] = [LogManager.LogKey: logText]
         
-        NSNotificationCenter.defaultCenter().postNotificationName(LogManager.LogUpdateNotificationKey, object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: LogManager.LogUpdateNotificationKey), object: nil, userInfo: userInfo)
     }
 }

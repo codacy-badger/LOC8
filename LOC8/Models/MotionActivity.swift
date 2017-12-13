@@ -24,16 +24,16 @@ import Foundation
  */
 public enum MotionActivityConfidence : Int {
     
-    case Low = 0
-    case Medium = 1
-    case High = 2
+    case low = 0
+    case medium = 1
+    case high = 2
     
     #if os(iOS)
     public init(confidence: CMMotionActivityConfidence){
         switch confidence {
-        case .Low: self = .Low
-        case .Medium: self = .Medium
-        case .High: self = .High
+        case .low: self = .low
+        case .medium: self = .medium
+        case .high: self = .high
         }
     }
     
@@ -47,9 +47,9 @@ extension MotionActivityConfidence:  CustomStringConvertible {
     
     public var description: String {
         switch self {
-        case .Low: return "Low"
-        case .Medium: return "Medium"
-        case .High: return "High"
+        case .low: return "Low"
+        case .medium: return "Medium"
+        case .high: return "High"
         }
     }
 }
@@ -99,9 +99,9 @@ public enum MotionActivityStatus : Int {
      */
     @available(iOS 7.0, *)
     public init(activity: CMMotionActivity){
-        if activity.walking { self = walking }
-        else if activity.running { self = running }
-        else if activity.automotive { self = automotive }
+        if activity.walking { self = .walking }
+        else if activity.running { self = .running }
+        else if activity.automotive { self = .automotive }
         else if activity.stationary { self = .stationary }
         else if activity.cycling { self = .cycling }
         else { self = .unknown }
@@ -114,12 +114,12 @@ extension MotionActivityStatus:  CustomStringConvertible {
     
     public var description: String {
         switch self {
-        case walking: return "Walking"
-        case running: return "Running"
-        case automotive: return "Automotive"
-        case stationary: return "Stationary"
-        case cycling: return "Cycling"
-        case unknown: return "Unknown"
+        case .walking: return "Walking"
+        case .running: return "Running"
+        case .automotive: return "Automotive"
+        case .stationary: return "Stationary"
+        case .cycling: return "Cycling"
+        case .unknown: return "Unknown"
         }
     }
 }
@@ -132,15 +132,15 @@ extension MotionActivityStatus:  CustomStringConvertible {
      This object contains the motion activity of the user along with the confidence of this activity.
  
  */
-public class MotionActivity: Measurement {
+open class MotionActivity: Measurement {
     
     //MARK:Properties
     
     ///`MotionActivityStatus` object represent the state of the activity.
-    private(set) var status: MotionActivityStatus!
+    fileprivate(set) var status: MotionActivityStatus!
     
     ///`MotionActivityConfidence` object represent the confidance of the activity state.
-    private(set) var confidence: MotionActivityConfidence!
+    fileprivate(set) var confidence: MotionActivityConfidence!
     
     //MARK:Initialaization
     
@@ -150,7 +150,7 @@ public class MotionActivity: Measurement {
     public override init() {
         super.init()
         status = .unknown
-        confidence = .Low
+        confidence = .low
     }
     
     
@@ -169,14 +169,14 @@ public class MotionActivity: Measurement {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        status = MotionActivityStatus(rawValue: aDecoder.decodeIntegerForKey("status"))!
-        confidence = MotionActivityConfidence(rawValue: aDecoder.decodeIntegerForKey("confidence"))!
+        status = MotionActivityStatus(rawValue: aDecoder.decodeInteger(forKey: "status"))!
+        confidence = MotionActivityConfidence(rawValue: aDecoder.decodeInteger(forKey: "confidence"))!
     }
     
-    public override func encodeWithCoder(aCoder: NSCoder) {
-        super.encodeWithCoder(aCoder)
-        aCoder.encodeInteger(status.rawValue, forKey: "status")
-        aCoder.encodeInteger(confidence.rawValue, forKey: "confidence")
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(status.rawValue, forKey: "status")
+        aCoder.encode(confidence.rawValue, forKey: "confidence")
     }
     
     #if os(iOS)
@@ -193,7 +193,7 @@ public class MotionActivity: Measurement {
     }
     #endif
     
-    public override var description: String {
+    open override var description: String {
         return "\(status) confidence \(confidence)"
     }
 }

@@ -9,8 +9,8 @@
 import UIKit
 
 
-public class GraphTableViewCell: UITableViewCell {
+open class GraphTableViewCell: UITableViewCell {
     @IBOutlet weak var graph: UIGraphView!
     
-    public func addValue(vector: Vector3D) { self.graph.addX(vector) }
+    open func addValue(_ vector: Vector3D) { self.graph.addX(vector) }
 }

@@ -10,7 +10,7 @@ import UIKit
 import CoreMotion
 import CoreLocation
 
-public class MeasurmentsViewController: UITableViewController {
+open class MeasurmentsViewController: UITableViewController {
     
     //MARK:Properties
     
@@ -43,26 +43,26 @@ public class MeasurmentsViewController: UITableViewController {
     @IBOutlet weak var rotationRateCell: Vector3DTableViewCell!
     
     //MARK:Lifcycle
-    override public func viewWillAppear(animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateHeading(_:)), name: NotificationKey.HeadingUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateAltitude(_:)), name: NotificationKey.AltitudeUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateDeviceMotion(_:)), name: NotificationKey.DeviceMotionUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateDistance(_:)), name: NotificationKey.DistanceUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateStepCount(_:)), name: NotificationKey.StepCountUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateFloor(_:)), name: NotificationKey.FloorUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateMotionActivity(_:)), name: NotificationKey.MotionActivityUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateHeading(_:)), name: NSNotification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateAltitude(_:)), name: NSNotification.Name(rawValue: NotificationKey.AltitudeUpdate), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateDeviceMotion(_:)), name: NSNotification.Name(rawValue: NotificationKey.DeviceMotionUpdate), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateDistance(_:)), name: NSNotification.Name(rawValue: NotificationKey.DistanceUpdate), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateStepCount(_:)), name: NSNotification.Name(rawValue: NotificationKey.StepCountUpdate), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateFloor(_:)), name: NSNotification.Name(rawValue: NotificationKey.FloorUpdate), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateMotionActivity(_:)), name: NSNotification.Name(rawValue: NotificationKey.MotionActivityUpdate), object: nil)
     }
     
-    override public func viewDidDisappear(animated: Bool) {
+    override open func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.HeadingUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DeviceMotionUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.AltitudeUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DistanceUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.StepCountUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.FloorUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.MotionActivityUpdate, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.DeviceMotionUpdate), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.AltitudeUpdate), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.DistanceUpdate), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.StepCountUpdate), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.FloorUpdate), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.MotionActivityUpdate), object: nil)
     }
 }
 
@@ -70,7 +70,7 @@ public class MeasurmentsViewController: UITableViewController {
 extension MeasurmentsViewController {
     
     //MARK: Receiving and handling motion values
-    public func didUpdateHeading(notification: NSNotification) {
+    @objc public func didUpdateHeading(_ notification: Notification) {
         
         let heading = notification.userInfo![DefaultKeys.HeadingKey] as! CLHeading
         
@@ -79,14 +79,14 @@ extension MeasurmentsViewController {
         self.geomagnetismCell.vector = Vector3D(x: heading.x, y: heading.y, z: heading.z)
     }
     
-    public func didUpdateAltitude(notification: NSNotification) {
+    @objc public func didUpdateAltitude(_ notification: Notification) {
         
         let altitude = notification.userInfo![DefaultKeys.AltitudeKey] as! Double
         
         self.altitudeCell.value = altitude
     }
     
-    public func didUpdateDeviceMotion(notification: NSNotification) {
+    @objc public func didUpdateDeviceMotion(_ notification: Notification) {
         
         let userInfo = notification.userInfo!
         
@@ -110,33 +110,33 @@ extension MeasurmentsViewController {
         rotationRateCell.vector = rotationRate
     }
     
-    public func didUpdateDistance(notification: NSNotification) {
+    @objc public func didUpdateDistance(_ notification: Notification) {
         
         let distance = notification.userInfo![DefaultKeys.DistanceKey] as! NSNumber
         
         pedometerCell.distance = distance.doubleValue
     }
     
-    public func didUpdateStepCount(notification: NSNotification) {
+    @objc public func didUpdateStepCount(_ notification: Notification) {
         
         let numbersOfSteps = notification.userInfo![DefaultKeys.StepCountKey] as! NSNumber
         
-        pedometerCell.numberOfSteps = numbersOfSteps.integerValue
+        pedometerCell.numberOfSteps = numbersOfSteps.intValue
     }
     
-    public func didUpdateFloor(notification: NSNotification) {
+    @objc public func didUpdateFloor(_ notification: Notification) {
         
         let floorsAscended = notification.userInfo![DefaultKeys.FloorsAscendedKey] as! NSNumber
         
         let floorsDescended = notification.userInfo![DefaultKeys.FloorsDescendedKey] as! NSNumber
         
-        pedometerCell.floorsAscended = floorsAscended.integerValue
+        pedometerCell.floorsAscended = floorsAscended.intValue
         
-        pedometerCell.floorsDescended = floorsDescended.integerValue
+        pedometerCell.floorsDescended = floorsDescended.intValue
         
     }
     
-    public func didUpdateMotionActivity(notification: NSNotification) {
+    @objc public func didUpdateMotionActivity(_ notification: Notification) {
         
         let activity = notification.userInfo![DefaultKeys.MotionActivityKey] as! MotionActivity
         

@@ -23,10 +23,10 @@ public struct Movement {
         self.direction = heading.direction
     }
 }
-public class Path: NSObject {
+open class Path: NSObject {
     
-    public let startPoint = SCNVector3Make(0, 0, 0)
-    public var movements: [Movement] = []
+    open let startPoint = SCNVector3Make(0, 0, 0)
+    open var movements: [Movement] = []
     
     public override init() {
         super.init()

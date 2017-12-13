@@ -13,11 +13,11 @@ import UIKit
 #endif
 
 public protocol NumericType {
-    func +(lhs: Self, rhs: Self) -> Self
-    func -(lhs: Self, rhs: Self) -> Self
-    func *(lhs: Self, rhs: Self) -> Self
-    func /(lhs: Self, rhs: Self) -> Self
-    func %(lhs: Self, rhs: Self) -> Self
+    static func +(lhs: Self, rhs: Self) -> Self
+    static func -(lhs: Self, rhs: Self) -> Self
+    static func *(lhs: Self, rhs: Self) -> Self
+    static func /(lhs: Self, rhs: Self) -> Self
+//    static func %(lhs: Self, rhs: Self) -> Self
     init(_ v: Int)
     init(_ v: Float)
     init(_ v: Double)
@@ -42,9 +42,9 @@ extension MCSessionState:  CustomStringConvertible {
     
     public var description: String {
         switch(self) {
-        case .NotConnected: return "Not Connected"
-        case .Connecting: return "Connecting"
-        case .Connected: return "Connected"
+        case .notConnected: return "Not Connected"
+        case .connecting: return "Connecting"
+        case .connected: return "Connected"
         }
     }
     
@@ -54,7 +54,7 @@ extension MCSessionState:  CustomStringConvertible {
 extension UIScreen {
     
     class var screenSize: CGSize{
-        return UIScreen.mainScreen().bounds.size
+        return UIScreen.main.bounds.size
     }
     
     class var width: CGFloat{
@@ -77,20 +77,20 @@ extension UITextView {
 }
 
 extension UIImage {
-    func imageWithColor(tintColor: UIColor) -> UIImage {
+    func imageWithColor(_ tintColor: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
         
-        let context = UIGraphicsGetCurrentContext()! as CGContextRef
-        CGContextTranslateCTM(context, 0, self.size.height)
-        CGContextScaleCTM(context, 1.0, -1.0);
-        CGContextSetBlendMode(context, CGBlendMode.Normal)
+        let context = UIGraphicsGetCurrentContext()! as CGContext
+        context.translateBy(x: 0, y: self.size.height)
+        context.scaleBy(x: 1.0, y: -1.0);
+        context.setBlendMode(CGBlendMode.normal)
         
-        let rect = CGRectMake(0, 0, self.size.width, self.size.height) as CGRect
-        CGContextClipToMask(context, rect, self.CGImage)
+        let rect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height) as CGRect
+        context.clip(to: rect, mask: self.cgImage!)
         tintColor.setFill()
-        CGContextFillRect(context, rect)
+        context.fill(rect)
         
-        let newImage = UIGraphicsGetImageFromCurrentImageContext() as UIImage
+        let newImage = UIGraphicsGetImageFromCurrentImageContext() as! UIImage
         UIGraphicsEndImageContext()
         
         return newImage

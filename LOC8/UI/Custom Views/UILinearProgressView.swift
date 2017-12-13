@@ -10,31 +10,31 @@ import UIKit
 
 //MARK: UILinearProgressView
 @IBDesignable
-public class UILinearProgressView: UIView {
+open class UILinearProgressView: UIView {
     
     //MARK:UI Elements
-    @IBInspectable public var titel: String = "" {
+    @IBInspectable open var titel: String = "" {
         didSet { titelLabel.text = titel }
     }
     
-    @IBInspectable public var textColor : UIColor = UIColor.blackColor() {
+    @IBInspectable open var textColor : UIColor = UIColor.black {
         didSet {
             titelLabel.textColor = textColor
             valueLabel.textColor = textColor
         }
     }
     
-    @IBInspectable public var progressTintColor : UIColor = UIColor.lightGrayColor() {
+    @IBInspectable open var progressTintColor : UIColor = UIColor.lightGray {
         didSet { progress.progressTintColor = progressTintColor }
     }
     
-    @IBInspectable public var trackTintColor: UIColor = UIColor.clearColor() {
+    @IBInspectable open var trackTintColor: UIColor = UIColor.clear {
         didSet { progress.trackTintColor = trackTintColor }
     }
     
-    @IBInspectable public var maxValue: Float = 100
+    @IBInspectable open var maxValue: Float = 100
     
-    @IBInspectable public var value: Float = 0 {
+    @IBInspectable open var value: Float = 0 {
         didSet {
             
             if abs(value) > 100 {valueLabel.text = String(format: "%.0f", value)}
@@ -45,7 +45,7 @@ public class UILinearProgressView: UIView {
         }
     }
     
-    public var font: UIFont = UIFont.systemFontOfSize(14) {
+    open var font: UIFont = UIFont.systemFont(ofSize: 14) {
         didSet {
             titelLabel.font = font
             valueLabel.font = font
@@ -53,11 +53,11 @@ public class UILinearProgressView: UIView {
     }
     
     //MARK:UI Objects
-    private(set) var titelLabel: UILabel!
+    fileprivate(set) var titelLabel: UILabel!
     
-    private(set) var progress: UIProgressView!
+    fileprivate(set) var progress: UIProgressView!
     
-    private(set) var valueLabel: UILabel!
+    fileprivate(set) var valueLabel: UILabel!
     
     //MARK:Initialization
     override public init(frame: CGRect) {
@@ -76,14 +76,14 @@ public class UILinearProgressView: UIView {
         titelLabel.text = titel
         titelLabel.textColor = textColor
         titelLabel.font = font
-        titelLabel.textAlignment = NSTextAlignment.Left
+        titelLabel.textAlignment = NSTextAlignment.left
         titelLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(titelLabel)
         
         valueLabel = UILabel()
         valueLabel.textColor = textColor
         valueLabel.font = font
-        valueLabel.textAlignment = NSTextAlignment.Right
+        valueLabel.textAlignment = NSTextAlignment.right
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(valueLabel)
         
@@ -93,20 +93,20 @@ public class UILinearProgressView: UIView {
         progress.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(progress)
         
-        progress.addConstraint(NSLayoutConstraint(item: progress, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 4))
+        progress.addConstraint(NSLayoutConstraint(item: progress, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 4))
         
         self.addConstraints([
-            NSLayoutConstraint(item: titelLabel, attribute: .Leading,  relatedBy: .Equal, toItem: self,         attribute: .Leading,  multiplier: 1, constant:  0),
-            NSLayoutConstraint(item: titelLabel, attribute: .Top,      relatedBy: .Equal, toItem: self,         attribute: .Top,      multiplier: 1, constant:  0),
-            NSLayoutConstraint(item: titelLabel, attribute: .Bottom,   relatedBy: .Equal, toItem: self,         attribute: .Bottom,   multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: titelLabel, attribute: .leading,  relatedBy: .equal, toItem: self,         attribute: .leading,  multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: titelLabel, attribute: .top,      relatedBy: .equal, toItem: self,         attribute: .top,      multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: titelLabel, attribute: .bottom,   relatedBy: .equal, toItem: self,         attribute: .bottom,   multiplier: 1, constant:  0),
             
-            NSLayoutConstraint(item: valueLabel, attribute: .Trailing, relatedBy: .Equal, toItem: self,         attribute: .Trailing, multiplier: 1, constant:  0),
-            NSLayoutConstraint(item: valueLabel, attribute: .Top,      relatedBy: .Equal, toItem: self,         attribute: .Top,      multiplier: 1, constant:  0),
-            NSLayoutConstraint(item: valueLabel, attribute: .Bottom,   relatedBy: .Equal, toItem: self,         attribute: .Bottom,   multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: valueLabel, attribute: .trailing, relatedBy: .equal, toItem: self,         attribute: .trailing, multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: valueLabel, attribute: .top,      relatedBy: .equal, toItem: self,         attribute: .top,      multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: valueLabel, attribute: .bottom,   relatedBy: .equal, toItem: self,         attribute: .bottom,   multiplier: 1, constant:  0),
             
-            NSLayoutConstraint(item: progress,   attribute: .Leading,  relatedBy: .Equal, toItem: self,         attribute: .Leading,  multiplier: 1, constant: 45),
-            NSLayoutConstraint(item: progress,   attribute: .Trailing, relatedBy: .Equal, toItem: self,         attribute: .Trailing, multiplier: 1, constant:-45),
-            NSLayoutConstraint(item: progress,   attribute: .CenterY,  relatedBy: .Equal, toItem: self,         attribute: .CenterY,  multiplier: 1, constant:  2),
+            NSLayoutConstraint(item: progress,   attribute: .leading,  relatedBy: .equal, toItem: self,         attribute: .leading,  multiplier: 1, constant: 45),
+            NSLayoutConstraint(item: progress,   attribute: .trailing, relatedBy: .equal, toItem: self,         attribute: .trailing, multiplier: 1, constant:-45),
+            NSLayoutConstraint(item: progress,   attribute: .centerY,  relatedBy: .equal, toItem: self,         attribute: .centerY,  multiplier: 1, constant:  2),
             ])
         
         self.updateConstraints()
@@ -115,37 +115,37 @@ public class UILinearProgressView: UIView {
 
 //MARK: UIDifferentialLinearProgressView
 @IBDesignable
-public class UIDifferentialLinearProgressView: UIView {
+open class UIDifferentialLinearProgressView: UIView {
     
     //MARK:UI Elements
-    @IBInspectable public var titel: String = "" {
+    @IBInspectable open var titel: String = "" {
         didSet { titelLabel.text = titel }
     }
     
-    @IBInspectable public var textColor : UIColor = UIColor.blackColor() {
+    @IBInspectable open var textColor : UIColor = UIColor.black {
         didSet {
             titelLabel.textColor = textColor
             valueLabel.textColor = textColor
         }
     }
     
-    @IBInspectable public var progressTintColor : UIColor = UIColor.lightGrayColor() {
+    @IBInspectable open var progressTintColor : UIColor = UIColor.lightGray {
         didSet {
             leftProgress.trackTintColor = progressTintColor
             rightProgress.progressTintColor = progressTintColor
         }
     }
     
-    @IBInspectable public var trackTintColor: UIColor = UIColor.clearColor() {
+    @IBInspectable open var trackTintColor: UIColor = UIColor.clear {
         didSet {
             leftProgress.progressTintColor = trackTintColor
             rightProgress.trackTintColor = trackTintColor
         }
     }
     
-    @IBInspectable public var maxValue: Float = 100
+    @IBInspectable open var maxValue: Float = 100
     
-    @IBInspectable public var value: Float = 0 {
+    @IBInspectable open var value: Float = 0 {
         didSet {
             
             if abs(value) > 100 {valueLabel.text = String(format: "%.0f", value)}
@@ -168,7 +168,7 @@ public class UIDifferentialLinearProgressView: UIView {
         }
     }
     
-    public var font: UIFont = UIFont.systemFontOfSize(14) {
+    open var font: UIFont = UIFont.systemFont(ofSize: 14) {
         didSet {
             titelLabel.font = font
             valueLabel.font = font
@@ -176,13 +176,13 @@ public class UIDifferentialLinearProgressView: UIView {
     }
     
     //MARK:UI Objects
-    private(set) var titelLabel: UILabel!
+    fileprivate(set) var titelLabel: UILabel!
     
-    private(set) var leftProgress: UIProgressView!
+    fileprivate(set) var leftProgress: UIProgressView!
     
-    private(set) var rightProgress: UIProgressView!
+    fileprivate(set) var rightProgress: UIProgressView!
     
-    private(set) var valueLabel: UILabel!
+    fileprivate(set) var valueLabel: UILabel!
     
     //MARK:Initialization
     override public init(frame: CGRect) {
@@ -201,14 +201,14 @@ public class UIDifferentialLinearProgressView: UIView {
         titelLabel.text = titel
         titelLabel.textColor = textColor
         titelLabel.font = font
-        titelLabel.textAlignment = NSTextAlignment.Left
+        titelLabel.textAlignment = NSTextAlignment.left
         titelLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(titelLabel)
         
         valueLabel = UILabel()
         valueLabel.textColor = textColor
         valueLabel.font = font
-        valueLabel.textAlignment = NSTextAlignment.Right
+        valueLabel.textAlignment = NSTextAlignment.right
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(valueLabel)
         
@@ -225,25 +225,25 @@ public class UIDifferentialLinearProgressView: UIView {
         rightProgress.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(rightProgress)
         
-        leftProgress.addConstraint(NSLayoutConstraint(item: leftProgress, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 4))
-        rightProgress.addConstraint(NSLayoutConstraint(item: rightProgress, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 4))
+        leftProgress.addConstraint(NSLayoutConstraint(item: leftProgress, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 4))
+        rightProgress.addConstraint(NSLayoutConstraint(item: rightProgress, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 4))
         
         self.addConstraints([
-            NSLayoutConstraint(item: titelLabel,    attribute: .Leading,  relatedBy: .Equal, toItem: self,         attribute: .Leading,  multiplier: 1, constant:  0),
-            NSLayoutConstraint(item: titelLabel,    attribute: .Top,      relatedBy: .Equal, toItem: self,         attribute: .Top,      multiplier: 1, constant:  0),
-            NSLayoutConstraint(item: titelLabel,    attribute: .Bottom,   relatedBy: .Equal, toItem: self,         attribute: .Bottom,   multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: titelLabel,    attribute: .leading,  relatedBy: .equal, toItem: self,         attribute: .leading,  multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: titelLabel,    attribute: .top,      relatedBy: .equal, toItem: self,         attribute: .top,      multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: titelLabel,    attribute: .bottom,   relatedBy: .equal, toItem: self,         attribute: .bottom,   multiplier: 1, constant:  0),
             
-            NSLayoutConstraint(item: valueLabel,    attribute: .Trailing, relatedBy: .Equal, toItem: self,         attribute: .Trailing, multiplier: 1, constant:  0),
-            NSLayoutConstraint(item: valueLabel,    attribute: .Top,      relatedBy: .Equal, toItem: self,         attribute: .Top,      multiplier: 1, constant:  0),
-            NSLayoutConstraint(item: valueLabel,    attribute: .Bottom,   relatedBy: .Equal, toItem: self,         attribute: .Bottom,   multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: valueLabel,    attribute: .trailing, relatedBy: .equal, toItem: self,         attribute: .trailing, multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: valueLabel,    attribute: .top,      relatedBy: .equal, toItem: self,         attribute: .top,      multiplier: 1, constant:  0),
+            NSLayoutConstraint(item: valueLabel,    attribute: .bottom,   relatedBy: .equal, toItem: self,         attribute: .bottom,   multiplier: 1, constant:  0),
             
-            NSLayoutConstraint(item: leftProgress,  attribute: .Leading,  relatedBy: .Equal, toItem: self,         attribute: .Leading,  multiplier: 1, constant: 45),
-            NSLayoutConstraint(item: leftProgress,  attribute: .Trailing, relatedBy: .Equal, toItem: self,         attribute: .CenterX,  multiplier: 1, constant: -2),
-            NSLayoutConstraint(item: leftProgress,  attribute: .CenterY,  relatedBy: .Equal, toItem: self,         attribute: .CenterY,  multiplier: 1, constant:  2),
+            NSLayoutConstraint(item: leftProgress,  attribute: .leading,  relatedBy: .equal, toItem: self,         attribute: .leading,  multiplier: 1, constant: 45),
+            NSLayoutConstraint(item: leftProgress,  attribute: .trailing, relatedBy: .equal, toItem: self,         attribute: .centerX,  multiplier: 1, constant: -2),
+            NSLayoutConstraint(item: leftProgress,  attribute: .centerY,  relatedBy: .equal, toItem: self,         attribute: .centerY,  multiplier: 1, constant:  2),
             
-            NSLayoutConstraint(item: rightProgress, attribute: .Leading,  relatedBy: .Equal, toItem: self,         attribute: .CenterX,  multiplier: 1, constant:  2),
-            NSLayoutConstraint(item: rightProgress, attribute: .CenterY,  relatedBy: .Equal, toItem: self,         attribute: .CenterY,  multiplier: 1, constant:  2),
-            NSLayoutConstraint(item: rightProgress, attribute: .Width,    relatedBy: .Equal, toItem: leftProgress, attribute: .Width,    multiplier: 1, constant:  0)
+            NSLayoutConstraint(item: rightProgress, attribute: .leading,  relatedBy: .equal, toItem: self,         attribute: .centerX,  multiplier: 1, constant:  2),
+            NSLayoutConstraint(item: rightProgress, attribute: .centerY,  relatedBy: .equal, toItem: self,         attribute: .centerY,  multiplier: 1, constant:  2),
+            NSLayoutConstraint(item: rightProgress, attribute: .width,    relatedBy: .equal, toItem: leftProgress, attribute: .width,    multiplier: 1, constant:  0)
             ])
         
         self.updateConstraints()
@@ -252,28 +252,28 @@ public class UIDifferentialLinearProgressView: UIView {
 
 //MARK: UIDiscreteProgressView
 @IBDesignable
-public class UIDiscreteProgressView: UIView {
+open class UIDiscreteProgressView: UIView {
     
     //MARK:UI Elements
-    @IBInspectable public var numberOfValues: UInt = 0 {
+    @IBInspectable open var numberOfValues: UInt = 0 {
         didSet { self.setNeedsDisplay() }
     }
     
-    @IBInspectable public var fillColor: UIColor = UIColor.lightGrayColor() {
+    @IBInspectable open var fillColor: UIColor = UIColor.lightGray {
         didSet { self.setNeedsDisplay() }
     }
     
-    @IBInspectable public var value: UInt = 0 {
+    @IBInspectable open var value: UInt = 0 {
         didSet { self.setNeedsDisplay() }
     }
     
-    @IBInspectable public var gapWidth: CGFloat = 0 {
+    @IBInspectable open var gapWidth: CGFloat = 0 {
         didSet { self.setNeedsDisplay() }
     }
     
     //MARK:UI Objects
-    private var mainLayer: CAShapeLayer!
-    private var barsLayars: [CAShapeLayer] = []
+    fileprivate var mainLayer: CAShapeLayer!
+    fileprivate var barsLayars: [CAShapeLayer] = []
     
     //MARK:Initialization
 //    override public init(frame: CGRect) {
@@ -295,8 +295,8 @@ public class UIDiscreteProgressView: UIView {
 //    }
     
     //MARK:UI Drawings
-    public override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         if self.mainLayer != nil {
             self.mainLayer.removeFromSuperlayer()
@@ -306,7 +306,7 @@ public class UIDiscreteProgressView: UIView {
         self.mainLayer = CAShapeLayer()
         self.mainLayer.bounds = rect
         self.mainLayer.frame = rect
-        self.mainLayer.fillColor = fillColor.CGColor
+        self.mainLayer.fillColor = fillColor.cgColor
         self.layer.addSublayer(self.mainLayer)
         
         let dH = rect.height / CGFloat(numberOfValues)
@@ -318,7 +318,7 @@ public class UIDiscreteProgressView: UIView {
 //            
             let path = UIBezierPath()
             
-            path.moveToPoint(CGPoint(x: x, y: h))
+            path.move(to: CGPoint(x: x, y: h))
             
             for index in 0..<numberOfValues {
                 
@@ -326,17 +326,17 @@ public class UIDiscreteProgressView: UIView {
                 
                 let y = h - (dH * CGFloat(index + 1))
                 
-                path.addLineToPoint(CGPoint(x: x, y: y))
+                path.addLine(to: CGPoint(x: x, y: y))
                 x += dW
-                path.addLineToPoint(CGPoint(x: x, y: y))
-                path.addLineToPoint(CGPoint(x: x, y: h))
+                path.addLine(to: CGPoint(x: x, y: y))
+                path.addLine(to: CGPoint(x: x, y: h))
                 x += gapWidth
-                path.addLineToPoint(CGPoint(x: x, y: h))
+                path.addLine(to: CGPoint(x: x, y: h))
             }
             
-            path.closePath()
+            path.close()
             
-            self.mainLayer.path = path.CGPath
+            self.mainLayer.path = path.cgPath
 //        #else
 //        
 //            if barsLayars.count != Int(numberOfValues) {
