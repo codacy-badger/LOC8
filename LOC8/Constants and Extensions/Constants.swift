@@ -19,17 +19,6 @@ public struct DefaultValues {
     
 }
 
-public struct NotificationKey{
-    
-    public static let  HeadingUpdate: String = "com.LOC8.HeadingUpdateNotificationKey"
-    public static let  DistanceUpdate: String = "com.LOC8.DistanceUpdateNotificationKey"
-    public static let  AltitudeUpdate: String = "com.LOC8.AltitudeUpdateNotificationKey"
-    public static let  FloorUpdate: String = "com.LOC8.FloorUpdateNotificationKey"
-    public static let  DeviceMotionUpdate: String = "com.LOC8.DeviceMotionUpdateNotificationKey"
-    public static let  StepCountUpdate: String = "com.LOC8.StepCountUpdateNotificationKey"
-    public static let  MotionActivityUpdate: String = "com.LOC8.MotionActivityUpdateNotificationKey"
-}
-
 public struct DefaultKeys {
     
     public static let HeadingKey = "heading"

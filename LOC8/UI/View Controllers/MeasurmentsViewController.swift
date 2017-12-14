@@ -45,24 +45,24 @@ open class MeasurmentsViewController: UITableViewController {
     //MARK:Lifcycle
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateHeading(_:)), name: NSNotification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateAltitude(_:)), name: NSNotification.Name(rawValue: NotificationKey.AltitudeUpdate), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateDeviceMotion(_:)), name: NSNotification.Name(rawValue: NotificationKey.DeviceMotionUpdate), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateDistance(_:)), name: NSNotification.Name(rawValue: NotificationKey.DistanceUpdate), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateStepCount(_:)), name: NSNotification.Name(rawValue: NotificationKey.StepCountUpdate), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateFloor(_:)), name: NSNotification.Name(rawValue: NotificationKey.FloorUpdate), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateMotionActivity(_:)), name: NSNotification.Name(rawValue: NotificationKey.MotionActivityUpdate), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateHeading(_:)), name:  SensorsManager.HeadingUpdateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateAltitude(_:)), name: SensorsManager.AltitudeUpdateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateDeviceMotion(_:)), name: SensorsManager.DeviceMotionUpdateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateDistance(_:)), name: SensorsManager.DistanceUpdateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateStepCount(_:)), name: SensorsManager.StepCountUpdateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateFloor(_:)), name: SensorsManager.FloorUpdateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateMotionActivity(_:)), name: SensorsManager.MotionActivityUpdateNotification, object: nil)
     }
     
     override open func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.DeviceMotionUpdate), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.AltitudeUpdate), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.DistanceUpdate), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.StepCountUpdate), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.FloorUpdate), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.MotionActivityUpdate), object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.HeadingUpdateNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.DeviceMotionUpdateNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.AltitudeUpdateNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.DistanceUpdateNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.StepCountUpdateNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.FloorUpdateNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.MotionActivityUpdateNotification, object: nil)
     }
 }
 

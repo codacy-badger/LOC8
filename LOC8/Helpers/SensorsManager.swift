@@ -12,6 +12,30 @@ import CoreLocation
 
 open class SensorsManager: NSObject {
     
+    /// Get currently used SensorsManager, singleton pattern
+    public static let shared = SensorsManager()
+    
+    ///Returns the headingg update notification. Which is use to register with notification center.
+    public static let  HeadingUpdateNotification = Notification.Name(rawValue: "com.LOC8.heading-update-notification")
+    
+    ///Returns the distance update notification. Which is use to register with notification center.
+    public static let  DistanceUpdateNotification = Notification.Name(rawValue: "com.LOC8.distance-update-notification")
+    
+    ///Returns the altitude update notification. Which is use to register with notification center.
+    public static let  AltitudeUpdateNotification = Notification.Name(rawValue: "com.LOC8.altitude-update-notification")
+    
+    ///Returns the floor update notification. Which is use to register with notification center.
+    public static let  FloorUpdateNotification = Notification.Name(rawValue: "com.LOC8.floor-update-notification")
+    
+    ///Returns the divice motion update notification. Which is use to register with notification center.
+    public static let  DeviceMotionUpdateNotification = Notification.Name(rawValue: "com.LOC8.device-motion-update-notification")
+    
+    ///Returns the setp count update notification. Which is use to register with notification center.
+    public static let  StepCountUpdateNotification = Notification.Name(rawValue: "com.LOC8.step-count-update-notification")
+    
+    ///Returns the motion activity update notification. Which is use to register with notification center.
+    public static let  MotionActivityUpdateNotification = Notification.Name(rawValue: "com.LOC8.motion-activity-update-notification")
+    
     //MARK:Filters
     
     //Motion Manager
@@ -57,13 +81,6 @@ open class SensorsManager: NSObject {
     
     //MARK:Initialization
     
-    /**
-     * Get currently used SensorsManager, singleton pattern
-     *
-     * - Returns: `SensorsManager`
-     */
-    public static let shared = SensorsManager()
-    
     public override init() {
         super.init()
         clear()
@@ -97,7 +114,7 @@ open class SensorsManager: NSObject {
                 
                 let userInfo: [AnyHashable: Any] = [DefaultKeys.AltitudeKey: altitude]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.AltitudeUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.AltitudeUpdateNotification, object: nil, userInfo: userInfo)
                 
             })
                 
@@ -130,7 +147,7 @@ open class SensorsManager: NSObject {
                 
                 let userInfo: [AnyHashable: Any] = [DefaultKeys.DistanceKey: distance]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.DistanceUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.DistanceUpdateNotification, object: nil, userInfo: userInfo)
             }
             
             if CMPedometer.isFloorCountingAvailable() {
@@ -143,7 +160,7 @@ open class SensorsManager: NSObject {
                 
                 let userInfo: [AnyHashable: Any] = [DefaultKeys.FloorsAscendedKey: floorsAscended, DefaultKeys.FloorsDescendedKey:floorsDescended]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.FloorUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.FloorUpdateNotification, object: nil, userInfo: userInfo)
             }
             
             if CMPedometer.isStepCountingAvailable() {
@@ -154,7 +171,7 @@ open class SensorsManager: NSObject {
                 
                 let userInfo: [AnyHashable: Any] = [DefaultKeys.StepCountKey: numberOfSteps]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.StepCountUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.StepCountUpdateNotification, object: nil, userInfo: userInfo)
             }
             
             })
@@ -200,7 +217,7 @@ open class SensorsManager: NSObject {
                     DefaultKeys.AccelerationKey: self.currentAcceleration,
                 ]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.DeviceMotionUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.DeviceMotionUpdateNotification, object: nil, userInfo: userInfo)
             })
         }
     }
@@ -238,7 +255,7 @@ open class SensorsManager: NSObject {
                 
                 let userInfo: [AnyHashable: Any] = [DefaultKeys.MotionActivityKey: activity]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.MotionActivityUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.MotionActivityUpdateNotification, object: nil, userInfo: userInfo)
             })
         }
     }
@@ -326,7 +343,7 @@ extension SensorsManager: CLLocationManagerDelegate {
         
         let userInfo: [AnyHashable: Any] = [DefaultKeys.HeadingKey: newHeading]
         
-        NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: SensorsManager.HeadingUpdateNotification, object: nil, userInfo: userInfo)
     }
     
     public func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {

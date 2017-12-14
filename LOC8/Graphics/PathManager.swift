@@ -11,6 +11,9 @@ import SceneKit
 
 class PathManager {
     
+    ///Get currently used PathManager, singleton pattern
+    static let shared: PathManager  = PathManager()
+    
     let startPoint = SCNVector3Make(0, 0, 0)
     var movements: [Movement] = []
 
@@ -40,8 +43,4 @@ class PathManager {
     
     
     
-}
-
-extension PathManager {
-    static let shared: PathManager  = PathManager()
 }

@@ -161,7 +161,7 @@ public class Log {
     public static let shared = Log()
     
     ///Returns the log update notification. Which is use to register with notification center.
-    public static let LogUpdateNotification = Notification.Name(rawValue: "com.LOC8.LogUpdateNotificationKey")
+    public static let LogUpdateNotification = Notification.Name(rawValue: "com.LOC8.LogUpdateSensorsManager")
     
     ///An `AnyObject` object witch the log print will be restrected to.
     ///Spacify nil for all objects.

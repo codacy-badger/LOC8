@@ -30,6 +30,9 @@ public struct MultipeerManagerKeys {
 
 open class MultipeerManager: NSObject {
     
+    /// Get currently used MultipeerManager, singleton pattern
+    public static let shared = MultipeerManager()
+    
     open let ServiceType: String = "LOC8"
     
     var session: MCSession!
@@ -65,14 +68,6 @@ open class MultipeerManager: NSObject {
             }
         }
     }
-    
-    
-    /**
-     * Get currently used MultipeerManager, singleton pattern
-     *
-     * - Returns: `MultipeerManager`
-     */
-    public static let shared = MultipeerManager()
     
     override init() {
         super.init()

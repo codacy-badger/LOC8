@@ -163,8 +163,8 @@ open class Estimation: Measurement {
         
         self.estimationHandler =  estimationHandler
         
-        NotificationCenter.default.addObserver(self, selector: #selector(Estimation.didUpdateHeading(_:)), name: NSNotification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateDeviceMotion:", name: NotificationKey.DeviceMotionUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(Estimation.didUpdateHeading(_:)), name: SensorsManager.HeadingUpdateNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateDeviceMotion:", name: SensorsManager.DeviceMotionUpdate, object: nil)
     }
     
     /**
@@ -174,8 +174,8 @@ open class Estimation: Measurement {
      */
     open func stopEstimation(_ distance: Double) {
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil)
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DeviceMotionUpdate, object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.HeadingUpdateNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: SensorsManager.DeviceMotionUpdate, object: nil)
         
         self.distance = distance
         

@@ -10,6 +10,9 @@ import Foundation
 
 open class SettingsService {
     
+    /// Get currently used SettingsService, singleton pattern
+    public static let shared = SettingsService()
+    
     //MARK: Properties
     
     //MARK:Shortcuts
@@ -136,13 +139,6 @@ open class SettingsService {
     
     
     //MARK: Initialization
-    
-    /**
-     * Get currently used SettingsService, singleton pattern
-     *
-     * - Returns: `SettingsService`
-     */
-    public static let shared = SettingsService()
     
     public init() {
         if let _ = defaults.object(forKey: UserDefaultKeys.FirstLunchKey) {

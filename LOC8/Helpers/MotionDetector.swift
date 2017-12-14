@@ -10,6 +10,9 @@ import Foundation
 
 open class MotinDetector: NSObject {
     
+    /// Get currently used MotinDetector, singleton pattern
+    public static let shared = MotinDetector()
+    
     //MARK:Filters
     
     //Acceleration
@@ -60,24 +63,17 @@ open class MotinDetector: NSObject {
     fileprivate(set) var traveledDistance: Distance = Distance()
     
     
-    /**
-     * Get currently used MotinDetector, singleton pattern
-     *
-     * - Returns: `MotinDetector`
-     */
-    public static let shared = MotinDetector()
     
     override init() {
         super.init()
         setupFilter()
-        NotificationCenter.default.addObserver(self, selector: #selector(MotinDetector.didUpdateDeviceMotion(_:)), name: NSNotification.Name(rawValue: NotificationKey.DeviceMotionUpdate), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MotinDetector.didUpdateDeviceMotion(_:)), name: SensorsManager.DeviceMotionUpdateNotification, object: nil)
         
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.DeviceMotionUpdate), object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.DeviceMotionUpdateNotification, object: nil)
     }
-    
     
     fileprivate func setupFilter() {
         let rat = SensorsManager.shared.motionManagerSamplingFrequency
