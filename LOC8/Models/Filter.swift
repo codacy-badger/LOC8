@@ -154,7 +154,7 @@ open class Filter: NSObject {
         var alpha: Double = filterConstant!
 
         if adaptive {
-            let d: Double = clamp(abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = (1.0 - d) * filterConstant! / noiseAttenuation + d * filterConstant!
         }
 
@@ -174,7 +174,7 @@ open class Filter: NSObject {
         var alpha: Double = filterConstant!
 
         if adaptive {
-            let d: Double = clamp(abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = d * filterConstant! / noiseAttenuation + (1.0 - d) * filterConstant!
         }
         
@@ -307,7 +307,7 @@ open class AccelerationFilter: NSObject {
         var alpha: Double = filterConstant!
         
         if adaptive {
-            let d: Double = clamp(abs(~self.value - ~value / minStep) - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: abs(~self.value - ~value / minStep) - 1.0, min: 0.0, max: 1.0)
             alpha = (1.0 - d) * filterConstant! / noiseAttenuation + d * filterConstant!
         }
         
@@ -336,7 +336,7 @@ open class AccelerationFilter: NSObject {
         var alpha: Double = filterConstant!
         
         if adaptive {
-            let d: Double = clamp(fabs(~self.value - ~value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: fabs(~self.value - ~value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = d * filterConstant! / noiseAttenuation + (1.0 - d) * filterConstant!
         }
         x = alpha * (x + value.x - lastValue.x)

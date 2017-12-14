@@ -22,6 +22,26 @@
 		4D40F5811FE28032006FDB69 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD11CA68A1B00AB4885 /* Log.swift */; };
 		4D40F5831FE29DEE006FDB69 /* MotionActivityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5821FE29DEE006FDB69 /* MotionActivityStatus.swift */; };
 		4D40F5841FE29E10006FDB69 /* MotionActivityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5821FE29DEE006FDB69 /* MotionActivityStatus.swift */; };
+		4D40F58C1FE2A61A006FDB69 /* LOC8Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F58B1FE2A61A006FDB69 /* LOC8Tests.swift */; };
+		4D40F5951FE2A653006FDB69 /* GeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5931FE2A653006FDB69 /* GeometryTests.swift */; };
+		4D40F5961FE2A653006FDB69 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5941FE2A653006FDB69 /* RandomGenerator.swift */; };
+		4D40F5971FE2AA92006FDB69 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBC511CA77A6600AB4885 /* Geometry.swift */; };
+		4D40F5981FE2AA92006FDB69 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF6B1FE23B00006B6035 /* Angle.swift */; };
+		4D40F5991FE2AA92006FDB69 /* CartesianVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF591FE0D96A006B6035 /* CartesianVector.swift */; };
+		4D40F59A1FE2AA92006FDB69 /* PolarVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF5C1FE0D9AE006B6035 /* PolarVector.swift */; };
+		4D40F59B1FE2AA92006FDB69 /* EulerAngles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF5F1FE0DA0D006B6035 /* EulerAngles.swift */; };
+		4D40F59C1FE2AA92006FDB69 /* RotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF621FE0DA3D006B6035 /* RotationMatrix.swift */; };
+		4D40F59D1FE2AA92006FDB69 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF651FE0DA85006B6035 /* Quaternion.swift */; };
+		4D40F59E1FE2AA92006FDB69 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD31CA68A1B00AB4885 /* Measurement.swift */; };
+		4D40F59F1FE2AA92006FDB69 /* Vector3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBDA1CA68A1B00AB4885 /* Vector3D.swift */; };
+		4D40F5A01FE2AA92006FDB69 /* Rotation3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD81CA68A1B00AB4885 /* Rotation3D.swift */; };
+		4D40F5A11FE2AA92006FDB69 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BFA631CAA8A1E001AA782 /* Physics.swift */; };
+		4D40F5A21FE2AA92006FDB69 /* Accuracy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5711FE27A7F006FDB69 /* Accuracy.swift */; };
+		4D40F5A31FE2AA92006FDB69 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF681FE0E447006B6035 /* Direction.swift */; };
+		4D40F5A41FE2AA92006FDB69 /* MagneticField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F56F1FE27652006FDB69 /* MagneticField.swift */; };
+		4D40F5A51FE2AA92006FDB69 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD61CA68A1B00AB4885 /* Heading.swift */; };
+		4D40F5A61FE2AA92006FDB69 /* MotionActivityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5821FE29DEE006FDB69 /* MotionActivityStatus.swift */; };
+		4D40F5A71FE2AA92006FDB69 /* MotionActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD71CA68A1B00AB4885 /* MotionActivity.swift */; };
 		4D5BFA641CAA8A1E001AA782 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BFA631CAA8A1E001AA782 /* Physics.swift */; };
 		4DC647811CAF9A1F007AB5D7 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC647801CAF9A1F007AB5D7 /* MotionDetector.swift */; };
 		4DCDBB961CA6895800AB4885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBB951CA6895800AB4885 /* AppDelegate.swift */; };
@@ -94,6 +114,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4D40F58E1FE2A61A006FDB69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DCDBB8A1CA6895800AB4885 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DCDBB911CA6895800AB4885;
+			remoteInfo = LOC8;
+		};
+		4D40F5A91FE2ACF2006FDB69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DCDBB8A1CA6895800AB4885 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DCDBC1A1CA68B2C00AB4885;
+			remoteInfo = "LOC8 App";
+		};
 		4DCDBC461CA6AFEA00AB4885 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4DCDBB8A1CA6895800AB4885 /* Project object */;
@@ -109,6 +143,11 @@
 		4D40F57B1FE27F5F006FDB69 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		4D40F57D1FE27FA4006FDB69 /* LogRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRecord.swift; sourceTree = "<group>"; };
 		4D40F5821FE29DEE006FDB69 /* MotionActivityStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionActivityStatus.swift; sourceTree = "<group>"; };
+		4D40F5891FE2A61A006FDB69 /* LOC8Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LOC8Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D40F58B1FE2A61A006FDB69 /* LOC8Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOC8Tests.swift; sourceTree = "<group>"; };
+		4D40F58D1FE2A61A006FDB69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D40F5931FE2A653006FDB69 /* GeometryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryTests.swift; sourceTree = "<group>"; };
+		4D40F5941FE2A653006FDB69 /* RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
 		4D5BFA631CAA8A1E001AA782 /* Physics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
 		4DC647801CAF9A1F007AB5D7 /* MotionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		4DCDBB921CA6895800AB4885 /* LOC8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOC8.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +210,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4D40F5861FE2A61A006FDB69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DCDBB8F1CA6895800AB4885 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,11 +234,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D40F58A1FE2A61A006FDB69 /* LOC8Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4D40F5931FE2A653006FDB69 /* GeometryTests.swift */,
+				4D40F5941FE2A653006FDB69 /* RandomGenerator.swift */,
+				4D40F58B1FE2A61A006FDB69 /* LOC8Tests.swift */,
+				4D40F58D1FE2A61A006FDB69 /* Info.plist */,
+			);
+			path = LOC8Tests;
+			sourceTree = "<group>";
+		};
 		4DCDBB891CA6895800AB4885 = {
 			isa = PBXGroup;
 			children = (
 				4DCDBB941CA6895800AB4885 /* LOC8 */,
 				4DCDBC1C1CA68B2C00AB4885 /* LOC8 App */,
+				4D40F58A1FE2A61A006FDB69 /* LOC8Tests */,
 				4DCDBB931CA6895800AB4885 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -202,6 +260,7 @@
 			children = (
 				4DCDBB921CA6895800AB4885 /* LOC8.app */,
 				4DCDBC1B1CA68B2C00AB4885 /* LOC8 App.app */,
+				4D40F5891FE2A61A006FDB69 /* LOC8Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -349,6 +408,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4D40F5881FE2A61A006FDB69 /* LOC8Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D40F5921FE2A61A006FDB69 /* Build configuration list for PBXNativeTarget "LOC8Tests" */;
+			buildPhases = (
+				4D40F5851FE2A61A006FDB69 /* Sources */,
+				4D40F5861FE2A61A006FDB69 /* Frameworks */,
+				4D40F5871FE2A61A006FDB69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D40F58F1FE2A61A006FDB69 /* PBXTargetDependency */,
+				4D40F5AA1FE2ACF2006FDB69 /* PBXTargetDependency */,
+			);
+			name = LOC8Tests;
+			productName = LOC8Tests;
+			productReference = 4D40F5891FE2A61A006FDB69 /* LOC8Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4DCDBB911CA6895800AB4885 /* LOC8 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DCDBBBE1CA6895800AB4885 /* Build configuration list for PBXNativeTarget "LOC8" */;
@@ -390,10 +468,16 @@
 		4DCDBB8A1CA6895800AB4885 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = LOC8;
 				TargetAttributes = {
+					4D40F5881FE2A61A006FDB69 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = 666BQEQ2MQ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4DCDBB911CA6895800AB4885;
+					};
 					4DCDBB911CA6895800AB4885 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 666BQEQ2MQ;
@@ -426,11 +510,19 @@
 			targets = (
 				4DCDBB911CA6895800AB4885 /* LOC8 */,
 				4DCDBC1A1CA68B2C00AB4885 /* LOC8 App */,
+				4D40F5881FE2A61A006FDB69 /* LOC8Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4D40F5871FE2A61A006FDB69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DCDBB901CA6895800AB4885 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,6 +545,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4D40F5851FE2A61A006FDB69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D40F5971FE2AA92006FDB69 /* Geometry.swift in Sources */,
+				4D40F5981FE2AA92006FDB69 /* Angle.swift in Sources */,
+				4D40F5991FE2AA92006FDB69 /* CartesianVector.swift in Sources */,
+				4D40F59A1FE2AA92006FDB69 /* PolarVector.swift in Sources */,
+				4D40F59B1FE2AA92006FDB69 /* EulerAngles.swift in Sources */,
+				4D40F59C1FE2AA92006FDB69 /* RotationMatrix.swift in Sources */,
+				4D40F59D1FE2AA92006FDB69 /* Quaternion.swift in Sources */,
+				4D40F59E1FE2AA92006FDB69 /* Measurement.swift in Sources */,
+				4D40F59F1FE2AA92006FDB69 /* Vector3D.swift in Sources */,
+				4D40F5A01FE2AA92006FDB69 /* Rotation3D.swift in Sources */,
+				4D40F5A11FE2AA92006FDB69 /* Physics.swift in Sources */,
+				4D40F5A21FE2AA92006FDB69 /* Accuracy.swift in Sources */,
+				4D40F5A31FE2AA92006FDB69 /* Direction.swift in Sources */,
+				4D40F5A41FE2AA92006FDB69 /* MagneticField.swift in Sources */,
+				4D40F5A51FE2AA92006FDB69 /* Heading.swift in Sources */,
+				4D40F5A61FE2AA92006FDB69 /* MotionActivityStatus.swift in Sources */,
+				4D40F5A71FE2AA92006FDB69 /* MotionActivity.swift in Sources */,
+				4D40F58C1FE2A61A006FDB69 /* LOC8Tests.swift in Sources */,
+				4D40F5951FE2A653006FDB69 /* GeometryTests.swift in Sources */,
+				4D40F5961FE2A653006FDB69 /* RandomGenerator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DCDBB8E1CA6895800AB4885 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -549,6 +668,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4D40F58F1FE2A61A006FDB69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DCDBB911CA6895800AB4885 /* LOC8 */;
+			targetProxy = 4D40F58E1FE2A61A006FDB69 /* PBXContainerItemProxy */;
+		};
+		4D40F5AA1FE2ACF2006FDB69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DCDBC1A1CA68B2C00AB4885 /* LOC8 App */;
+			targetProxy = 4D40F5A91FE2ACF2006FDB69 /* PBXContainerItemProxy */;
+		};
 		4DCDBC471CA6AFEA00AB4885 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4DCDBB911CA6895800AB4885 /* LOC8 */;
@@ -584,6 +713,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4D40F5901FE2A61A006FDB69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 666BQEQ2MQ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LOC8Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LOC8.LOC8Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LOC8.app/LOC8";
+			};
+			name = Debug;
+		};
+		4D40F5911FE2A61A006FDB69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 666BQEQ2MQ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LOC8Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LOC8.LOC8Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LOC8.app/LOC8";
+			};
+			name = Release;
+		};
 		4DCDBBBC1CA6895800AB4885 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -765,6 +941,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4D40F5921FE2A61A006FDB69 /* Build configuration list for PBXNativeTarget "LOC8Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D40F5901FE2A61A006FDB69 /* Debug */,
+				4D40F5911FE2A61A006FDB69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4DCDBB8D1CA6895800AB4885 /* Build configuration list for PBXProject "LOC8" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
