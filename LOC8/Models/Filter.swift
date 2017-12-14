@@ -55,15 +55,15 @@ public enum FilterType: String {
     A filter is a process that removes from a signal some unwanted component or feature.
  
  */
-public class Filter: NSObject {
+open class Filter: NSObject {
     
     //MARK: Properties
     
     ///`Double` value represent the filter minimum step.
-    private let minStep = 0.02
+    fileprivate let minStep = 0.02
     
     ///`Double` value represent the filter noise attenuation.
-    private let noiseAttenuation = 3.0
+    fileprivate let noiseAttenuation = 3.0
     
     /**
      A Boolean value that determines whether the filter is adaptive or not.
@@ -72,19 +72,19 @@ public class Filter: NSObject {
      
      - Attention: The default value is __true__.
      */
-    public var adaptive: Bool = true
+    open var adaptive: Bool = true
     
     ///A `Double` value that represent the filter time constant.
-    public let filterConstant: Double!
+    open let filterConstant: Double!
     
     ///A `FilterType` value that represent the filter type.
-    public let type: FilterType!
+    open let type: FilterType!
     
     ///A `Double` value that represent the current value.
     private(set) var value: Double = 0
     
     ///A `Double` value that represent the last value.
-    private var lastValue: Double = 0
+    fileprivate var lastValue: Double = 0
     
     //MARK: Initialaization
     
@@ -100,10 +100,9 @@ public class Filter: NSObject {
     /**
       Initialize Filter object
      
-      - Parameters:
-        - type: A `FilterType` value represent the filter type.
-        - rate: A `Double` value represent the date rate of the date.
-        - freq: A `Double` value represent the cutoff frequency.
+      - Parameter type: A `FilterType` value represent the filter type.
+      - Parameter rate: A `Double` value represent the date rate of the date.
+      - Parameter freq: A `Double` value represent the cutoff frequency.
      */
     public init(type: FilterType, rate: Double, cutoffFrequency freq: Double) {
         
@@ -127,7 +126,7 @@ public class Filter: NSObject {
      Add new value to the filter.
      - Parameter value: A `Double` value represent the new value
      */
-    public func addValue(value: Double) {
+    open func addValue(_ value: Double) {
         
         switch self.type! {
         case FilterType.Lowpass:self.addValueToLowpass(value)
@@ -140,7 +139,7 @@ public class Filter: NSObject {
      Add new value without filtering any data.
      - Parameter value: A `Double` value represent the new value
      */
-    private func addValueWithoutFilter(value: Double) {
+    fileprivate func addValueWithoutFilter(_ value: Double) {
         self.value = value
     }
     
@@ -150,12 +149,12 @@ public class Filter: NSObject {
      
      - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/Low-pass_filter).
      */
-    private func addValueToLowpass(value: Double) {
+    fileprivate func addValueToLowpass(_ value: Double) {
 
         var alpha: Double = filterConstant!
 
         if adaptive {
-            let d: Double = clamp(abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = (1.0 - d) * filterConstant! / noiseAttenuation + d * filterConstant!
         }
 
@@ -170,12 +169,12 @@ public class Filter: NSObject {
      
      - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/High-pass_filter).
      */
-    private func addValueToHighpass(value: Double){
+    fileprivate func addValueToHighpass(_ value: Double) {
 
         var alpha: Double = filterConstant!
 
         if adaptive {
-            let d: Double = clamp(abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = d * filterConstant! / noiseAttenuation + (1.0 - d) * filterConstant!
         }
         
@@ -184,7 +183,7 @@ public class Filter: NSObject {
         lastValue = value
     }
     
-    public override var description: String {
+    open override var description: String {
         return (adaptive ? "Adaptive " : "") + (type != .Non ? "\(type) " : "") + "Filter"
     }
 }
@@ -204,15 +203,15 @@ public class Filter: NSObject {
  This object is responseabel of processing an acceleration data to remove noise.
  
  */
-public class AccelerationFilter: NSObject {
+open class AccelerationFilter: NSObject {
     
     //MARK: Properties
     
     ///`Double` value represent the filter minimum step.
-    private let minStep = 0.02
+    fileprivate let minStep = 0.02
     
     ///`Double` value represent the filter noise attenuation.
-    private let noiseAttenuation = 3.0
+    fileprivate let noiseAttenuation = 3.0
     
     /**
      A Boolean value that determines whether the filter is adaptive or not.
@@ -221,19 +220,19 @@ public class AccelerationFilter: NSObject {
      
      - Attention: The default value is __true__.
      */
-    public var adaptive: Bool = true
+    open var adaptive: Bool = true
     
     ///A `Double` value that represent the filter time constant.
-    public let filterConstant: Double!
+    open let filterConstant: Double!
     
     ///A `FilterType` value that represent the filter type.
-    public let type: FilterType!
+    open let type: FilterType!
     
     ///A `Acceleration` value that represent the current acceleration.
     private(set) var value: Acceleration = Acceleration()
     
     ///A `Acceleration` value that represent the last acceleration.
-    private var lastValue: Acceleration = Acceleration()
+    fileprivate var lastValue: Acceleration = Acceleration()
     
     //MARK: Initialaization
     
@@ -249,10 +248,9 @@ public class AccelerationFilter: NSObject {
     /**
       Initialize Filter object
      
-      - Parameters:
-        - type: A `FilterType` value represent the filter type.
-        - rate: A `Double` value represent the date rate of the date.
-        - freq: A `Double` value represent the cutoff frequency.
+      - Parameter type: A `FilterType` value represent the filter type.
+      - Parameter rate: A `Double` value represent the date rate of the date.
+      - Parameter freq: A `Double` value represent the cutoff frequency.
      */
     public init(type: FilterType, rate: Double, cutoffFrequency freq: Double) {
         
@@ -276,7 +274,7 @@ public class AccelerationFilter: NSObject {
      Add new value to the filter.
      - Parameter value: A `Double` value represent the new value
      */
-    public func addValue(value: Acceleration) {
+    open func addValue(_ value: Acceleration) {
         
         switch self.type! {
         case FilterType.Lowpass:self.addValueToLowpass(value)
@@ -289,7 +287,7 @@ public class AccelerationFilter: NSObject {
      Add new value without filtering any data.
      - Parameter value: A `Double` value represent the new value
      */
-    private func addValueWithoutFilter(value: Acceleration) {
+    fileprivate func addValueWithoutFilter(_ value: Acceleration) {
         self.value = value
     }
     
@@ -299,7 +297,7 @@ public class AccelerationFilter: NSObject {
      
      - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/Low-pass_filter).
      */
-    private func addValueToLowpass(value: Acceleration) {
+    fileprivate func addValueToLowpass(_ value: Acceleration) {
         // See http://en.wikipedia.org/wiki/Low-pass_filter for details low pass filtering
         
         var x = self.value.x
@@ -309,7 +307,7 @@ public class AccelerationFilter: NSObject {
         var alpha: Double = filterConstant!
         
         if adaptive {
-            let d: Double = clamp(abs(~self.value - ~value / minStep) - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: abs(~self.value - ~value / minStep) - 1.0, min: 0.0, max: 1.0)
             alpha = (1.0 - d) * filterConstant! / noiseAttenuation + d * filterConstant!
         }
         
@@ -328,7 +326,7 @@ public class AccelerationFilter: NSObject {
      
      - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/High-pass_filter).
      */
-    private func addValueToHighpass(value: Acceleration) {
+    fileprivate func addValueToHighpass(_ value: Acceleration) {
         // See http://en.wikipedia.org/wiki/High-pass_filter for details on high pass filtering
         
         var x = self.value.x
@@ -338,7 +336,7 @@ public class AccelerationFilter: NSObject {
         var alpha: Double = filterConstant!
         
         if adaptive {
-            let d: Double = clamp(fabs(~self.value - ~value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: fabs(~self.value - ~value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = d * filterConstant! / noiseAttenuation + (1.0 - d) * filterConstant!
         }
         x = alpha * (x + value.x - lastValue.x)
@@ -350,7 +348,7 @@ public class AccelerationFilter: NSObject {
         lastValue = value
     }
     
-    public override var description: String {
+    open override var description: String {
         return "Acceleration" + (adaptive ? "Adaptive " : "") + (type != .Non ? "\(type) " : "") + "Filter"
     }
 }

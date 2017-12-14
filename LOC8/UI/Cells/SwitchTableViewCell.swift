@@ -10,28 +10,28 @@ import UIKit
 
 public typealias SwitchHandler = (Bool) -> Void
 
-public class SwitchTableViewCell: UITableViewCell {
+open class SwitchTableViewCell: UITableViewCell {
     
     @IBOutlet weak var valueSwitch: UISwitch!
     
-    public var value: Bool{
+    open var value: Bool{
         set {
-            valueSwitch.on = newValue
+            valueSwitch.isOn = newValue
             handler?(newValue)
         }
         
         get{
-            return valueSwitch.on
+            return valueSwitch.isOn
         }
     }
     
-    private var handler: SwitchHandler?
+    fileprivate var handler: SwitchHandler?
     
-    @IBAction func valueSwitchChangedValue(sender: UISwitch) {
-        self.value = sender.on
+    @IBAction func valueSwitchChangedValue(_ sender: UISwitch) {
+        self.value = sender.isOn
     }
     
-    public func initialize(value: Bool, handler: SwitchHandler) {
+    open func initialize(_ value: Bool, handler: @escaping SwitchHandler) {
         self.value = value
         self.handler = handler
     }

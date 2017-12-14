@@ -7,13 +7,20 @@
 //
 
 import Foundation
-#if os(iOS)
-    import CoreMotion
-#endif
 
 //MARK: Physics
 
-/*
+
+/**
+ # Physics
+ 
+ ### Discussion:
+ A structure that contain physics constants:
+ 
+ - Earth gravity
+ - Earth maximum magnetic field
+ - Earth minimum magnetic field
+ 
  # Library Fundamentals
  
  ## Measurment Units
@@ -24,7 +31,7 @@ import Foundation
  - Kilogram for mass.
  - Second for time.
  - Radian for angels.
- - Tesla for magnetic field. (In SI base units:	kg⋅s⁻²⋅A⁻¹)
+ - Tesla for magnetic field. _(In SI base units:	kg⋅s⁻²⋅A⁻¹)_
  
  ## Kinematic Equations
     The equations can be utilized for any motion that can be described as being either a constant velocity motion or a constant acceleration motion. 
@@ -35,18 +42,12 @@ import Foundation
                    1
  (1) d = vᵢ * t + ––– * a * t²
                    2
- ````
- 
- ````
+
  (2) (vᵢ₊₁)² = (vᵢ)² + 2 * a * d
- ````
+
  
- ````
  (3) vᵢ₊₁ = vᵢ + a * t
- 
- ````
- 
- ````
+
           vᵢ + vᵢ₊₁
  (4) d = ––––––––––– * t
               2
@@ -59,19 +60,6 @@ import Foundation
     * __t__ is time (s)
 
 */
-
-
-
-/**
- # Physics
- 
- ### Discussion:
-    A structure that contain physics constants:
- 
-    - Earth gravity
-    - Earth maximum magnetic field
-    - Earth minimum magnetic field
- */
 public struct Physics {
     
     ///Earth gravity in m/s².
@@ -99,30 +87,14 @@ public struct Physics {
     a = –––– = –––––––––
          ∆t     t₂ - t₁
   ````
+ 
+ ### where:
+ * __v__ is velocity (m/s)
+ * __t__ is time (s)
+ 
+ - Note: measurment unit is meater per second sequer (m/s²)
  */
 public typealias Acceleration = Vector3D
-
-#if os(iOS)
-    public extension Acceleration {
-        
-        /**
-         Initialize `Acceleration` object with `CMAcceleration` in iOS Core Motion.
-         
-         - Parameter acceleration: `CMAcceleration` object represent the acceleration vector.
-         - Warning: Please make note that this method is only available for iOS 8.1 or later.
-         */
-        @available(iOS 8.1, *)
-        public convenience init(acceleration: CMAcceleration){
-            
-            let x = acceleration.x * Physics.EarthGravity
-            let y = acceleration.y * Physics.EarthGravity
-            let z = acceleration.z * Physics.EarthGravity
-            
-            self.init(x: x, y: y, z: z)
-        }
-    }
-#endif
-
 
 /**
  # Velocity
@@ -139,15 +111,22 @@ public typealias Acceleration = Vector3D
     v = –––– = –––––––––
          ∆t     t₂ - t₁
  ````
+ 
+ ### where:
+ * __x__ is distance (m)
+ * __t__ is time (s)
+ 
+ - Note: measurment unit is meater per second (m/s)
+ 
  */
 public typealias Velocity = Vector3D
-
 
 /**
  # Distance
  
  ### Discussion:
     Distance is a scalar quantity that refers to "how much ground an object has covered" during its motion.
+ - Note: measurment unit is meater (m)
  */
-public typealias Distance = Vector3D
+public typealias Distance = Vector3D 
 

@@ -8,35 +8,33 @@
 
 import UIKit
 
-public class LogViewController: UIViewController {
+open class LogViewController: UIViewController {
     
     //MARK:Properties
     @IBOutlet weak var log: UITextView!
     
-    override public func viewWillAppear(animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LogViewController.didUpdateLog(_:)), name: LogManager.LogUpdateNotificationKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LogViewController.didUpdateLog(_:)), name: Log.LogUpdateNotification, object: nil)
         
-        self.log.text = LogManager.sharedInstance.logText
+        self.log.text = Log.fullLog
         
         self.log.scrollToBotom()
     }
     
     //MARK:Lifcycle
-    override public func viewDidDisappear(animated: Bool) {
+    override open func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: LogManager.LogUpdateNotificationKey, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Log.LogUpdateNotification, object: nil)
     }
     
     //MARK:Updateing Log
-    public func didUpdateLog (notification: NSNotification) {
+    @objc open func didUpdateLog (_ notification: Notification) {
         
-        let logText = notification.userInfo![LogManager.LogKey] as! String
-        
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             
-            self.log.text = logText
+            self.log.text = Log.fullLog
             
             self.log.scrollToBotom()
             

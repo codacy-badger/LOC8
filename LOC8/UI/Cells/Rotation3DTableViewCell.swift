@@ -8,18 +8,18 @@
 
 import UIKit
 
-public class Rotation3DTableViewCell: UITableViewCell {
+open class Rotation3DTableViewCell: UITableViewCell {
     
     @IBOutlet weak var y_Heading: UIRotationView!
     @IBOutlet weak var p_Heading: UIRotationView!
     @IBOutlet weak var r_Heading: UIRotationView!
     
-    public var rotation: Rotation3D = Rotation3D() {
+    open var rotation: Rotation3D = Rotation3D() {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
-                self.y_Heading.angle = CGFloat(radiansToDegrees(self.rotation.yaw))
-                self.p_Heading.angle = CGFloat(radiansToDegrees(self.rotation.pitch))
-                self.r_Heading.angle = CGFloat(radiansToDegrees(self.rotation.roll))
+            DispatchQueue.main.async {
+                self.y_Heading.angle = CGFloat(self.rotation.yaw.degree)
+                self.p_Heading.angle = CGFloat(self.rotation.pitch.degree)
+                self.r_Heading.angle = CGFloat(self.rotation.roll.degree)
             }
         }
     }

@@ -11,9 +11,9 @@ import MultipeerConnectivity
 
 public struct TabBarItemColor {
     
-    public static let Normal = UIColor.whiteColor()
+    public static let Normal = UIColor.white
     
-    public static let Selected = UIColor.blackColor()
+    public static let Selected = UIColor.black
     
     public static let Colors = [
         UIColor(red:0.69, green:0.69, blue:0.69, alpha:1),
@@ -25,112 +25,116 @@ public struct TabBarItemColor {
     ]
 }
 
-public class TabBarController : UITabBarController, UITabBarControllerDelegate {
+open class TabBarController : UITabBarController, UITabBarControllerDelegate {
     
     //MARK:Properties
-    private var navigationBar: UINavigationBar { return self.navigationController!.navigationBar }
+    fileprivate var navigationBar: UINavigationBar {
+        return self.navigationController!.navigationBar
+    }
     
-    private var timer: NSTimer?
+    fileprivate var timer: Timer?
     
-    public var peer: MCPeerID?
+    open var peer: MCPeerID?
     
     //MARK:Lifcycle
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         
         for item in self.tabBar.items! as [UITabBarItem] {
             if let image = item.image {
-                item.image = image.imageWithColor(TabBarItemColor.Normal).imageWithRenderingMode(.AlwaysOriginal)
-                item.selectedImage = image.imageWithColor(TabBarItemColor.Selected).imageWithRenderingMode(.AlwaysOriginal)
+                item.image = image.imageWithColor(TabBarItemColor.Normal).withRenderingMode(.alwaysOriginal)
+                item.selectedImage = image.imageWithColor(TabBarItemColor.Selected).withRenderingMode(.alwaysOriginal)
             }
         }
         
-        let attributs = [NSFontAttributeName: UIFont.systemFontOfSize(20), NSForegroundColorAttributeName: UIColor.whiteColor()]
+        let attributs = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20), NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationController!.navigationBar.titleTextAttributes = attributs
         UINavigationBar.appearance().titleTextAttributes = attributs
         
         if let map = self.viewControllers?[0] {
-            self.tabBarController(self, didSelectViewController: map)
+            self.tabBarController(self, didSelect: map)
         }
     }
     
-    public override func viewWillAppear(animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TabBarController.didReceiveInvetation(_:)), name: MultipeerManagerKeys.ReceivedInvitation, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TabBarController.didReceiveInvetation(_:)), name: MultipeerManager.ReceivedInvitationNotification, object: nil)
     }
     
-    public override func viewDidDisappear(animated: Bool) {
+    open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: MultipeerManagerKeys.FoundPeer, object: nil)
+        NotificationCenter.default.removeObserver(self, name: MultipeerManager.FoundPeerNotification, object: nil)
     }
     
     
-    public func didReceiveInvetation(notification: NSNotification) {
+    @objc open func didReceiveInvetation(_ notification: Notification) {
         
         let userInfo = notification.userInfo!
         
         let peer = userInfo[MultipeerManagerKeys.PeerId] as! MCPeerID
         
-        let alert = UIAlertController(title: "", message: "\(peer.displayName) wants to connect with you.", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "", message: "\(peer.displayName) wants to connect with you.", preferredStyle: UIAlertControllerStyle.alert)
         
-        let acceptAction: UIAlertAction = UIAlertAction(title: "Accept", style: UIAlertActionStyle.Default) { (alertAction) -> Void in
-            MultipeerManager.sharedInstance.invitationHandler?(true, MultipeerManager.sharedInstance.session)
+        let acceptAction: UIAlertAction = UIAlertAction(title: "Accept", style: UIAlertActionStyle.default) { (alertAction) -> Void in
+            MultipeerManager.shared.invitationHandler?(true, MultipeerManager.shared.session)
             self.peer = peer
         }
         alert.addAction(acceptAction)
         
-        let declineAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (alertAction) -> Void in
-            MultipeerManager.sharedInstance.invitationHandler?(false, MultipeerManager.sharedInstance.session)
+        let declineAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (alertAction) -> Void in
+            MultipeerManager.shared.invitationHandler?(false, MultipeerManager.shared.session)
         }
         alert.addAction(declineAction)
         
-        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
-            self.presentViewController(alert, animated: true, completion: nil)
+        OperationQueue.main.addOperation { () -> Void in
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
     //MARK:UITabBarController Delegate
-    public func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController){
+    open func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.navigationItem.title = viewController.navigationItem.title
         self.navigationItem.leftBarButtonItem = viewController.navigationItem.leftBarButtonItem
         self.navigationItem.rightBarButtonItem = viewController.navigationItem.rightBarButtonItem
         
-        let data = ["message":viewController.dynamicType.description()]
+        let data = ["message":type(of: viewController).description()]
         if let peer = self.peer {
-            MultipeerManager.sharedInstance.sendData(dictionaryWithData: data, toPeer: peer)
+            let _ = MultipeerManager.shared.sendData(dictionaryWithData: data, toPeer: peer)
         }
         
     }
     
     //MARK:Animations
-    public func startAnimation(duration: NSTimeInterval) {
-        if timer != nil { stopAnimation() }
-        timer = NSTimer.scheduledTimerWithTimeInterval( duration, target: self, selector: #selector(TabBarController.updateColor(_:)), userInfo: nil, repeats: true)
+    open func startAnimation(_ duration: TimeInterval) {
+        if timer != nil {
+            stopAnimation()
+        }
+        timer = Timer.scheduledTimer( timeInterval: duration, target: self, selector: #selector(TabBarController.updateColor(_:)), userInfo: nil, repeats: true)
         timer?.fire()
     }
     
-    public func stopAnimation() {
+    open func stopAnimation() {
         timer?.invalidate()
         timer = nil
     }
     
-    public func setColor(color: UIColor) {
+    open func setColor(_ color: UIColor) {
         
-        UIView.animateWithDuration(1.0, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState.union(.TransitionCrossDissolve), animations: { () -> Void in
+        UIView.animate(withDuration: 1.0, delay: 0, options: UIViewAnimationOptions.beginFromCurrentState.union(.transitionCrossDissolve), animations: { () -> Void in
             self.navigationBar.barTintColor = color
             }, completion: nil)
         
-        UIView.transitionWithView(tabBar, duration: 1.0, options: UIViewAnimationOptions.BeginFromCurrentState.union(.TransitionCrossDissolve), animations: { () -> Void in
+        UIView.transition(with: tabBar, duration: 1.0, options: UIViewAnimationOptions.beginFromCurrentState.union(.transitionCrossDissolve), animations: { () -> Void in
             self.tabBar.barTintColor = color
             }, completion: nil)
     }
     
-    internal func updateColor(timer: NSTimer) {
+    @objc internal func updateColor(_ timer: Timer) {
         let colors = TabBarItemColor.Colors
-        let color = colors[random() % colors.count]
+        let color = colors[Int(arc4random()) % colors.count]
         self.setColor(color)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import MultipeerConnectivity
 
-public class settingsViewController: UITableViewController {
+open class settingsViewController: UITableViewController {
     
     //MARK:Properties
     
@@ -30,28 +30,28 @@ public class settingsViewController: UITableViewController {
     
     @IBOutlet weak var accelerationAdaptiveSwitchCell: SwitchTableViewCell!
     
-    private var settings: SettingsService {
-        return SettingsService.sharedInstance
+    fileprivate var settings: SettingsService {
+        return SettingsService.shared
     }
     
     //MARK:Lifcycle
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(settingsViewController.didUpdateConnectionStatus(_:)), name: MultipeerManagerKeys.ConnectionStateChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(settingsViewController.didUpdateConnectionStatus(_:)), name: MultipeerManager.ConnectionStateChangedNotification, object: nil)
     }
     
-    override public func viewDidAppear(animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         initializeCells()
     }
     
     
-    public func didUpdateConnectionStatus(notification: NSNotification) {
+    @objc open func didUpdateConnectionStatus(_ notification: Notification) {
         
         let userInfo = notification.userInfo! as! [String: AnyObject]
         
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             if let peer = userInfo[MultipeerManagerKeys.PeerId] {
                 self.connectionCell.textLabel?.text = "🖥 " + peer.displayName
             }
@@ -67,7 +67,7 @@ public class settingsViewController: UITableViewController {
     }
     
     //MARK: Initialization
-    public func initializeCells() {
+    open func initializeCells() {
         
         let tabBarController = self.tabBarController! as! TabBarController
         
@@ -82,13 +82,18 @@ public class settingsViewController: UITableViewController {
         animationSwitchCell.initialize(settings.enableAnimation) { (enable) -> Void in
             self.settings.enableAnimation = enable
             
-            if enable {tabBarController.startAnimation(self.settings.animationDuration)}
-            else {tabBarController.stopAnimation()}
+            if enable {
+                tabBarController.startAnimation(self.settings.animationDuration)
+            } else {
+                tabBarController.stopAnimation()
+            }
         }
         
         animationDurationAdjustmentCell.initialize(settings.animationDuration) { (value) -> Void in
             self.settings.animationDuration = value
-            if self.settings.enableAnimation.boolValue { tabBarController.startAnimation(value) }
+            if self.settings.enableAnimation {
+                tabBarController.startAnimation(value)
+            }
         }
         
         generalAdjustmentCell.initialize(settings.motionManagerSamplingFrequency) { (value) -> Void in
@@ -110,39 +115,39 @@ public class settingsViewController: UITableViewController {
     }
 
     //MARK:IBActions
-    @IBAction func restartButtonDidPressed(sender: AnyObject) {
+    @IBAction func restartButtonDidPressed(_ sender: AnyObject) {
         settings.clear()
     }
   
-    @IBAction func resetButtonDidPressed(sender: AnyObject) {
+    @IBAction func resetButtonDidPressed(_ sender: AnyObject) {
         
-        let actionSheetController: UIAlertController = UIAlertController(title: " WARNING", message: "Are you sure you want to erase all settings and set back to defaults?", preferredStyle: .Alert)
+        let actionSheetController: UIAlertController = UIAlertController(title: " WARNING", message: "Are you sure you want to erase all settings and set back to defaults?", preferredStyle: .alert)
         
-        let noAction: UIAlertAction = UIAlertAction(title: "No", style: .Cancel) { action -> Void in
+        let noAction: UIAlertAction = UIAlertAction(title: "No", style: .cancel) { action -> Void in
         }
         actionSheetController.addAction(noAction)
         
-        let yesAction: UIAlertAction = UIAlertAction(title: "Yes", style: .Destructive) { action -> Void in
+        let yesAction: UIAlertAction = UIAlertAction(title: "Yes", style: .destructive) { action -> Void in
             self.settings.reset()
             self.initializeCells()
         }
         actionSheetController.addAction(yesAction)
         
-        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        self.present(actionSheetController, animated: true, completion: nil)
     }
 }
 
 //MARK: MCBrowserViewControllerDelegate
 extension settingsViewController: MCBrowserViewControllerDelegate {
-    public func browserViewControllerDidFinish(browserViewController: MCBrowserViewController) {
+    public func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
         
     }
     
-    public func browserViewControllerWasCancelled(browserViewController: MCBrowserViewController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    public func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    public func browserViewController(browserViewController: MCBrowserViewController, shouldPresentNearbyPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) -> Bool {
+    public func browserViewController(_ browserViewController: MCBrowserViewController, shouldPresentNearbyPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) -> Bool {
         return true
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class Vector3DTableViewCell: UITableViewCell {
+open class Vector3DTableViewCell: UITableViewCell {
     
     @IBOutlet weak var x_Progress: UIDifferentialLinearProgressView!
     @IBOutlet weak var y_Progress: UIDifferentialLinearProgressView!
@@ -17,16 +17,16 @@ public class Vector3DTableViewCell: UITableViewCell {
     @IBOutlet weak var t_Heading: UIRotationView!
     @IBOutlet weak var l_Heading: UIRotationView!
     
-    public var vector: Vector3D = Vector3D() {
+    open var vector: Vector3D = Vector3D() {
         didSet {
             
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.x_Progress.value = Float(self.vector.x)
                 self.y_Progress.value = Float(self.vector.y)
                 self.z_Progress.value = Float(self.vector.z)
                 self.r_Progress.value = Float(self.vector.magnitude)
-                self.t_Heading.angle = CGFloat(radiansToDegrees(self.vector.theta))
-                self.l_Heading.angle = CGFloat(radiansToDegrees(self.vector.lambda))
+                self.t_Heading.angle = CGFloat(self.vector.theta.degree)
+                self.l_Heading.angle = CGFloat(self.vector.lambda.degree)
             }
         }
     }

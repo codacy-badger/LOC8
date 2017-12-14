@@ -18,21 +18,21 @@ public struct Movement {
         self.direction = direction
     }
     
-    public init(heading: Heading) {
+    public init(heading: Motion) {
         self.distance = Float(heading.distance / 2.0)
         self.direction = heading.direction
     }
 }
-public class Path: NSObject {
+open class Path: NSObject {
     
-    public let startPoint = SCNVector3Make(0, 0, 0)
-    public var movements: [Movement] = []
+    open let startPoint = SCNVector3Make(0, 0, 0)
+    open var movements: [Movement] = []
     
     public override init() {
         super.init()
     }
     
-    public convenience init(data: [Heading]) {
+    public convenience init(data: [Motion]) {
         self.init()
         
         self.movements = []

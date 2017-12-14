@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreLocation
-import CoreMotion
 
 /**
  # Estimation Handler
@@ -24,40 +23,50 @@ public typealias EstimationHandler = ((Estimation) -> Void)
   ### Discussion:
     Estimation is a model that is responseple to collect headings until distance value come up.
  */
-public class Estimation: Measurement {
+open class Estimation: Measurement {
     
     //MARK: Properties
     
     /// `EstimationHandler` object act as a deleget.
-    public var estimationHandler: EstimationHandler?
+    open var estimationHandler: EstimationHandler?
     
     /// A list of `Heading` objects represent all the collected headings for the estimation.
-    public lazy var headings: [Heading] = []
+    open lazy var headings: [Motion] = []
     
     /// A `Double` value represent the total distance for the estimation
-    public var distance: Double = 0
+    open var distance: Double = 0
     
     /// A computed property return the last heading recieved.
-    public var currentHeading: Heading? { return headings.last }
+    open var currentHeading: Motion? {
+        return headings.last
+    }
     
     /// A computed property return the total wight for all the collected headings.
-    public var wight: UInt {
+    open var wight: UInt {
         var totalWight: UInt = 0
-        for heading in headings { totalWight += heading.wight }
+        for heading in headings {
+            totalWight += heading.wight
+        }
         return totalWight
     }
     
     /// A computed property return the sample mean for all the collected headings wight.
-    public var mean: Double {
-        if headings.count == 0 { return 0 }
+    open var mean: Double {
+        if headings.count == 0 {
+            return 0
+        }
         return Double(self.wight) / Double(headings.count)
     }
     
     /// A computed property return the sample variance for all the collected headings wight
-    public var variance: Double {
-        if headings.count <= 1 { return 0 }
+    open var variance: Double {
+        if headings.count <= 1 {
+            return 0
+        }
         var variance: Double = 0
-        for heading in headings { variance += pow((Double(heading.wight) - mean), 2) }
+        for heading in headings {
+            variance += pow((Double(heading.wight) - mean), 2)
+        }
         variance = variance / Double(headings.count - 1)
         return sqrt(variance)
     }
@@ -76,10 +85,12 @@ public class Estimation: Measurement {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override var description: String {
+    open override var description: String {
         var result: String = "{\n\tNumber of headings: \(headings.count)\n\tTotal Distance:\(distance)\n\tTotal Wight:\(wight)\n\tMean:\(mean)\n\tVariance:\(variance)\n\tHeadings:[\n"
         
-        for heading in headings { result += "\t\t\(heading.description)\n"}
+        for heading in headings {
+            result += "\t\t\(heading.description)\n"
+        }
         
         result += "\t]\n}"
         return result
@@ -88,25 +99,23 @@ public class Estimation: Measurement {
     //MARK: Motion Updates
     
     ///An action tregered whene the `SensorsManager` recieve a heading update.
-    public func didUpdateHeading (notification: NSNotification) {
+    @objc open func didUpdateHeading (_ notification: Notification) {
         
         let heading = notification.userInfo![DefaultKeys.HeadingKey] as! CLHeading
         
-        let newHeading = Heading(angle: heading.magneticHeading)
+        let newHeading = Motion(angle: heading.magneticHeading)
         
         if headings.count == 0 {
             headings.append(newHeading)
-        }
-        else {
+        } else {
             
             if let oldHeading = headings.last {
                 
                 if oldHeading == newHeading{
                     oldHeading.wight += 1
-                }
-                else {
+                } else {
                     headings.append(newHeading)
-                    LogManager.sharedInstance.print(self, message: oldHeading.description)
+                    Log.info(sender: self, message: oldHeading.description)
                 }
             }
         }
@@ -114,7 +123,7 @@ public class Estimation: Measurement {
     }
     
     ///An action tregered whene the `SensorsManager` recieve a device motion update.
-    public func didUpdateDeviceMotion(notification: NSNotification) {
+    open func didUpdateDeviceMotion(_ notification: Notification) {
         
         let userInfo = notification.userInfo!
         
@@ -123,21 +132,19 @@ public class Estimation: Measurement {
 //        let gravity = userInfo[DefaultKeys.GravityKey] as! Vector3D
         let acceleration = userInfo[DefaultKeys.AccelerationKey] as! Vector3D
         
-        let newHeading = Heading(angle: acceleration.theta)
+        let newHeading = Motion(angle: acceleration.theta)
         
         if headings.count == 0 {
             headings.append(newHeading)
-        }
-        else {
+        } else {
             
             if let oldHeading = headings.last {
                 
                 if oldHeading == newHeading{
                     oldHeading.wight += 1
-                }
-                else {
+                } else {
                     headings.append(newHeading)
-                    LogManager.sharedInstance.print(self, message: oldHeading.description)
+                    Log.info(sender: self, message: oldHeading.description)
                 }
             }
         }
@@ -151,12 +158,12 @@ public class Estimation: Measurement {
      
      - Parameter estimationHandler: `EstimationHandler` closer that will be called each time new heading is recived.
      */
-    public func startEstimation( estimationHandler: EstimationHandler? = nil) {
+    open func startEstimation( _ estimationHandler: EstimationHandler? = nil) {
         
         self.estimationHandler =  estimationHandler
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Estimation.didUpdateHeading(_:)), name: NotificationKey.HeadingUpdate, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateDeviceMotion:", name: NotificationKey.DeviceMotionUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(Estimation.didUpdateHeading(_:)), name: SensorsManager.HeadingUpdateNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateDeviceMotion:", name: SensorsManager.DeviceMotionUpdate, object: nil)
     }
     
     /**
@@ -164,17 +171,19 @@ public class Estimation: Measurement {
      
      - Parameter distance: `Double` value that represent the total distance update.
      */
-    public func stopEstimation(distance: Double){
+    open func stopEstimation(_ distance: Double) {
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.HeadingUpdate, object: nil)
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DeviceMotionUpdate, object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.HeadingUpdateNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: SensorsManager.DeviceMotionUpdate, object: nil)
         
         self.distance = distance
         
         let delta = distance / Double(self.wight)
         
         for heading in headings {
-            if heading.direction == .Up || heading.direction == .Down { continue }
+            if heading.direction == .up || heading.direction == .down {
+                continue
+            }
             heading.distance = Double(heading.wight) * delta
         }
         

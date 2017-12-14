@@ -11,13 +11,13 @@ import UIKit
     
 public typealias AdjustmentHandler = (Double) -> Void
 
-public class AdjustmentTableViewCell: UITableViewCell {
+open class AdjustmentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var valueLabel: UILabel!
     
     @IBOutlet weak var valueSlider: UISlider!
     
-    public var value: Double{
+    open var value: Double{
         set {
             valueSlider.value = Float(newValue)
             valueLabel.text = String(format: "%.2f", Float(newValue))
@@ -29,13 +29,13 @@ public class AdjustmentTableViewCell: UITableViewCell {
         }
     }
     
-    private var handler: AdjustmentHandler?
+    fileprivate var handler: AdjustmentHandler?
     
-    @IBAction func valueSliderChangedValue(sender: UISlider) {
+    @IBAction func valueSliderChangedValue(_ sender: UISlider) {
         self.value = Double(sender.value)
     }
     
-    public func initialize(value: Double, handler: AdjustmentHandler) {
+    open func initialize(_ value: Double, handler: @escaping AdjustmentHandler) {
         self.value = value
         self.handler = handler
     }

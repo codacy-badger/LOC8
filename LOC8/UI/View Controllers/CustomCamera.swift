@@ -11,7 +11,7 @@ import SceneKit
 
 class Camera: SCNNode {
     
-    var slideVelocity: CGPoint = CGPointZero
+    var slideVelocity: CGPoint = CGPoint.zero
     let viewSlideDivisor: Float = 100
 
     override init() {
@@ -30,80 +30,79 @@ class Camera: SCNNode {
     }
     
     enum UIPanGestureRecognizerDirection: Int {
-        case Undefined
-        case Up
-        case Down
-        case Left
-        case Right
+        case undefined
+        case up
+        case down
+        case left
+        case right
     }
     
-    func pan(sender: UIPanGestureRecognizer) {
+    func pan(_ sender: UIPanGestureRecognizer) {
         struct Holder {
-            static var direction: UIPanGestureRecognizerDirection = .Undefined
+            static var direction: UIPanGestureRecognizerDirection = .undefined
         }
-        self.slideVelocity = sender.velocityInView(sender.view)
+        self.slideVelocity = sender.velocity(in: sender.view)
         switch sender.state {
-        case .Began:
-            if Holder.direction == .Undefined {
-                let velocity = sender.velocityInView(sender.view)
+        case .began:
+            if Holder.direction == .undefined {
+                let velocity = sender.velocity(in: sender.view)
                 let isVerticalGesture = fabs(velocity.y) > fabs(velocity.x)
                 if isVerticalGesture {
                     if velocity.y > 0 {
-                        Holder.direction = .Down
+                        Holder.direction = .down
+                    } else {
+                        Holder.direction = .up
                     }
-                    else {
-                        Holder.direction = .Up
-                    }
-                }
-                else {
+                } else {
                     if velocity.x > 0 {
-                        Holder.direction = .Right
-                    }
-                    else {
-                        Holder.direction = .Left
+                        Holder.direction = .right
+                    } else {
+                        Holder.direction = .left
                     }
                 }
             }
-        case .Changed:
+        case .changed:
             switch Holder.direction {
-            case .Up:
+            case .up:
                 self.handleUpGesture(sender)
-            case .Down:
+            case .down:
                 self.handleDownGesture(sender)
-            case .Left:
+            case .left:
                 self.handleLeftGesture(sender)
-            case .Right:
+            case .right:
                 self.handleRightGesture(sender)
             default:
                 break
             }
-        case .Ended:
-            Holder.direction = .Undefined
+        case .ended:
+            Holder.direction = .undefined
         default: break
         }
     }
 
     // zoom in
-    func handleDownGesture(sender: UIPanGestureRecognizer) {
+    func handleDownGesture(_ sender: UIPanGestureRecognizer) {
         let oldPos = self.position
-        guard oldPos.z < 3 else { return }
+        guard oldPos.z < 3 else {
+            return
+        }
         
         // translate self.slideVelocity in the z only, and keep x and y the same values
         
         
     }
     
-    func handleUpGesture(sender: UIPanGestureRecognizer) {
+    func handleUpGesture(_ sender: UIPanGestureRecognizer) {
         
     }
     
 
     
-    func handleRightGesture(sender: UIPanGestureRecognizer) {
+    func handleRightGesture(_ sender: UIPanGestureRecognizer) {
         
     }
     
-    func handleLeftGesture(sender: UIPanGestureRecognizer) {
+    func handleLeftGesture(_ sender: UIPanGestureRecognizer) {
         
     }
 }

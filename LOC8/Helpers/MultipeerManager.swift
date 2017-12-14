@@ -9,77 +9,60 @@
 import Foundation
 import MultipeerConnectivity
 
-public struct MultipeerManagerKeys {
-    
-    public static let FoundPeer: String = "FoundPeer"
-    
-    public static let LostPeer: String = "LostPeer"
-    
-    public static let ReceivedInvitation: String = "ReceivedInvitation"
-    
-    public static let ConnectionStateChanged: String = "ConnectionStateChanged"
-    
-    public static let ReceivedData: String = "ReceivedData"
-    
-    public static let PeerId: String = "PeerId"
-    
-    public static let Data: String = "SessionData"
-    
-    public static let State: String = "SessionState"
-}
-
 public class MultipeerManager: NSObject {
     
-    public let ServiceType: String = "LOC8"
+    /// Get currently used MultipeerManager, singleton pattern
+    public static let shared = MultipeerManager()
+    
+    ///Returns the found peer update notification. Which is use to register with notification center.
+    public static let FoundPeerNotification = Notification.Name(rawValue: "FoundPeer")
+    
+    ///Returns the lost peer update notification. Which is use to register with notification center.
+    public static let LostPeerNotification = Notification.Name(rawValue: "LostPeer")
+    
+    ///Returns the received invitation update notification. Which is use to register with notification center.
+    public static let ReceivedInvitationNotification = Notification.Name(rawValue: "ReceivedInvitation")
+    
+    ///Returns the Connection state did changed notification. Which is use to register with notification center.
+    public static let ConnectionStateChangedNotification = Notification.Name(rawValue: "ConnectionStateChanged")
+    
+    ///Returns the received data update notification. Which is use to register with notification center.
+    public static let ReceivedDataNotification = Notification.Name(rawValue: "ReceivedData")
+    
+    open let ServiceType: String = "LOC8"
     
     var session: MCSession!
     
-    public var peer: MCPeerID!
+    open var peer: MCPeerID!
     
-    public var browser: MCNearbyServiceBrowser!
+    open var browser: MCNearbyServiceBrowser!
     
-    public var advertiser: MCNearbyServiceAdvertiser!
+    open var advertiser: MCNearbyServiceAdvertiser!
     
-    public var foundPeers = [MCPeerID]()
+    open var foundPeers = [MCPeerID]()
     
-    public var foundPeersStats = [String: MCSessionState]()
+    open var foundPeersStats = [String: MCSessionState]()
     
-    public var invitationHandler: ((Bool, MCSession) -> Void)?
+    open var invitationHandler: ((Bool, MCSession) -> Void)?
     
-    public var isAdvertising: Bool = false  {
+    open var isAdvertising: Bool = false  {
         didSet {
             if isAdvertising {
                 advertiser.startAdvertisingPeer()
-            }
-            else {
+            } else {
                 advertiser.stopAdvertisingPeer()
             }
         }
     }
     
-    public var isBrowsing: Bool = false {
+    open var isBrowsing: Bool = false {
         didSet {
             if isBrowsing {
                 browser.startBrowsingForPeers()
-            }
-            else {
+            } else {
                 browser.stopBrowsingForPeers()
             }
         }
-    }
-    
-    
-    /**
-     * Get currently used MultipeerManager, singleton pattern
-     *
-     * - Returns: `MultipeerManager`
-     */
-    public class var sharedInstance: MultipeerManager {
-        struct Singleton {
-            static let instance = MultipeerManager()
-        }
-        
-        return Singleton.instance
     }
     
     override init() {
@@ -87,9 +70,9 @@ public class MultipeerManager: NSObject {
         
         
         #if os(iOS)
-            peer = MCPeerID(displayName: UIDevice.currentDevice().name)
+            peer = MCPeerID(displayName: UIDevice.current.name)
         #else
-            peer = MCPeerID(displayName: NSHost.currentHost().localizedName!)
+            peer = MCPeerID(displayName: Host.current().localizedName!)
         #endif
         
         session = MCSession(peer: peer)
@@ -104,12 +87,12 @@ public class MultipeerManager: NSObject {
     
     // MARK: Custom method implementation
     
-    public func sendData(dictionaryWithData dictionary: Dictionary<String, String>, toPeer targetPeer: MCPeerID) -> Bool {
-        let dataToSend = NSKeyedArchiver.archivedDataWithRootObject(dictionary)
+    open func sendData(dictionaryWithData dictionary: Dictionary<String, String>, toPeer targetPeer: MCPeerID) -> Bool {
+        let dataToSend = NSKeyedArchiver.archivedData(withRootObject: dictionary)
         let peersArray = [targetPeer]
         
         do {
-            try session.sendData(dataToSend, toPeers: peersArray, withMode: MCSessionSendDataMode.Reliable)
+            try session.send(dataToSend, toPeers: peersArray, with: MCSessionSendDataMode.reliable)
         }
         catch {
             debugPrint(error)
@@ -119,8 +102,8 @@ public class MultipeerManager: NSObject {
         return true
     }
     
-    public func invitePeer(peerID: MCPeerID) {
-        browser.invitePeer(peerID, toSession: self.session, withContext: nil, timeout: 30)
+    open func invitePeer(_ peerID: MCPeerID) {
+        browser.invitePeer(peerID, to: self.session, withContext: nil, timeout: 30)
     }
     
 }
@@ -128,34 +111,34 @@ public class MultipeerManager: NSObject {
 // MARK: MCNearbyServiceBrowserDelegate method implementation
 extension MultipeerManager: MCNearbyServiceBrowserDelegate {
     
-    public func browser(browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
+    public func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         
         foundPeers.append(peerID)
         
-        let userInfo: [NSObject: AnyObject] = [MultipeerManagerKeys.PeerId: peerID]
+        let userInfo: [AnyHashable: Any] = [MultipeerManagerKeys.PeerId: peerID]
         
-        NSNotificationCenter.defaultCenter().postNotificationName(MultipeerManagerKeys.FoundPeer, object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: MultipeerManager.FoundPeerNotification, object: nil, userInfo: userInfo)
         
     }
     
-    public func browser(browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+    public func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         
-        for (index, aPeer) in foundPeers.enumerate(){
+        for (index, aPeer) in foundPeers.enumerated() {
             
             if aPeer == peerID {
                 
-                foundPeers.removeAtIndex(index)
-                foundPeersStats.removeValueForKey(aPeer.displayName)
+                foundPeers.remove(at: index)
+                foundPeersStats.removeValue(forKey: aPeer.displayName)
                 break
             }
         }
         
-        let userInfo: [NSObject: AnyObject] = [MultipeerManagerKeys.PeerId: peerID]
+        let userInfo: [AnyHashable: Any] = [MultipeerManagerKeys.PeerId: peerID]
         
-        NSNotificationCenter.defaultCenter().postNotificationName(MultipeerManagerKeys.LostPeer, object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: MultipeerManager.LostPeerNotification, object: nil, userInfo: userInfo)
     }
     
-    public func browser(browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: NSError) {
+    public func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
         debugPrint(error.localizedDescription)
     }
     
@@ -164,15 +147,15 @@ extension MultipeerManager: MCNearbyServiceBrowserDelegate {
 // MARK: MCNearbyServiceAdvertiserDelegate method implementation
 extension MultipeerManager: MCNearbyServiceAdvertiserDelegate {
     
-    public func advertiser(advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: NSData?, invitationHandler: ((Bool, MCSession) -> Void)) {
+    public func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         self.invitationHandler = invitationHandler
         
-        let userInfo: [NSObject: AnyObject] = [MultipeerManagerKeys.PeerId: peerID]
+        let userInfo: [AnyHashable: Any] = [MultipeerManagerKeys.PeerId: peerID]
         
-        NSNotificationCenter.defaultCenter().postNotificationName(MultipeerManagerKeys.ReceivedInvitation, object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: MultipeerManager.ReceivedInvitationNotification, object: nil, userInfo: userInfo)
     }
     
-    public func advertiser(advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: NSError) {
+    public func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
         debugPrint(error.localizedDescription)
     }
     
@@ -181,47 +164,62 @@ extension MultipeerManager: MCNearbyServiceAdvertiserDelegate {
 // MARK: MCSessionDelegate method implementation
 extension MultipeerManager: MCSessionDelegate {
     
-    public func session(session: MCSession, peer peerID: MCPeerID, didChangeState state: MCSessionState) {
+    // Remote peer changed state.
+    public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
             
-        var userInfo: [NSObject: AnyObject] = [MultipeerManagerKeys.State: state.description]
+        var userInfo: [AnyHashable: Any] = [MultipeerManagerKeys.State: state.description]
         
-        if state != .NotConnected {
+        if state != .notConnected {
             userInfo[MultipeerManagerKeys.PeerId] = peerID
         }
         
         self.foundPeersStats[peerID.displayName] = state
         
-        NSNotificationCenter.defaultCenter().postNotificationName(MultipeerManagerKeys.ConnectionStateChanged, object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: MultipeerManager.ConnectionStateChangedNotification, object: nil, userInfo: userInfo)
         
         debugPrint("Did change state: \(state.description)")
     }
     
-    public func session(session: MCSession, didReceiveData data: NSData, fromPeer peerID: MCPeerID) {
+    // Received data from remote peer.
+    public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         
         let userInfo: [String: AnyObject] =
             [
-                MultipeerManagerKeys.Data: data,
+                MultipeerManagerKeys.Data: data as AnyObject,
                 MultipeerManagerKeys.PeerId: peerID
             ]
         
-        NSNotificationCenter.defaultCenter().postNotificationName(MultipeerManagerKeys.ReceivedData, object: userInfo)
+        NotificationCenter.default.post(name: MultipeerManager.ReceivedDataNotification, object: userInfo)
         
         debugPrint("Did receive data: \(data)")
     }
     
-    public func session(session: MCSession, didReceiveStream stream: NSInputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
+    // Received a byte stream from remote peer.
+    public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID)
+    {
         
         debugPrint("Did receive stream: \(stream)")
     }
     
-    public func session(session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, withProgress progress: NSProgress) {
+    // Start receiving a resource from remote peer.
+    public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
         
         debugPrint("Did start receiving resource named: \(resourceName)")
     }
     
-    public func session(session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, atURL localURL: NSURL, withError error: NSError?) {
+    
+    // Finished receiving a resource from remote peer and saved the content
+    // in a temporary location - the app is responsible for moving the file
+    // to a permanent location within its sandbox.
+    public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
         
         debugPrint("Did finish receiving resource named: \(resourceName)")
+    }
+
+    // Made first contact with peer and have identity information about the
+    // remote peer (certificate may be nil).
+    public func session(_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Swift.Void) {
+        
     }
     
 }

@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class AngleTableViewCell: UITableViewCell {
+open class AngleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var angle_Rotation: UIRotationView!
     
-    public var angle:  Double = 0 {
+    open var angle:  Double = 0 {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
-                self.angle_Rotation.angle = CGFloat(radiansToDegrees(self.angle))
+            DispatchQueue.main.async {
+                self.angle_Rotation.angle = CGFloat(Angle(self.angle).degree)
             }
         }
     }

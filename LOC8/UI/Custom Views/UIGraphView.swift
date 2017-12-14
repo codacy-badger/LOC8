@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 
-public class UIGraphViewSegment: NSObject{
+open class UIGraphViewSegment: NSObject, CALayerDelegate {
     
     var layer: CALayer!
     
@@ -19,55 +19,71 @@ public class UIGraphViewSegment: NSObject{
     
     var count: Int = 33
     
-    var isFull: Bool {  return index == 0 }
-    
-    public var graphBackgroundColor: UIColor = UIColor(white: 0.6, alpha: 1.0) {
-        didSet { layer.setNeedsDisplay() }
+    var isFull: Bool {
+        return index == 0
     }
     
-    public var graphLineColor: UIColor = UIColor(white: 0.5, alpha: 1.0) {
-        didSet { layer.setNeedsDisplay() }
+    open var graphBackgroundColor: UIColor = UIColor(white: 0.6, alpha: 1.0) {
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
-    public var graphXColor: UIColor = UIColor.redColor() {
-        didSet { layer.setNeedsDisplay() }
+    open var graphLineColor: UIColor = UIColor(white: 0.5, alpha: 1.0) {
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
-    public var graphYColor: UIColor = UIColor.greenColor() {
-        didSet { layer.setNeedsDisplay() }
+    open var graphXColor: UIColor = UIColor.red {
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
-    public var graphZColor: UIColor = UIColor.blueColor() {
-        didSet { layer.setNeedsDisplay() }
+    open var graphYColor: UIColor = UIColor.green {
+        didSet {
+            layer.setNeedsDisplay()
+        }
+    }
+    
+    open var graphZColor: UIColor = UIColor.blue {
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
 
     
     public override init() {
         super.init()
         layer = CALayer()
-        layer.bounds = CGRectMake(0.0, -56.0, 32.0, 112.0)
+        layer.bounds = CGRect(x: 0.0, y: -56.0, width: 32.0, height: 112.0)
         layer.delegate = self
-        layer.opaque = true
+        layer.isOpaque = true
         
         index = count - 1
         
-        for _ in 0..<count { vectors.append(Vector3D()) }
+        for _ in 0..<count {
+            vectors.append(Vector3D())
+        }
     }
     
-    public func reset() {
+    open func reset() {
         
         index = count - 1
         
-        for _ in 0..<count { vectors.append(Vector3D()) }
+        for _ in 0..<count {
+            vectors.append(Vector3D())
+        }
         
         layer.setNeedsDisplay()
     }
     
-    func isVisibleInRect(r: CGRect) -> Bool {
-        return CGRectIntersectsRect(r, layer.frame)
+    func isVisibleInRect(_ r: CGRect) -> Bool {
+        return r.intersects(layer.frame)
     }
     
-    public func addX(vector: Vector3D) -> Bool {
+    open func addX(_ vector: Vector3D) -> Bool {
         
         if index > 0 {
             index -= 1
@@ -79,13 +95,17 @@ public class UIGraphViewSegment: NSObject{
         return index == 0
     }
     
-    public override func drawLayer(l: CALayer, inContext context: CGContextRef) {
+    
+    
+    open func draw(_ layer: CALayer, in ctx: CGContext) {
         
-        CGContextSetFillColorWithColor(context, graphBackgroundColor.CGColor)
-        CGContextFillRect(context, layer.bounds)
-        drawGridlines(context, x: 0.0, width: 32.0)
+        ctx.setFillColor(graphBackgroundColor.cgColor)
+        ctx.fill(layer.bounds)
+        drawGridlines(ctx, x: 0.0, width: 32.0)
         var lines: [CGPoint] = []
-        for _ in 0..<64 { lines.append(CGPoint.zero) }
+        for _ in 0..<64 {
+            lines.append(CGPoint.zero)
+        }
         
         // X
         for i in 0..<32 {
@@ -94,105 +114,113 @@ public class UIGraphViewSegment: NSObject{
             lines[i * 2 + 1].x = CGFloat(i) + 1
             lines[i * 2 + 1].y = CGFloat(-vectors[i + 1].x) * 16.0
         }
-        CGContextSetStrokeColorWithColor(context, graphXColor.CGColor)
-        CGContextStrokeLineSegments(context, lines, 64)
+        ctx.setStrokeColor(graphXColor.cgColor)
+        ctx.strokeLineSegments(between: lines)
         
         // Y
         for i in 0..<32 {
             lines[i * 2].y = CGFloat(-vectors[i].y) * 16.0
             lines[i * 2 + 1].y = CGFloat(-vectors[i + 1].y) * 16.0
         }
-        CGContextSetStrokeColorWithColor(context, graphYColor.CGColor)
-        CGContextStrokeLineSegments(context, lines, 64)
+        ctx.setStrokeColor(graphYColor.cgColor)
+        ctx.strokeLineSegments(between: lines)
         
         // Z
         for i in 0..<32 {
             lines[i * 2].y = CGFloat(-vectors[i].z) * 16.0
             lines[i * 2 + 1].y = CGFloat(-vectors[i + 1].z) * 16.0
         }
-        CGContextSetStrokeColorWithColor(context, graphZColor.CGColor)
-        CGContextStrokeLineSegments(context, lines, 64)
+        ctx.setStrokeColor(graphZColor.cgColor)
+        ctx.strokeLineSegments(between: lines)
     }
     
-    public override func actionForLayer( layer: CALayer, forKey event: String) -> CAAction? { return NSNull() }
+    open func action(for layer: CALayer, forKey event: String) -> CAAction? {
+        return NSNull()
+    }
     
-    private func drawGridlines(context: CGContextRef, x: CGFloat, width: CGFloat) {
+    fileprivate func drawGridlines(_ context: CGContext, x: CGFloat, width: CGFloat) {
         
         var y: CGFloat = -48.5
         
         while y <= 48.5 {
-            CGContextMoveToPoint(context, x, y);
-            CGContextAddLineToPoint(context, x + width, y)
+            context.move(to: CGPoint(x: x, y: y));
+            context.addLine(to: CGPoint(x: x + width, y: y))
             y += 16.0
         }
         
-        CGContextSetStrokeColorWithColor(context, graphLineColor.CGColor);
-        CGContextStrokePath(context);
+        context.setStrokeColor(graphLineColor.cgColor);
+        context.strokePath();
     }
 }
 
-public class UIGraphTextView: UIView {
+open class UIGraphTextView: UIView {
     
     
-    public var graphBackgroundColor: UIColor = UIColor(white: 0.6, alpha: 1.0) {
-        didSet { self.setNeedsDisplay() }
+    open var graphBackgroundColor: UIColor = UIColor(white: 0.6, alpha: 1.0) {
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
-    public var graphLineColor: UIColor = UIColor(white: 0.5, alpha: 1.0) {
-        didSet { self.setNeedsDisplay() }
+    open var graphLineColor: UIColor = UIColor(white: 0.5, alpha: 1.0) {
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
-    public var textColor: UIColor = UIColor.whiteColor() {
-        didSet { self.setNeedsDisplay() }
+    open var textColor: UIColor = UIColor.white {
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
-    public override func drawRect(rect: CGRect) {
+    open override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
         
-        CGContextSetFillColorWithColor(context, graphBackgroundColor.CGColor)
-        CGContextFillRect(context, self.bounds)
-        CGContextTranslateCTM(context, 0.0, 56.0)
+        context.setFillColor(graphBackgroundColor.cgColor)
+        context.fill(self.bounds)
+        context.translateBy(x: 0.0, y: 56.0)
         
         drawGridlines(context, x: 26.0, width: 6.0)
         
-        UIColor.whiteColor().set()
+        UIColor.white.set()
         let paraStyle = NSMutableParagraphStyle()
-        paraStyle.alignment = .Right
+        paraStyle.alignment = .right
         
         let attribute = [
-            NSForegroundColorAttributeName: textColor,
-            NSParagraphStyleAttributeName: paraStyle,
-            NSFontAttributeName: UIFont.systemFontOfSize(10)
+            NSAttributedStringKey.foregroundColor: textColor,
+            NSAttributedStringKey.paragraphStyle: paraStyle,
+            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 10)
         ]
         
-        "+3.0".drawInRect(CGRectMake(2.0, -56.0, 24.0, 16.0), withAttributes: attribute)
-        "+2.0".drawInRect(CGRectMake(2.0, -40.0, 24.0, 16.0), withAttributes: attribute)
-        "+1.0".drawInRect(CGRectMake(2.0, -24.0, 24.0, 16.0), withAttributes: attribute)
-        " 0.0".drawInRect(CGRectMake(2.0, -8.0, 24.0, 16.0), withAttributes: attribute)
-        "-1.0".drawInRect(CGRectMake(2.0, 8.0, 24.0, 16.0), withAttributes: attribute)
-        "-2.0".drawInRect(CGRectMake(2.0, 24.0, 24.0, 16.0), withAttributes: attribute)
-        "-3.0".drawInRect(CGRectMake(2.0, 40.0, 24.0, 16.0), withAttributes: attribute)
+        "+3.0".draw(in: CGRect(x: 2.0, y: -56.0, width: 24.0, height: 16.0), withAttributes: attribute)
+        "+2.0".draw(in: CGRect(x: 2.0, y: -40.0, width: 24.0, height: 16.0), withAttributes: attribute)
+        "+1.0".draw(in: CGRect(x: 2.0, y: -24.0, width: 24.0, height: 16.0), withAttributes: attribute)
+        " 0.0".draw(in: CGRect(x: 2.0, y: -8.0, width: 24.0, height: 16.0), withAttributes: attribute)
+        "-1.0".draw(in: CGRect(x: 2.0, y: 8.0, width: 24.0, height: 16.0), withAttributes: attribute)
+        "-2.0".draw(in: CGRect(x: 2.0, y: 24.0, width: 24.0, height: 16.0), withAttributes: attribute)
+        "-3.0".draw(in: CGRect(x: 2.0, y: 40.0, width: 24.0, height: 16.0), withAttributes: attribute)
     }
     
-    private func drawGridlines(context: CGContextRef, x: CGFloat, width: CGFloat) {
+    fileprivate func drawGridlines(_ context: CGContext, x: CGFloat, width: CGFloat) {
         
         var y: CGFloat = -48.5
         
         while y <= 48.5 {
-            CGContextMoveToPoint(context, x, y);
-            CGContextAddLineToPoint(context, x + width, y)
+            context.move(to: CGPoint(x: x, y: y));
+            context.addLine(to: CGPoint(x: x + width, y: y))
             y += 16.0
         }
         
-        CGContextSetStrokeColorWithColor(context, graphLineColor.CGColor);
-        CGContextStrokePath(context);
+        context.setStrokeColor(graphLineColor.cgColor);
+        context.strokePath();
     }
 }
 
 @IBDesignable
-public class UIGraphView: UIView {
+open class UIGraphView: UIView {
     
-    @IBInspectable public var graphBackgroundColor: UIColor = UIColor(white: 0.6, alpha: 1.0) {
+    @IBInspectable open var graphBackgroundColor: UIColor = UIColor(white: 0.6, alpha: 1.0) {
         didSet {
             text.graphBackgroundColor = graphBackgroundColor
             for segment in self.segments {segment.graphBackgroundColor = graphBackgroundColor}
@@ -200,7 +228,7 @@ public class UIGraphView: UIView {
         }
     }
     
-    @IBInspectable public var graphLineColor: UIColor = UIColor(white: 0.5, alpha: 1.0) {
+    @IBInspectable open var graphLineColor: UIColor = UIColor(white: 0.5, alpha: 1.0) {
         didSet {
             text.graphLineColor = graphLineColor
             for segment in self.segments {segment.graphLineColor = graphLineColor}
@@ -208,29 +236,43 @@ public class UIGraphView: UIView {
         }
     }
     
-    @IBInspectable public var textColor: UIColor = UIColor.whiteColor() {
-        didSet { text.textColor = textColor }
+    @IBInspectable open var textColor: UIColor = UIColor.white {
+        didSet {
+            text.textColor = textColor
+        }
     }
     
-    @IBInspectable public var graphXColor: UIColor = UIColor.redColor() {
-        didSet { for segment in self.segments {segment.graphXColor = graphXColor} }
+    @IBInspectable open var graphXColor: UIColor = UIColor.red {
+        didSet {
+            for segment in self.segments {
+                segment.graphXColor = graphXColor
+            }
+        }
     }
     
-    @IBInspectable public var graphYColor: UIColor = UIColor.greenColor() {
-        didSet { for segment in self.segments {segment.graphYColor = graphYColor} }
+    @IBInspectable open var graphYColor: UIColor = UIColor.green {
+        didSet {
+            for segment in self.segments {
+                segment.graphYColor = graphYColor
+            }
+        }
     }
     
-    @IBInspectable public var graphZColor: UIColor = UIColor.blueColor() {
-        didSet { for segment in self.segments {segment.graphZColor = graphZColor} }
+    @IBInspectable open var graphZColor: UIColor = UIColor.blue {
+        didSet {
+            for segment in self.segments {
+                segment.graphZColor = graphZColor
+            }
+        }
     }
     
-    private let kSegmentInitialPosition = CGPointMake(14.0, 56.0)
+    fileprivate let kSegmentInitialPosition = CGPoint(x: 14.0, y: 56.0)
     
-    private var segments: [UIGraphViewSegment]!
+    fileprivate var segments: [UIGraphViewSegment]!
     
-    private var current: UIGraphViewSegment!
+    fileprivate var current: UIGraphViewSegment!
     
-    private var text: UIGraphTextView!
+    fileprivate var text: UIGraphTextView!
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -242,34 +284,34 @@ public class UIGraphView: UIView {
         self.commonInit()
     }
     
-    public override func drawRect(rect: CGRect) {
+    open override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
         
-        CGContextSetFillColorWithColor(context, graphBackgroundColor.CGColor)
-        CGContextFillRect(context, self.bounds)
+        context.setFillColor(graphBackgroundColor.cgColor)
+        context.fill(self.bounds)
         let width: CGFloat = self.bounds.size.width
-        CGContextTranslateCTM(context, 0.0, 56.0)
+        context.translateBy(x: 0.0, y: 56.0)
         
         drawGridlines(context, x: 0.0, width: width)
     }
     
-    private func drawGridlines(context: CGContextRef, x: CGFloat, width: CGFloat) {
+    fileprivate func drawGridlines(_ context: CGContext, x: CGFloat, width: CGFloat) {
         
         var y: CGFloat = -48.5
         
         while y <= 48.5 {
-            CGContextMoveToPoint(context, x, y);
-            CGContextAddLineToPoint(context, x + width, y)
+            context.move(to: CGPoint(x: x, y: y));
+            context.addLine(to: CGPoint(x: x + width, y: y))
             y += 16.0
         }
         
-        CGContextSetStrokeColorWithColor(context, graphLineColor.CGColor);
-        CGContextStrokePath(context);
+        context.setStrokeColor(graphLineColor.cgColor);
+        context.strokePath();
     }
     
-    private func commonInit() {
+    fileprivate func commonInit() {
         
-        self.text = UIGraphTextView(frame: CGRectMake(0.0, 0.0, 32.0, 112.0))
+        self.text = UIGraphTextView(frame: CGRect(x: 0.0, y: 0.0, width: 32.0, height: 112.0))
         self.addSubview(self.text)
         
         self.segments = [UIGraphViewSegment]()
@@ -277,11 +319,11 @@ public class UIGraphView: UIView {
         self.current = self.addSegment()
     }
     
-    public func addX(vector: Vector3D) {
+    open func addX(_ vector: Vector3D) {
         
         if self.current.addX(vector) {
             self.recycleSegment()
-            self.current.addX(vector)
+            let _ = self.current.addX(vector)
         }
         
         for segment in self.segments {
@@ -295,7 +337,7 @@ public class UIGraphView: UIView {
         }
     }
     
-    private func addSegment() -> UIGraphViewSegment {
+    fileprivate func addSegment() -> UIGraphViewSegment {
         
         let segment: UIGraphViewSegment = UIGraphViewSegment()
         segment.graphBackgroundColor = graphBackgroundColor
@@ -303,23 +345,22 @@ public class UIGraphView: UIView {
         segment.graphXColor = graphXColor
         segment.graphYColor = graphYColor
         segment.graphZColor = graphZColor
-        self.segments.insert(segment, atIndex: 0)
+        self.segments.insert(segment, at: 0)
         self.layer.insertSublayer(segment.layer, below: self.text.layer)
         segment.layer.position = kSegmentInitialPosition
         return segment
     }
     
-    private func recycleSegment() {
+    fileprivate func recycleSegment() {
         
         let last = self.segments.last!
         if last.isVisibleInRect(self.layer.bounds) {
             
             self.current = self.addSegment()
-        }
-        else {
+        } else {
             last.reset()
             last.layer.position = kSegmentInitialPosition
-            self.segments.insert(last, atIndex: 0)
+            self.segments.insert(last, at: 0)
             self.segments.removeLast()
             self.current = last
         }

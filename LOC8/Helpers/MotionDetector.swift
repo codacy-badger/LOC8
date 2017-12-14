@@ -8,27 +8,36 @@
 
 import Foundation
 
-public class MotinDetector: NSObject {
+open class MotinDetector: NSObject {
+    
+    /// Get currently used MotinDetector, singleton pattern
+    public static let shared = MotinDetector()
     
     //MARK:Filters
     
     //Acceleration
-    private var filter: AccelerationFilter!
+    fileprivate var filter: AccelerationFilter!
     
-    public var cutoffFrequency: Double = SettingsService.sharedInstance.accelerationFilterCutoffFrequency {
-        didSet { setupFilter() }
+    open var cutoffFrequency: Double = SettingsService.shared.accelerationFilterCutoffFrequency {
+        didSet {
+            setupFilter()
+        }
     }
     
-    public var filterType: FilterType = SettingsService.sharedInstance.accelerationFilterType {
-        didSet { setupFilter() }
+    open var filterType: FilterType = SettingsService.shared.accelerationFilterType {
+        didSet {
+            setupFilter()
+        }
     }
     
-    public var adaptiveFilter: Bool = SettingsService.sharedInstance.accelerationAdaptiveFilter  {
-        didSet { filter.adaptive = adaptiveFilter }
+    open var adaptiveFilter: Bool = SettingsService.shared.accelerationAdaptiveFilter  {
+        didSet {
+            filter.adaptive = adaptiveFilter
+        }
     }
     
     
-    public var acceleration: Acceleration {
+    open var acceleration: Acceleration {
         set {
             filter.addValue(newValue)
         }
@@ -54,40 +63,27 @@ public class MotinDetector: NSObject {
     private(set) var traveledDistance: Distance = Distance()
     
     
-    /**
-     * Get currently used MotinDetector, singleton pattern
-     *
-     * - Returns: `MotinDetector`
-     */
-    class var sharedInstance: MotinDetector {
-        struct Singleton {
-            static let instance = MotinDetector()
-        }
-        
-        return Singleton.instance
-    }
     
     override init() {
         super.init()
         setupFilter()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MotinDetector.didUpdateDeviceMotion(_:)), name: NotificationKey.DeviceMotionUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MotinDetector.didUpdateDeviceMotion(_:)), name: SensorsManager.DeviceMotionUpdateNotification, object: nil)
         
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DeviceMotionUpdate, object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.DeviceMotionUpdateNotification, object: nil)
     }
     
-    
-    private func setupFilter() {
-        let rat = SensorsManager.sharedInstance.motionManagerSamplingFrequency
+    fileprivate func setupFilter() {
+        let rat = SensorsManager.shared.motionManagerSamplingFrequency
         self.filter = AccelerationFilter(type: self.filterType, rate: rat, cutoffFrequency: self.cutoffFrequency)
         self.filter.adaptive = self.adaptiveFilter
         self.velocity = Velocity()
         self.distance = Distance()
     }
     
-    public func didUpdateDeviceMotion(notification: NSNotification) {
+    @objc open func didUpdateDeviceMotion(_ notification: Notification) {
         
         let userInfo = notification.userInfo!
         

@@ -31,13 +31,13 @@ class LineNode: SCNNode
         parent.addChildNode(ndV2)
         
         let ndZAlign = SCNNode()
-        ndZAlign.eulerAngles.x = Float(M_PI_2)
+        ndZAlign.eulerAngles.x = Float((Double.pi / 2))
         
         let cylgeo = SCNCylinder(radius: radius, height: CGFloat(height))
         cylgeo.radialSegmentCount = radSegmentCount
         let mat = SCNMaterial()
-        mat.diffuse.contents  = UIColor.whiteColor()
-        mat.specular.contents = UIColor.whiteColor()
+        mat.diffuse.contents  = UIColor.white
+        mat.specular.contents = UIColor.white
         cylgeo.materials = [mat]
         
         let ndCylinder = SCNNode(geometry: cylgeo )
@@ -89,34 +89,34 @@ class Cylinder: SCNNode {
         
         switch node.direction! {
             
-        case .East:
+        case .east:
             node.lastPosition = SCNVector3Make(node.lastPosition.x + height, node.lastPosition.y, node.lastPosition.z)
-            cylinder.firstMaterial?.diffuse.contents = UIColor.redColor()
-            node.rotation = SCNVector4Make(0, 0, 1, degreesToRadians(90))
+            cylinder.firstMaterial?.diffuse.contents = UIColor.red
+            node.rotation = SCNVector4Make(0, 0, 1, Float(90.0.radian))
             
-        case .West:
+        case .west:
             node.lastPosition = SCNVector3Make(node.lastPosition.x - height, node.lastPosition.y, node.lastPosition.z)
-            cylinder.firstMaterial?.diffuse.contents = UIColor.greenColor()
-            node.rotation = SCNVector4Make(0, 0, 1, degreesToRadians(-90))
+            cylinder.firstMaterial?.diffuse.contents = UIColor.green
+            node.rotation = SCNVector4Make(0, 0, 1, Float(-90.0.radian))
             
-        case .North:
+        case .north:
             node.lastPosition = SCNVector3Make(node.lastPosition.x, node.lastPosition.y, node.lastPosition.z - height)
-            cylinder.firstMaterial?.diffuse.contents = UIColor.whiteColor()
-            node.rotation = SCNVector4Make(1, 0, 0, degreesToRadians(-90))
+            cylinder.firstMaterial?.diffuse.contents = UIColor.white
+            node.rotation = SCNVector4Make(1, 0, 0, Float(-90.0.radian))
             
-        case .South:
+        case .south:
             node.lastPosition = SCNVector3Make(node.lastPosition.x, node.lastPosition.y, node.lastPosition.z + height)
-            cylinder.firstMaterial?.diffuse.contents = UIColor.blueColor()
-            node.rotation = SCNVector4Make(1, 0, 0, degreesToRadians(90))
+            cylinder.firstMaterial?.diffuse.contents = UIColor.blue
+            node.rotation = SCNVector4Make(1, 0, 0, Float(90.0.radian))
             
-        case .Up:
+        case .up:
             node.lastPosition = SCNVector3Make(node.lastPosition.x, node.lastPosition.y + height, node.lastPosition.z)
-            cylinder.firstMaterial?.diffuse.contents = UIColor.yellowColor()
+            cylinder.firstMaterial?.diffuse.contents = UIColor.yellow
             
-        case .Down:
+        case .down:
             node.lastPosition = SCNVector3Make(node.lastPosition.x, node.lastPosition.y - height, node.lastPosition.z)
-            cylinder.firstMaterial?.diffuse.contents = UIColor.orangeColor()
-            node.rotation = SCNVector4Make(1, 0, 0, degreesToRadians(180))
+            cylinder.firstMaterial?.diffuse.contents = UIColor.orange
+            node.rotation = SCNVector4Make(1, 0, 0, Float(180.0.radian))
             
         default: break
             
@@ -128,7 +128,7 @@ class Cylinder: SCNNode {
         return node
     }
     
-    func createTextNode(text: String) {
+    func createTextNode(_ text: String) {
         
     }
     

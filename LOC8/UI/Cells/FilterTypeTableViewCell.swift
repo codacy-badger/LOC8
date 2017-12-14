@@ -10,11 +10,11 @@ import UIKit
 
 public typealias FilterTypeHandler = (FilterType) -> Void
 
-public class FilterTypeTableViewCell: UITableViewCell {
+open class FilterTypeTableViewCell: UITableViewCell {
     
-    @IBOutlet public weak var typeSegmentedControl: UISegmentedControl!
+    @IBOutlet open weak var typeSegmentedControl: UISegmentedControl!
     
-    public var type: FilterType{
+    open var type: FilterType{
         set {
             typeSegmentedControl.selectedSegmentIndex = indexFor(newValue)
             handler?(newValue)
@@ -25,19 +25,19 @@ public class FilterTypeTableViewCell: UITableViewCell {
         }
     }
     
-    private var handler: FilterTypeHandler?
+    fileprivate var handler: FilterTypeHandler?
     
-    @IBAction public func typeSegmentedControlChangeValue(sender: UISegmentedControl) {
+    @IBAction open func typeSegmentedControlChangeValue(_ sender: UISegmentedControl) {
         self.type = typeFor(sender.selectedSegmentIndex)
     }
     
-    public func initialize(type: FilterType, handler: FilterTypeHandler) {
+    open func initialize(_ type: FilterType, handler: @escaping FilterTypeHandler) {
         self.type = type
         self.handler = handler
     }
     
     
-    private func typeFor(index: Int) -> FilterType {
+    fileprivate func typeFor(_ index: Int) -> FilterType {
         switch index {
         case 1: return .Lowpass
         case 2: return .Highpass
@@ -45,7 +45,7 @@ public class FilterTypeTableViewCell: UITableViewCell {
         }
     }
     
-    private func indexFor(type: FilterType) -> Int {
+    fileprivate func indexFor(_ type: FilterType) -> Int {
         switch type {
         case .Non: return 0
         case .Lowpass: return 1

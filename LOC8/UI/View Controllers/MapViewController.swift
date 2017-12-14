@@ -10,25 +10,25 @@ import UIKit
 import CoreLocation
 import SceneKit
 
-public class MapViewController: UIViewController {
+open class MapViewController: UIViewController {
     
     //MARK:Properties
     @IBOutlet weak var compass: UICompassView!
     
     @IBOutlet var sceneView: SCNView!
     
-    public var isStart: Bool = false
+    open var isStart: Bool = false
     
-    public var trackingSession: TrackingSession!
+    open var trackingSession: TrackingSession!
     
-    public var path: Path!
+    open var path: Path!
     
-    public var camera: SCNNode {
+    open var camera: SCNNode {
         return self.sceneView.scene!.rootNode.childNodes[0]
     }
     
     //MARK:Lifcycle
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
 //        path.movements = [Movement(distance: 10, direction: .Straight), Movement(distance: 10, direction: .Right), Movement(distance: 2, direction: .Right), Movement(distance: 3, direction: .Upwards), Movement(distance: 5, direction: .Straight), Movement(distance: 2, direction: .Left), Movement(distance: 2, direction: .Downwards), Movement(distance: 4, direction: .Backwards)]
@@ -36,17 +36,17 @@ public class MapViewController: UIViewController {
         self.setupScene()
     }
     
-    override public func viewWillAppear(animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MapViewController.didUpdateHeading(_:)), name: NotificationKey.HeadingUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.didUpdateHeading(_:)), name: SensorsManager.HeadingUpdateNotification, object: nil)
     }
     
-    override public func viewDidDisappear(animated: Bool) {
+    override open func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.HeadingUpdate, object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.HeadingUpdateNotification, object: nil)
     }
     
-    public func setupScene() {
+    open func setupScene() {
         // create a new scene
         let scene = SCNScene()
         
@@ -58,15 +58,15 @@ public class MapViewController: UIViewController {
         // create and add a light to the scene
         let lightNode = SCNNode()
         lightNode.light = SCNLight()
-        lightNode.light!.type = SCNLightTypeOmni
+        lightNode.light!.type = SCNLight.LightType.omni
         lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
         scene.rootNode.addChildNode(lightNode)
         
         // create and add an ambient light to the scene
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLightTypeAmbient
-        ambientLightNode.light!.color = UIColor.darkGrayColor()
+        ambientLightNode.light!.type = SCNLight.LightType.ambient
+        ambientLightNode.light!.color = UIColor.darkGray
         scene.rootNode.addChildNode(ambientLightNode)
         
         // set the scene to the view
@@ -79,11 +79,11 @@ public class MapViewController: UIViewController {
         self.sceneView.showsStatistics = true
         
         // configure the view
-        self.sceneView.backgroundColor = UIColor.blackColor()
+        self.sceneView.backgroundColor = UIColor.black
         
         
-        let panGesture = UIPanGestureRecognizer(target: self.camera, action: Selector("pan:"))
-        self.sceneView.addGestureRecognizer(panGesture)
+//        let panGesture = UIPanGestureRecognizer(target: self.camera, action: Selector("pan:"))
+//        self.sceneView.addGestureRecognizer(panGesture)
         // add a tap gesture recognizer
 //        let tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
 //        self.sceneView.addGestureRecognizer(tapGesture)
@@ -97,11 +97,13 @@ public class MapViewController: UIViewController {
         
         var lastPosition = SCNVector3Make(0, 0, 0)
         var index = 0
-        var lastDirection: Direction = .North // whatever, it will be reset
+        var lastDirection: Direction = .north // whatever, it will be reset
         let scene = self.sceneView.scene!
         
         //Clear all the previous nodes
-        for node in scene.rootNode.childNodes { node.removeFromParentNode() }
+        for node in scene.rootNode.childNodes {
+            node.removeFromParentNode()
+        }
         
         //Draw the new nodes
         for movement in path.movements {
@@ -114,7 +116,7 @@ public class MapViewController: UIViewController {
             
             let sphereNode = SCNNode(geometry: sphere)
             if index == 0 {
-                sphere.firstMaterial?.diffuse.contents = UIColor.magentaColor()
+                sphere.firstMaterial?.diffuse.contents = UIColor.magenta
             }
             sphereNode.position = lastPosition
             scene.rootNode.addChildNode(sphereNode)
@@ -140,14 +142,14 @@ public class MapViewController: UIViewController {
     }
     
     //MARK:Event contolles and IBActions
-    public func refreshSchene() {
+    open func refreshSchene() {
         if self.trackingSession != nil {
             path = Path(data: self.trackingSession.trackingMap())
             self.drawData()
         }
     }
     
-    @IBAction func controllDidPressed(sender: UIBarButtonItem) {
+    @IBAction func controllDidPressed(_ sender: UIBarButtonItem) {
         
         isStart = !isStart
         
@@ -160,8 +162,7 @@ public class MapViewController: UIViewController {
                 self.refreshSchene()
                 
             }
-        }
-        else {
+        } else {
 //            sender.backgroundColor = UIColor(red:0.48, green:0.8, blue:0.26, alpha:1)
             sender.title = "▶︎"
             self.trackingSession.stopTraking()
@@ -171,13 +172,13 @@ public class MapViewController: UIViewController {
     }
     
     //MARK:Receiving and handling motion values
-    public func didUpdateHeading(notification: NSNotification) {
+    @objc open func didUpdateHeading(_ notification: Notification) {
         
         let heading = notification.userInfo![DefaultKeys.HeadingKey] as! CLHeading
         
         let angle = heading.magneticHeading
         
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             self.compass.angle = CGFloat(-angle)
         }
     }

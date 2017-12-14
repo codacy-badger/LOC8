@@ -11,6 +11,9 @@ import SceneKit
 
 class PathManager {
     
+    ///Get currently used PathManager, singleton pattern
+    static let shared: PathManager  = PathManager()
+    
     let startPoint = SCNVector3Make(0, 0, 0)
     var movements: [Movement] = []
 
@@ -18,7 +21,7 @@ class PathManager {
 //        self.initData()
     }
     
-    func initData(data: [Heading]) {
+    func initData(_ data: [Motion]) {
         
         self.movements = []
         
@@ -27,27 +30,17 @@ class PathManager {
         }
         
         self.movements = [
-            Movement(distance: 10, direction: .North),
-            Movement(distance: 10, direction: .East),
-            Movement(distance: 2, direction: .East),
-            Movement(distance: 3, direction: .Up),
-            Movement(distance: 5, direction: .North),
-            Movement(distance: 2, direction: .West),
-            Movement(distance: 2, direction: .Down),
-            Movement(distance: 4, direction: .South)
+            Movement(distance: 10, direction: .north),
+            Movement(distance: 10, direction: .east),
+            Movement(distance: 2, direction: .east),
+            Movement(distance: 3, direction: .up),
+            Movement(distance: 5, direction: .north),
+            Movement(distance: 2, direction: .west),
+            Movement(distance: 2, direction: .down),
+            Movement(distance: 4, direction: .south)
         ]
     }
     
     
     
-}
-
-extension PathManager {
-    class var sharedInstance: PathManager {
-        struct Signleton {
-            static let instance = PathManager()
-        }
-        
-        return Signleton.instance
-    }
 }
