@@ -12,13 +12,14 @@
 		4D40F5731FE27C4C006FDB69 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF6B1FE23B00006B6035 /* Angle.swift */; };
 		4D40F5741FE27C4C006FDB69 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BFA631CAA8A1E001AA782 /* Physics.swift */; };
 		4D40F5751FE27C4C006FDB69 /* MotionActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD71CA68A1B00AB4885 /* MotionActivity.swift */; };
-		4D40F5761FE27C4C006FDB69 /* Estimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD41CA68A1B00AB4885 /* Estimation.swift */; };
-		4D40F5771FE27C4C006FDB69 /* TrackingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD91CA68A1B00AB4885 /* TrackingSession.swift */; };
 		4D40F5781FE27C4C006FDB69 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD51CA68A1B00AB4885 /* Filter.swift */; };
 		4D40F5791FE27C4C006FDB69 /* MagneticField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F56F1FE27652006FDB69 /* MagneticField.swift */; };
 		4D40F57A1FE27C4C006FDB69 /* Accuracy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5711FE27A7F006FDB69 /* Accuracy.swift */; };
 		4D40F57C1FE27F5F006FDB69 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F57B1FE27F5F006FDB69 /* LogLevel.swift */; };
 		4D40F57E1FE27FA4006FDB69 /* LogRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F57D1FE27FA4006FDB69 /* LogRecord.swift */; };
+		4D40F57F1FE2802B006FDB69 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F57B1FE27F5F006FDB69 /* LogLevel.swift */; };
+		4D40F5801FE2802B006FDB69 /* LogRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F57D1FE27FA4006FDB69 /* LogRecord.swift */; };
+		4D40F5811FE28032006FDB69 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD11CA68A1B00AB4885 /* Log.swift */; };
 		4D5BFA641CAA8A1E001AA782 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BFA631CAA8A1E001AA782 /* Physics.swift */; };
 		4DC647811CAF9A1F007AB5D7 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC647801CAF9A1F007AB5D7 /* MotionDetector.swift */; };
 		4DCDBB961CA6895800AB4885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBB951CA6895800AB4885 /* AppDelegate.swift */; };
@@ -510,11 +511,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D40F5811FE28032006FDB69 /* Log.swift in Sources */,
+				4D40F57F1FE2802B006FDB69 /* LogLevel.swift in Sources */,
+				4D40F5801FE2802B006FDB69 /* LogRecord.swift in Sources */,
 				4D40F5731FE27C4C006FDB69 /* Angle.swift in Sources */,
 				4D40F5741FE27C4C006FDB69 /* Physics.swift in Sources */,
 				4D40F5751FE27C4C006FDB69 /* MotionActivity.swift in Sources */,
-				4D40F5761FE27C4C006FDB69 /* Estimation.swift in Sources */,
-				4D40F5771FE27C4C006FDB69 /* TrackingSession.swift in Sources */,
 				4D40F5781FE27C4C006FDB69 /* Filter.swift in Sources */,
 				4D40F5791FE27C4C006FDB69 /* MagneticField.swift in Sources */,
 				4D40F57A1FE27C4C006FDB69 /* Accuracy.swift in Sources */,
@@ -627,6 +629,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -675,6 +678,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -729,6 +733,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -747,6 +752,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

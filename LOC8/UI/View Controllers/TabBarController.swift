@@ -60,13 +60,13 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TabBarController.didReceiveInvetation(_:)), name: NSNotification.Name(rawValue: MultipeerManagerKeys.ReceivedInvitation), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TabBarController.didReceiveInvetation(_:)), name: MultipeerManager.ReceivedInvitationNotification, object: nil)
     }
     
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: MultipeerManagerKeys.FoundPeer), object: nil)
+        NotificationCenter.default.removeObserver(self, name: MultipeerManager.FoundPeerNotification, object: nil)
     }
     
     

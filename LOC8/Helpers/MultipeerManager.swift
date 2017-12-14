@@ -11,16 +11,6 @@ import MultipeerConnectivity
 
 public struct MultipeerManagerKeys {
     
-    public static let FoundPeer: String = "FoundPeer"
-    
-    public static let LostPeer: String = "LostPeer"
-    
-    public static let ReceivedInvitation: String = "ReceivedInvitation"
-    
-    public static let ConnectionStateChanged: String = "ConnectionStateChanged"
-    
-    public static let ReceivedData: String = "ReceivedData"
-    
     public static let PeerId: String = "PeerId"
     
     public static let Data: String = "SessionData"
@@ -32,6 +22,21 @@ open class MultipeerManager: NSObject {
     
     /// Get currently used MultipeerManager, singleton pattern
     public static let shared = MultipeerManager()
+    
+    ///Returns the found peer update notification. Which is use to register with notification center.
+    public static let FoundPeerNotification = Notification.Name(rawValue: "FoundPeer")
+    
+    ///Returns the lost peer update notification. Which is use to register with notification center.
+    public static let LostPeerNotification = Notification.Name(rawValue: "LostPeer")
+    
+    ///Returns the received invitation update notification. Which is use to register with notification center.
+    public static let ReceivedInvitationNotification = Notification.Name(rawValue: "ReceivedInvitation")
+    
+    ///Returns the Connection state did changed notification. Which is use to register with notification center.
+    public static let ConnectionStateChangedNotification = Notification.Name(rawValue: "ConnectionStateChanged")
+    
+    ///Returns the received data update notification. Which is use to register with notification center.
+    public static let ReceivedDataNotification = Notification.Name(rawValue: "ReceivedData")
     
     open let ServiceType: String = "LOC8"
     
@@ -76,7 +81,7 @@ open class MultipeerManager: NSObject {
         #if os(iOS)
             peer = MCPeerID(displayName: UIDevice.current.name)
         #else
-            peer = MCPeerID(displayName: NSHost.currentHost().localizedName!)
+            peer = MCPeerID(displayName: Host.current().localizedName!)
         #endif
         
         session = MCSession(peer: peer)
@@ -121,7 +126,7 @@ extension MultipeerManager: MCNearbyServiceBrowserDelegate {
         
         let userInfo: [AnyHashable: Any] = [MultipeerManagerKeys.PeerId: peerID]
         
-        NotificationCenter.default.post(name: Notification.Name(rawValue: MultipeerManagerKeys.FoundPeer), object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: MultipeerManager.FoundPeerNotification, object: nil, userInfo: userInfo)
         
     }
     
@@ -139,7 +144,7 @@ extension MultipeerManager: MCNearbyServiceBrowserDelegate {
         
         let userInfo: [AnyHashable: Any] = [MultipeerManagerKeys.PeerId: peerID]
         
-        NotificationCenter.default.post(name: Notification.Name(rawValue: MultipeerManagerKeys.LostPeer), object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: MultipeerManager.LostPeerNotification, object: nil, userInfo: userInfo)
     }
     
     public func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
@@ -156,7 +161,7 @@ extension MultipeerManager: MCNearbyServiceAdvertiserDelegate {
         
         let userInfo: [AnyHashable: Any] = [MultipeerManagerKeys.PeerId: peerID]
         
-        NotificationCenter.default.post(name: Notification.Name(rawValue: MultipeerManagerKeys.ReceivedInvitation), object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: MultipeerManager.ReceivedInvitationNotification, object: nil, userInfo: userInfo)
     }
     
     public func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
@@ -179,7 +184,7 @@ extension MultipeerManager: MCSessionDelegate {
         
         self.foundPeersStats[peerID.displayName] = state
         
-        NotificationCenter.default.post(name: Notification.Name(rawValue: MultipeerManagerKeys.ConnectionStateChanged), object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: MultipeerManager.ConnectionStateChangedNotification, object: nil, userInfo: userInfo)
         
         debugPrint("Did change state: \(state.description)")
     }
@@ -193,7 +198,7 @@ extension MultipeerManager: MCSessionDelegate {
                 MultipeerManagerKeys.PeerId: peerID
             ]
         
-        NotificationCenter.default.post(name: Notification.Name(rawValue: MultipeerManagerKeys.ReceivedData), object: userInfo)
+        NotificationCenter.default.post(name: MultipeerManager.ReceivedDataNotification, object: userInfo)
         
         debugPrint("Did receive data: \(data)")
     }

@@ -38,7 +38,7 @@ open class settingsViewController: UITableViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(settingsViewController.didUpdateConnectionStatus(_:)), name: NSNotification.Name(rawValue: MultipeerManagerKeys.ConnectionStateChanged), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(settingsViewController.didUpdateConnectionStatus(_:)), name: MultipeerManager.ConnectionStateChangedNotification, object: nil)
     }
     
     override open func viewDidAppear(_ animated: Bool) {

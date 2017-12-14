@@ -14,9 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        MultipeerManager.shared
-            self.setNeedsDisplay()
-        }.isBrowsing = true
+        MultipeerManager.shared.isBrowsing = true
         
     }
 

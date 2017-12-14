@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import CoreMotion
-import CoreLocation
 
 /**
  # TrackingSession

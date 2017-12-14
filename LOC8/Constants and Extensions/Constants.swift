@@ -35,17 +35,4 @@ public struct DefaultKeys {
     public static let VelocityKey = "velocity"
 }
 
-public struct UserDefaultKeys {
-    
-    public static let FirstLunchKey = "first-lunch"
-    public static let ColorIndexKey = "color-index"
-    public static let EnableAnimationKey = "enable-animation"
-    public static let AnimationDurationKey = "animation-duration"
-    public static let MotionManagerSamplingFrequencyKey = "motion-manager-sampling-frequency"
-    public static let AccelerationFilterCutoffFrequencyKey = "acceleration-filter-cutoff-frequency"
-    public static let AccelerationFilterTypeKey = "acceleration-filter-type"
-    public static let AccelerationAdaptiveFilterKey = "acceleration-adaptive-filter"
-    public static let VelocityFilterCutoffFrequencyKey = "velocity-filter-cutoff-frequency"
-    public static let VelocityFilterTypeKey = "velocity-filter-type"
-    public static let VelocityAdaptiveFilterKey = "velocity-adaptive-filter"
-}
+
