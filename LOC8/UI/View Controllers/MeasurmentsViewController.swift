@@ -94,8 +94,8 @@ extension MeasurmentsViewController {
         let rotationRate = userInfo[DefaultKeys.RotationRateKey] as! Vector3D
         
         
-        let acceleration = MotinDetector.sharedInstance.acceleration
-        let velocity = MotinDetector.sharedInstance.finalVelocity
+        let acceleration = MotinDetector.shared.acceleration
+        let velocity = MotinDetector.shared.finalVelocity
         
         attitudeCell.rotation = attitude
         

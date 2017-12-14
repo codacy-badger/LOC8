@@ -43,11 +43,5 @@ class PathManager {
 }
 
 extension PathManager {
-    class var sharedInstance: PathManager {
-        struct Signleton {
-            static let instance = PathManager()
-        }
-        
-        return Signleton.instance
-    }
+    static let shared: PathManager  = PathManager()
 }

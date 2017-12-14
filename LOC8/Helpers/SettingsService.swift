@@ -18,11 +18,11 @@ open class SettingsService {
     }
     
     fileprivate var sensorsManager: SensorsManager {
-        return SensorsManager.sharedInstance
+        return SensorsManager.shared
     }
     
     fileprivate var motionDetector: MotinDetector {
-        return MotinDetector.sharedInstance
+        return MotinDetector.shared
     }
     
     //MARK:General Settings
@@ -142,13 +142,7 @@ open class SettingsService {
      *
      * - Returns: `SettingsService`
      */
-    class var sharedInstance: SettingsService {
-        struct Singleton {
-            static let instance = SettingsService()
-        }
-        
-        return Singleton.instance
-    }
+    public static let shared = SettingsService()
     
     public init() {
         if let _ = defaults.object(forKey: UserDefaultKeys.FirstLunchKey) {

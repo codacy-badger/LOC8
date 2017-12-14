@@ -15,19 +15,19 @@ open class MotinDetector: NSObject {
     //Acceleration
     fileprivate var filter: AccelerationFilter!
     
-    open var cutoffFrequency: Double = SettingsService.sharedInstance.accelerationFilterCutoffFrequency {
+    open var cutoffFrequency: Double = SettingsService.shared.accelerationFilterCutoffFrequency {
         didSet {
             setupFilter()
         }
     }
     
-    open var filterType: FilterType = SettingsService.sharedInstance.accelerationFilterType {
+    open var filterType: FilterType = SettingsService.shared.accelerationFilterType {
         didSet {
             setupFilter()
         }
     }
     
-    open var adaptiveFilter: Bool = SettingsService.sharedInstance.accelerationAdaptiveFilter  {
+    open var adaptiveFilter: Bool = SettingsService.shared.accelerationAdaptiveFilter  {
         didSet {
             filter.adaptive = adaptiveFilter
         }
@@ -65,13 +65,7 @@ open class MotinDetector: NSObject {
      *
      * - Returns: `MotinDetector`
      */
-    class var sharedInstance: MotinDetector {
-        struct Singleton {
-            static let instance = MotinDetector()
-        }
-        
-        return Singleton.instance
-    }
+    public static let shared = MotinDetector()
     
     override init() {
         super.init()
@@ -86,7 +80,7 @@ open class MotinDetector: NSObject {
     
     
     fileprivate func setupFilter() {
-        let rat = SensorsManager.sharedInstance.motionManagerSamplingFrequency
+        let rat = SensorsManager.shared.motionManagerSamplingFrequency
         self.filter = AccelerationFilter(type: self.filterType, rate: rat, cutoffFrequency: self.cutoffFrequency)
         self.filter.adaptive = self.adaptiveFilter
         self.velocity = Velocity()

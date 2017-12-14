@@ -79,13 +79,13 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
         let alert = UIAlertController(title: "", message: "\(peer.displayName) wants to connect with you.", preferredStyle: UIAlertControllerStyle.alert)
         
         let acceptAction: UIAlertAction = UIAlertAction(title: "Accept", style: UIAlertActionStyle.default) { (alertAction) -> Void in
-            MultipeerManager.sharedInstance.invitationHandler?(true, MultipeerManager.sharedInstance.session)
+            MultipeerManager.shared.invitationHandler?(true, MultipeerManager.shared.session)
             self.peer = peer
         }
         alert.addAction(acceptAction)
         
         let declineAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (alertAction) -> Void in
-            MultipeerManager.sharedInstance.invitationHandler?(false, MultipeerManager.sharedInstance.session)
+            MultipeerManager.shared.invitationHandler?(false, MultipeerManager.shared.session)
         }
         alert.addAction(declineAction)
         
@@ -102,7 +102,7 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
         
         let data = ["message":type(of: viewController).description()]
         if let peer = self.peer {
-            MultipeerManager.sharedInstance.sendData(dictionaryWithData: data, toPeer: peer)
+            let _ = MultipeerManager.shared.sendData(dictionaryWithData: data, toPeer: peer)
         }
         
     }

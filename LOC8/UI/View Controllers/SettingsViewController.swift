@@ -31,7 +31,7 @@ open class settingsViewController: UITableViewController {
     @IBOutlet weak var accelerationAdaptiveSwitchCell: SwitchTableViewCell!
     
     fileprivate var settings: SettingsService {
-        return SettingsService.sharedInstance
+        return SettingsService.shared
     }
     
     //MARK:Lifcycle

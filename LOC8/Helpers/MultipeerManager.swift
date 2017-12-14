@@ -72,13 +72,7 @@ open class MultipeerManager: NSObject {
      *
      * - Returns: `MultipeerManager`
      */
-    open class var sharedInstance: MultipeerManager {
-        struct Singleton {
-            static let instance = MultipeerManager()
-        }
-        
-        return Singleton.instance
-    }
+    public static let shared = MultipeerManager()
     
     override init() {
         super.init()

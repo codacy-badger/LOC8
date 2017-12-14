@@ -15,7 +15,7 @@ open class SensorsManager: NSObject {
     //MARK:Filters
     
     //Motion Manager
-    open var motionManagerSamplingFrequency: Double = SettingsService.sharedInstance.motionManagerSamplingFrequency {
+    open var motionManagerSamplingFrequency: Double = SettingsService.shared.motionManagerSamplingFrequency {
         didSet {
             setupMotionManager()
         }
@@ -62,13 +62,7 @@ open class SensorsManager: NSObject {
      *
      * - Returns: `SensorsManager`
      */
-    class var sharedInstance: SensorsManager {
-        struct Singleton {
-            static let instance = SensorsManager()
-        }
-        
-        return Singleton.instance
-    }
+    public static let shared = SensorsManager()
     
     public override init() {
         super.init()
