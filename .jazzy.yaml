@@ -1,58 +1,53 @@
 # Run jazzy from the current directory to generate documentation.
 
-module: LOC8
-author: LOC8
+module: 'LOC8'
+author: 'LOC8'
 # author_url: https://www.LOC8.com
-copyright: 'Copyright © 2015 LOC8. All rights reserved.'
-github_url: https://bitbucket.org/loc8/loc8
-min_acl: public
-output: docs/jazzy
+copyright: Copyright © 2017 LOC8. All rights reserved.'
+github_url: 'https://github.com/Marwan-Al-Masri/LOC8'
+min_acl: 'public'
+output: 'docs'
 skip_undocumented: true
 clean: true
-docset_icon: [LOC8/Assets.xcassets/AppIcon.appiconset/Icon.png]
-exclude: [LOC8/UI, LOC8/Graphics, LOC8/Helpers, LOC8/LOC8/Constants\ and\ Extensions]
+docset_icon: 'Icon.png'
+exclude: 'LOC8/UI, LOC8/Graphics, LOC8/Helpers, LOC8/LOC8/Constants\ and\ Extensions'
 # theme: fullwidth
 
-custom_categories:
-    - name: Geometry & Physics
-      children:
-      - Radian
-      - Degree
-      - CartesianVector
-      - PolarVector
-      - Vector3D
-      - EulerAngles
-      - RotationMatrix
-      - Quaternion
-      - Rotation3D
-      - Physics
-      - Measurement
-      - Acceleration
-      - Velocity
-      - Distance
-    - name: Models
-      children:
-        - Filter
-        - FilterType
-        - AccelerationFilter
-        - Direction
-        - Heading
-        - MotionActivityConfidence
-        - MotionActivityStatus
-        - MotionActivity
-        - EstimationHandler
-        - Estimation
-        - TrackingSession
-    - name: Generic
-      children:
-      - degreesToRadians
-      - degreesToRadians
-      - clamp
-      - wrap
-      - ^
-      - ~
-
-# Keep this until Cocoadocs is using a Jazzy release with the updated config keys:
-module_name: LOC8
-author_name: LOC8
-excluded_files: [LOC8/UI, LOC8/Graphics, LOC8/Helpers, LOC8/LOC8/Constants\ and\ Extensions]
+# custom_categories:
+#     - name: Geometry & Physics
+#       children:
+#       - Radian
+#       - Degree
+#       - CartesianVector
+#       - PolarVector
+#       - Vector3D
+#       - EulerAngles
+#       - RotationMatrix
+#       - Quaternion
+#       - Rotation3D
+#       - Physics
+#       - Measurement
+#       - Acceleration
+#       - Velocity
+#       - Distance
+#     - name: Models
+#       children:
+#         - Filter
+#         - FilterType
+#         - AccelerationFilter
+#         - Direction
+#         - Heading
+#         - MotionActivityConfidence
+#         - MotionActivityStatus
+#         - MotionActivity
+#         - EstimationHandler
+#         - Estimation
+#         - TrackingSession
+#     - name: Generic
+#       children:
+#       - degreesToRadians
+#       - degreesToRadians
+#       - clamp
+#       - wrap
+#       - ^
+#       - ~
