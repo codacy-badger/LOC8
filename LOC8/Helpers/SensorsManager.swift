@@ -273,20 +273,20 @@ open class SensorsManager: NSObject {
         var log = "[Pedometer Data] = {\n"
         
         /* Can we ask for distance updates? */
-        if CMPedometer.isDistanceAvailable(){
+        if CMPedometer.isDistanceAvailable() {
             log += "\t[Distance = \(data.distance!)], #meters\n"
         }
         else { log += "\t[Distance is not available],\n" }
         
         /* Can we ask for floor climb/descending updates? */
-        if CMPedometer.isFloorCountingAvailable(){
+        if CMPedometer.isFloorCountingAvailable() {
             log += "\t[Floors ascended = \(data.floorsAscended!)],\n"
             log += "\t[Floors descended = \(data.floorsDescended!)],\n"
         }
         else { log += "\t[Floor counting is not available],\n" }
         
         /* Can we ask for step counting updates? */
-        if CMPedometer.isStepCountingAvailable(){
+        if CMPedometer.isStepCountingAvailable() {
             log += "\t[Number of steps = \(data.numberOfSteps)]\n"
         }
         else { log += "\t[Number of steps is not available]\n" }

@@ -164,7 +164,7 @@ open class Estimation: Measurement {
      
      - Parameter distance: `Double` value that represent the total distance update.
      */
-    open func stopEstimation(_ distance: Double){
+    open func stopEstimation(_ distance: Double) {
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil)
 //        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DeviceMotionUpdate, object: nil)

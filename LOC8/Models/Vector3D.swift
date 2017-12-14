@@ -27,13 +27,22 @@ open class Vector3D: Measurement {
     fileprivate(set) var cartesianVector: CartesianVector!
     
     ///Double value represent the projection on x-axis.
-    open var x: Double { return cartesianVector.x }
+    open var x: Double {
+        return cartesianVector.x
+        
+    }
     
     ///Double value represent the projection on y-axis.
-    open var y: Double { return cartesianVector.y }
+    open var y: Double {
+        return cartesianVector.y
+        
+    }
     
     ///Double value represent the projection on z-axis.
-    open var z: Double { return cartesianVector.z }
+    open var z: Double {
+        return cartesianVector.z
+        
+    }
     
     //MARK: Polar Properties
     
@@ -41,13 +50,22 @@ open class Vector3D: Measurement {
     fileprivate(set) var polarVector: PolarVector!
     
     ///Radian value represent the angle between the projection on z-axis and xy-plan.
-    open var theta: Radian { return polarVector.theta }
+    open var theta: Radian {
+        return polarVector.theta
+        
+    }
     
     ///Radian value represent the angle between the projection on xy-plan and x-axis.
-    open var lambda: Radian { return polarVector.lambda }
+    open var lambda: Radian {
+        return polarVector.lambda
+        
+    }
     
     ///Double value represent the distance of the vector.
-    open var magnitude: Double { return polarVector.magnitude }
+    open var magnitude: Double {
+        return polarVector.magnitude
+        
+    }
     
     //MARK: Vector Properties
     
@@ -67,7 +85,7 @@ open class Vector3D: Measurement {
     /**
      `Vector3D` Default initializer.
      */
-    public override init(){
+    public override init() {
         super.init()
         self.cartesianVector = CartesianVector()
         self.polarVector = self.cartesianVector.polarVector
@@ -76,10 +94,9 @@ open class Vector3D: Measurement {
     /**
       Initialize Vector3D object in cartesian form.
      
-      - Parameters:
-      	- x: Double value represent the projection on x-axis.
-      	- y: Double value represent the projection on y-axis.
-      	- z: Double value represent the projection on z-axis.
+      - Parameter x: Double value represent the projection on x-axis.
+      - Parameter y: Double value represent the projection on y-axis.
+      - Parameter z: Double value represent the projection on z-axis.
      */
     public init(x: Double, y: Double, z: Double) {
         super.init()
@@ -90,10 +107,9 @@ open class Vector3D: Measurement {
     /**
       Initialize Vector3D object in polar form.
      
-      - Parameters:
-      	- magnitude: Double value represent the vector magnitude.
-      	- theta: Radian value represent the vector theta.
-      	- lambda: Radian value represent the vector lambda.
+      - Parameter magnitude: Double value represent the vector magnitude.
+      - Parameter theta: Radian value represent the vector theta.
+      - Parameter lambda: Radian value represent the vector lambda.
      */
     public init(magnitude: Double, theta: Radian, lambda: Radian) {
         super.init()
@@ -104,10 +120,9 @@ open class Vector3D: Measurement {
     /**
       Initialize Vector3D object with a unit value.
      
-      - Parameters:
-      	- value: Double value represent the vector x y z value.
+      - Parameter value: Double value represent the vector x y z value.
      */
-    public init(value: Double){
+    public init(value: Double) {
         super.init()
         cartesianVector = CartesianVector(x: value, y: value, z: value)
         self.polarVector = self.cartesianVector.polarVector
@@ -139,7 +154,7 @@ open class Vector3D: Measurement {
      - Warning: Please make note that this method is only available for iOS 8.1 or later.
      */
     @available(iOS 8.1, *)
-    public convenience init(rotationRate: CMRotationRate){
+    public convenience init(rotationRate: CMRotationRate) {
         self.init(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z)
     }
     #endif
@@ -157,8 +172,7 @@ prefix operator ~
 /**
   A uniry operator calculate the length of a vector (Norm).
  
-  - Parameters:
-  	- vector: Vector3D object.
+  - Parameter vector: Vector3D object.
  
   - Returns: length of the vector.
  */
@@ -170,13 +184,12 @@ infix operator ~
 /**
   An operator that apply dot product for two vectors.
  
-  - Parameters:
-  	- left: Vector3D object represent the left side.
-  	- right: Vector3D object represent the right side.
+  - Parameter left: Vector3D object represent the left side.
+  - Parameter right: Vector3D object represent the right side.
  
   - Returns: a Vector3D object represent the result.
  */
-public func ~ (left: Vector3D, right: Vector3D) -> Double{
+public func ~ (left: Vector3D, right: Vector3D) -> Double {
     let x = left.x - right.x
     let y = left.y - right.y
     let z = left.z - right.z
@@ -187,9 +200,8 @@ infix operator ^
 /**
   An operator that apply cross product for two vectors.
  
-  - Parameters:
-  	- left: Vector3D object represent the left side.
-  	- right: Rotation3D object represent the right side.
+  - Parameter left: Vector3D object represent the left side.
+  - Parameter right: Rotation3D object represent the right side.
  
   - Returns: a Vector3D object represent the result.
  */

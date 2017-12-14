@@ -29,7 +29,7 @@ public enum MotionActivityConfidence : Int {
     case high = 2
     
     #if os(iOS)
-    public init(confidence: CMMotionActivityConfidence){
+    public init(confidence: CMMotionActivityConfidence) {
         switch confidence {
         case .low: self = .low
         case .medium: self = .medium
@@ -98,7 +98,7 @@ public enum MotionActivityStatus : Int {
      - Warning: Please make note that this method is only available for iOS 7.0 or later.
      */
     @available(iOS 7.0, *)
-    public init(activity: CMMotionActivity){
+    public init(activity: CMMotionActivity) {
         if activity.walking { self = .walking }
         else if activity.running { self = .running }
         else if activity.automotive { self = .automotive }

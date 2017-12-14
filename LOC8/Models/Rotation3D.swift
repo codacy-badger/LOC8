@@ -61,7 +61,7 @@ open class Rotation3D: Measurement {
       	- pitch: Radian value represent a rotation around y-axis.
       	- yaw: Radian value represent a rotation around z-axis.
      */
-    public init(roll: Radian, pitch: Radian, yaw: Radian){
+    public init(roll: Radian, pitch: Radian, yaw: Radian) {
         super.init()
         self.eulerAngles = EulerAngles(roll: roll, pitch: pitch, yaw: yaw)
         self.quaternion = eulerAngles.quaternion
@@ -95,7 +95,7 @@ open class Rotation3D: Measurement {
      - Warning: Please make note that this method is only available for iOS 8.0 or later.
      */
     @available(iOS 8.0, *)
-    public init(attitude: CMAttitude){
+    public init(attitude: CMAttitude) {
         super.init()
         self.eulerAngles = EulerAngles(attitude: attitude)
         self.rotationMatrix = RotationMatrix(matrix: attitude.rotationMatrix)

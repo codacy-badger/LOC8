@@ -63,6 +63,18 @@
 		4DCDBC541CA79FDB00AB4885 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD61CA68A1B00AB4885 /* Heading.swift */; };
 		4DCDBC5C1CA7B2E800AB4885 /* MultipeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBC5B1CA7B2E800AB4885 /* MultipeerManager.swift */; };
 		4DCDBC5D1CA7BD1200AB4885 /* MultipeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBC5B1CA7B2E800AB4885 /* MultipeerManager.swift */; };
+		4DD5BF5A1FE0D96A006B6035 /* CartesianVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF591FE0D96A006B6035 /* CartesianVector.swift */; };
+		4DD5BF5B1FE0D96A006B6035 /* CartesianVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF591FE0D96A006B6035 /* CartesianVector.swift */; };
+		4DD5BF5D1FE0D9AE006B6035 /* PolarVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF5C1FE0D9AE006B6035 /* PolarVector.swift */; };
+		4DD5BF5E1FE0D9AE006B6035 /* PolarVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF5C1FE0D9AE006B6035 /* PolarVector.swift */; };
+		4DD5BF601FE0DA0D006B6035 /* EulerAngles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF5F1FE0DA0D006B6035 /* EulerAngles.swift */; };
+		4DD5BF611FE0DA0D006B6035 /* EulerAngles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF5F1FE0DA0D006B6035 /* EulerAngles.swift */; };
+		4DD5BF631FE0DA3D006B6035 /* RotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF621FE0DA3D006B6035 /* RotationMatrix.swift */; };
+		4DD5BF641FE0DA3D006B6035 /* RotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF621FE0DA3D006B6035 /* RotationMatrix.swift */; };
+		4DD5BF661FE0DA85006B6035 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF651FE0DA85006B6035 /* Quaternion.swift */; };
+		4DD5BF671FE0DA85006B6035 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF651FE0DA85006B6035 /* Quaternion.swift */; };
+		4DD5BF691FE0E447006B6035 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF681FE0E447006B6035 /* Direction.swift */; };
+		4DD5BF6A1FE0E447006B6035 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5BF681FE0E447006B6035 /* Direction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +140,12 @@
 		4DCDBC4F1CA773CC00AB4885 /* NSGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSGraphView.swift; sourceTree = "<group>"; };
 		4DCDBC511CA77A6600AB4885 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		4DCDBC5B1CA7B2E800AB4885 /* MultipeerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerManager.swift; sourceTree = "<group>"; };
+		4DD5BF591FE0D96A006B6035 /* CartesianVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartesianVector.swift; sourceTree = "<group>"; };
+		4DD5BF5C1FE0D9AE006B6035 /* PolarVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarVector.swift; sourceTree = "<group>"; };
+		4DD5BF5F1FE0DA0D006B6035 /* EulerAngles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EulerAngles.swift; sourceTree = "<group>"; };
+		4DD5BF621FE0DA3D006B6035 /* RotationMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationMatrix.swift; sourceTree = "<group>"; };
+		4DD5BF651FE0DA85006B6035 /* Quaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
+		4DD5BF681FE0E447006B6035 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,10 +236,16 @@
 			isa = PBXGroup;
 			children = (
 				4DCDBC511CA77A6600AB4885 /* Geometry.swift */,
-				4D5BFA631CAA8A1E001AA782 /* Physics.swift */,
+				4DD5BF591FE0D96A006B6035 /* CartesianVector.swift */,
+				4DD5BF5C1FE0D9AE006B6035 /* PolarVector.swift */,
+				4DD5BF5F1FE0DA0D006B6035 /* EulerAngles.swift */,
+				4DD5BF621FE0DA3D006B6035 /* RotationMatrix.swift */,
+				4DD5BF651FE0DA85006B6035 /* Quaternion.swift */,
 				4DCDBBD31CA68A1B00AB4885 /* Measurement.swift */,
 				4DCDBBDA1CA68A1B00AB4885 /* Vector3D.swift */,
 				4DCDBBD81CA68A1B00AB4885 /* Rotation3D.swift */,
+				4D5BFA631CAA8A1E001AA782 /* Physics.swift */,
+				4DD5BF681FE0E447006B6035 /* Direction.swift */,
 				4DCDBBD61CA68A1B00AB4885 /* Heading.swift */,
 				4DCDBBD71CA68A1B00AB4885 /* MotionActivity.swift */,
 				4DCDBBD41CA68A1B00AB4885 /* Estimation.swift */,
@@ -405,9 +429,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DD5BF661FE0DA85006B6035 /* Quaternion.swift in Sources */,
 				4DCDBB961CA6895800AB4885 /* AppDelegate.swift in Sources */,
 				4DCDBBFD1CA68A1B00AB4885 /* Filter.swift in Sources */,
+				4DD5BF5A1FE0D96A006B6035 /* CartesianVector.swift in Sources */,
 				4DCDBBF41CA68A1B00AB4885 /* Extensions.swift in Sources */,
+				4DD5BF631FE0DA3D006B6035 /* RotationMatrix.swift in Sources */,
 				4DCDBBFB1CA68A1B00AB4885 /* Measurement.swift in Sources */,
 				4DCDBC5C1CA7B2E800AB4885 /* MultipeerManager.swift in Sources */,
 				4DCDBBFA1CA68A1B00AB4885 /* LogManager.swift in Sources */,
@@ -419,6 +446,7 @@
 				4DCDBBFE1CA68A1B00AB4885 /* Heading.swift in Sources */,
 				4DCDBC521CA77A6600AB4885 /* Geometry.swift in Sources */,
 				4DCDBC051CA68A1B00AB4885 /* ColorsTableViewCell.swift in Sources */,
+				4DD5BF5D1FE0D9AE006B6035 /* PolarVector.swift in Sources */,
 				4DCDBC091CA68A1B00AB4885 /* Rotation3DTableViewCell.swift in Sources */,
 				4DC647811CAF9A1F007AB5D7 /* MotionDetector.swift in Sources */,
 				4DCDBC011CA68A1B00AB4885 /* TrackingSession.swift in Sources */,
@@ -427,6 +455,7 @@
 				4DCDBC101CA68A1B00AB4885 /* CustomCamera.swift in Sources */,
 				4DCDBC131CA68A1B00AB4885 /* MeasurmentsViewController.swift in Sources */,
 				4DCDBC0E1CA68A1B00AB4885 /* UILinearProgressView.swift in Sources */,
+				4DD5BF601FE0DA0D006B6035 /* EulerAngles.swift in Sources */,
 				4DCDBC081CA68A1B00AB4885 /* PedometerTableViewCell.swift in Sources */,
 				4DCDBC111CA68A1B00AB4885 /* LogViewController.swift in Sources */,
 				4DCDBC151CA68A1B00AB4885 /* TabBarController.swift in Sources */,
@@ -441,6 +470,7 @@
 				4DCDBBF81CA68A1B00AB4885 /* SensorsManager.swift in Sources */,
 				4DCDBBFC1CA68A1B00AB4885 /* Estimation.swift in Sources */,
 				4DCDBBF71CA68A1B00AB4885 /* PathManager.swift in Sources */,
+				4DD5BF691FE0E447006B6035 /* Direction.swift in Sources */,
 				4DCDBBF51CA68A1B00AB4885 /* Cylinder.swift in Sources */,
 				4DCDBC071CA68A1B00AB4885 /* GraphTableViewCell.swift in Sources */,
 				4DCDBC041CA68A1B00AB4885 /* AngleTableViewCell.swift in Sources */,
@@ -453,10 +483,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DCDBC5D1CA7BD1200AB4885 /* MultipeerManager.swift in Sources */,
+				4DD5BF671FE0DA85006B6035 /* Quaternion.swift in Sources */,
+				4DD5BF5B1FE0D96A006B6035 /* CartesianVector.swift in Sources */,
+				4DD5BF641FE0DA3D006B6035 /* RotationMatrix.swift in Sources */,
 				4DCDBC541CA79FDB00AB4885 /* Heading.swift in Sources */,
+				4DD5BF5E1FE0D9AE006B6035 /* PolarVector.swift in Sources */,
 				4DCDBC531CA79A7C00AB4885 /* Geometry.swift in Sources */,
+				4DD5BF6A1FE0E447006B6035 /* Direction.swift in Sources */,
 				4DCDBC4E1CA772F700AB4885 /* Rotation3D.swift in Sources */,
 				4DCDBC4C1CA772EF00AB4885 /* Constants.swift in Sources */,
+				4DD5BF611FE0DA0D006B6035 /* EulerAngles.swift in Sources */,
 				4DCDBC501CA773CC00AB4885 /* NSGraphView.swift in Sources */,
 				4DCDBC4D1CA772EF00AB4885 /* Extensions.swift in Sources */,
 				4DCDBC481CA7718800AB4885 /* Measurement.swift in Sources */,

@@ -93,7 +93,7 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
     }
     
     //MARK:UITabBarController Delegate
-    open func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
+    open func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.navigationItem.title = viewController.navigationItem.title
         self.navigationItem.leftBarButtonItem = viewController.navigationItem.leftBarButtonItem
         self.navigationItem.rightBarButtonItem = viewController.navigationItem.rightBarButtonItem

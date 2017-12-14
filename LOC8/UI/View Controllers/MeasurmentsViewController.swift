@@ -73,8 +73,7 @@ extension MeasurmentsViewController {
     @objc public func didUpdateHeading(_ notification: Notification) {
         
         let heading = notification.userInfo![DefaultKeys.HeadingKey] as! CLHeading
-        
-        self.headingCell.angle = degreesToRadians(-heading.magneticHeading)
+        self.headingCell.angle = Degree(-heading.magneticHeading).radian
         
         self.geomagnetismCell.vector = Vector3D(x: heading.x, y: heading.y, z: heading.z)
     }

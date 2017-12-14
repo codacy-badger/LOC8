@@ -140,7 +140,7 @@ extension MultipeerManager: MCNearbyServiceBrowserDelegate {
     
     public func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         
-        for (index, aPeer) in foundPeers.enumerated(){
+        for (index, aPeer) in foundPeers.enumerated() {
             
             if aPeer == peerID {
                 

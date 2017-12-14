@@ -92,22 +92,22 @@ class Cylinder: SCNNode {
         case .east:
             node.lastPosition = SCNVector3Make(node.lastPosition.x + height, node.lastPosition.y, node.lastPosition.z)
             cylinder.firstMaterial?.diffuse.contents = UIColor.red
-            node.rotation = SCNVector4Make(0, 0, 1, degreesToRadians(90))
+            node.rotation = SCNVector4Make(0, 0, 1, Float(Degree(90).radian))
             
         case .west:
             node.lastPosition = SCNVector3Make(node.lastPosition.x - height, node.lastPosition.y, node.lastPosition.z)
             cylinder.firstMaterial?.diffuse.contents = UIColor.green
-            node.rotation = SCNVector4Make(0, 0, 1, degreesToRadians(-90))
+            node.rotation = SCNVector4Make(0, 0, 1, Float(Degree(-90).radian))
             
         case .north:
             node.lastPosition = SCNVector3Make(node.lastPosition.x, node.lastPosition.y, node.lastPosition.z - height)
             cylinder.firstMaterial?.diffuse.contents = UIColor.white
-            node.rotation = SCNVector4Make(1, 0, 0, degreesToRadians(-90))
+            node.rotation = SCNVector4Make(1, 0, 0, Float(Degree(-90).radian))
             
         case .south:
             node.lastPosition = SCNVector3Make(node.lastPosition.x, node.lastPosition.y, node.lastPosition.z + height)
             cylinder.firstMaterial?.diffuse.contents = UIColor.blue
-            node.rotation = SCNVector4Make(1, 0, 0, degreesToRadians(90))
+            node.rotation = SCNVector4Make(1, 0, 0, Float(Degree(90).radian))
             
         case .up:
             node.lastPosition = SCNVector3Make(node.lastPosition.x, node.lastPosition.y + height, node.lastPosition.z)
@@ -116,7 +116,7 @@ class Cylinder: SCNNode {
         case .down:
             node.lastPosition = SCNVector3Make(node.lastPosition.x, node.lastPosition.y - height, node.lastPosition.z)
             cylinder.firstMaterial?.diffuse.contents = UIColor.orange
-            node.rotation = SCNVector4Make(1, 0, 0, degreesToRadians(180))
+            node.rotation = SCNVector4Make(1, 0, 0, Float(Degree(180).radian))
             
         default: break
             

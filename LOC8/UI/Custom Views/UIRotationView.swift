@@ -20,7 +20,7 @@ open class UIRotationView: UIView {
                 self.setNeedsDisplay()
             #else
                 if rotationLayer != nil {
-                    rotationLayer.transform = CATransform3DMakeRotation(degreesToRadians(startAngle + angle), 0, 0, 1)
+                    rotationLayer.transform = CATransform3DMakeRotation(CGFloat(Degree(startAngle + angle).radian), 0, 0, 1)
                 }
             #endif
         }
@@ -167,7 +167,7 @@ open class UIRotationView: UIView {
         
         var transform = CGAffineTransform.identity
         transform = transform.translatedBy(x: center.x, y: center.y)
-        transform = transform.rotated(by: degreesToRadians(startAngle + angle))
+        transform = transform.rotated(by: CGFloat(Degree(startAngle + angle).radian))
         transform = transform.translatedBy(x: -center.x, y: -center.y)
         
         path.apply(transform)

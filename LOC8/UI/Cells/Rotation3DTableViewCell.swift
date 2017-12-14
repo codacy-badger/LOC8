@@ -17,9 +17,9 @@ open class Rotation3DTableViewCell: UITableViewCell {
     open var rotation: Rotation3D = Rotation3D() {
         didSet {
             DispatchQueue.main.async {
-                self.y_Heading.angle = CGFloat(radiansToDegrees(self.rotation.yaw))
-                self.p_Heading.angle = CGFloat(radiansToDegrees(self.rotation.pitch))
-                self.r_Heading.angle = CGFloat(radiansToDegrees(self.rotation.roll))
+                self.y_Heading.angle = CGFloat(self.rotation.yaw.degree)
+                self.p_Heading.angle = CGFloat(self.rotation.pitch.degree)
+                self.r_Heading.angle = CGFloat(self.rotation.roll.degree)
             }
         }
     }

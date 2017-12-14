@@ -18,11 +18,12 @@ import Foundation
  */
 open class Measurement: NSObject, NSCoding {
     
+    /// A `TimeInterval` value represent the time when the measurment was taken.
     fileprivate(set) var timestamp: TimeInterval!
     
     //MARK: Initialaization
     
-    public override init(){
+    public override init() {
         super.init()
         timestamp = Date().timeIntervalSince1970
     }

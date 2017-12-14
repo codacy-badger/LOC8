@@ -25,8 +25,8 @@ open class Vector3DTableViewCell: UITableViewCell {
                 self.y_Progress.value = Float(self.vector.y)
                 self.z_Progress.value = Float(self.vector.z)
                 self.r_Progress.value = Float(self.vector.magnitude)
-                self.t_Heading.angle = CGFloat(radiansToDegrees(self.vector.theta))
-                self.l_Heading.angle = CGFloat(radiansToDegrees(self.vector.lambda))
+                self.t_Heading.angle = CGFloat(self.vector.theta.degree)
+                self.l_Heading.angle = CGFloat(self.vector.lambda.degree)
             }
         }
     }

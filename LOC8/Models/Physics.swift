@@ -13,7 +13,17 @@ import Foundation
 
 //MARK: Physics
 
-/*
+
+/**
+ # Physics
+ 
+ ### Discussion:
+ A structure that contain physics constants:
+ 
+ - Earth gravity
+ - Earth maximum magnetic field
+ - Earth minimum magnetic field
+ 
  # Library Fundamentals
  
  ## Measurment Units
@@ -24,7 +34,7 @@ import Foundation
  - Kilogram for mass.
  - Second for time.
  - Radian for angels.
- - Tesla for magnetic field. (In SI base units:	kg⋅s⁻²⋅A⁻¹)
+ - Tesla for magnetic field. _(In SI base units:	kg⋅s⁻²⋅A⁻¹)_
  
  ## Kinematic Equations
     The equations can be utilized for any motion that can be described as being either a constant velocity motion or a constant acceleration motion. 
@@ -35,18 +45,12 @@ import Foundation
                    1
  (1) d = vᵢ * t + ––– * a * t²
                    2
- ````
- 
- ````
+
  (2) (vᵢ₊₁)² = (vᵢ)² + 2 * a * d
- ````
+
  
- ````
  (3) vᵢ₊₁ = vᵢ + a * t
- 
- ````
- 
- ````
+
           vᵢ + vᵢ₊₁
  (4) d = ––––––––––– * t
               2
@@ -59,19 +63,6 @@ import Foundation
     * __t__ is time (s)
 
 */
-
-
-
-/**
- # Physics
- 
- ### Discussion:
-    A structure that contain physics constants:
- 
-    - Earth gravity
-    - Earth maximum magnetic field
-    - Earth minimum magnetic field
- */
 public struct Physics {
     
     ///Earth gravity in m/s².
@@ -112,7 +103,7 @@ public typealias Acceleration = Vector3D
          - Warning: Please make note that this method is only available for iOS 8.1 or later.
          */
         @available(iOS 8.1, *)
-        public convenience init(acceleration: CMAcceleration){
+        public convenience init(acceleration: CMAcceleration) {
             
             let x = acceleration.x * Physics.EarthGravity
             let y = acceleration.y * Physics.EarthGravity

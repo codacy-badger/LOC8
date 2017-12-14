@@ -87,7 +87,7 @@ open class LogManager {
         return Singleton.instance
     }
     
-    init(){
+    init() {
         
         self.logRecords = []
         
@@ -96,7 +96,7 @@ open class LogManager {
     }
     
     //MARK:Controlles
-    open func print(_ sender: AnyObject, message: String , time: TimeInterval? = nil){
+    open func print(_ sender: AnyObject, message: String , time: TimeInterval? = nil) {
         
         let record = LogRecord(sender: sender, message: message, time: time)
         self.logRecords.append(record)
@@ -104,7 +104,7 @@ open class LogManager {
         notifyObservers()
     }
     
-    open func print(_ sender: AnyObject, message: CustomStringConvertible , time: TimeInterval? = nil){
+    open func print(_ sender: AnyObject, message: CustomStringConvertible , time: TimeInterval? = nil) {
         
         let record = LogRecord(sender: sender, message: message.description, time: time)
         self.logRecords.append(record)

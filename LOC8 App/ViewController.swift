@@ -115,7 +115,7 @@ public class PeerCell: NSTableCellView {
     
     public var peer: MCPeerID?
     
-    @IBAction func connectButtonDidPressed(sender: NSButton){
+    @IBAction func connectButtonDidPressed(sender: NSButton) {
         if let peer = self.peer {
             MultipeerManager.sharedInstance.invitePeer(peer)
         }

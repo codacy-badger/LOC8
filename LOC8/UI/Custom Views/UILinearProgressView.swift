@@ -70,7 +70,7 @@ open class UILinearProgressView: UIView {
         setup()
     }
     
-    func setup(){
+    func setup() {
         
         titelLabel = UILabel()
         titelLabel.text = titel
@@ -195,7 +195,7 @@ open class UIDifferentialLinearProgressView: UIView {
         setup()
     }
     
-    func setup(){
+    func setup() {
         
         titelLabel = UILabel()
         titelLabel.text = titel
@@ -286,7 +286,7 @@ open class UIDiscreteProgressView: UIView {
 //        setup()
 //    }
 //    
-//    func setup(){
+//    func setup() {
 //        
 //        #if TARGET_INTERFACE_BUILDER
 //        #else

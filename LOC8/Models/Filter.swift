@@ -170,7 +170,7 @@ open class Filter: NSObject {
      
      - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/High-pass_filter).
      */
-    fileprivate func addValueToHighpass(_ value: Double){
+    fileprivate func addValueToHighpass(_ value: Double) {
 
         var alpha: Double = filterConstant!
 
