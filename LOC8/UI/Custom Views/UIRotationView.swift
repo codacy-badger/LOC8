@@ -27,39 +27,57 @@ open class UIRotationView: UIView {
     }
     
     @IBInspectable open var startAngle: CGFloat = 0 {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var pointerColor: UIColor = UIColor.black {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var textColor: UIColor = UIColor.lightGray {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var enabelSymbols: Bool = true {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var enabelMarks: Bool = true {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var upText: String = ""{
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var rightText: String = ""{
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var downText: String = ""{
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var leftText: String = ""{
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     open var textFont: UIFont = UIFont.systemFont(ofSize: 10)
@@ -296,12 +314,16 @@ open class UICompassView: UIRotationView {
             layer.frame = rect
             layer.fillColor = color.cgColor
             
-            if points.count == 0 { return layer }
+            if points.count == 0 {
+                return layer
+            }
             
             let path = UIBezierPath()
             
             path.move(to: center)
-            for point in points { path.addLine(to: point) }
+            for point in points {
+                path.addLine(to: point)
+            }
             path.close()
             
             #if TARGET_INTERFACE_BUILDER

@@ -16,7 +16,9 @@ open class SensorsManager: NSObject {
     
     //Motion Manager
     open var motionManagerSamplingFrequency: Double = SettingsService.sharedInstance.motionManagerSamplingFrequency {
-        didSet { setupMotionManager() }
+        didSet {
+            setupMotionManager()
+        }
     }
     
     //MARK:Current Measurements
@@ -87,7 +89,9 @@ open class SensorsManager: NSObject {
             
             self.altimeter.startRelativeAltitudeUpdates(to: queue, withHandler: { (data, error) -> Void in
                 
-                guard let data = data else{ return }
+                guard let data = data else{
+                    return
+                }
                 
                 if error != nil {
                     print(error?.localizedDescription)
@@ -116,7 +120,9 @@ open class SensorsManager: NSObject {
         
         self.pedometer.startUpdates(from: Date(timeIntervalSinceNow: 0.0), withHandler: { (data, error) -> Void in
             
-            guard let data = data else { return }
+            guard let data = data else {
+                return
+            }
             
             if error != nil {
                 print(error?.localizedDescription)
@@ -176,7 +182,9 @@ open class SensorsManager: NSObject {
             
             motionManager.startDeviceMotionUpdates(to: queue, withHandler: { (data, error) -> Void in
                 
-                guard let data = data else{ return }
+                guard let data = data else{
+                    return
+                }
                 
                 if error != nil {
                     print(error?.localizedDescription)
@@ -226,7 +234,9 @@ open class SensorsManager: NSObject {
         if (CMMotionActivityManager.isActivityAvailable()) {
             let queue = OperationQueue.main
             motionActivityManager.startActivityUpdates(to: queue, withHandler: { (data) -> Void in
-                guard let data = data else{ return }
+                guard let data = data else{
+                    return
+                }
                 
                 let activity = MotionActivity(activity: data)
                 
@@ -275,21 +285,25 @@ open class SensorsManager: NSObject {
         /* Can we ask for distance updates? */
         if CMPedometer.isDistanceAvailable() {
             log += "\t[Distance = \(data.distance!)], #meters\n"
+        } else {
+            log += "\t[Distance is not available],\n"
         }
-        else { log += "\t[Distance is not available],\n" }
         
         /* Can we ask for floor climb/descending updates? */
         if CMPedometer.isFloorCountingAvailable() {
             log += "\t[Floors ascended = \(data.floorsAscended!)],\n"
             log += "\t[Floors descended = \(data.floorsDescended!)],\n"
+        } else {
+            log += "\t[Floor counting is not available],\n"
         }
-        else { log += "\t[Floor counting is not available],\n" }
         
         /* Can we ask for step counting updates? */
         if CMPedometer.isStepCountingAvailable() {
             log += "\t[Number of steps = \(data.numberOfSteps)]\n"
+        } else {
+            log += "\t[Number of steps is not available]\n"
         }
-        else { log += "\t[Number of steps is not available]\n" }
+        
         log += "\n}"
         
         return log
@@ -321,5 +335,7 @@ extension SensorsManager: CLLocationManagerDelegate {
         NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil, userInfo: userInfo)
     }
     
-    public func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool { return currentHeading == nil }
+    public func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
+        return currentHeading == nil
+    }
 }

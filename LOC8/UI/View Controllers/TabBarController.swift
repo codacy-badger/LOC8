@@ -28,7 +28,9 @@ public struct TabBarItemColor {
 open class TabBarController : UITabBarController, UITabBarControllerDelegate {
     
     //MARK:Properties
-    fileprivate var navigationBar: UINavigationBar { return self.navigationController!.navigationBar }
+    fileprivate var navigationBar: UINavigationBar {
+        return self.navigationController!.navigationBar
+    }
     
     fileprivate var timer: Timer?
     
@@ -107,7 +109,9 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
     
     //MARK:Animations
     open func startAnimation(_ duration: TimeInterval) {
-        if timer != nil { stopAnimation() }
+        if timer != nil {
+            stopAnimation()
+        }
         timer = Timer.scheduledTimer( timeInterval: duration, target: self, selector: #selector(TabBarController.updateColor(_:)), userInfo: nil, repeats: true)
         timer?.fire()
     }

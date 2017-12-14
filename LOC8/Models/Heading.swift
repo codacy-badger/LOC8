@@ -70,8 +70,7 @@ open class Heading: Measurement {
         var result = ""
         if distance == 0 {
             result = "Heading \(self.direction) with wight \(wight)."
-        }
-        else {
+        } else {
             let distance = NSString(format: "%.2f", self.distance)
             result = "[\(self.direction), \(wight), \(distance)]"
         }

@@ -19,26 +19,38 @@ open class UIGraphViewSegment: NSObject, CALayerDelegate {
     
     var count: Int = 33
     
-    var isFull: Bool {  return index == 0 }
+    var isFull: Bool {
+        return index == 0
+    }
     
     open var graphBackgroundColor: UIColor = UIColor(white: 0.6, alpha: 1.0) {
-        didSet { layer.setNeedsDisplay() }
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
     open var graphLineColor: UIColor = UIColor(white: 0.5, alpha: 1.0) {
-        didSet { layer.setNeedsDisplay() }
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
     open var graphXColor: UIColor = UIColor.red {
-        didSet { layer.setNeedsDisplay() }
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
     open var graphYColor: UIColor = UIColor.green {
-        didSet { layer.setNeedsDisplay() }
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
     open var graphZColor: UIColor = UIColor.blue {
-        didSet { layer.setNeedsDisplay() }
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
 
     
@@ -51,14 +63,18 @@ open class UIGraphViewSegment: NSObject, CALayerDelegate {
         
         index = count - 1
         
-        for _ in 0..<count { vectors.append(Vector3D()) }
+        for _ in 0..<count {
+            vectors.append(Vector3D())
+        }
     }
     
     open func reset() {
         
         index = count - 1
         
-        for _ in 0..<count { vectors.append(Vector3D()) }
+        for _ in 0..<count {
+            vectors.append(Vector3D())
+        }
         
         layer.setNeedsDisplay()
     }
@@ -87,7 +103,9 @@ open class UIGraphViewSegment: NSObject, CALayerDelegate {
         ctx.fill(layer.bounds)
         drawGridlines(ctx, x: 0.0, width: 32.0)
         var lines: [CGPoint] = []
-        for _ in 0..<64 { lines.append(CGPoint.zero) }
+        for _ in 0..<64 {
+            lines.append(CGPoint.zero)
+        }
         
         // X
         for i in 0..<32 {
@@ -139,15 +157,21 @@ open class UIGraphTextView: UIView {
     
     
     open var graphBackgroundColor: UIColor = UIColor(white: 0.6, alpha: 1.0) {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     open var graphLineColor: UIColor = UIColor(white: 0.5, alpha: 1.0) {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     open var textColor: UIColor = UIColor.white {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     open override func draw(_ rect: CGRect) {
@@ -213,19 +237,33 @@ open class UIGraphView: UIView {
     }
     
     @IBInspectable open var textColor: UIColor = UIColor.white {
-        didSet { text.textColor = textColor }
+        didSet {
+            text.textColor = textColor
+        }
     }
     
     @IBInspectable open var graphXColor: UIColor = UIColor.red {
-        didSet { for segment in self.segments {segment.graphXColor = graphXColor} }
+        didSet {
+            for segment in self.segments {
+                segment.graphXColor = graphXColor
+            }
+        }
     }
     
     @IBInspectable open var graphYColor: UIColor = UIColor.green {
-        didSet { for segment in self.segments {segment.graphYColor = graphYColor} }
+        didSet {
+            for segment in self.segments {
+                segment.graphYColor = graphYColor
+            }
+        }
     }
     
     @IBInspectable open var graphZColor: UIColor = UIColor.blue {
-        didSet { for segment in self.segments {segment.graphZColor = graphZColor} }
+        didSet {
+            for segment in self.segments {
+                segment.graphZColor = graphZColor
+            }
+        }
     }
     
     fileprivate let kSegmentInitialPosition = CGPoint(x: 14.0, y: 56.0)
@@ -319,8 +357,7 @@ open class UIGraphView: UIView {
         if last.isVisibleInRect(self.layer.bounds) {
             
             self.current = self.addSegment()
-        }
-        else {
+        } else {
             last.reset()
             last.layer.position = kSegmentInitialPosition
             self.segments.insert(last, at: 0)

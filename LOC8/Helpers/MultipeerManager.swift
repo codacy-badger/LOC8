@@ -50,8 +50,7 @@ open class MultipeerManager: NSObject {
         didSet {
             if isAdvertising {
                 advertiser.startAdvertisingPeer()
-            }
-            else {
+            } else {
                 advertiser.stopAdvertisingPeer()
             }
         }
@@ -61,8 +60,7 @@ open class MultipeerManager: NSObject {
         didSet {
             if isBrowsing {
                 browser.startBrowsingForPeers()
-            }
-            else {
+            } else {
                 browser.stopBrowsingForPeers()
             }
         }

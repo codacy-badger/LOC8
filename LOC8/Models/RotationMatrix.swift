@@ -39,12 +39,12 @@ public struct RotationMatrix: CustomStringConvertible {
             pitch = (Double.pi / 2) / 2
             roll = 0
         }
+        
         if (m21 < -0.998) { // singularity at south pole
             yaw = atan2(m13, m33)
             pitch = -(Double.pi / 2) / 2
             roll = 0
-        }
-        else {
+        } else {
             yaw = atan2(-m31, m11)
             roll = atan2(-m23, m22)
             pitch = asin(m21)

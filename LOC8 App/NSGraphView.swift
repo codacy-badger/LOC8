@@ -19,26 +19,38 @@ public class NSGraphViewSegment: NSObject{
     
     var count: Int = 33
     
-    var isFull: Bool {  return index == 0 }
+    var isFull: Bool {
+        return index == 0
+    }
     
     public var graphBackgroundColor: NSColor = NSColor(white: 0.6, alpha: 1.0) {
-        didSet { layer.setNeedsDisplay() }
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
     public var graphLineColor: NSColor = NSColor(white: 0.5, alpha: 1.0) {
-        didSet { layer.setNeedsDisplay() }
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
     public var graphXColor: NSColor = NSColor.redColor() {
-        didSet { layer.setNeedsDisplay() }
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
     public var graphYColor: NSColor = NSColor.greenColor() {
-        didSet { layer.setNeedsDisplay() }
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
     public var graphZColor: NSColor = NSColor.blueColor() {
-        didSet { layer.setNeedsDisplay() }
+        didSet {
+            layer.setNeedsDisplay()
+        }
     }
     
     
@@ -51,14 +63,18 @@ public class NSGraphViewSegment: NSObject{
         
         index = count - 1
         
-        for _ in 0..<count { vectors.append(Vector3D()) }
+        for _ in 0..<count {
+            vectors.append(Vector3D())
+        }
     }
     
     public func reset() {
         
         index = count - 1
         
-        for _ in 0..<count { vectors.append(Vector3D()) }
+        for _ in 0..<count {
+            vectors.append(Vector3D())
+        }
         
         layer.setNeedsDisplay()
     }
@@ -85,7 +101,9 @@ public class NSGraphViewSegment: NSObject{
         CGContextFillRect(context, layer.bounds)
         drawGridlines(context, x: 0.0, width: 32.0)
         var lines: [CGPoint] = []
-        for _ in 0..<64 { lines.append(CGPoint.zero) }
+        for _ in 0..<64 {
+            lines.append(CGPoint.zero)
+        }
         
         // X
         for i in 0..<32 {
@@ -114,7 +132,9 @@ public class NSGraphViewSegment: NSObject{
         CGContextStrokeLineSegments(context, lines, 64)
     }
     
-    public override func actionForLayer( layer: CALayer, forKey event: String) -> CAAction? { return NSNull() }
+    public override func actionForLayer( layer: CALayer, forKey event: String) -> CAAction? {
+        return NSNull()
+    }
     
     private func drawGridlines(context: CGContextRef, x: CGFloat, width: CGFloat) {
         
@@ -135,15 +155,21 @@ public class NSGraphTextView: NSView {
     
     
     public var graphBackgroundColor: NSColor = NSColor(white: 0.6, alpha: 1.0) {
-        didSet { needsDisplay = true }
+        didSet {
+            needsDisplay = true
+        }
     }
     
     public var graphLineColor: NSColor = NSColor(white: 0.5, alpha: 1.0) {
-        didSet { needsDisplay = true }
+        didSet {
+            needsDisplay = true
+        }
     }
     
     public var textColor: NSColor = NSColor.whiteColor() {
-        didSet { needsDisplay = true }
+        didSet {
+            needsDisplay = true
+        }
     }
     
     public override func drawRect(rect: NSRect) {
@@ -209,19 +235,33 @@ public class NSGraphView: NSView {
     }
     
     @IBInspectable public var textColor: NSColor = NSColor.whiteColor() {
-        didSet { text.textColor = textColor }
+        didSet {
+            text.textColor = textColor
+        }
     }
     
     @IBInspectable public var graphXColor: NSColor = NSColor.redColor() {
-        didSet { for segment in self.segments {segment.graphXColor = graphXColor} }
+        didSet {
+            for segment in self.segments {
+                segment.graphXColor = graphXColor
+            }
+        }
     }
     
     @IBInspectable public var graphYColor: NSColor = NSColor.greenColor() {
-        didSet { for segment in self.segments {segment.graphYColor = graphYColor} }
+        didSet {
+            for segment in self.segments {
+                segment.graphYColor = graphYColor
+            }
+        }
     }
     
     @IBInspectable public var graphZColor: NSColor = NSColor.blueColor() {
-        didSet { for segment in self.segments {segment.graphZColor = graphZColor} }
+        didSet {
+            for segment in self.segments {
+                segment.graphZColor = graphZColor
+            }
+        }
     }
     
     private let kSegmentInitialPosition = CGPointMake(14.0, 56.0)
@@ -315,8 +355,7 @@ public class NSGraphView: NSView {
         if last.isVisibleInRect(self.layer!.bounds) {
             
             self.current = self.addSegment()
-        }
-        else {
+        } else {
             last.reset()
             last.layer.position = kSegmentInitialPosition
             self.segments.insert(last, atIndex: 0)

@@ -36,8 +36,7 @@ open class SettingsService {
         get {
             if let value = defaults.object(forKey: UserDefaultKeys.ColorIndexKey) as? Int {
                 return value
-            }
-            else {
+            } else {
                 defaults.set(0, forKey: UserDefaultKeys.ColorIndexKey)
                 return 0
             }
@@ -64,8 +63,7 @@ open class SettingsService {
         get {
             if let value = defaults.object(forKey: UserDefaultKeys.AnimationDurationKey) as? Double {
                 return value
-            }
-            else {
+            } else {
                 defaults.set(DefaultValues.DefaultAnimationDuration, forKey: UserDefaultKeys.AnimationDurationKey)
                 return DefaultValues.DefaultAnimationDuration
             }
@@ -82,8 +80,7 @@ open class SettingsService {
         get {
             if let value = defaults.object(forKey: UserDefaultKeys.MotionManagerSamplingFrequencyKey) as? Double {
                 return value
-            }
-            else {
+            } else {
                 defaults.set(DefaultValues.DefaultSamplingFrequency, forKey: UserDefaultKeys.MotionManagerSamplingFrequencyKey)
                 return DefaultValues.DefaultSamplingFrequency
             }
@@ -101,8 +98,7 @@ open class SettingsService {
         get {
             if let value = defaults.object(forKey: UserDefaultKeys.AccelerationFilterCutoffFrequencyKey) as? Double {
                 return value
-            }
-            else {
+            } else {
                 defaults.set(DefaultValues.DefaultCutoffFrequency, forKey: UserDefaultKeys.AccelerationFilterCutoffFrequencyKey)
                 return DefaultValues.DefaultCutoffFrequency
             }
@@ -119,8 +115,7 @@ open class SettingsService {
         get {
             if let value = defaults.object(forKey: UserDefaultKeys.AccelerationFilterTypeKey) as? String {
                 return FilterType(rawValue: value)
-            }
-            else {
+            } else {
                 defaults.set(FilterType.Non.rawValue, forKey: UserDefaultKeys.AccelerationFilterTypeKey)
                 return FilterType.Non
             }

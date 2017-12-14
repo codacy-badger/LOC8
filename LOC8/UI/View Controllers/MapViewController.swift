@@ -101,7 +101,9 @@ open class MapViewController: UIViewController {
         let scene = self.sceneView.scene!
         
         //Clear all the previous nodes
-        for node in scene.rootNode.childNodes { node.removeFromParentNode() }
+        for node in scene.rootNode.childNodes {
+            node.removeFromParentNode()
+        }
         
         //Draw the new nodes
         for movement in path.movements {
@@ -160,8 +162,7 @@ open class MapViewController: UIViewController {
                 self.refreshSchene()
                 
             }
-        }
-        else {
+        } else {
 //            sender.backgroundColor = UIColor(red:0.48, green:0.8, blue:0.26, alpha:1)
             sender.title = "▶︎"
             self.trackingSession.stopTraking()

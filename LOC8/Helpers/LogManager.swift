@@ -25,8 +25,7 @@ open class LogRecord : NSObject,  NSCoding {
         self.message = message
         if let time = time {
             self.time = time
-        }
-        else {
+        } else {
             self.time = Date().timeIntervalSince1970
         }
     }

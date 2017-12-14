@@ -38,26 +38,36 @@ open class Estimation: Measurement {
     open var distance: Double = 0
     
     /// A computed property return the last heading recieved.
-    open var currentHeading: Heading? { return headings.last }
+    open var currentHeading: Heading? {
+        return headings.last
+    }
     
     /// A computed property return the total wight for all the collected headings.
     open var wight: UInt {
         var totalWight: UInt = 0
-        for heading in headings { totalWight += heading.wight }
+        for heading in headings {
+            totalWight += heading.wight
+        }
         return totalWight
     }
     
     /// A computed property return the sample mean for all the collected headings wight.
     open var mean: Double {
-        if headings.count == 0 { return 0 }
+        if headings.count == 0 {
+            return 0
+        }
         return Double(self.wight) / Double(headings.count)
     }
     
     /// A computed property return the sample variance for all the collected headings wight
     open var variance: Double {
-        if headings.count <= 1 { return 0 }
+        if headings.count <= 1 {
+            return 0
+        }
         var variance: Double = 0
-        for heading in headings { variance += pow((Double(heading.wight) - mean), 2) }
+        for heading in headings {
+            variance += pow((Double(heading.wight) - mean), 2)
+        }
         variance = variance / Double(headings.count - 1)
         return sqrt(variance)
     }
@@ -79,7 +89,9 @@ open class Estimation: Measurement {
     open override var description: String {
         var result: String = "{\n\tNumber of headings: \(headings.count)\n\tTotal Distance:\(distance)\n\tTotal Wight:\(wight)\n\tMean:\(mean)\n\tVariance:\(variance)\n\tHeadings:[\n"
         
-        for heading in headings { result += "\t\t\(heading.description)\n"}
+        for heading in headings {
+            result += "\t\t\(heading.description)\n"
+        }
         
         result += "\t]\n}"
         return result
@@ -96,15 +108,13 @@ open class Estimation: Measurement {
         
         if headings.count == 0 {
             headings.append(newHeading)
-        }
-        else {
+        } else {
             
             if let oldHeading = headings.last {
                 
                 if oldHeading == newHeading{
                     oldHeading.wight += 1
-                }
-                else {
+                } else {
                     headings.append(newHeading)
                     LogManager.sharedInstance.print(self, message: oldHeading.description)
                 }
@@ -127,15 +137,13 @@ open class Estimation: Measurement {
         
         if headings.count == 0 {
             headings.append(newHeading)
-        }
-        else {
+        } else {
             
             if let oldHeading = headings.last {
                 
                 if oldHeading == newHeading{
                     oldHeading.wight += 1
-                }
-                else {
+                } else {
                     headings.append(newHeading)
                     LogManager.sharedInstance.print(self, message: oldHeading.description)
                 }
@@ -174,7 +182,9 @@ open class Estimation: Measurement {
         let delta = distance / Double(self.wight)
         
         for heading in headings {
-            if heading.direction == .up || heading.direction == .down { continue }
+            if heading.direction == .up || heading.direction == .down {
+                continue
+            }
             heading.distance = Double(heading.wight) * delta
         }
         

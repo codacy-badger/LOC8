@@ -16,15 +16,21 @@ open class MotinDetector: NSObject {
     fileprivate var filter: AccelerationFilter!
     
     open var cutoffFrequency: Double = SettingsService.sharedInstance.accelerationFilterCutoffFrequency {
-        didSet { setupFilter() }
+        didSet {
+            setupFilter()
+        }
     }
     
     open var filterType: FilterType = SettingsService.sharedInstance.accelerationFilterType {
-        didSet { setupFilter() }
+        didSet {
+            setupFilter()
+        }
     }
     
     open var adaptiveFilter: Bool = SettingsService.sharedInstance.accelerationAdaptiveFilter  {
-        didSet { filter.adaptive = adaptiveFilter }
+        didSet {
+            filter.adaptive = adaptiveFilter
+        }
     }
     
     

@@ -24,13 +24,19 @@ open class Rotation3D: Measurement {
     //MARK: Properties
     
     ///Angle value represent a rotation around x-axis.
-    open var roll: Angle { return eulerAngles.roll }
+    open var roll: Angle {
+        return eulerAngles.roll
+    }
     
     ///Angle value represent a rotation around y-axis.
-    open var pitch: Angle { return eulerAngles.pitch }
+    open var pitch: Angle {
+        return eulerAngles.pitch
+    }
     
     ///Angle value represent a rotation around z-axis.
-    open var yaw: Angle { return eulerAngles.yaw }
+    open var yaw: Angle {
+        return eulerAngles.yaw
+    }
     
     /// An EulerAngles object represent the rotaion.
     fileprivate(set) var eulerAngles: EulerAngles!
@@ -56,10 +62,9 @@ open class Rotation3D: Measurement {
     /**
       Initialize Rotation3D object
      
-      - Parameters:
-      	- roll: Angle value represent a rotation around x-axis.
-      	- pitch: Angle value represent a rotation around y-axis.
-      	- yaw: Angle value represent a rotation around z-axis.
+      - Parameter roll: Angle value represent a rotation around x-axis.
+      - Parameter pitch: Angle value represent a rotation around y-axis.
+      - Parameter yaw: Angle value represent a rotation around z-axis.
      */
     public init(roll: Angle, pitch: Angle, yaw: Angle) {
         super.init()

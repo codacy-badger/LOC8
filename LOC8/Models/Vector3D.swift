@@ -73,9 +73,13 @@ open class Vector3D: Measurement {
     open var headingDirection: Direction {
         let maxAngle = 30.0
         
-        if lambda > maxAngle { return .up }
+        if lambda > maxAngle {
+            return .up
+        }
         
-        if lambda < -maxAngle { return .down }
+        if lambda < -maxAngle {
+            return .down
+        }
         
         return Direction(angle: theta)
     }

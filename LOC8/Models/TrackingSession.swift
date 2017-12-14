@@ -24,10 +24,14 @@ open class TrackingSession: Measurement {
     open var estimationHandler: EstimationHandler?
     
     /// A computed property return the last estimation that has been created.
-    open var currentEstimation: Estimation? { return estimations.last }
+    open var currentEstimation: Estimation? {
+        return estimations.last
+    }
     
     /// A computed property return the previous estimation that has been created.
-    open var previousEstimation: Estimation? { return (estimations.count > 1) ? estimations[estimations.count - 2] : nil }
+    open var previousEstimation: Estimation? {
+        return (estimations.count > 1) ? estimations[estimations.count - 2] : nil
+    }
     
     /// A list of `Heading` objects represent all the collected headings for the estimation.
     open lazy var estimations: [Estimation] = []
@@ -145,7 +149,9 @@ open class TrackingSession: Measurement {
             }
             
             for heading in estimation.headings {
-                if heading.direction == last?.direction { continue }
+                if heading.direction == last?.direction {
+                    continue
+                }
                 temp.append(heading)
             }
             last = estimation.headings.last

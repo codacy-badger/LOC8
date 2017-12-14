@@ -82,13 +82,18 @@ open class settingsViewController: UITableViewController {
         animationSwitchCell.initialize(settings.enableAnimation) { (enable) -> Void in
             self.settings.enableAnimation = enable
             
-            if enable {tabBarController.startAnimation(self.settings.animationDuration)}
-            else {tabBarController.stopAnimation()}
+            if enable {
+                tabBarController.startAnimation(self.settings.animationDuration)
+            } else {
+                tabBarController.stopAnimation()
+            }
         }
         
         animationDurationAdjustmentCell.initialize(settings.animationDuration) { (value) -> Void in
             self.settings.animationDuration = value
-            if self.settings.enableAnimation { tabBarController.startAnimation(value) }
+            if self.settings.enableAnimation {
+                tabBarController.startAnimation(value)
+            }
         }
         
         generalAdjustmentCell.initialize(settings.motionManagerSamplingFrequency) { (value) -> Void in

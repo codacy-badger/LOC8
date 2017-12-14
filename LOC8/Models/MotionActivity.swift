@@ -22,34 +22,55 @@ import Foundation
   - Medium
   - High
  */
-public enum MotionActivityConfidence : Int {
+public enum MotionActivityConfidence : Int, CustomStringConvertible {
     
+    /// Confidence is low.
     case low = 0
+    
+    /// Confidence is medium.
     case medium = 1
+    
+    /// Confidence is high.
     case high = 2
     
     #if os(iOS)
+    /**
+     Initialize `MotionActivityConfidence` object with `CMMotionActivityConfidence` in iOS Core Motion.
+     
+     - Parameter confidence: `CMMotionActivityConfidence` object represent the motion activity confidence.
+     - Warning: Please make note that this method is only available for iOS 7.0 or later.
+     */
     public init(confidence: CMMotionActivityConfidence) {
         switch confidence {
-        case .low: self = .low
-        case .medium: self = .medium
-        case .high: self = .high
+        case .low:
+            self = .low
+        case .medium:
+            self = .medium
+        case .high:
+            self = .high
         }
     }
     
+    
+    /**
+     Initialize `MotionActivityConfidence` object with `CMMotionActivity` in iOS Core Motion.
+     
+     - Parameter activity: `CMMotionActivity` object represent the motion activity.
+     - Warning: Please make note that this method is only available for iOS 7.0 or later.
+     */
     public init(activity: CMMotionActivity) {
         self.init(confidence: activity.confidence)
     }
     #endif
-}
-
-extension MotionActivityConfidence:  CustomStringConvertible {
     
     public var description: String {
         switch self {
-        case .low: return "Low"
-        case .medium: return "Medium"
-        case .high: return "High"
+        case .low:
+            return "Low"
+        case .medium:
+            return "Medium"
+        case .high:
+            return "High"
         }
     }
 }
@@ -68,7 +89,7 @@ extension MotionActivityConfidence:  CustomStringConvertible {
   - Cycling
   - Unknown
  */
-public enum MotionActivityStatus : Int {
+public enum MotionActivityStatus : Int, CustomStringConvertible {
     
     ///The state when the device is on a walking person.
     case walking = 0
@@ -99,27 +120,36 @@ public enum MotionActivityStatus : Int {
      */
     @available(iOS 7.0, *)
     public init(activity: CMMotionActivity) {
-        if activity.walking { self = .walking }
-        else if activity.running { self = .running }
-        else if activity.automotive { self = .automotive }
-        else if activity.stationary { self = .stationary }
-        else if activity.cycling { self = .cycling }
-        else { self = .unknown }
+        if activity.walking {
+            self = .walking
+        } else if activity.running {
+            self = .running
+        } else if activity.automotive {
+            self = .automotive
+        } else if activity.stationary {
+            self = .stationary
+        } else if activity.cycling {
+            self = .cycling
+        } else {
+            self = .unknown
+        }
     }
     #endif
     
-}
-
-extension MotionActivityStatus:  CustomStringConvertible {
-    
     public var description: String {
         switch self {
-        case .walking: return "Walking"
-        case .running: return "Running"
-        case .automotive: return "Automotive"
-        case .stationary: return "Stationary"
-        case .cycling: return "Cycling"
-        case .unknown: return "Unknown"
+        case .walking:
+            return "Walking"
+        case .running:
+            return "Running"
+        case .automotive:
+            return "Automotive"
+        case .stationary:
+            return "Stationary"
+        case .cycling:
+            return "Cycling"
+        case .unknown:
+            return "Unknown"
         }
     }
 }
@@ -157,9 +187,8 @@ open class MotionActivity: Measurement {
     /**
       Initialize MotionActivity object
      
-      - Parameters:
-      	- status: A MotionActivityStatus value represent the activity.
-      	- confidence: A MotionActivityConfidence value represent the confidence of the activity.
+      - Parameter status: A MotionActivityStatus value represent the activity.
+      - Parameter confidence: A MotionActivityConfidence value represent the confidence of the activity.
      */
     public init(status: MotionActivityStatus, confidence: MotionActivityConfidence) {
         super.init()
