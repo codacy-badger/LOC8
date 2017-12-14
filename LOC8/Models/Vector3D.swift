@@ -24,7 +24,7 @@ open class Vector3D: Measurement {
     //MARK: Cartesian Properties
     
     /// A CartesianVector object represent the vector in cartesian coordinate.
-    fileprivate(set) var cartesianVector: CartesianVector!
+    private(set) var cartesianVector: CartesianVector!
     
     ///Double value represent the projection on x-axis.
     open var x: Double {
@@ -47,7 +47,7 @@ open class Vector3D: Measurement {
     //MARK: Polar Properties
     
     /// A PolerVector object represent the vector in polar coordinate.
-    fileprivate(set) var polarVector: PolarVector!
+    private(set) var polarVector: PolarVector!
     
     ///Angle value represent the angle between the projection on z-axis and xy-plan.
     open var theta: Angle {

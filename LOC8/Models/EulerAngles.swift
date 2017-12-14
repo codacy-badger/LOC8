@@ -24,13 +24,13 @@ import Foundation
 public struct EulerAngles: CustomStringConvertible {
     
     ///Angle value represent a rotation around x-axis.
-    fileprivate(set) var roll: Angle = 0
+    private(set) var roll: Angle = 0
     
     ///Angle value represent a rotation around y-axis.
-    fileprivate(set) var pitch: Angle = 0
+    private(set) var pitch: Angle = 0
     
     ///Angle value represent a rotation around z-axis.
-    fileprivate(set) var yaw: Angle = 0
+    private(set) var yaw: Angle = 0
     
     ///RotationMatrix object represent the rotation in matrix form.
     public var rotationMatrix: RotationMatrix {

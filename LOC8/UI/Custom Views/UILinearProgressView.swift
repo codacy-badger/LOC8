@@ -63,11 +63,11 @@ open class UILinearProgressView: UIView {
     }
     
     //MARK:UI Objects
-    fileprivate(set) var titelLabel: UILabel!
+    private(set) var titelLabel: UILabel!
     
-    fileprivate(set) var progress: UIProgressView!
+    private(set) var progress: UIProgressView!
     
-    fileprivate(set) var valueLabel: UILabel!
+    private(set) var valueLabel: UILabel!
     
     //MARK:Initialization
     override public init(frame: CGRect) {
@@ -189,13 +189,13 @@ open class UIDifferentialLinearProgressView: UIView {
     }
     
     //MARK:UI Objects
-    fileprivate(set) var titelLabel: UILabel!
+    private(set) var titelLabel: UILabel!
     
-    fileprivate(set) var leftProgress: UIProgressView!
+    private(set) var leftProgress: UIProgressView!
     
-    fileprivate(set) var rightProgress: UIProgressView!
+    private(set) var rightProgress: UIProgressView!
     
-    fileprivate(set) var valueLabel: UILabel!
+    private(set) var valueLabel: UILabel!
     
     //MARK:Initialization
     override public init(frame: CGRect) {

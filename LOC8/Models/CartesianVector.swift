@@ -23,13 +23,13 @@ import Foundation
 public struct CartesianVector: CustomStringConvertible {
     
     ///Double value represent the projection on x-axis.
-    fileprivate(set) var x: Double = 0.0
+    private(set) var x: Double = 0.0
     
     ///Double value represent the projection on y-axis.
-    fileprivate(set) var y: Double = 0.0
+    private(set) var y: Double = 0.0
     
     ///Double value represent the projection on z-axis.
-    fileprivate(set) var z: Double = 0.0
+    private(set) var z: Double = 0.0
     
     /**
      PolarVector object represent the vector in poler form.

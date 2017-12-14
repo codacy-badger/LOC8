@@ -47,25 +47,25 @@ open class SensorsManager: NSObject {
     
     //MARK:Current Measurements
     
-    fileprivate(set) var currentAcceleration: Acceleration!
+    private(set) var currentAcceleration: Acceleration!
     
-    fileprivate(set) var currentGravity: Acceleration!
+    private(set) var currentGravity: Acceleration!
     
-    fileprivate(set) var currentRotationRat: Vector3D!
+    private(set) var currentRotationRat: Vector3D!
     
-    fileprivate(set) var currentHeading: CLHeading?
+    private(set) var currentHeading: CLHeading?
     
-    fileprivate(set) var currentAltitude: Double!
+    private(set) var currentAltitude: Double!
     
-    fileprivate(set) var totalDistance: Double!
+    private(set) var totalDistance: Double!
     
-    fileprivate(set) var currentFloorsDescended: Int!
+    private(set) var currentFloorsDescended: Int!
     
-    fileprivate(set) var currentFloorsAscended: Int!
+    private(set) var currentFloorsAscended: Int!
     
-    fileprivate(set) var currentNumberOfSteps: Int!
+    private(set) var currentNumberOfSteps: Int!
     
-    fileprivate(set) var currentMotionActivity: MotionActivity = MotionActivity()
+    private(set) var currentMotionActivity: MotionActivity = MotionActivity()
     
     //MARK:Properties
     

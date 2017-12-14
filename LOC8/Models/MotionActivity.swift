@@ -11,69 +11,6 @@ import Foundation
     import CoreMotion
 #endif
 
-/**
- # Motion Activity Confidence
- 
- ### Discussion:
- 
-    Enumerates the level of accuracy of the activity estimate.
- 
-  - Low
-  - Medium
-  - High
- */
-public enum MotionActivityConfidence : Int, CustomStringConvertible {
-    
-    /// Confidence is low.
-    case low = 0
-    
-    /// Confidence is medium.
-    case medium = 1
-    
-    /// Confidence is high.
-    case high = 2
-    
-    #if os(iOS)
-    /**
-     Initialize `MotionActivityConfidence` object with `CMMotionActivityConfidence` in iOS Core Motion.
-     
-     - Parameter confidence: `CMMotionActivityConfidence` object represent the motion activity confidence.
-     - Warning: Please make note that this method is only available for iOS 7.0 or later.
-     */
-    public init(confidence: CMMotionActivityConfidence) {
-        switch confidence {
-        case .low:
-            self = .low
-        case .medium:
-            self = .medium
-        case .high:
-            self = .high
-        }
-    }
-    
-    
-    /**
-     Initialize `MotionActivityConfidence` object with `CMMotionActivity` in iOS Core Motion.
-     
-     - Parameter activity: `CMMotionActivity` object represent the motion activity.
-     - Warning: Please make note that this method is only available for iOS 7.0 or later.
-     */
-    public init(activity: CMMotionActivity) {
-        self.init(confidence: activity.confidence)
-    }
-    #endif
-    
-    public var description: String {
-        switch self {
-        case .low:
-            return "Low"
-        case .medium:
-            return "Medium"
-        case .high:
-            return "High"
-        }
-    }
-}
 
 /**
  # Motion Activity Status
@@ -167,10 +104,10 @@ open class MotionActivity: Measurement {
     //MARK:Properties
     
     ///`MotionActivityStatus` object represent the state of the activity.
-    fileprivate(set) var status: MotionActivityStatus!
+    private(set) var status: MotionActivityStatus!
     
     ///`MotionActivityConfidence` object represent the confidance of the activity state.
-    fileprivate(set) var confidence: MotionActivityConfidence!
+    private(set) var confidence: Accuracy!
     
     //MARK:Initialaization
     
@@ -190,7 +127,7 @@ open class MotionActivity: Measurement {
       - Parameter status: A MotionActivityStatus value represent the activity.
       - Parameter confidence: A MotionActivityConfidence value represent the confidence of the activity.
      */
-    public init(status: MotionActivityStatus, confidence: MotionActivityConfidence) {
+    public init(status: MotionActivityStatus, confidence: Accuracy) {
         super.init()
         self.status = status
         self.confidence = confidence
@@ -199,7 +136,7 @@ open class MotionActivity: Measurement {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         status = MotionActivityStatus(rawValue: aDecoder.decodeInteger(forKey: "status"))!
-        confidence = MotionActivityConfidence(rawValue: aDecoder.decodeInteger(forKey: "confidence"))!
+        confidence = Accuracy(rawValue: aDecoder.decodeInteger(forKey: "confidence"))!
     }
     
     open override func encode(with aCoder: NSCoder) {
@@ -218,7 +155,7 @@ open class MotionActivity: Measurement {
      */
     @available(iOS 7.0, *)
     public convenience init(activity: CMMotionActivity) {
-        self.init(status: MotionActivityStatus(activity: activity), confidence: MotionActivityConfidence(activity: activity))
+        self.init(status: MotionActivityStatus(activity: activity), confidence: Accuracy(activity: activity))
     }
     #endif
     

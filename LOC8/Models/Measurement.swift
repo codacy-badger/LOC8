@@ -16,15 +16,14 @@ import Foundation
   ### Discussion:
     An object represent the size or amount of something with the relation to a time.
  */
-open class Measurement: NSObject, NSCoding {
+open class Measurement: CustomStringConvertible, NSCoding {
     
     /// A `TimeInterval` value represent the time when the measurment was taken.
-    fileprivate(set) var timestamp: TimeInterval!
+    private(set) var timestamp: TimeInterval!
     
     //MARK: Initialaization
     
-    public override init() {
-        super.init()
+    public init() {
         timestamp = Date().timeIntervalSince1970
     }
     
@@ -34,5 +33,9 @@ open class Measurement: NSObject, NSCoding {
     
     open func encode(with aCoder: NSCoder) {
         aCoder.encode(timestamp, forKey: "timestamp")
+    }
+    
+    public var description: String {
+        return "time of masurment \(self.timestamp) "
     }
 }

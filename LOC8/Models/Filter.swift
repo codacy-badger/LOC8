@@ -81,7 +81,7 @@ open class Filter: NSObject {
     open let type: FilterType!
     
     ///A `Double` value that represent the current value.
-    fileprivate(set) var value: Double = 0
+    private(set) var value: Double = 0
     
     ///A `Double` value that represent the last value.
     fileprivate var lastValue: Double = 0
@@ -229,7 +229,7 @@ open class AccelerationFilter: NSObject {
     open let type: FilterType!
     
     ///A `Acceleration` value that represent the current acceleration.
-    fileprivate(set) var value: Acceleration = Acceleration()
+    private(set) var value: Acceleration = Acceleration()
     
     ///A `Acceleration` value that represent the last acceleration.
     fileprivate var lastValue: Acceleration = Acceleration()

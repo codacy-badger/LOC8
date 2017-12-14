@@ -23,13 +23,13 @@ import Foundation
 public struct PolarVector: CustomStringConvertible {
     
     ///Double value represent the distance of the vector.
-    fileprivate(set) var magnitude: Double = 0.0
+    private(set) var magnitude: Double = 0.0
     
     ///Angle value represent the angle between the projection on xy-plan and x-axis.
-    fileprivate(set) var theta: Angle = 0.0
+    private(set) var theta: Angle = 0.0
     
     ///Angle value represent the angle between the projection on z-axis and xy-plan.
-    fileprivate(set) var lambda: Angle = 0.0
+    private(set) var lambda: Angle = 0.0
     
     /**
      CartesianVector object represent the vector in cartesian form.

@@ -39,13 +39,13 @@ open class Rotation3D: Measurement {
     }
     
     /// An EulerAngles object represent the rotaion.
-    fileprivate(set) var eulerAngles: EulerAngles!
+    private(set) var eulerAngles: EulerAngles!
     
     /// An Quaternion object represent the rotaion.
-    fileprivate(set) var quaternion: Quaternion!
+    private(set) var quaternion: Quaternion!
     
     /// An RotationMatrix object represent the rotaion.
-    fileprivate(set) var rotationMatrix: RotationMatrix!
+    private(set) var rotationMatrix: RotationMatrix!
     
     //MARK: Initialaization
     

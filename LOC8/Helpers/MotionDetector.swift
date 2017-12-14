@@ -47,20 +47,20 @@ open class MotinDetector: NSObject {
     }
     
     
-    fileprivate(set) var velocity: Velocity = Velocity() {
+    private(set) var velocity: Velocity = Velocity() {
         didSet {
             finalVelocity += velocity
         }
     }
-    fileprivate(set) var finalVelocity: Velocity = Velocity()
+    private(set) var finalVelocity: Velocity = Velocity()
     
     
-    fileprivate(set) var distance: Distance = Distance() {
+    private(set) var distance: Distance = Distance() {
         didSet {
             traveledDistance += distance
         }
     }
-    fileprivate(set) var traveledDistance: Distance = Distance()
+    private(set) var traveledDistance: Distance = Distance()
     
     
     
