@@ -7,9 +7,6 @@
 //
 
 import Foundation
-#if os(iOS)
-    import CoreMotion
-#endif
 
 //MARK: Physics
 
@@ -33,7 +30,7 @@ import Foundation
  - Metre for length.
  - Kilogram for mass.
  - Second for time.
- - Angle for angels.
+ - Radian for angels.
  - Tesla for magnetic field. _(In SI base units:	kg⋅s⁻²⋅A⁻¹)_
  
  ## Kinematic Equations
@@ -90,30 +87,14 @@ public struct Physics {
     a = –––– = –––––––––
          ∆t     t₂ - t₁
   ````
+ 
+ ### where:
+ * __v__ is velocity (m/s)
+ * __t__ is time (s)
+ 
+ - Note: measurment unit is meater per second sequer (m/s²)
  */
 public typealias Acceleration = Vector3D
-
-#if os(iOS)
-    public extension Acceleration {
-        
-        /**
-         Initialize `Acceleration` object with `CMAcceleration` in iOS Core Motion.
-         
-         - Parameter acceleration: `CMAcceleration` object represent the acceleration vector.
-         - Warning: Please make note that this method is only available for iOS 8.1 or later.
-         */
-        @available(iOS 8.1, *)
-        public convenience init(acceleration: CMAcceleration) {
-            
-            let x = acceleration.x * Physics.EarthGravity
-            let y = acceleration.y * Physics.EarthGravity
-            let z = acceleration.z * Physics.EarthGravity
-            
-            self.init(x: x, y: y, z: z)
-        }
-    }
-#endif
-
 
 /**
  # Velocity
@@ -130,15 +111,22 @@ public typealias Acceleration = Vector3D
     v = –––– = –––––––––
          ∆t     t₂ - t₁
  ````
+ 
+ ### where:
+ * __x__ is distance (m)
+ * __t__ is time (s)
+ 
+ - Note: measurment unit is meater per second (m/s)
+ 
  */
 public typealias Velocity = Vector3D
-
 
 /**
  # Distance
  
  ### Discussion:
     Distance is a scalar quantity that refers to "how much ground an object has covered" during its motion.
+ - Note: measurment unit is meater (m)
  */
-public typealias Distance = Vector3D
+public typealias Distance = Vector3D 
 

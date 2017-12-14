@@ -36,14 +36,14 @@ public class MagneticField: Measurement {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        accuracy = Accuracy(rawValue: aDecoder.decodeInteger(forKey: "accuracy"))!
-        field = aDecoder.decodeObject(forKey: "field") as! Vector3D
+        self.accuracy = Accuracy(rawValue: aDecoder.decodeInteger(forKey: "accuracy"))!
+        self.field = aDecoder.decodeObject(forKey: "field") as! Vector3D
     }
     
     open override func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
-        aCoder.encode(accuracy.rawValue, forKey: "accuracy")
-        aCoder.encode(field, forKey: "field")
+        aCoder.encode(self.accuracy.rawValue, forKey: "accuracy")
+        aCoder.encode(self.field, forKey: "field")
     }
     
     open override var description: String {

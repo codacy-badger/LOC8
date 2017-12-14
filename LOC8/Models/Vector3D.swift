@@ -7,6 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
+
+
+
+//MARK: Vector3D Operators
+prefix operator ~
+infix operator ~
+infix operator ^
 
 /**
  # Vector3D
@@ -127,6 +135,15 @@ open class Vector3D: Measurement {
         self.polarVector = self.cartesianVector.polarVector
     }
     
+    /**
+     Initialize `Vectro3D` object with `CLHeading` in iOS Core Location.
+     
+     - Parameter heading: `CLHeading` object represent the location heading.
+     */
+    public convenience init(heading: CLHeading) {
+        self.init(x: heading.x, y: heading.y, z: heading.z)
+    }
+    
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         let x = aDecoder.decodeDouble(forKey: "x")
@@ -147,19 +164,134 @@ open class Vector3D: Measurement {
     open override var description: String {
         return "Vector3D[\n\t\(self.cartesianVector.description)\n\t\(self.polarVector.description)\n]"
     }
+    
+    //MARK:Vectors Operators
+
+    /**
+      A uniry operator calculate the length of a vector (Norm).
+     
+      - Parameter vector: Vector3D object.
+     
+      - Returns: length of the vector.
+     */
+    public static prefix func ~ (vector: Vector3D) -> Double {
+        return sqrt(vector.x * vector.x + vector.y * vector.y + vector.z * vector.z)
+    }
+
+    /**
+      An operator that apply dot product for two vectors.
+     
+      - Parameter left: Vector3D object represent the left side.
+      - Parameter right: Vector3D object represent the right side.
+     
+      - Returns: a Vector3D object represent the result.
+     */
+    public static func ~ (left: Vector3D, right: Vector3D) -> Double {
+        let x = left.x - right.x
+        let y = left.y - right.y
+        let z = left.z - right.z
+        return sqrt(x * x + y * y + z * z)
+    }
+
+    /**
+      An operator that apply cross product for two vectors.
+     
+      - Parameter left: Vector3D object represent the left side.
+      - Parameter right: Rotation3D object represent the right side.
+     
+      - Returns: a Vector3D object represent the result.
+     */
+    public static func ^ (left: Vector3D, right: Rotation3D) -> Vector3D {
+        return Vector3D(
+            x: left.x * right.rotationMatrix.m11 + left.y * right.rotationMatrix.m12 + left.z * right.rotationMatrix.m13,
+            y: left.x * right.rotationMatrix.m21 + left.y * right.rotationMatrix.m22 + left.z * right.rotationMatrix.m23,
+            z: left.x * right.rotationMatrix.m31 + left.y * right.rotationMatrix.m32 + left.z * right.rotationMatrix.m33
+        )
+    }
+
+    //MARK: Arithmetic operators
+    
+    prefix static func - (vector: Vector3D) -> Vector3D {
+        return Vector3D(x: -vector.x, y: -vector.y, z: -vector.z)
+    }
+
+    public static func + (left: Vector3D, right: Vector3D) -> Vector3D {
+        return Vector3D(x: left.x + right.x, y: left.y + right.y, z: left.z + right.z)
+    }
+
+    public static func - (left: Vector3D, right: Vector3D) -> Vector3D {
+        return left + -right
+    }
+
+    public static func += (left: inout Vector3D, right: Vector3D) {
+        left = left + right
+    }
+
+    public static func -= (left: inout Vector3D, right: Vector3D) {
+        left = left - right
+    }
+
+    public static func * (left: Vector3D, right: Vector3D) -> Vector3D {
+        return Vector3D(x: left.x * right.x, y: left.y * right.y, z: left.z * right.z)
+    }
+
+    public static func / (left: Vector3D, right: Vector3D) -> Vector3D {
+        return Vector3D(x: left.x / right.x, y: left.y / right.y, z: left.z / right.z)
+    }
+
+    //MARK: Logical operators
+    
+    public static func == (left: Vector3D, right: Vector3D) -> Bool {
+        return (left.x == right.x) && (left.y == right.y) && (left.z == right.z)
+    }
+
+    public static func != (left: Vector3D, right: Vector3D) -> Bool {
+        return !(left == right)
+    }
+
+    public static func <= (left: Vector3D, right: Vector3D) -> Bool {
+        return (~left <= ~right)
+    }
+
+    public static func >= (left: Vector3D, right: Vector3D) -> Bool {
+        return (~left >= ~right)
+    }
+
+    public static func < (left: Vector3D, right: Vector3D) -> Bool {
+        return (~left < ~right)
+    }
+
+    public static func > (left: Vector3D, right: Vector3D) -> Bool {
+        return (~left > ~right)
+    }
 }
+
 #if os(iOS)
     import CoreMotion
     
     public extension Vector3D {
+            
+        /**
+         Initialize `Acceleration` object with `CMAcceleration` in iOS Core Motion.
+         
+         - Parameter acceleration: `CMAcceleration` object represent the acceleration vector.
+         - Warning: Please make note that this method is only available for iOS 8.1 or later.
+         */
+        @available(iOS 8.1, *)
+        public convenience init(acceleration: CMAcceleration) {
+            
+            let x = acceleration.x * Physics.EarthGravity
+            let y = acceleration.y * Physics.EarthGravity
+            let z = acceleration.z * Physics.EarthGravity
+            
+            self.init(x: x, y: y, z: z)
+        }
         
         /**
          Initialize `Vectro3D` object with `CMRotationRate` in iOS Core Motion.
          
          - Parameter rotationRate: `CMRotationRate` object represent the rotation rate vector.
-         - Warning: Please make note that this method is only available for iOS 8.1 or later.
          */
-        @available(iOS 8.1, *)
         public convenience init(rotationRate: CMRotationRate) {
             self.init(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z)
         }
@@ -186,107 +318,3 @@ open class Vector3D: Measurement {
         }
     }
 #endif
-
-
-//MARK: Vector3D Operators
-
-//MARK:Vectors Operators
-
-prefix operator ~
-/**
-  A uniry operator calculate the length of a vector (Norm).
- 
-  - Parameter vector: Vector3D object.
- 
-  - Returns: length of the vector.
- */
-prefix func ~ (vector: Vector3D) -> Double {
-    return sqrt(vector.x * vector.x + vector.y * vector.y + vector.z * vector.z)
-}
-
-infix operator ~
-/**
-  An operator that apply dot product for two vectors.
- 
-  - Parameter left: Vector3D object represent the left side.
-  - Parameter right: Vector3D object represent the right side.
- 
-  - Returns: a Vector3D object represent the result.
- */
-public func ~ (left: Vector3D, right: Vector3D) -> Double {
-    let x = left.x - right.x
-    let y = left.y - right.y
-    let z = left.z - right.z
-    return sqrt(x * x + y * y + z * z)
-}
-
-infix operator ^
-/**
-  An operator that apply cross product for two vectors.
- 
-  - Parameter left: Vector3D object represent the left side.
-  - Parameter right: Rotation3D object represent the right side.
- 
-  - Returns: a Vector3D object represent the result.
- */
-public func ^ (left: Vector3D, right: Rotation3D) -> Vector3D {
-    return Vector3D(
-        x: left.x * right.rotationMatrix.m11 + left.y * right.rotationMatrix.m12 + left.z * right.rotationMatrix.m13,
-        y: left.x * right.rotationMatrix.m21 + left.y * right.rotationMatrix.m22 + left.z * right.rotationMatrix.m23,
-        z: left.x * right.rotationMatrix.m31 + left.y * right.rotationMatrix.m32 + left.z * right.rotationMatrix.m33
-    )
-}
-
-//MARK:Arithmetic operators
-prefix func - (vector: Vector3D) -> Vector3D {
-    return Vector3D(x: -vector.x, y: -vector.y, z: -vector.z)
-}
-
-public func + (left: Vector3D, right: Vector3D) -> Vector3D {
-    return Vector3D(x: left.x + right.x, y: left.y + right.y, z: left.z + right.z)
-}
-
-public func - (left: Vector3D, right: Vector3D) -> Vector3D {
-    return left + -right
-}
-
-public func += (left: inout Vector3D, right: Vector3D) {
-    left = left + right
-}
-
-public func -= (left: inout Vector3D, right: Vector3D) {
-    left = left - right
-}
-
-public func * (left: Vector3D, right: Vector3D) -> Vector3D {
-    return Vector3D(x: left.x * right.x, y: left.y * right.y, z: left.z * right.z)
-}
-
-public func / (left: Vector3D, right: Vector3D) -> Vector3D {
-    return Vector3D(x: left.x / right.x, y: left.y / right.y, z: left.z / right.z)
-}
-
-//MARK:Logical operators
-public func == (left: Vector3D, right: Vector3D) -> Bool {
-    return (left.x == right.x) && (left.y == right.y) && (left.z == right.z)
-}
-
-public func != (left: Vector3D, right: Vector3D) -> Bool {
-    return !(left == right)
-}
-
-public func <= (left: Vector3D, right: Vector3D) -> Bool {
-    return (~left <= ~right)
-}
-
-public func >= (left: Vector3D, right: Vector3D) -> Bool {
-    return (~left >= ~right)
-}
-
-public func < (left: Vector3D, right: Vector3D) -> Bool {
-    return (~left < ~right)
-}
-
-public func > (left: Vector3D, right: Vector3D) -> Bool {
-    return (~left > ~right)
-}

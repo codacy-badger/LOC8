@@ -21,7 +21,7 @@ class PathManager {
 //        self.initData()
     }
     
-    func initData(_ data: [Heading]) {
+    func initData(_ data: [Motion]) {
         
         self.movements = []
         

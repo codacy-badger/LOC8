@@ -90,7 +90,48 @@ open class Rotation3D: Measurement {
     open override var description: String {
         return String(format: "Rotation3D[roll: %.2f, pitch: %.2f, yaw: %.2f]", Float(self.roll), Float(self.pitch), Float(self.yaw))
     }
+    
+    //MARK: Arithmetic operators
+    
+    public static prefix func - (rotation: Rotation3D) -> Rotation3D {
+        return Rotation3D(roll: -rotation.roll, pitch: -rotation.pitch, yaw: -rotation.yaw)
+    }
+
+    public static func + (left: Rotation3D, right: Rotation3D) -> Rotation3D {
+        return Rotation3D(roll: left.roll + right.roll, pitch: left.pitch + right.pitch, yaw: left.yaw + right.yaw)
+    }
+
+    public static func - (left: Rotation3D, right: Rotation3D) -> Rotation3D {
+        return left + -right
+    }
+
+    public static func += (left: inout Rotation3D, right: Rotation3D) {
+        left = left + right
+    }
+
+    public static func -= (left: inout Rotation3D, right: Rotation3D) {
+        left = left - right
+    }
+
+    public static func * (left: Rotation3D, right: Rotation3D) -> Rotation3D {
+        return Rotation3D(roll: left.roll * right.roll, pitch: left.pitch * right.pitch, yaw: left.yaw * right.yaw)
+    }
+
+    public static func / (left: Rotation3D, right: Rotation3D) -> Rotation3D {
+        return Rotation3D(roll: left.roll / right.roll, pitch: left.pitch / right.pitch, yaw: left.yaw / right.yaw)
+    }
+
+    //MARK: Logical operators
+    
+    public static func == (left: Rotation3D, right: Rotation3D) -> Bool {
+        return (left.roll == right.roll) && (left.pitch == right.pitch) && (left.yaw == right.yaw)
+    }
+
+    public static func != (left: Rotation3D, right: Rotation3D) -> Bool {
+        return !(left == right)
+    }
 }
+
 #if os(iOS)
     import CoreMotion
     
@@ -110,43 +151,3 @@ open class Rotation3D: Measurement {
         }
     }
 #endif
-
-//MARK: Rotation3D Operators
-
-//MARK:Arithmetic operators
-prefix func - (rotation: Rotation3D) -> Rotation3D {
-    return Rotation3D(roll: -rotation.roll, pitch: -rotation.pitch, yaw: -rotation.yaw)
-}
-
-public func + (left: Rotation3D, right: Rotation3D) -> Rotation3D {
-    return Rotation3D(roll: left.roll + right.roll, pitch: left.pitch + right.pitch, yaw: left.yaw + right.yaw)
-}
-
-public func - (left: Rotation3D, right: Rotation3D) -> Rotation3D {
-    return left + -right
-}
-
-public func += (left: inout Rotation3D, right: Rotation3D) {
-    left = left + right
-}
-
-public func -= (left: inout Rotation3D, right: Rotation3D) {
-    left = left - right
-}
-
-public func * (left: Rotation3D, right: Rotation3D) -> Rotation3D {
-    return Rotation3D(roll: left.roll * right.roll, pitch: left.pitch * right.pitch, yaw: left.yaw * right.yaw)
-}
-
-public func / (left: Rotation3D, right: Rotation3D) -> Rotation3D {
-    return Rotation3D(roll: left.roll / right.roll, pitch: left.pitch / right.pitch, yaw: left.yaw / right.yaw)
-}
-
-//MARK:Logical operators
-public func == (left: Rotation3D, right: Rotation3D) -> Bool {
-    return (left.roll == right.roll) && (left.pitch == right.pitch) && (left.yaw == right.yaw)
-}
-
-public func != (left: Rotation3D, right: Rotation3D) -> Bool {
-    return !(left == right)
-}

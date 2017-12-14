@@ -24,6 +24,28 @@ import Foundation
  
  Alos the two vertical directions or cardinal points are the directions of up and down, commonly denoted by their initials: __U, D__
  
+ __Up Diraction__
+ - North Up     __NU__
+ - Northeast Up __NEU__
+ - East Up      __EU__
+ - Southeast Up __SEU__
+ - South Up     __SU__
+ - Southwest Up __SWU__
+ - West Up      __WU__
+ - Northwest Up __NWU__
+ 
+ __Down Diraction__
+ - North Down     __ND__
+ - Northeast Down __NED__
+ - East Down      __ED__
+ - Southeast Down __SED__
+ - South Down     __SD__
+ - Southwest Down __SWD__
+ - West Down      __WD__
+ - Northwest Down __NWD__
+ 
+ ## Available Values
+ 
  - None
  - North
  - East
@@ -31,6 +53,7 @@ import Foundation
  - West
  - Up
  - Down
+ 
  */
 public struct Direction: OptionSet, CustomStringConvertible {
     
@@ -165,21 +188,21 @@ public struct Direction: OptionSet, CustomStringConvertible {
         let d_xy = wrap(angle / (Double.pi / 4)) % 8
         
         switch d_xy {
-        case 0, 8:
+        case 0, 8: // 0˚, 360˚
             self = .north
-        case 1:
+        case 1: // 45˚
             self = [.north, .east]
-        case 2:
+        case 2: // 90˚
             self = .east
-        case 3:
+        case 3: // 135˚
             self = [.south, .east]
-        case 4:
+        case 4: // 180˚
             self = .south
-        case 5:
+        case 5: // 225˚
             self = [.south, .west]
-        case 6:
+        case 6: // 270˚
             self = .west
-        case 7:
+        case 7: // 315˚
             self = [.north, .west]
         default:
             self = .none
@@ -197,16 +220,16 @@ public struct Direction: OptionSet, CustomStringConvertible {
         let d_z = wrap(lambda / (Double.pi / 4)) % 4
             
         switch d_z {
-        case 0:// 0.0, 180.0, -180.0
+        case 0: // 0˚, 180˚, -180˚
             self = Direction(angle: theta)
-        case 2://90.0
+        case 2: //90˚
             self = .up
-        case -2://-90.0
+        case -2: //-90˚
             self = .down
-        case 1,3:// 45.0, 135.0
+        case 1,3: // 45˚, 135˚
             self = Direction(angle: theta)
             self.insert(.up)
-        case -1,-3:// -45.0, -135.0
+        case -1,-3: // -45˚, -135˚
             self = Direction(angle: theta)
             self.insert(.down)
         default:

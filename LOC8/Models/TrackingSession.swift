@@ -130,11 +130,11 @@ open class TrackingSession: Measurement {
      Method that mearge all estimations headings.
      - Returns: A list of `Heading` objects represent the tracking map.
      */
-    open func trackingMap() -> [Heading] {
+    open func trackingMap() -> [Motion] {
         
-        var temp: [Heading] = []
+        var temp: [Motion] = []
         
-        var last: Heading?
+        var last: Motion?
         
         for estimation in estimations {
             

@@ -18,7 +18,7 @@ public struct Movement {
         self.direction = direction
     }
     
-    public init(heading: Heading) {
+    public init(heading: Motion) {
         self.distance = Float(heading.distance / 2.0)
         self.direction = heading.direction
     }
@@ -32,7 +32,7 @@ open class Path: NSObject {
         super.init()
     }
     
-    public convenience init(data: [Heading]) {
+    public convenience init(data: [Motion]) {
         self.init()
         
         self.movements = []

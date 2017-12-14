@@ -42,6 +42,8 @@
 		4D40F5A51FE2AA92006FDB69 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD61CA68A1B00AB4885 /* Heading.swift */; };
 		4D40F5A61FE2AA92006FDB69 /* MotionActivityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5821FE29DEE006FDB69 /* MotionActivityStatus.swift */; };
 		4D40F5A71FE2AA92006FDB69 /* MotionActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD71CA68A1B00AB4885 /* MotionActivity.swift */; };
+		4D40F5AC1FE2C821006FDB69 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5AB1FE2C821006FDB69 /* Motion.swift */; };
+		4D40F5AD1FE2C821006FDB69 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5AB1FE2C821006FDB69 /* Motion.swift */; };
 		4D5BFA641CAA8A1E001AA782 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BFA631CAA8A1E001AA782 /* Physics.swift */; };
 		4DC647811CAF9A1F007AB5D7 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC647801CAF9A1F007AB5D7 /* MotionDetector.swift */; };
 		4DCDBB961CA6895800AB4885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBB951CA6895800AB4885 /* AppDelegate.swift */; };
@@ -148,6 +150,7 @@
 		4D40F58D1FE2A61A006FDB69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D40F5931FE2A653006FDB69 /* GeometryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryTests.swift; sourceTree = "<group>"; };
 		4D40F5941FE2A653006FDB69 /* RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
+		4D40F5AB1FE2C821006FDB69 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
 		4D5BFA631CAA8A1E001AA782 /* Physics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
 		4DC647801CAF9A1F007AB5D7 /* MotionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		4DCDBB921CA6895800AB4885 /* LOC8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOC8.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -327,12 +330,13 @@
 				4DCDBBDA1CA68A1B00AB4885 /* Vector3D.swift */,
 				4DCDBBD81CA68A1B00AB4885 /* Rotation3D.swift */,
 				4D5BFA631CAA8A1E001AA782 /* Physics.swift */,
-				4D40F5711FE27A7F006FDB69 /* Accuracy.swift */,
 				4DD5BF681FE0E447006B6035 /* Direction.swift */,
+				4D40F5711FE27A7F006FDB69 /* Accuracy.swift */,
 				4D40F56F1FE27652006FDB69 /* MagneticField.swift */,
 				4DCDBBD61CA68A1B00AB4885 /* Heading.swift */,
 				4D40F5821FE29DEE006FDB69 /* MotionActivityStatus.swift */,
 				4DCDBBD71CA68A1B00AB4885 /* MotionActivity.swift */,
+				4D40F5AB1FE2C821006FDB69 /* Motion.swift */,
 				4DCDBBD41CA68A1B00AB4885 /* Estimation.swift */,
 				4DCDBBD91CA68A1B00AB4885 /* TrackingSession.swift */,
 				4DCDBBD51CA68A1B00AB4885 /* Filter.swift */,
@@ -603,6 +607,7 @@
 				4DCDBC0C1CA68A1B00AB4885 /* Vector3DTableViewCell.swift in Sources */,
 				4DCDBC101CA68A1B00AB4885 /* CustomCamera.swift in Sources */,
 				4DCDBC131CA68A1B00AB4885 /* MeasurmentsViewController.swift in Sources */,
+				4D40F5AC1FE2C821006FDB69 /* Motion.swift in Sources */,
 				4DCDBC0E1CA68A1B00AB4885 /* UILinearProgressView.swift in Sources */,
 				4DD5BF601FE0DA0D006B6035 /* EulerAngles.swift in Sources */,
 				4DCDBC081CA68A1B00AB4885 /* PedometerTableViewCell.swift in Sources */,
@@ -640,6 +645,7 @@
 				4D40F5801FE2802B006FDB69 /* LogRecord.swift in Sources */,
 				4D40F5731FE27C4C006FDB69 /* Angle.swift in Sources */,
 				4D40F5741FE27C4C006FDB69 /* Physics.swift in Sources */,
+				4D40F5AD1FE2C821006FDB69 /* Motion.swift in Sources */,
 				4D40F5751FE27C4C006FDB69 /* MotionActivity.swift in Sources */,
 				4D40F5781FE27C4C006FDB69 /* Filter.swift in Sources */,
 				4D40F5791FE27C4C006FDB69 /* MagneticField.swift in Sources */,
