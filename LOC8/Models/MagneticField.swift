@@ -51,3 +51,24 @@ public class MagneticField: Measurement {
     }
     
 }
+
+
+
+#if os(iOS)
+    import CoreMotion
+    
+    public extension MagneticField {
+        
+        /**
+         Initialize `MagneticField` object with `CMCalibratedMagneticField` in iOS Core Motion.
+         
+         - Parameter magneticField: `CMCalibratedMagneticField` object represent the calibrated magnetic field.
+         - Warning: Please make note that this method is only available for iOS 7.0 or later.
+         */
+        public convenience init(magneticField: CMCalibratedMagneticField) {
+            let accuracy = Accuracy(magneticField: magneticField)
+            let field = Vector3D(magneticField: magneticField)
+            self.init(field: field, accuracy: accuracy)
+        }
+    }
+#endif

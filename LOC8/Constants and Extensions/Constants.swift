@@ -36,3 +36,11 @@ public struct DefaultKeys {
 }
 
 
+public struct MultipeerManagerKeys {
+    
+    public static let PeerId: String = "PeerId"
+    
+    public static let Data: String = "SessionData"
+    
+    public static let State: String = "SessionState"
+}

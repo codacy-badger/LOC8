@@ -7,9 +7,6 @@
 //
 
 import Foundation
-#if os(iOS)
-    import CoreMotion
-#endif
 
 //MARK: Rotations
 
@@ -90,28 +87,29 @@ open class Rotation3D: Measurement {
         aCoder.encode(roll, forKey: "roll")
     }
     
-    #if os(iOS)
-    
-    
-    /**
-     Initialize `Rotation3D` object with `CMAttitude` in iOS Core Motion.
-     
-     - Parameter attitude: `CMAttitude` object represent the rotation.
-     - Warning: Please make note that this method is only available for iOS 8.0 or later.
-     */
-    @available(iOS 8.0, *)
-    public init(attitude: CMAttitude) {
-        super.init()
-        self.eulerAngles = EulerAngles(attitude: attitude)
-        self.rotationMatrix = RotationMatrix(matrix: attitude.rotationMatrix)
-        self.quaternion = Quaternion(quaternion: attitude.quaternion)
-    }
-    #endif
-    
     open override var description: String {
         return String(format: "Rotation3D[roll: %.2f, pitch: %.2f, yaw: %.2f]", Float(self.roll), Float(self.pitch), Float(self.yaw))
     }
 }
+#if os(iOS)
+    import CoreMotion
+    
+    public extension Rotation3D {
+        /**
+         Initialize `Rotation3D` object with `CMAttitude` in iOS Core Motion.
+         
+         - Parameter attitude: `CMAttitude` object represent the rotation.
+         - Warning: Please make note that this method is only available for iOS 8.0 or later.
+         */
+        @available(iOS 8.0, *)
+        public convenience init(attitude: CMAttitude) {
+            self.init()
+            self.eulerAngles = EulerAngles(attitude: attitude)
+            self.rotationMatrix = RotationMatrix(matrix: attitude.rotationMatrix)
+            self.quaternion = Quaternion(quaternion: attitude.quaternion)
+        }
+    }
+#endif
 
 //MARK: Rotation3D Operators
 

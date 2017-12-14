@@ -7,11 +7,6 @@
 //
 
 import Foundation
-#if os(iOS)
-    import CoreMotion
-#endif
-
-//MARK: Vectors
 
 /**
  # Vector3D
@@ -149,24 +144,49 @@ open class Vector3D: Measurement {
         aCoder.encode(cartesianVector.z, forKey: "z")
     }
     
-    #if os(iOS)
-    
-    /**
-     Initialize `Vectro3D` object with `CMRotationRate` in iOS Core Motion.
-     
-     - Parameter rotationRate: `CMRotationRate` object represent the rotation rate vector.
-     - Warning: Please make note that this method is only available for iOS 8.1 or later.
-     */
-    @available(iOS 8.1, *)
-    public convenience init(rotationRate: CMRotationRate) {
-        self.init(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z)
-    }
-    #endif
-    
     open override var description: String {
         return "Vector3D[\n\t\(self.cartesianVector.description)\n\t\(self.polarVector.description)\n]"
     }
 }
+#if os(iOS)
+    import CoreMotion
+    
+    public extension Vector3D {
+        
+        /**
+         Initialize `Vectro3D` object with `CMRotationRate` in iOS Core Motion.
+         
+         - Parameter rotationRate: `CMRotationRate` object represent the rotation rate vector.
+         - Warning: Please make note that this method is only available for iOS 8.1 or later.
+         */
+        @available(iOS 8.1, *)
+        public convenience init(rotationRate: CMRotationRate) {
+            self.init(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z)
+        }
+        
+        /**
+         Initialize `Vectro3D` object with `CMMagneticField` in iOS Core Motion.
+         
+         - Parameter field: `CMMagneticField` object represent the magnetic field.
+         - Warning: Please make note that this method is only available for iOS 8.1 or later.
+         */
+        @available(iOS 8.1, *)
+        public convenience init(field: CMMagneticField) {
+            self.init(x: field.x, y: field.y, z: field.z)
+        }
+        
+        /**
+         Initialize `Vectro3D` object with `CMCalibratedMagneticField` in iOS Core Motion.
+         
+         - Parameter magneticField: `CMCalibratedMagneticField` object represent the calibrated magnetic field.
+         - Warning: Please make note that this method is only available for iOS 7.0 or later.
+         */
+        public convenience init(magneticField: CMCalibratedMagneticField) {
+            self.init(field: magneticField.field)
+        }
+    }
+#endif
+
 
 //MARK: Vector3D Operators
 

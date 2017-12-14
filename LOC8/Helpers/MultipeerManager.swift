@@ -9,16 +9,7 @@
 import Foundation
 import MultipeerConnectivity
 
-public struct MultipeerManagerKeys {
-    
-    public static let PeerId: String = "PeerId"
-    
-    public static let Data: String = "SessionData"
-    
-    public static let State: String = "SessionState"
-}
-
-open class MultipeerManager: NSObject {
+public class MultipeerManager: NSObject {
     
     /// Get currently used MultipeerManager, singleton pattern
     public static let shared = MultipeerManager()

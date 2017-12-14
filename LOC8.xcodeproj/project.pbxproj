@@ -20,6 +20,8 @@
 		4D40F57F1FE2802B006FDB69 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F57B1FE27F5F006FDB69 /* LogLevel.swift */; };
 		4D40F5801FE2802B006FDB69 /* LogRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F57D1FE27FA4006FDB69 /* LogRecord.swift */; };
 		4D40F5811FE28032006FDB69 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBBD11CA68A1B00AB4885 /* Log.swift */; };
+		4D40F5831FE29DEE006FDB69 /* MotionActivityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5821FE29DEE006FDB69 /* MotionActivityStatus.swift */; };
+		4D40F5841FE29E10006FDB69 /* MotionActivityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5821FE29DEE006FDB69 /* MotionActivityStatus.swift */; };
 		4D5BFA641CAA8A1E001AA782 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BFA631CAA8A1E001AA782 /* Physics.swift */; };
 		4DC647811CAF9A1F007AB5D7 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC647801CAF9A1F007AB5D7 /* MotionDetector.swift */; };
 		4DCDBB961CA6895800AB4885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBB951CA6895800AB4885 /* AppDelegate.swift */; };
@@ -106,6 +108,7 @@
 		4D40F5711FE27A7F006FDB69 /* Accuracy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accuracy.swift; sourceTree = "<group>"; };
 		4D40F57B1FE27F5F006FDB69 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		4D40F57D1FE27FA4006FDB69 /* LogRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRecord.swift; sourceTree = "<group>"; };
+		4D40F5821FE29DEE006FDB69 /* MotionActivityStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionActivityStatus.swift; sourceTree = "<group>"; };
 		4D5BFA631CAA8A1E001AA782 /* Physics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
 		4DC647801CAF9A1F007AB5D7 /* MotionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		4DCDBB921CA6895800AB4885 /* LOC8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOC8.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +272,7 @@
 				4DD5BF681FE0E447006B6035 /* Direction.swift */,
 				4D40F56F1FE27652006FDB69 /* MagneticField.swift */,
 				4DCDBBD61CA68A1B00AB4885 /* Heading.swift */,
+				4D40F5821FE29DEE006FDB69 /* MotionActivityStatus.swift */,
 				4DCDBBD71CA68A1B00AB4885 /* MotionActivity.swift */,
 				4DCDBBD41CA68A1B00AB4885 /* Estimation.swift */,
 				4DCDBBD91CA68A1B00AB4885 /* TrackingSession.swift */,
@@ -489,6 +493,7 @@
 				4DCDBC001CA68A1B00AB4885 /* Rotation3D.swift in Sources */,
 				4D40F57E1FE27FA4006FDB69 /* LogRecord.swift in Sources */,
 				4DCDBC141CA68A1B00AB4885 /* SettingsViewController.swift in Sources */,
+				4D40F5831FE29DEE006FDB69 /* MotionActivityStatus.swift in Sources */,
 				4DCDBC121CA68A1B00AB4885 /* MapViewController.swift in Sources */,
 				4DCDBBF31CA68A1B00AB4885 /* Constants.swift in Sources */,
 				4DCDBBFF1CA68A1B00AB4885 /* MotionActivity.swift in Sources */,
@@ -525,6 +530,7 @@
 				4DD5BF5B1FE0D96A006B6035 /* CartesianVector.swift in Sources */,
 				4DD5BF641FE0DA3D006B6035 /* RotationMatrix.swift in Sources */,
 				4DCDBC541CA79FDB00AB4885 /* Heading.swift in Sources */,
+				4D40F5841FE29E10006FDB69 /* MotionActivityStatus.swift in Sources */,
 				4DD5BF5E1FE0D9AE006B6035 /* PolarVector.swift in Sources */,
 				4DCDBC531CA79A7C00AB4885 /* Geometry.swift in Sources */,
 				4DD5BF6A1FE0E447006B6035 /* Direction.swift in Sources */,
