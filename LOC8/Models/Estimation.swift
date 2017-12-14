@@ -31,13 +31,13 @@ open class Estimation: Measurement {
     open var estimationHandler: EstimationHandler?
     
     /// A list of `Heading` objects represent all the collected headings for the estimation.
-    open lazy var headings: [Heading] = []
+    open lazy var headings: [Motion] = []
     
     /// A `Double` value represent the total distance for the estimation
     open var distance: Double = 0
     
     /// A computed property return the last heading recieved.
-    open var currentHeading: Heading? {
+    open var currentHeading: Motion? {
         return headings.last
     }
     
@@ -103,7 +103,7 @@ open class Estimation: Measurement {
         
         let heading = notification.userInfo![DefaultKeys.HeadingKey] as! CLHeading
         
-        let newHeading = Heading(angle: heading.magneticHeading)
+        let newHeading = Motion(angle: heading.magneticHeading)
         
         if headings.count == 0 {
             headings.append(newHeading)
@@ -132,7 +132,7 @@ open class Estimation: Measurement {
 //        let gravity = userInfo[DefaultKeys.GravityKey] as! Vector3D
         let acceleration = userInfo[DefaultKeys.AccelerationKey] as! Vector3D
         
-        let newHeading = Heading(angle: acceleration.theta)
+        let newHeading = Motion(angle: acceleration.theta)
         
         if headings.count == 0 {
             headings.append(newHeading)

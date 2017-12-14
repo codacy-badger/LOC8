@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 /**
  # Heading
@@ -14,77 +15,68 @@ import Foundation
    ### Discussion:
     In a contemporary land navigation context, heading is measured with true north, magnetic north, or grid north being 0° in a 360-degree system.
  
-    This object contains distance and waight also to present the repetition of the object along distance.
  */
 open class Heading: Measurement {
     
     //MARK: Properties
     
-    ///Direction value prosent the direction of the heading.
-    open var direction: Direction = .north
+    // The heading (measured in radian) relative to magnetic north.
+    private(set) var magnetic: Angle!
     
-    ///Double value present the distance for the heading.
-    open var distance: Double = 0
+    // The heading (measured in radian) relative to true north.
+    private(set) var `true`: Angle!
     
-    ///Integer value present the wight of the heading.
-    open var wight: UInt = 0
+    // The maximum deviation (measured in radian) between the reported heading and the true geomagnetic heading.
+    private(set) var accuracy: Angle!
     
+    // The geomagnetic vector (measured in microteslas)
+    private(set) var field: Vector3D!
     
     //MARK:Initialization
     
     /**
       Initialize Heading object with an angel
      
-      - Parameter angle: the angel of the heading in radian.
+      - Parameter magnetic: The heading (measured in radian) relative to magnetic north..
+      - Parameter true: The heading (measured in radian) relative to true north.
+      - Parameter accuracy: The maximum deviation (measured in radian) between the reported heading and the true geomagnetic heading.
+      - Parameter geomagneticField: The geomagnetic vector (measured in microteslas)
      */
-    public init(angle: Angle) {
+    public init(magnetic: Angle, `true`: Angle, accuracy: Angle, field: Vector3D) {
         super.init()
-        self.direction = Direction(angle: angle)
-    }
-    
-    /**
-      Initialize Heading object with an angel
-     
-      - Parameter direction: the direction of the heading.
-     */
-    public init(direction: Direction) {
-        super.init()
-        self.direction = direction
+        self.magnetic = magnetic
+        self.true = `true`
+        self.accuracy = accuracy
+        self.field = field
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        direction = Direction(rawValue: aDecoder.decodeInteger(forKey: "direction"))
-        distance = aDecoder.decodeDouble(forKey: "distance")
-        wight = UInt(aDecoder.decodeInteger(forKey: "wight"))
+        self.magnetic = aDecoder.decodeDouble(forKey: "magnetic")
+        self.true = aDecoder.decodeDouble(forKey: "true")
+        self.accuracy = aDecoder.decodeDouble(forKey: "Accuracy")
+        self.field = aDecoder.decodeObject(forKey: "field") as! Vector3D
     }
     
     open override func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
-        aCoder.encode(direction.rawValue, forKey: "direction")
-        aCoder.encode(distance, forKey: "distance")
-        aCoder.encode(Int(wight), forKey: "wight")
+        aCoder.encode(self.magnetic, forKey: "magnetic")
+        aCoder.encode(self.true, forKey: "true")
+        aCoder.encode(self.accuracy, forKey: "accuracy")
+        aCoder.encode(self.field, forKey: "field")
+    }
+    
+    /**
+     Initialize `Heading` object with `CLHeading` in iOS Core Location.
+     
+     - Parameter heading: `CLHeading` object represent the location heading.
+     */
+    public convenience init(heading: CLHeading) {
+        self.init(magnetic: heading.magneticHeading, true: heading.trueHeading, accuracy: heading.headingAccuracy, field: Vector3D(heading: heading))
     }
     
     open override var description: String {
-        var result = ""
-        if distance == 0 {
-            result = "Heading \(self.direction) with wight \(wight)."
-        } else {
-            let distance = NSString(format: "%.2f", self.distance)
-            result = "[\(self.direction), \(wight), \(distance)]"
-        }
-        
-        return result
+        return "Heading {\t\nMagnetic = \(self.magnetic)\n\tTrue = \(self.true)\n\tAccuracy = \(self.accuracy)\n\tGeomagnetic Field = \(self.field)\n}."
     }
-}
-
-//MARK:Logical operators
-public func ==(lhs: Heading, rhs: Heading) -> Bool {
-    return lhs.direction == rhs.direction
-}
-
-public func !=(lhs: Heading, rhs: Heading) -> Bool {
-    return lhs.direction != rhs.direction
 }
 
