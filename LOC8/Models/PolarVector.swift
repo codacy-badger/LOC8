@@ -25,11 +25,11 @@ public struct PolarVector: CustomStringConvertible {
     ///Double value represent the distance of the vector.
     fileprivate(set) var magnitude: Double = 0.0
     
-    ///Radian value represent the angle between the projection on xy-plan and x-axis.
-    fileprivate(set) var theta: Radian = 0.0
+    ///Angle value represent the angle between the projection on xy-plan and x-axis.
+    fileprivate(set) var theta: Angle = 0.0
     
-    ///Radian value represent the angle between the projection on z-axis and xy-plan.
-    fileprivate(set) var lambda: Radian = 0.0
+    ///Angle value represent the angle between the projection on z-axis and xy-plan.
+    fileprivate(set) var lambda: Angle = 0.0
     
     /**
      CartesianVector object represent the vector in cartesian form.
@@ -61,10 +61,10 @@ public struct PolarVector: CustomStringConvertible {
      Initialize PolarVector object
      
      - Parameter magnitude: Double value represent the vector magnitude.
-     - Parameter theta: Radian value represent the vector theta.
-     - Parameter lambda: Radian value represent the vector lambda.
+     - Parameter theta: Angle value represent the vector theta.
+     - Parameter lambda: Angle value represent the vector lambda.
      */
-    public init(magnitude: Double, theta: Radian, lambda: Radian) {
+    public init(magnitude: Double, theta: Angle, lambda: Angle) {
         self.theta = theta
         self.lambda = lambda
         self.magnitude = magnitude

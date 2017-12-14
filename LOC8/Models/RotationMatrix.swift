@@ -30,9 +30,9 @@ public struct RotationMatrix: CustomStringConvertible {
     
     ///EulerAngles object represent the rotation in euler angles form
     public var eulerAngles: EulerAngles {
-        var yaw: Radian = 0
-        var pitch: Radian = 0
-        var roll: Radian = 0
+        var yaw: Angle = 0
+        var pitch: Angle = 0
+        var roll: Angle = 0
         
         if (m21 > 0.998) { // singularity at north pole
             yaw = atan2(m13, m33)

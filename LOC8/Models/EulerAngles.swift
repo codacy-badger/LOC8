@@ -23,14 +23,14 @@ import Foundation
  */
 public struct EulerAngles: CustomStringConvertible {
     
-    ///Radian value represent a rotation around x-axis.
-    fileprivate(set) var roll: Radian = 0
+    ///Angle value represent a rotation around x-axis.
+    fileprivate(set) var roll: Angle = 0
     
-    ///Radian value represent a rotation around y-axis.
-    fileprivate(set) var pitch: Radian = 0
+    ///Angle value represent a rotation around y-axis.
+    fileprivate(set) var pitch: Angle = 0
     
-    ///Radian value represent a rotation around z-axis.
-    fileprivate(set) var yaw: Radian = 0
+    ///Angle value represent a rotation around z-axis.
+    fileprivate(set) var yaw: Angle = 0
     
     ///RotationMatrix object represent the rotation in matrix form.
     public var rotationMatrix: RotationMatrix {
@@ -79,11 +79,11 @@ public struct EulerAngles: CustomStringConvertible {
     /**
      Initialize EulerAngles object
      
-     - Parameter roll: Radian value represent a rotation around x-axis.
-     - Parameter pitch: Radian value represent a rotation around y-axis.
-     - Parameter yaw: Radian value represent a rotation around z-axis.
+     - Parameter roll: Angle value represent a rotation around x-axis.
+     - Parameter pitch: Angle value represent a rotation around y-axis.
+     - Parameter yaw: Angle value represent a rotation around z-axis.
      */
-    public init(roll: Radian, pitch: Radian, yaw: Radian) {
+    public init(roll: Angle, pitch: Angle, yaw: Angle) {
         self.roll = roll
         self.pitch = pitch
         self.yaw = yaw

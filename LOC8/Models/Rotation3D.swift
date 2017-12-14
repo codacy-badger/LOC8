@@ -23,14 +23,14 @@ open class Rotation3D: Measurement {
     
     //MARK: Properties
     
-    ///Radian value represent a rotation around x-axis.
-    open var roll: Radian { return eulerAngles.roll }
+    ///Angle value represent a rotation around x-axis.
+    open var roll: Angle { return eulerAngles.roll }
     
-    ///Radian value represent a rotation around y-axis.
-    open var pitch: Radian { return eulerAngles.pitch }
+    ///Angle value represent a rotation around y-axis.
+    open var pitch: Angle { return eulerAngles.pitch }
     
-    ///Radian value represent a rotation around z-axis.
-    open var yaw: Radian { return eulerAngles.yaw }
+    ///Angle value represent a rotation around z-axis.
+    open var yaw: Angle { return eulerAngles.yaw }
     
     /// An EulerAngles object represent the rotaion.
     fileprivate(set) var eulerAngles: EulerAngles!
@@ -57,11 +57,11 @@ open class Rotation3D: Measurement {
       Initialize Rotation3D object
      
       - Parameters:
-      	- roll: Radian value represent a rotation around x-axis.
-      	- pitch: Radian value represent a rotation around y-axis.
-      	- yaw: Radian value represent a rotation around z-axis.
+      	- roll: Angle value represent a rotation around x-axis.
+      	- pitch: Angle value represent a rotation around y-axis.
+      	- yaw: Angle value represent a rotation around z-axis.
      */
-    public init(roll: Radian, pitch: Radian, yaw: Radian) {
+    public init(roll: Angle, pitch: Angle, yaw: Angle) {
         super.init()
         self.eulerAngles = EulerAngles(roll: roll, pitch: pitch, yaw: yaw)
         self.quaternion = eulerAngles.quaternion

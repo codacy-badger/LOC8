@@ -33,7 +33,7 @@ import Foundation
  - Metre for length.
  - Kilogram for mass.
  - Second for time.
- - Radian for angels.
+ - Angle for angels.
  - Tesla for magnetic field. _(In SI base units:	kg⋅s⁻²⋅A⁻¹)_
  
  ## Kinematic Equations

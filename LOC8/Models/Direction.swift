@@ -156,11 +156,11 @@ public struct Direction: OptionSet, CustomStringConvertible {
     }
     
     /**
-     Initialize `Direction` object with `Radian` angle in (x, y) plaen.
+     Initialize `Direction` object with `Angle` angle in (x, y) plaen.
      
-     - Parameter angle: `Radian` value represent the direction angle in (x, y) plaen.
+     - Parameter angle: `Angle` value represent the direction angle in (x, y) plaen.
      */
-    public init(angle: Radian) {
+    public init(angle: Angle) {
         
         let d_xy = wrap(angle / (Double.pi / 4)) % 8
         
@@ -182,21 +182,23 @@ public struct Direction: OptionSet, CustomStringConvertible {
         case 7:
             self = [.north, .west]
         default:
-            self = []
+            self = .none
         }
     }
     
     /**
-     Initialize `Direction` object with two `Radian` angles in (x, y, z) coordenet.
+     Initialize `Direction` object with two `Angle` angles in (x, y, z) coordenet.
      
-     - Parameter theta: Radian value represent the angle in (x, y) plaen.
-     - Parameter lambda: Radian value represent the angle in (p, z) plane where p is the projection in (x, y) plane.
+     - Parameter theta: Angle value represent the angle in (x, y) plaen.
+     - Parameter lambda: Angle value represent the angle in (p, z) plane where p is the projection in (x, y) plane.
      */
-    public init(theta: Radian, lambda: Radian) {
+    public init(theta: Angle, lambda: Angle) {
         
         let d_z = wrap(lambda / (Double.pi / 4)) % 4
             
         switch d_z {
+        case 0:// 0.0, 180.0, -180.0
+            self = Direction(angle: theta)
         case 2://90.0
             self = .up
         case -2://-90.0
@@ -207,12 +209,16 @@ public struct Direction: OptionSet, CustomStringConvertible {
         case -1,-3:// -45.0, -135.0
             self = Direction(angle: theta)
             self.insert(.down)
-        default:// 0.0, 180.0, -180.0
-            self = Direction(angle: theta)
+        default:
+            self = .none
         }
     }
     
     public var description: String {
+        
+        if self == .none {
+            return "No diriction"
+        }
         
         var values: [String] = []
         var notations: [String] = []

@@ -37,7 +37,7 @@ open class Heading: Measurement {
      
       - Parameter angle: the angel of the heading in radian.
      */
-    public init(angle: Radian) {
+    public init(angle: Angle) {
         super.init()
         self.direction = Direction(angle: angle)
     }

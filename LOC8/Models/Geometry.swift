@@ -57,43 +57,6 @@ public func wrap(_ value: Double) -> Int {
     return delta >= 0.5 ? intValue + 1 : intValue
 }
 
-/**
-  # Radian
-
-  ### Discussion:
-    The radian is the standard unit of angular measure.
-
-    Radians is numerically equal to the length of a corresponding arc of a unit circle;
-    one radian is just under 57.3 degrees (when the arc length is equal to the radius).
- */
-public typealias Radian = Double
-
-public extension Radian {
-    ///Return the angle in degree.
-    public var degree: Degree {
-        return self * 57.29577951308232286465
-    }
-}
-
-/**
-  # Degree
-
-  ### Discussion:
-    The degree is the standard unit of angular measure.
-
-    Degree is a measurement of plane angle, representing 1⁄360 of a full rotation.
- */
-public typealias Degree = Double
-
-public extension Degree {
-    
-    ///Returns the angle in radian.
-    public var radian: Radian {
-        return self * 0.01745329251994329547
-    }
-}
-
-
 
 
 

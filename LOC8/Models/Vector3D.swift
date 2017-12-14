@@ -49,14 +49,14 @@ open class Vector3D: Measurement {
     /// A PolerVector object represent the vector in polar coordinate.
     fileprivate(set) var polarVector: PolarVector!
     
-    ///Radian value represent the angle between the projection on z-axis and xy-plan.
-    open var theta: Radian {
+    ///Angle value represent the angle between the projection on z-axis and xy-plan.
+    open var theta: Angle {
         return polarVector.theta
         
     }
     
-    ///Radian value represent the angle between the projection on xy-plan and x-axis.
-    open var lambda: Radian {
+    ///Angle value represent the angle between the projection on xy-plan and x-axis.
+    open var lambda: Angle {
         return polarVector.lambda
         
     }
@@ -108,10 +108,10 @@ open class Vector3D: Measurement {
       Initialize Vector3D object in polar form.
      
       - Parameter magnitude: Double value represent the vector magnitude.
-      - Parameter theta: Radian value represent the vector theta.
-      - Parameter lambda: Radian value represent the vector lambda.
+      - Parameter theta: Angle value represent the vector theta.
+      - Parameter lambda: Angle value represent the vector lambda.
      */
-    public init(magnitude: Double, theta: Radian, lambda: Radian) {
+    public init(magnitude: Double, theta: Angle, lambda: Angle) {
         super.init()
         polarVector = PolarVector(magnitude: magnitude, theta: theta, lambda: lambda)
         self.cartesianVector = self.polarVector.cartesianVector
