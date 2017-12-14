@@ -12,34 +12,60 @@ import CoreLocation
 
 open class SensorsManager: NSObject {
     
+    /// Get currently used SensorsManager, singleton pattern
+    public static let shared = SensorsManager()
+    
+    ///Returns the headingg update notification. Which is use to register with notification center.
+    public static let  HeadingUpdateNotification = Notification.Name(rawValue: "com.LOC8.heading-update-notification")
+    
+    ///Returns the distance update notification. Which is use to register with notification center.
+    public static let  DistanceUpdateNotification = Notification.Name(rawValue: "com.LOC8.distance-update-notification")
+    
+    ///Returns the altitude update notification. Which is use to register with notification center.
+    public static let  AltitudeUpdateNotification = Notification.Name(rawValue: "com.LOC8.altitude-update-notification")
+    
+    ///Returns the floor update notification. Which is use to register with notification center.
+    public static let  FloorUpdateNotification = Notification.Name(rawValue: "com.LOC8.floor-update-notification")
+    
+    ///Returns the divice motion update notification. Which is use to register with notification center.
+    public static let  DeviceMotionUpdateNotification = Notification.Name(rawValue: "com.LOC8.device-motion-update-notification")
+    
+    ///Returns the setp count update notification. Which is use to register with notification center.
+    public static let  StepCountUpdateNotification = Notification.Name(rawValue: "com.LOC8.step-count-update-notification")
+    
+    ///Returns the motion activity update notification. Which is use to register with notification center.
+    public static let  MotionActivityUpdateNotification = Notification.Name(rawValue: "com.LOC8.motion-activity-update-notification")
+    
     //MARK:Filters
     
     //Motion Manager
-    open var motionManagerSamplingFrequency: Double = SettingsService.sharedInstance.motionManagerSamplingFrequency {
-        didSet { setupMotionManager() }
+    open var motionManagerSamplingFrequency: Double = SettingsService.shared.motionManagerSamplingFrequency {
+        didSet {
+            setupMotionManager()
+        }
     }
     
     //MARK:Current Measurements
     
-    fileprivate(set) var currentAcceleration: Acceleration!
+    private(set) var currentAcceleration: Acceleration!
     
-    fileprivate(set) var currentGravity: Acceleration!
+    private(set) var currentGravity: Acceleration!
     
-    fileprivate(set) var currentRotationRat: Vector3D!
+    private(set) var currentRotationRat: Vector3D!
     
-    fileprivate(set) var currentHeading: CLHeading?
+    private(set) var currentHeading: CLHeading?
     
-    fileprivate(set) var currentAltitude: Double!
+    private(set) var currentAltitude: Double!
     
-    fileprivate(set) var totalDistance: Double!
+    private(set) var totalDistance: Double!
     
-    fileprivate(set) var currentFloorsDescended: Int!
+    private(set) var currentFloorsDescended: Int!
     
-    fileprivate(set) var currentFloorsAscended: Int!
+    private(set) var currentFloorsAscended: Int!
     
-    fileprivate(set) var currentNumberOfSteps: Int!
+    private(set) var currentNumberOfSteps: Int!
     
-    fileprivate(set) var currentMotionActivity: MotionActivity = MotionActivity()
+    private(set) var currentMotionActivity: MotionActivity = MotionActivity()
     
     //MARK:Properties
     
@@ -54,19 +80,6 @@ open class SensorsManager: NSObject {
     fileprivate var motionActivityManager: CMMotionActivityManager!
     
     //MARK:Initialization
-    
-    /**
-     * Get currently used SensorsManager, singleton pattern
-     *
-     * - Returns: `SensorsManager`
-     */
-    class var sharedInstance: SensorsManager {
-        struct Singleton {
-            static let instance = SensorsManager()
-        }
-        
-        return Singleton.instance
-    }
     
     public override init() {
         super.init()
@@ -87,10 +100,12 @@ open class SensorsManager: NSObject {
             
             self.altimeter.startRelativeAltitudeUpdates(to: queue, withHandler: { (data, error) -> Void in
                 
-                guard let data = data else{ return }
+                guard let data = data else{
+                    return
+                }
                 
                 if error != nil {
-                    print(error?.localizedDescription)
+                    print(error!.localizedDescription)
                 }
                 
                 let altitude = data.relativeAltitude
@@ -99,7 +114,7 @@ open class SensorsManager: NSObject {
                 
                 let userInfo: [AnyHashable: Any] = [DefaultKeys.AltitudeKey: altitude]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.AltitudeUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.AltitudeUpdateNotification, object: nil, userInfo: userInfo)
                 
             })
                 
@@ -116,10 +131,12 @@ open class SensorsManager: NSObject {
         
         self.pedometer.startUpdates(from: Date(timeIntervalSinceNow: 0.0), withHandler: { (data, error) -> Void in
             
-            guard let data = data else { return }
+            guard let data = data else {
+                return
+            }
             
             if error != nil {
-                print(error?.localizedDescription)
+                print(error!.localizedDescription)
             }
             
             if CMPedometer.isDistanceAvailable() {
@@ -130,7 +147,7 @@ open class SensorsManager: NSObject {
                 
                 let userInfo: [AnyHashable: Any] = [DefaultKeys.DistanceKey: distance]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.DistanceUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.DistanceUpdateNotification, object: nil, userInfo: userInfo)
             }
             
             if CMPedometer.isFloorCountingAvailable() {
@@ -143,7 +160,7 @@ open class SensorsManager: NSObject {
                 
                 let userInfo: [AnyHashable: Any] = [DefaultKeys.FloorsAscendedKey: floorsAscended, DefaultKeys.FloorsDescendedKey:floorsDescended]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.FloorUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.FloorUpdateNotification, object: nil, userInfo: userInfo)
             }
             
             if CMPedometer.isStepCountingAvailable() {
@@ -154,7 +171,7 @@ open class SensorsManager: NSObject {
                 
                 let userInfo: [AnyHashable: Any] = [DefaultKeys.StepCountKey: numberOfSteps]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.StepCountUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.StepCountUpdateNotification, object: nil, userInfo: userInfo)
             }
             
             })
@@ -176,10 +193,12 @@ open class SensorsManager: NSObject {
             
             motionManager.startDeviceMotionUpdates(to: queue, withHandler: { (data, error) -> Void in
                 
-                guard let data = data else{ return }
+                guard let data = data else{
+                    return
+                }
                 
                 if error != nil {
-                    print(error?.localizedDescription)
+                    print(error!.localizedDescription)
                 }
                 
                 let attitude = Rotation3D(attitude: data.attitude)
@@ -198,7 +217,7 @@ open class SensorsManager: NSObject {
                     DefaultKeys.AccelerationKey: self.currentAcceleration,
                 ]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.DeviceMotionUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.DeviceMotionUpdateNotification, object: nil, userInfo: userInfo)
             })
         }
     }
@@ -226,7 +245,9 @@ open class SensorsManager: NSObject {
         if (CMMotionActivityManager.isActivityAvailable()) {
             let queue = OperationQueue.main
             motionActivityManager.startActivityUpdates(to: queue, withHandler: { (data) -> Void in
-                guard let data = data else{ return }
+                guard let data = data else{
+                    return
+                }
                 
                 let activity = MotionActivity(activity: data)
                 
@@ -234,7 +255,7 @@ open class SensorsManager: NSObject {
                 
                 let userInfo: [AnyHashable: Any] = [DefaultKeys.MotionActivityKey: activity]
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.MotionActivityUpdate), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: SensorsManager.MotionActivityUpdateNotification, object: nil, userInfo: userInfo)
             })
         }
     }
@@ -273,23 +294,27 @@ open class SensorsManager: NSObject {
         var log = "[Pedometer Data] = {\n"
         
         /* Can we ask for distance updates? */
-        if CMPedometer.isDistanceAvailable(){
+        if CMPedometer.isDistanceAvailable() {
             log += "\t[Distance = \(data.distance!)], #meters\n"
+        } else {
+            log += "\t[Distance is not available],\n"
         }
-        else { log += "\t[Distance is not available],\n" }
         
         /* Can we ask for floor climb/descending updates? */
-        if CMPedometer.isFloorCountingAvailable(){
+        if CMPedometer.isFloorCountingAvailable() {
             log += "\t[Floors ascended = \(data.floorsAscended!)],\n"
             log += "\t[Floors descended = \(data.floorsDescended!)],\n"
+        } else {
+            log += "\t[Floor counting is not available],\n"
         }
-        else { log += "\t[Floor counting is not available],\n" }
         
         /* Can we ask for step counting updates? */
-        if CMPedometer.isStepCountingAvailable(){
+        if CMPedometer.isStepCountingAvailable() {
             log += "\t[Number of steps = \(data.numberOfSteps)]\n"
+        } else {
+            log += "\t[Number of steps is not available]\n"
         }
-        else { log += "\t[Number of steps is not available]\n" }
+        
         log += "\n}"
         
         return log
@@ -318,8 +343,10 @@ extension SensorsManager: CLLocationManagerDelegate {
         
         let userInfo: [AnyHashable: Any] = [DefaultKeys.HeadingKey: newHeading]
         
-        NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: SensorsManager.HeadingUpdateNotification, object: nil, userInfo: userInfo)
     }
     
-    public func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool { return currentHeading == nil }
+    public func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
+        return currentHeading == nil
+    }
 }

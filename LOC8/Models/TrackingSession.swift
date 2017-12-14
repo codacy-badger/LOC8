@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import CoreMotion
-import CoreLocation
 
 /**
  # TrackingSession
@@ -24,10 +22,14 @@ open class TrackingSession: Measurement {
     open var estimationHandler: EstimationHandler?
     
     /// A computed property return the last estimation that has been created.
-    open var currentEstimation: Estimation? { return estimations.last }
+    open var currentEstimation: Estimation? {
+        return estimations.last
+    }
     
     /// A computed property return the previous estimation that has been created.
-    open var previousEstimation: Estimation? { return (estimations.count > 1) ? estimations[estimations.count - 2] : nil }
+    open var previousEstimation: Estimation? {
+        return (estimations.count > 1) ? estimations[estimations.count - 2] : nil
+    }
     
     /// A list of `Heading` objects represent all the collected headings for the estimation.
     open lazy var estimations: [Estimation] = []
@@ -66,7 +68,7 @@ open class TrackingSession: Measurement {
             }
             
             oldEstimation.stopEstimation(distance.doubleValue - self.distance )
-            LogManager.sharedInstance.print(self, message: oldEstimation.description)
+            Log.info(sender: self, message: oldEstimation.description)
             estimationHandler?(oldEstimation)
         }
         
@@ -79,12 +81,12 @@ open class TrackingSession: Measurement {
     ///An action tregered whene the `SensorsManager` recieve a device motion update.
     open func didUpdateDeviceMotion(_ notification: Notification) {
         
-        let userInfo = notification.userInfo!
-
+//        let userInfo = notification.userInfo!
+//
 //        let attitude = userInfo[DefaultKeys.AttitudeKey] as! Rotation3D
 //        let rotationRate = userInfo[DefaultKeys.RotationRateKey] as! Vector3D
 //        let gravity = userInfo[DefaultKeys.GravityKey] as! Vector3D
-        let acceleration = userInfo[DefaultKeys.AccelerationKey] as! Vector3D
+//        let acceleration = userInfo[DefaultKeys.AccelerationKey] as! Vector3D
         
     }
     
@@ -103,9 +105,9 @@ open class TrackingSession: Measurement {
         newEstimation.startEstimation(estimationHandler)
         self.estimations.append(newEstimation)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TrackingSession.didUpdateDistance(_:)), name: NSNotification.Name(rawValue: NotificationKey.DistanceUpdate), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TrackingSession.didUpdateDistance(_:)), name: SensorsManager.DistanceUpdateNotification, object: nil)
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TrackingSession.didUpdateDeviceMotion(_:)), name: NotificationKey.DeviceMotionUpdate, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TrackingSession.didUpdateDeviceMotion(_:)), name: SensorsManager.DeviceMotionUpdate, object: nil)
     }
     
     /**
@@ -113,13 +115,13 @@ open class TrackingSession: Measurement {
      */
     open func stopTraking() {
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.DistanceUpdate), object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.DistanceUpdateNotification, object: nil)
         
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.FloorUpdate, object: nil)
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: SensorsManager.FloorUpdate, object: nil)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.AltitudeUpdate), object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.AltitudeUpdateNotification, object: nil)
         
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DeviceMotionUpdate, object: nil)
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: SensorsManager.DeviceMotionUpdate, object: nil)
         
         self.estimations.removeLast()
     }
@@ -128,11 +130,11 @@ open class TrackingSession: Measurement {
      Method that mearge all estimations headings.
      - Returns: A list of `Heading` objects represent the tracking map.
      */
-    open func trackingMap() -> [Heading] {
+    open func trackingMap() -> [Motion] {
         
-        var temp: [Heading] = []
+        var temp: [Motion] = []
         
-        var last: Heading?
+        var last: Motion?
         
         for estimation in estimations {
             
@@ -145,7 +147,9 @@ open class TrackingSession: Measurement {
             }
             
             for heading in estimation.headings {
-                if heading.direction == last?.direction { continue }
+                if heading.direction == last?.direction {
+                    continue
+                }
                 temp.append(heading)
             }
             last = estimation.headings.last

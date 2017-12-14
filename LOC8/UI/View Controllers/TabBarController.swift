@@ -28,7 +28,9 @@ public struct TabBarItemColor {
 open class TabBarController : UITabBarController, UITabBarControllerDelegate {
     
     //MARK:Properties
-    fileprivate var navigationBar: UINavigationBar { return self.navigationController!.navigationBar }
+    fileprivate var navigationBar: UINavigationBar {
+        return self.navigationController!.navigationBar
+    }
     
     fileprivate var timer: Timer?
     
@@ -58,13 +60,13 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TabBarController.didReceiveInvetation(_:)), name: NSNotification.Name(rawValue: MultipeerManagerKeys.ReceivedInvitation), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TabBarController.didReceiveInvetation(_:)), name: MultipeerManager.ReceivedInvitationNotification, object: nil)
     }
     
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: MultipeerManagerKeys.FoundPeer), object: nil)
+        NotificationCenter.default.removeObserver(self, name: MultipeerManager.FoundPeerNotification, object: nil)
     }
     
     
@@ -77,13 +79,13 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
         let alert = UIAlertController(title: "", message: "\(peer.displayName) wants to connect with you.", preferredStyle: UIAlertControllerStyle.alert)
         
         let acceptAction: UIAlertAction = UIAlertAction(title: "Accept", style: UIAlertActionStyle.default) { (alertAction) -> Void in
-            MultipeerManager.sharedInstance.invitationHandler?(true, MultipeerManager.sharedInstance.session)
+            MultipeerManager.shared.invitationHandler?(true, MultipeerManager.shared.session)
             self.peer = peer
         }
         alert.addAction(acceptAction)
         
         let declineAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (alertAction) -> Void in
-            MultipeerManager.sharedInstance.invitationHandler?(false, MultipeerManager.sharedInstance.session)
+            MultipeerManager.shared.invitationHandler?(false, MultipeerManager.shared.session)
         }
         alert.addAction(declineAction)
         
@@ -93,21 +95,23 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
     }
     
     //MARK:UITabBarController Delegate
-    open func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
+    open func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.navigationItem.title = viewController.navigationItem.title
         self.navigationItem.leftBarButtonItem = viewController.navigationItem.leftBarButtonItem
         self.navigationItem.rightBarButtonItem = viewController.navigationItem.rightBarButtonItem
         
         let data = ["message":type(of: viewController).description()]
         if let peer = self.peer {
-            MultipeerManager.sharedInstance.sendData(dictionaryWithData: data, toPeer: peer)
+            let _ = MultipeerManager.shared.sendData(dictionaryWithData: data, toPeer: peer)
         }
         
     }
     
     //MARK:Animations
     open func startAnimation(_ duration: TimeInterval) {
-        if timer != nil { stopAnimation() }
+        if timer != nil {
+            stopAnimation()
+        }
         timer = Timer.scheduledTimer( timeInterval: duration, target: self, selector: #selector(TabBarController.updateColor(_:)), userInfo: nil, repeats: true)
         timer?.fire()
     }

@@ -14,7 +14,9 @@ open class UILinearProgressView: UIView {
     
     //MARK:UI Elements
     @IBInspectable open var titel: String = "" {
-        didSet { titelLabel.text = titel }
+        didSet {
+            titelLabel.text = titel
+        }
     }
     
     @IBInspectable open var textColor : UIColor = UIColor.black {
@@ -25,11 +27,15 @@ open class UILinearProgressView: UIView {
     }
     
     @IBInspectable open var progressTintColor : UIColor = UIColor.lightGray {
-        didSet { progress.progressTintColor = progressTintColor }
+        didSet {
+            progress.progressTintColor = progressTintColor
+        }
     }
     
     @IBInspectable open var trackTintColor: UIColor = UIColor.clear {
-        didSet { progress.trackTintColor = trackTintColor }
+        didSet {
+            progress.trackTintColor = trackTintColor
+        }
     }
     
     @IBInspectable open var maxValue: Float = 100
@@ -37,9 +43,13 @@ open class UILinearProgressView: UIView {
     @IBInspectable open var value: Float = 0 {
         didSet {
             
-            if abs(value) > 100 {valueLabel.text = String(format: "%.0f", value)}
-            else if abs(value) > 10 {valueLabel.text = String(format: "%.1f", value)}
-            else {valueLabel.text = String(format: "%.2f", value)}
+            if abs(value) > 100 {
+                valueLabel.text = String(format: "%.0f", value)
+            } else if abs(value) > 10 {
+                valueLabel.text = String(format: "%.1f", value)
+            } else {
+                valueLabel.text = String(format: "%.2f", value)
+            }
             
             progress.progress = abs(value / maxValue)
         }
@@ -53,11 +63,11 @@ open class UILinearProgressView: UIView {
     }
     
     //MARK:UI Objects
-    fileprivate(set) var titelLabel: UILabel!
+    private(set) var titelLabel: UILabel!
     
-    fileprivate(set) var progress: UIProgressView!
+    private(set) var progress: UIProgressView!
     
-    fileprivate(set) var valueLabel: UILabel!
+    private(set) var valueLabel: UILabel!
     
     //MARK:Initialization
     override public init(frame: CGRect) {
@@ -70,7 +80,7 @@ open class UILinearProgressView: UIView {
         setup()
     }
     
-    func setup(){
+    func setup() {
         
         titelLabel = UILabel()
         titelLabel.text = titel
@@ -119,7 +129,9 @@ open class UIDifferentialLinearProgressView: UIView {
     
     //MARK:UI Elements
     @IBInspectable open var titel: String = "" {
-        didSet { titelLabel.text = titel }
+        didSet {
+            titelLabel.text = titel
+        }
     }
     
     @IBInspectable open var textColor : UIColor = UIColor.black {
@@ -148,20 +160,21 @@ open class UIDifferentialLinearProgressView: UIView {
     @IBInspectable open var value: Float = 0 {
         didSet {
             
-            if abs(value) > 100 {valueLabel.text = String(format: "%.0f", value)}
-            else if abs(value) > 10 {valueLabel.text = String(format: "%.1f", value)}
-            else {valueLabel.text = String(format: "%.2f", value)}
+            if abs(value) > 100 {
+                valueLabel.text = String(format: "%.0f", value)
+            } else if abs(value) > 10 {
+                valueLabel.text = String(format: "%.1f", value)
+            } else {
+                valueLabel.text = String(format: "%.2f", value)}
             
             
             if value > 0 {
                 leftProgress.progress = 1
                 rightProgress.progress = value / maxValue
-            }
-            else if value < 0 {
+            } else if value < 0 {
                 rightProgress.progress = 0
                 leftProgress.progress = 1 - abs(value / maxValue)
-            }
-            else {
+            } else {
                 rightProgress.progress = 0
                 leftProgress.progress = 1
             }
@@ -176,13 +189,13 @@ open class UIDifferentialLinearProgressView: UIView {
     }
     
     //MARK:UI Objects
-    fileprivate(set) var titelLabel: UILabel!
+    private(set) var titelLabel: UILabel!
     
-    fileprivate(set) var leftProgress: UIProgressView!
+    private(set) var leftProgress: UIProgressView!
     
-    fileprivate(set) var rightProgress: UIProgressView!
+    private(set) var rightProgress: UIProgressView!
     
-    fileprivate(set) var valueLabel: UILabel!
+    private(set) var valueLabel: UILabel!
     
     //MARK:Initialization
     override public init(frame: CGRect) {
@@ -195,7 +208,7 @@ open class UIDifferentialLinearProgressView: UIView {
         setup()
     }
     
-    func setup(){
+    func setup() {
         
         titelLabel = UILabel()
         titelLabel.text = titel
@@ -256,19 +269,27 @@ open class UIDiscreteProgressView: UIView {
     
     //MARK:UI Elements
     @IBInspectable open var numberOfValues: UInt = 0 {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var fillColor: UIColor = UIColor.lightGray {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var value: UInt = 0 {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var gapWidth: CGFloat = 0 {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     //MARK:UI Objects
@@ -286,7 +307,7 @@ open class UIDiscreteProgressView: UIView {
 //        setup()
 //    }
 //    
-//    func setup(){
+//    func setup() {
 //        
 //        #if TARGET_INTERFACE_BUILDER
 //        #else
@@ -322,7 +343,9 @@ open class UIDiscreteProgressView: UIView {
             
             for index in 0..<numberOfValues {
                 
-                if index + 1 > value { break }
+                if index + 1 > value {
+                    break
+                }
                 
                 let y = h - (dH * CGFloat(index + 1))
                 

@@ -50,16 +50,13 @@ class Camera: SCNNode {
                 if isVerticalGesture {
                     if velocity.y > 0 {
                         Holder.direction = .down
-                    }
-                    else {
+                    } else {
                         Holder.direction = .up
                     }
-                }
-                else {
+                } else {
                     if velocity.x > 0 {
                         Holder.direction = .right
-                    }
-                    else {
+                    } else {
                         Holder.direction = .left
                     }
                 }
@@ -86,7 +83,9 @@ class Camera: SCNNode {
     // zoom in
     func handleDownGesture(_ sender: UIPanGestureRecognizer) {
         let oldPos = self.position
-        guard oldPos.z < 3 else { return }
+        guard oldPos.z < 3 else {
+            return
+        }
         
         // translate self.slideVelocity in the z only, and keep x and y the same values
         

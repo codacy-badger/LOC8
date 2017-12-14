@@ -15,7 +15,7 @@ open class AngleTableViewCell: UITableViewCell {
     open var angle:  Double = 0 {
         didSet {
             DispatchQueue.main.async {
-                self.angle_Rotation.angle = CGFloat(radiansToDegrees(self.angle))
+                self.angle_Rotation.angle = CGFloat(Angle(self.angle).degree)
             }
         }
     }

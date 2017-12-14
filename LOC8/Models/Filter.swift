@@ -81,7 +81,7 @@ open class Filter: NSObject {
     open let type: FilterType!
     
     ///A `Double` value that represent the current value.
-    fileprivate(set) var value: Double = 0
+    private(set) var value: Double = 0
     
     ///A `Double` value that represent the last value.
     fileprivate var lastValue: Double = 0
@@ -100,10 +100,9 @@ open class Filter: NSObject {
     /**
       Initialize Filter object
      
-      - Parameters:
-        - type: A `FilterType` value represent the filter type.
-        - rate: A `Double` value represent the date rate of the date.
-        - freq: A `Double` value represent the cutoff frequency.
+      - Parameter type: A `FilterType` value represent the filter type.
+      - Parameter rate: A `Double` value represent the date rate of the date.
+      - Parameter freq: A `Double` value represent the cutoff frequency.
      */
     public init(type: FilterType, rate: Double, cutoffFrequency freq: Double) {
         
@@ -155,7 +154,7 @@ open class Filter: NSObject {
         var alpha: Double = filterConstant!
 
         if adaptive {
-            let d: Double = clamp(abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = (1.0 - d) * filterConstant! / noiseAttenuation + d * filterConstant!
         }
 
@@ -170,12 +169,12 @@ open class Filter: NSObject {
      
      - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/High-pass_filter).
      */
-    fileprivate func addValueToHighpass(_ value: Double){
+    fileprivate func addValueToHighpass(_ value: Double) {
 
         var alpha: Double = filterConstant!
 
         if adaptive {
-            let d: Double = clamp(abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = d * filterConstant! / noiseAttenuation + (1.0 - d) * filterConstant!
         }
         
@@ -230,7 +229,7 @@ open class AccelerationFilter: NSObject {
     open let type: FilterType!
     
     ///A `Acceleration` value that represent the current acceleration.
-    fileprivate(set) var value: Acceleration = Acceleration()
+    private(set) var value: Acceleration = Acceleration()
     
     ///A `Acceleration` value that represent the last acceleration.
     fileprivate var lastValue: Acceleration = Acceleration()
@@ -249,10 +248,9 @@ open class AccelerationFilter: NSObject {
     /**
       Initialize Filter object
      
-      - Parameters:
-        - type: A `FilterType` value represent the filter type.
-        - rate: A `Double` value represent the date rate of the date.
-        - freq: A `Double` value represent the cutoff frequency.
+      - Parameter type: A `FilterType` value represent the filter type.
+      - Parameter rate: A `Double` value represent the date rate of the date.
+      - Parameter freq: A `Double` value represent the cutoff frequency.
      */
     public init(type: FilterType, rate: Double, cutoffFrequency freq: Double) {
         
@@ -309,7 +307,7 @@ open class AccelerationFilter: NSObject {
         var alpha: Double = filterConstant!
         
         if adaptive {
-            let d: Double = clamp(abs(~self.value - ~value / minStep) - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: abs(~self.value - ~value / minStep) - 1.0, min: 0.0, max: 1.0)
             alpha = (1.0 - d) * filterConstant! / noiseAttenuation + d * filterConstant!
         }
         
@@ -338,7 +336,7 @@ open class AccelerationFilter: NSObject {
         var alpha: Double = filterConstant!
         
         if adaptive {
-            let d: Double = clamp(fabs(~self.value - ~value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = clamp(value: fabs(~self.value - ~value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = d * filterConstant! / noiseAttenuation + (1.0 - d) * filterConstant!
         }
         x = alpha * (x + value.x - lastValue.x)

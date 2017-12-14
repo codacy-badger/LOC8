@@ -31,14 +31,14 @@ open class settingsViewController: UITableViewController {
     @IBOutlet weak var accelerationAdaptiveSwitchCell: SwitchTableViewCell!
     
     fileprivate var settings: SettingsService {
-        return SettingsService.sharedInstance
+        return SettingsService.shared
     }
     
     //MARK:Lifcycle
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(settingsViewController.didUpdateConnectionStatus(_:)), name: NSNotification.Name(rawValue: MultipeerManagerKeys.ConnectionStateChanged), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(settingsViewController.didUpdateConnectionStatus(_:)), name: MultipeerManager.ConnectionStateChangedNotification, object: nil)
     }
     
     override open func viewDidAppear(_ animated: Bool) {
@@ -82,13 +82,18 @@ open class settingsViewController: UITableViewController {
         animationSwitchCell.initialize(settings.enableAnimation) { (enable) -> Void in
             self.settings.enableAnimation = enable
             
-            if enable {tabBarController.startAnimation(self.settings.animationDuration)}
-            else {tabBarController.stopAnimation()}
+            if enable {
+                tabBarController.startAnimation(self.settings.animationDuration)
+            } else {
+                tabBarController.stopAnimation()
+            }
         }
         
         animationDurationAdjustmentCell.initialize(settings.animationDuration) { (value) -> Void in
             self.settings.animationDuration = value
-            if self.settings.enableAnimation { tabBarController.startAnimation(value) }
+            if self.settings.enableAnimation {
+                tabBarController.startAnimation(value)
+            }
         }
         
         generalAdjustmentCell.initialize(settings.motionManagerSamplingFrequency) { (value) -> Void in

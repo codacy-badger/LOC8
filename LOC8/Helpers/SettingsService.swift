@@ -10,6 +10,9 @@ import Foundation
 
 open class SettingsService {
     
+    /// Get currently used SettingsService, singleton pattern
+    public static let shared = SettingsService()
+    
     //MARK: Properties
     
     //MARK:Shortcuts
@@ -18,11 +21,11 @@ open class SettingsService {
     }
     
     fileprivate var sensorsManager: SensorsManager {
-        return SensorsManager.sharedInstance
+        return SensorsManager.shared
     }
     
     fileprivate var motionDetector: MotinDetector {
-        return MotinDetector.sharedInstance
+        return MotinDetector.shared
     }
     
     //MARK:General Settings
@@ -30,15 +33,14 @@ open class SettingsService {
     open var colorIndex: Int! {
         
         set {
-            defaults.set(newValue, forKey: UserDefaultKeys.ColorIndexKey)
+            defaults.set(newValue, forKey: "color-index")
         }
         
         get {
-            if let value = defaults.object(forKey: UserDefaultKeys.ColorIndexKey) as? Int {
+            if let value = defaults.object(forKey: "color-index") as? Int {
                 return value
-            }
-            else {
-                defaults.set(0, forKey: UserDefaultKeys.ColorIndexKey)
+            } else {
+                defaults.set(0, forKey: "color-index")
                 return 0
             }
         }
@@ -47,26 +49,25 @@ open class SettingsService {
     open var enableAnimation: Bool! {
         
         set {
-            defaults.set(newValue, forKey: UserDefaultKeys.EnableAnimationKey)
+            defaults.set(newValue, forKey: "enable-animation")
         }
         
         get {
-            return defaults.bool(forKey: UserDefaultKeys.EnableAnimationKey)
+            return defaults.bool(forKey: "enable-animation")
         }
     }
     
     open var animationDuration : Double! {
         
         set {
-            defaults.set(newValue, forKey: UserDefaultKeys.AnimationDurationKey)
+            defaults.set(newValue, forKey: "animation-duration")
         }
         
         get {
-            if let value = defaults.object(forKey: UserDefaultKeys.AnimationDurationKey) as? Double {
+            if let value = defaults.object(forKey: "animation-duration") as? Double {
                 return value
-            }
-            else {
-                defaults.set(DefaultValues.DefaultAnimationDuration, forKey: UserDefaultKeys.AnimationDurationKey)
+            } else {
+                defaults.set(DefaultValues.DefaultAnimationDuration, forKey: "animation-duration")
                 return DefaultValues.DefaultAnimationDuration
             }
         }
@@ -75,16 +76,15 @@ open class SettingsService {
     open var motionManagerSamplingFrequency : Double! {
         
         set {
-            defaults.set(newValue, forKey: UserDefaultKeys.MotionManagerSamplingFrequencyKey)
+            defaults.set(newValue, forKey: "motion-manager-sampling-frequency")
             sensorsManager.motionManagerSamplingFrequency = newValue
         }
         
         get {
-            if let value = defaults.object(forKey: UserDefaultKeys.MotionManagerSamplingFrequencyKey) as? Double {
+            if let value = defaults.object(forKey: "motion-manager-sampling-frequency") as? Double {
                 return value
-            }
-            else {
-                defaults.set(DefaultValues.DefaultSamplingFrequency, forKey: UserDefaultKeys.MotionManagerSamplingFrequencyKey)
+            } else {
+                defaults.set(DefaultValues.DefaultSamplingFrequency, forKey: "motion-manager-sampling-frequency")
                 return DefaultValues.DefaultSamplingFrequency
             }
         }
@@ -94,16 +94,15 @@ open class SettingsService {
     open var accelerationFilterCutoffFrequency : Double! {
         
         set {
-            defaults.set(newValue, forKey: UserDefaultKeys.AccelerationFilterCutoffFrequencyKey)
+            defaults.set(newValue, forKey: "acceleration-filter-cutoff-frequency")
             motionDetector.cutoffFrequency = newValue
         }
         
         get {
-            if let value = defaults.object(forKey: UserDefaultKeys.AccelerationFilterCutoffFrequencyKey) as? Double {
+            if let value = defaults.object(forKey: "acceleration-filter-cutoff-frequency") as? Double {
                 return value
-            }
-            else {
-                defaults.set(DefaultValues.DefaultCutoffFrequency, forKey: UserDefaultKeys.AccelerationFilterCutoffFrequencyKey)
+            } else {
+                defaults.set(DefaultValues.DefaultCutoffFrequency, forKey: "acceleration-filter-cutoff-frequency")
                 return DefaultValues.DefaultCutoffFrequency
             }
         }
@@ -112,16 +111,15 @@ open class SettingsService {
     open var accelerationFilterType: FilterType! {
         
         set {
-            defaults.set(newValue.rawValue, forKey: UserDefaultKeys.AccelerationFilterTypeKey)
+            defaults.set(newValue.rawValue, forKey: "acceleration-filter-type")
             motionDetector.filterType = newValue
         }
         
         get {
-            if let value = defaults.object(forKey: UserDefaultKeys.AccelerationFilterTypeKey) as? String {
+            if let value = defaults.object(forKey: "acceleration-filter-type") as? String {
                 return FilterType(rawValue: value)
-            }
-            else {
-                defaults.set(FilterType.Non.rawValue, forKey: UserDefaultKeys.AccelerationFilterTypeKey)
+            } else {
+                defaults.set(FilterType.Non.rawValue, forKey: "acceleration-filter-type")
                 return FilterType.Non
             }
         }
@@ -130,33 +128,20 @@ open class SettingsService {
     open var accelerationAdaptiveFilter: Bool! {
         
         set {
-            defaults.set(newValue, forKey: UserDefaultKeys.AccelerationAdaptiveFilterKey)
+            defaults.set(newValue, forKey: "acceleration-adaptive-filter")
             motionDetector.adaptiveFilter = newValue
         }
         
         get {
-            return defaults.bool(forKey: UserDefaultKeys.AccelerationAdaptiveFilterKey)
+            return defaults.bool(forKey: "acceleration-adaptive-filter")
         }
     }
     
     
     //MARK: Initialization
     
-    /**
-     * Get currently used SettingsService, singleton pattern
-     *
-     * - Returns: `SettingsService`
-     */
-    class var sharedInstance: SettingsService {
-        struct Singleton {
-            static let instance = SettingsService()
-        }
-        
-        return Singleton.instance
-    }
-    
     public init() {
-        if let _ = defaults.object(forKey: UserDefaultKeys.FirstLunchKey) {
+        if let _ = defaults.object(forKey: "first-lunch") {
             reset()
         }
         

@@ -12,5 +12,7 @@ import UIKit
 open class GraphTableViewCell: UITableViewCell {
     @IBOutlet weak var graph: UIGraphView!
     
-    open func addValue(_ vector: Vector3D) { self.graph.addX(vector) }
+    open func addValue(_ vector: Vector3D) {
+        self.graph.addX(vector)
+    }
 }

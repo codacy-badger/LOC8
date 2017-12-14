@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreLocation
-import CoreMotion
 
 /**
  # Estimation Handler
@@ -32,32 +31,42 @@ open class Estimation: Measurement {
     open var estimationHandler: EstimationHandler?
     
     /// A list of `Heading` objects represent all the collected headings for the estimation.
-    open lazy var headings: [Heading] = []
+    open lazy var headings: [Motion] = []
     
     /// A `Double` value represent the total distance for the estimation
     open var distance: Double = 0
     
     /// A computed property return the last heading recieved.
-    open var currentHeading: Heading? { return headings.last }
+    open var currentHeading: Motion? {
+        return headings.last
+    }
     
     /// A computed property return the total wight for all the collected headings.
     open var wight: UInt {
         var totalWight: UInt = 0
-        for heading in headings { totalWight += heading.wight }
+        for heading in headings {
+            totalWight += heading.wight
+        }
         return totalWight
     }
     
     /// A computed property return the sample mean for all the collected headings wight.
     open var mean: Double {
-        if headings.count == 0 { return 0 }
+        if headings.count == 0 {
+            return 0
+        }
         return Double(self.wight) / Double(headings.count)
     }
     
     /// A computed property return the sample variance for all the collected headings wight
     open var variance: Double {
-        if headings.count <= 1 { return 0 }
+        if headings.count <= 1 {
+            return 0
+        }
         var variance: Double = 0
-        for heading in headings { variance += pow((Double(heading.wight) - mean), 2) }
+        for heading in headings {
+            variance += pow((Double(heading.wight) - mean), 2)
+        }
         variance = variance / Double(headings.count - 1)
         return sqrt(variance)
     }
@@ -79,7 +88,9 @@ open class Estimation: Measurement {
     open override var description: String {
         var result: String = "{\n\tNumber of headings: \(headings.count)\n\tTotal Distance:\(distance)\n\tTotal Wight:\(wight)\n\tMean:\(mean)\n\tVariance:\(variance)\n\tHeadings:[\n"
         
-        for heading in headings { result += "\t\t\(heading.description)\n"}
+        for heading in headings {
+            result += "\t\t\(heading.description)\n"
+        }
         
         result += "\t]\n}"
         return result
@@ -92,21 +103,19 @@ open class Estimation: Measurement {
         
         let heading = notification.userInfo![DefaultKeys.HeadingKey] as! CLHeading
         
-        let newHeading = Heading(angle: heading.magneticHeading)
+        let newHeading = Motion(angle: heading.magneticHeading)
         
         if headings.count == 0 {
             headings.append(newHeading)
-        }
-        else {
+        } else {
             
             if let oldHeading = headings.last {
                 
                 if oldHeading == newHeading{
                     oldHeading.wight += 1
-                }
-                else {
+                } else {
                     headings.append(newHeading)
-                    LogManager.sharedInstance.print(self, message: oldHeading.description)
+                    Log.info(sender: self, message: oldHeading.description)
                 }
             }
         }
@@ -123,21 +132,19 @@ open class Estimation: Measurement {
 //        let gravity = userInfo[DefaultKeys.GravityKey] as! Vector3D
         let acceleration = userInfo[DefaultKeys.AccelerationKey] as! Vector3D
         
-        let newHeading = Heading(angle: acceleration.theta)
+        let newHeading = Motion(angle: acceleration.theta)
         
         if headings.count == 0 {
             headings.append(newHeading)
-        }
-        else {
+        } else {
             
             if let oldHeading = headings.last {
                 
                 if oldHeading == newHeading{
                     oldHeading.wight += 1
-                }
-                else {
+                } else {
                     headings.append(newHeading)
-                    LogManager.sharedInstance.print(self, message: oldHeading.description)
+                    Log.info(sender: self, message: oldHeading.description)
                 }
             }
         }
@@ -155,8 +162,8 @@ open class Estimation: Measurement {
         
         self.estimationHandler =  estimationHandler
         
-        NotificationCenter.default.addObserver(self, selector: #selector(Estimation.didUpdateHeading(_:)), name: NSNotification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateDeviceMotion:", name: NotificationKey.DeviceMotionUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(Estimation.didUpdateHeading(_:)), name: SensorsManager.HeadingUpdateNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateDeviceMotion:", name: SensorsManager.DeviceMotionUpdate, object: nil)
     }
     
     /**
@@ -164,17 +171,19 @@ open class Estimation: Measurement {
      
      - Parameter distance: `Double` value that represent the total distance update.
      */
-    open func stopEstimation(_ distance: Double){
+    open func stopEstimation(_ distance: Double) {
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.HeadingUpdate), object: nil)
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: NotificationKey.DeviceMotionUpdate, object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.HeadingUpdateNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: SensorsManager.DeviceMotionUpdate, object: nil)
         
         self.distance = distance
         
         let delta = distance / Double(self.wight)
         
         for heading in headings {
-            if heading.direction == .up || heading.direction == .down { continue }
+            if heading.direction == .up || heading.direction == .down {
+                continue
+            }
             heading.distance = Double(heading.wight) * delta
         }
         

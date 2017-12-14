@@ -12,31 +12,6 @@ import MultipeerConnectivity
 import UIKit
 #endif
 
-public protocol NumericType {
-    static func +(lhs: Self, rhs: Self) -> Self
-    static func -(lhs: Self, rhs: Self) -> Self
-    static func *(lhs: Self, rhs: Self) -> Self
-    static func /(lhs: Self, rhs: Self) -> Self
-//    static func %(lhs: Self, rhs: Self) -> Self
-    init(_ v: Int)
-    init(_ v: Float)
-    init(_ v: Double)
-}
-
-extension Double : NumericType { }
-extension Float  : NumericType { }
-extension CGFloat: NumericType { }
-extension Int    : NumericType { }
-extension Int8   : NumericType { }
-extension Int16  : NumericType { }
-extension Int32  : NumericType { }
-extension Int64  : NumericType { }
-extension UInt   : NumericType { }
-extension UInt8  : NumericType { }
-extension UInt16 : NumericType { }
-extension UInt32 : NumericType { }
-extension UInt64 : NumericType { }
-
 
 extension MCSessionState:  CustomStringConvertible {
     
@@ -70,7 +45,7 @@ extension UIScreen {
 extension UITextView {
     
     func scrollToBotom() {
-        let range = NSMakeRange(text.characters.count - 1, 1);
+        let range = NSMakeRange(text.count - 1, 1);
         scrollRangeToVisible(range);
     }
     
@@ -90,7 +65,7 @@ extension UIImage {
         tintColor.setFill()
         context.fill(rect)
         
-        let newImage = UIGraphicsGetImageFromCurrentImageContext() as! UIImage
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         return newImage

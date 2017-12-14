@@ -10,21 +10,30 @@ import Foundation
 
 open class MotinDetector: NSObject {
     
+    /// Get currently used MotinDetector, singleton pattern
+    public static let shared = MotinDetector()
+    
     //MARK:Filters
     
     //Acceleration
     fileprivate var filter: AccelerationFilter!
     
-    open var cutoffFrequency: Double = SettingsService.sharedInstance.accelerationFilterCutoffFrequency {
-        didSet { setupFilter() }
+    open var cutoffFrequency: Double = SettingsService.shared.accelerationFilterCutoffFrequency {
+        didSet {
+            setupFilter()
+        }
     }
     
-    open var filterType: FilterType = SettingsService.sharedInstance.accelerationFilterType {
-        didSet { setupFilter() }
+    open var filterType: FilterType = SettingsService.shared.accelerationFilterType {
+        didSet {
+            setupFilter()
+        }
     }
     
-    open var adaptiveFilter: Bool = SettingsService.sharedInstance.accelerationAdaptiveFilter  {
-        didSet { filter.adaptive = adaptiveFilter }
+    open var adaptiveFilter: Bool = SettingsService.shared.accelerationAdaptiveFilter  {
+        didSet {
+            filter.adaptive = adaptiveFilter
+        }
     }
     
     
@@ -38,49 +47,36 @@ open class MotinDetector: NSObject {
     }
     
     
-    fileprivate(set) var velocity: Velocity = Velocity() {
+    private(set) var velocity: Velocity = Velocity() {
         didSet {
             finalVelocity += velocity
         }
     }
-    fileprivate(set) var finalVelocity: Velocity = Velocity()
+    private(set) var finalVelocity: Velocity = Velocity()
     
     
-    fileprivate(set) var distance: Distance = Distance() {
+    private(set) var distance: Distance = Distance() {
         didSet {
             traveledDistance += distance
         }
     }
-    fileprivate(set) var traveledDistance: Distance = Distance()
+    private(set) var traveledDistance: Distance = Distance()
     
     
-    /**
-     * Get currently used MotinDetector, singleton pattern
-     *
-     * - Returns: `MotinDetector`
-     */
-    class var sharedInstance: MotinDetector {
-        struct Singleton {
-            static let instance = MotinDetector()
-        }
-        
-        return Singleton.instance
-    }
     
     override init() {
         super.init()
         setupFilter()
-        NotificationCenter.default.addObserver(self, selector: #selector(MotinDetector.didUpdateDeviceMotion(_:)), name: NSNotification.Name(rawValue: NotificationKey.DeviceMotionUpdate), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MotinDetector.didUpdateDeviceMotion(_:)), name: SensorsManager.DeviceMotionUpdateNotification, object: nil)
         
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKey.DeviceMotionUpdate), object: nil)
+        NotificationCenter.default.removeObserver(self, name: SensorsManager.DeviceMotionUpdateNotification, object: nil)
     }
     
-    
     fileprivate func setupFilter() {
-        let rat = SensorsManager.sharedInstance.motionManagerSamplingFrequency
+        let rat = SensorsManager.shared.motionManagerSamplingFrequency
         self.filter = AccelerationFilter(type: self.filterType, rate: rat, cutoffFrequency: self.cutoffFrequency)
         self.filter.adaptive = self.adaptiveFilter
         self.velocity = Velocity()

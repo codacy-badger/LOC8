@@ -19,17 +19,6 @@ public struct DefaultValues {
     
 }
 
-public struct NotificationKey{
-    
-    public static let  HeadingUpdate: String = "com.LOC8.HeadingUpdateNotificationKey"
-    public static let  DistanceUpdate: String = "com.LOC8.DistanceUpdateNotificationKey"
-    public static let  AltitudeUpdate: String = "com.LOC8.AltitudeUpdateNotificationKey"
-    public static let  FloorUpdate: String = "com.LOC8.FloorUpdateNotificationKey"
-    public static let  DeviceMotionUpdate: String = "com.LOC8.DeviceMotionUpdateNotificationKey"
-    public static let  StepCountUpdate: String = "com.LOC8.StepCountUpdateNotificationKey"
-    public static let  MotionActivityUpdate: String = "com.LOC8.MotionActivityUpdateNotificationKey"
-}
-
 public struct DefaultKeys {
     
     public static let HeadingKey = "heading"
@@ -46,17 +35,12 @@ public struct DefaultKeys {
     public static let VelocityKey = "velocity"
 }
 
-public struct UserDefaultKeys {
+
+public struct MultipeerManagerKeys {
     
-    public static let FirstLunchKey = "first-lunch"
-    public static let ColorIndexKey = "color-index"
-    public static let EnableAnimationKey = "enable-animation"
-    public static let AnimationDurationKey = "animation-duration"
-    public static let MotionManagerSamplingFrequencyKey = "motion-manager-sampling-frequency"
-    public static let AccelerationFilterCutoffFrequencyKey = "acceleration-filter-cutoff-frequency"
-    public static let AccelerationFilterTypeKey = "acceleration-filter-type"
-    public static let AccelerationAdaptiveFilterKey = "acceleration-adaptive-filter"
-    public static let VelocityFilterCutoffFrequencyKey = "velocity-filter-cutoff-frequency"
-    public static let VelocityFilterTypeKey = "velocity-filter-type"
-    public static let VelocityAdaptiveFilterKey = "velocity-adaptive-filter"
+    public static let PeerId: String = "PeerId"
+    
+    public static let Data: String = "SessionData"
+    
+    public static let State: String = "SessionState"
 }

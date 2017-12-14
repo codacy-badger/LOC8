@@ -20,46 +20,64 @@ open class UIRotationView: UIView {
                 self.setNeedsDisplay()
             #else
                 if rotationLayer != nil {
-                    rotationLayer.transform = CATransform3DMakeRotation(degreesToRadians(startAngle + angle), 0, 0, 1)
+                    rotationLayer.transform = CATransform3DMakeRotation(CGFloat(Angle(startAngle + angle).radian), 0, 0, 1)
                 }
             #endif
         }
     }
     
     @IBInspectable open var startAngle: CGFloat = 0 {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var pointerColor: UIColor = UIColor.black {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var textColor: UIColor = UIColor.lightGray {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var enabelSymbols: Bool = true {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var enabelMarks: Bool = true {
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var upText: String = ""{
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var rightText: String = ""{
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var downText: String = ""{
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     @IBInspectable open var leftText: String = ""{
-        didSet { self.setNeedsDisplay() }
+        didSet {
+            self.setNeedsDisplay()
+        }
     }
     
     open var textFont: UIFont = UIFont.systemFont(ofSize: 10)
@@ -167,7 +185,7 @@ open class UIRotationView: UIView {
         
         var transform = CGAffineTransform.identity
         transform = transform.translatedBy(x: center.x, y: center.y)
-        transform = transform.rotated(by: degreesToRadians(startAngle + angle))
+        transform = transform.rotated(by: CGFloat(Angle(startAngle + angle).radian))
         transform = transform.translatedBy(x: -center.x, y: -center.y)
         
         path.apply(transform)
@@ -296,12 +314,16 @@ open class UICompassView: UIRotationView {
             layer.frame = rect
             layer.fillColor = color.cgColor
             
-            if points.count == 0 { return layer }
+            if points.count == 0 {
+                return layer
+            }
             
             let path = UIBezierPath()
             
             path.move(to: center)
-            for point in points { path.addLine(to: point) }
+            for point in points {
+                path.addLine(to: point)
+            }
             path.close()
             
             #if TARGET_INTERFACE_BUILDER
