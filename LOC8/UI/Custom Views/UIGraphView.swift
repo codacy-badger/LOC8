@@ -323,7 +323,7 @@ open class UIGraphView: UIView {
         
         if self.current.addX(vector) {
             self.recycleSegment()
-            self.current.addX(vector)
+            let _ = self.current.addX(vector)
         }
         
         for segment in self.segments {

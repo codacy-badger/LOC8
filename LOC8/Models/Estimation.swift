@@ -116,7 +116,7 @@ open class Estimation: Measurement {
                     oldHeading.wight += 1
                 } else {
                     headings.append(newHeading)
-                    LogManager.sharedInstance.print(self, message: oldHeading.description)
+                    Log.info(sender: self, message: oldHeading.description)
                 }
             }
         }
@@ -145,7 +145,7 @@ open class Estimation: Measurement {
                     oldHeading.wight += 1
                 } else {
                     headings.append(newHeading)
-                    LogManager.sharedInstance.print(self, message: oldHeading.description)
+                    Log.info(sender: self, message: oldHeading.description)
                 }
             }
         }

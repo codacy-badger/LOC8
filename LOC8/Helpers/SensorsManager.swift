@@ -94,7 +94,7 @@ open class SensorsManager: NSObject {
                 }
                 
                 if error != nil {
-                    print(error?.localizedDescription)
+                    print(error!.localizedDescription)
                 }
                 
                 let altitude = data.relativeAltitude
@@ -125,7 +125,7 @@ open class SensorsManager: NSObject {
             }
             
             if error != nil {
-                print(error?.localizedDescription)
+                print(error!.localizedDescription)
             }
             
             if CMPedometer.isDistanceAvailable() {
@@ -187,7 +187,7 @@ open class SensorsManager: NSObject {
                 }
                 
                 if error != nil {
-                    print(error?.localizedDescription)
+                    print(error!.localizedDescription)
                 }
                 
                 let attitude = Rotation3D(attitude: data.attitude)

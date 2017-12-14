@@ -70,7 +70,7 @@ open class TrackingSession: Measurement {
             }
             
             oldEstimation.stopEstimation(distance.doubleValue - self.distance )
-            LogManager.sharedInstance.print(self, message: oldEstimation.description)
+            Log.info(sender: self, message: oldEstimation.description)
             estimationHandler?(oldEstimation)
         }
         
@@ -83,12 +83,12 @@ open class TrackingSession: Measurement {
     ///An action tregered whene the `SensorsManager` recieve a device motion update.
     open func didUpdateDeviceMotion(_ notification: Notification) {
         
-        let userInfo = notification.userInfo!
-
+//        let userInfo = notification.userInfo!
+//
 //        let attitude = userInfo[DefaultKeys.AttitudeKey] as! Rotation3D
 //        let rotationRate = userInfo[DefaultKeys.RotationRateKey] as! Vector3D
 //        let gravity = userInfo[DefaultKeys.GravityKey] as! Vector3D
-        let acceleration = userInfo[DefaultKeys.AccelerationKey] as! Vector3D
+//        let acceleration = userInfo[DefaultKeys.AccelerationKey] as! Vector3D
         
     }
     

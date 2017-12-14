@@ -73,20 +73,26 @@ public class ViewController: NSViewController {
 extension ViewController : NSTableViewDataSource {
     
     public func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        return MultipeerManager.sharedInstance.foundPeers.count
+        return MultipeerManager.shared
+            self.setNeedsDisplay()
+        }.foundPeers.count
     }
 }
 
 extension ViewController : NSTableViewDelegate {
     public func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        let peer = MultipeerManager.sharedInstance.foundPeers[row]
+        let peer = MultipeerManager.shared
+            self.setNeedsDisplay()
+        }.foundPeers[row]
         
         if let cell = tableView.makeViewWithIdentifier("PeerCell", owner: nil) as? PeerCell {
             cell.textField?.stringValue = "📱" + peer.displayName
             cell.peer = peer
             
-            if let state = MultipeerManager.sharedInstance.foundPeersStats[peer.displayName] {
+            if let state = MultipeerManager.shared
+            self.setNeedsDisplay()
+        }.foundPeersStats[peer.displayName] {
                 switch state {
                 case .NotConnected:
                     cell.connectButton.title = "Connect"
@@ -117,7 +123,9 @@ public class PeerCell: NSTableCellView {
     
     @IBAction func connectButtonDidPressed(sender: NSButton) {
         if let peer = self.peer {
-            MultipeerManager.sharedInstance.invitePeer(peer)
+            MultipeerManager.shared
+            self.setNeedsDisplay()
+        }.invitePeer(peer)
         }
     }
 }
