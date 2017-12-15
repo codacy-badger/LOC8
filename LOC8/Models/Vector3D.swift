@@ -26,63 +26,93 @@ open class Vector3D: Measurement {
     
     //MARK: Cartesian Properties
     
-    /// A CartesianVector object represent the vector in cartesian coordinate.
+    /// A `CartesianVector` object represent the vector in cartesian coordinate.
     private(set) var cartesianVector: CartesianVector!
     
-    ///Double value represent the projection on x-axis.
+    /// `Double` value represent the projection on x-axis.
     open var x: Double {
         return cartesianVector.x
         
     }
     
-    ///Double value represent the projection on y-axis.
+    /// `Double` value represent the projection on y-axis.
     open var y: Double {
         return cartesianVector.y
         
     }
     
-    ///Double value represent the projection on z-axis.
+    /// `Double` value represent the projection on z-axis.
     open var z: Double {
         return cartesianVector.z
         
     }
     
-    //MARK: Polar Properties
+    //MARK: Spherical Properties
     
-    /// A PolerVector object represent the vector in polar coordinate.
-    private(set) var polarVector: PolarVector!
+    /// A `sphericalVector` object represent the vector in spherical coordinate.
+    private(set) var sphericalVector: SphericalVector!
     
-    ///Angle value represent the angle between the projection on z-axis and xy-plan.
+    /// `Double` value represent the magnitude of the vector.
+    /// radial distance r _(𝜌 (rho) is often used instead)_
+    ///
+    /// __r ≥ 0__
+    open var radial: Double {
+        return sphericalVector.radial
+        
+    }
+    
+    /// `Angle` value represent the polar angle between the z-axis and the vector.
+    ///
+    /// __0° ≤ 𝜃 ≤ 180° ([0, π] rad)__
     open var theta: Angle {
-        return polarVector.theta
+        return sphericalVector.theta
         
     }
     
-    ///Angle value represent the angle between the projection on xy-plan and x-axis.
-    open var lambda: Angle {
-        return polarVector.lambda
+    /// `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.
+    ///
+    /// __-180° ≤ 𝛷 < 180° ([-π, +π] rad)__
+    open var phi: Angle {
+        return sphericalVector.phi
         
     }
     
-    ///Double value represent the distance of the vector.
-    open var magnitude: Double {
-        return polarVector.magnitude
-        
-    }
+//    //MARK: Polar Properties
+//
+//    /// A PolerVector object represent the vector in polar coordinate.
+//    private(set) var polarVector: PolarVector!
+//
+//    ///Angle value represent the angle between the projection on z-axis and xy-plan.
+//    open var theta: Angle {
+//        return polarVector.theta
+//
+//    }
+//
+//    ///Angle value represent the angle between the projection on xy-plan and x-axis.
+//    open var lambda: Angle {
+//        return polarVector.lambda
+//
+//    }
+//
+//    ///Double value represent the distance of the vector.
+//    open var magnitude: Double {
+//        return polarVector.magnitude
+//
+//    }
     
     //MARK: Vector Properties
     
     ///Return Direction that represent the vector heading.
     open var headingDirection: Direction {
-        let maxAngle = 30.0
-        
-        if lambda > maxAngle {
-            return .up
-        }
-        
-        if lambda < -maxAngle {
-            return .down
-        }
+//        let maxAngle = 30.0
+//
+//        if lambda > maxAngle {
+//            return .up
+//        }
+//
+//        if lambda < -maxAngle {
+//            return .down
+//        }
         
         return Direction(angle: theta)
     }
@@ -95,33 +125,33 @@ open class Vector3D: Measurement {
     public override init() {
         super.init()
         self.cartesianVector = CartesianVector()
-        self.polarVector = self.cartesianVector.polarVector
+        self.sphericalVector = self.cartesianVector.sphericalVector
     }
     
     /**
       Initialize Vector3D object in cartesian form.
      
-      - Parameter x: Double value represent the projection on x-axis.
-      - Parameter y: Double value represent the projection on y-axis.
-      - Parameter z: Double value represent the projection on z-axis.
+      - Parameter x: `Double` value represent the projection on x-axis.
+      - Parameter y: `Double` value represent the projection on y-axis.
+      - Parameter z: `Double` value represent the projection on z-axis.
      */
     public init(x: Double, y: Double, z: Double) {
         super.init()
-        cartesianVector = CartesianVector(x: x, y: y, z: z)
-        self.polarVector = self.cartesianVector.polarVector
+        self.cartesianVector = CartesianVector(x: x, y: y, z: z)
+        self.sphericalVector = self.cartesianVector.sphericalVector
     }
     
     /**
-      Initialize Vector3D object in polar form.
+      Initialize `Vector3D` object in spherical form.
      
-      - Parameter magnitude: Double value represent the vector magnitude.
-      - Parameter theta: Angle value represent the vector theta in radian.
-      - Parameter lambda: Angle value represent the vector lambda in radian.
+     - Parameter radial: `Double` value represent the magnitude of the vector..
+     - Parameter theta: `Angle` value represent the polar angle between the z-axis and the vector.
+     - Parameter phi: `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.
      */
-    public init(magnitude: Double, theta: Angle, lambda: Angle) {
+    public init(radial: Double, theta: Angle, phi: Angle) {
         super.init()
-        polarVector = PolarVector(magnitude: magnitude, theta: theta, lambda: lambda)
-        self.cartesianVector = self.polarVector.cartesianVector
+        sphericalVector = SphericalVector(radial: radial, theta: theta, phi: phi)
+        self.cartesianVector = self.sphericalVector.cartesianVector
     }
     
     /**
@@ -132,7 +162,7 @@ open class Vector3D: Measurement {
     public init(value: Double) {
         super.init()
         cartesianVector = CartesianVector(x: value, y: value, z: value)
-        self.polarVector = self.cartesianVector.polarVector
+        self.sphericalVector = self.cartesianVector.sphericalVector
     }
     
     /**
@@ -151,7 +181,7 @@ open class Vector3D: Measurement {
         let z = aDecoder.decodeDouble(forKey: "z")
         
         self.cartesianVector = CartesianVector(x: x, y: y, z: z)
-        self.polarVector = cartesianVector.polarVector
+        self.sphericalVector = cartesianVector.sphericalVector
     }
     
     open override func encode(with aCoder: NSCoder) {
@@ -162,7 +192,7 @@ open class Vector3D: Measurement {
     }
     
     open override var description: String {
-        return "Vector3D[\n\t\(self.cartesianVector.description)\n\t\(self.polarVector.description)\n]"
+        return "Vector3D[\n\t\(self.cartesianVector)\n\t\(self.sphericalVector)\n]"
     }
     
     //MARK:Vectors Operators
@@ -190,7 +220,7 @@ open class Vector3D: Measurement {
         let x = left.x - right.x
         let y = left.y - right.y
         let z = left.z - right.z
-        return sqrt(x * x + y * y + z * z)
+        return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2))
     }
 
     /**

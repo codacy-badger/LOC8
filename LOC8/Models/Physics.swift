@@ -126,6 +126,7 @@ public typealias Velocity = Vector3D
  
  ### Discussion:
     Distance is a scalar quantity that refers to "how much ground an object has covered" during its motion.
+ 
  - Note: measurment unit is meater (m)
  */
 public typealias Distance = Vector3D 
