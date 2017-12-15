@@ -35,11 +35,11 @@ public struct CartesianVector: CustomStringConvertible {
      PolarVector object represent the vector in poler form.
      
      ````
-     _____________
+     .    _____________
      r = √ x² + y² + z²
      
      𝜃 = tan⁻¹(y / x)
-     ________
+     .              ________
      𝜆 = tan⁻¹(z / √ x² + y² )
      ````
      */

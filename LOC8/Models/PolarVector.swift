@@ -61,8 +61,8 @@ public struct PolarVector: CustomStringConvertible {
      Initialize PolarVector object
      
      - Parameter magnitude: Double value represent the vector magnitude.
-     - Parameter theta: Angle value represent the vector theta.
-     - Parameter lambda: Angle value represent the vector lambda.
+     - Parameter theta: Angle value represent the vector theta in radian.
+     - Parameter lambda: Angle value represent the vector lambda in radian.
      */
     public init(magnitude: Double, theta: Angle, lambda: Angle) {
         self.theta = theta
@@ -72,6 +72,6 @@ public struct PolarVector: CustomStringConvertible {
     
     //CustomStringConvertible Protocall
     public var description: String {
-        return String(format: "Polar(%.2f, %.2f, %.2f)", Float(magnitude), Float(theta.degree), Float(lambda.degree))
+        return String(format: "Polar(%.2f, %.2f˚, %.2f˚)", Float(magnitude), Float(theta.degree), Float(lambda.degree))
     }
 }

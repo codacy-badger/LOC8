@@ -115,8 +115,8 @@ open class Vector3D: Measurement {
       Initialize Vector3D object in polar form.
      
       - Parameter magnitude: Double value represent the vector magnitude.
-      - Parameter theta: Angle value represent the vector theta.
-      - Parameter lambda: Angle value represent the vector lambda.
+      - Parameter theta: Angle value represent the vector theta in radian.
+      - Parameter lambda: Angle value represent the vector lambda in radian.
      */
     public init(magnitude: Double, theta: Angle, lambda: Angle) {
         super.init()
