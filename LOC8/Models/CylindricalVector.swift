@@ -16,12 +16,14 @@ import Foundation
  If v is an instance of `CylindricalVector`, mathematically it represents the
  following vector: __v = (𝜌, 𝛷, 𝑧)__
  
+ where 𝜌 ∈ [0, ∞), θ ∈ [0, +π], 𝑧 ∈ (-∞, +∞)
+ 
  [Read more](https://en.wikipedia.org/wiki/Cylindrical_coordinate_system) about cylindrical coordinate
  */
 public struct CylindricalVector: CustomStringConvertible {
     
     /// `Double` value represent the radial distance
-    /// ρ is the Euclidean distance from the z-axis to the point P.
+    /// ρ is the Euclidean distance from the z-axis to the vector.
     ///
     /// __r ≥ 0__
     private(set) var radial: Double = 0.0
@@ -31,7 +33,7 @@ public struct CylindricalVector: CustomStringConvertible {
     /// __-180° ≤ 𝛷 < 180° ([-π, +π] rad)__
     private(set) var phi: Angle = 0.0
     
-    /// `Double` value represent the height z which the signed distance from the chosen plane to the point P.
+    /// `Double` value represent the height z which the signed distance from the chosen plane to the vector.
     private(set) var height: Double = 0.0
     
     /**
@@ -56,14 +58,14 @@ public struct CylindricalVector: CustomStringConvertible {
      
      __𝜌 = ²√[ 𝑟² + 𝑧²]__
      
-     __𝜃 = cos⁻¹(𝑧 / 𝑟)__
+     __𝜃 = cos⁻¹(𝑧 / 𝜌)__
      
      __𝛷 = 𝛷__
      
      */
     public var sphericalVector: SphericalVector {
         let rho = sqrt(radial * radial + height * height)
-        let theta = acos(height / radial)
+        let theta = acos(height / rho)
         
         return SphericalVector(radial: rho, theta: theta, phi: phi)
     }

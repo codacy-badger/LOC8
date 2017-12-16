@@ -44,7 +44,7 @@ public struct CartesianVector: CustomStringConvertible {
     public var sphericalVector: SphericalVector {
         let radial = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2))
         let theta = acos(z / radial)
-        let phi = atan(y / x)
+        let phi = atan2(y, x)
         
         return SphericalVector(radial: radial, theta: theta, phi: phi)
     }

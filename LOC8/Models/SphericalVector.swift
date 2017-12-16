@@ -19,6 +19,8 @@ import Foundation
  If v is an instance of `SphericalVector`, mathematically it represents the
  following vector: __v = (r, 𝜃, 𝛷)__
  
+ where r ∈ [0, ∞), θ ∈ [0, +π], φ ∈ [-π, +π]
+ 
  [Read more](https://en.wikipedia.org/wiki/Spherical_coordinate_system) about spherical coordinate
  */
 public struct SphericalVector: CustomStringConvertible {
@@ -26,17 +28,17 @@ public struct SphericalVector: CustomStringConvertible {
     /// `Double` value represent the magnitude of the vector.
     /// radial distance r _(𝜌 (rho) is often used instead)_
     ///
-    /// __r ≥ 0__
+    /// __r ∈ [0, ∞) (r ≥ 0)__
     private(set) var radial : Double = 0.0
     
-    /// `Angle` value represent the polar angle between the z-axis and the vector.
+    /// `Angle` value represent the inclination angle (or polar angle) between the z-axis and the vector. measured in radian
     ///
-    /// __0° ≤ 𝜃 ≤ 180° ([0, π] rad)__
+    /// __𝜃 ∈ [0, +π] rad ([0° ≤ 𝜃 ≤ 180°])__
     private(set) var theta: Angle = 0.0
     
-    /// `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.
+    /// `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis. measured in radian
     ///
-    /// __-180° ≤ 𝛷 < 180° ([-π, +π] rad)__
+    /// __𝛷 ∈ [-π, +π] rad ([-180° ≤ 𝛷 < 180°])__
     private(set) var phi: Angle = 0.0
     
     /**
@@ -60,18 +62,18 @@ public struct SphericalVector: CustomStringConvertible {
     /**
      `CylindricalVector` object represent the vector in cylindrical form.
      
-     __𝜌 = 𝑟 cos(𝜃)__
+     __𝜌 = 𝑟 sin(𝜃)__
      
      __𝛷 = 𝛷__
      
-     __𝑧 = 𝑟 sin(𝜃)__
+     __𝑧 = 𝑟 cos(𝜃)__
      
      */
     public var cylindricalVector: CylindricalVector {
-        let rho = radial * cos(theta)
-        let height = radial * sin(theta)
+        let rho = radial * sin(theta)
+        let z = radial * cos(theta)
         
-        return CylindricalVector(radial: rho, phi: phi, height: height)
+        return CylindricalVector(radial: rho, phi: phi, height: z)
     }
     
     //MARK: Initialaization
