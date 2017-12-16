@@ -101,7 +101,7 @@ open class Vector3D: Measurement {
     ///Return Direction that represent the vector heading.
     open var headingDirection: Direction {
         
-        return Direction.init(theta: self.theta, lambda: self.phi)
+        return Direction.init(theta: self.theta, phi: self.phi)
     }
     
     //MARK: Initialaization

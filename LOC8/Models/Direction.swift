@@ -25,6 +25,7 @@ import Foundation
  Alos the two vertical directions or cardinal points are the directions of up and down, commonly denoted by their initials: __U, D__
  
  __Up Diraction__
+ - Up           __U__
  - North Up     __NU__
  - Northeast Up __NEU__
  - East Up      __EU__
@@ -35,6 +36,7 @@ import Foundation
  - Northwest Up __NWU__
  
  __Down Diraction__
+ - Down           __D__
  - North Down     __ND__
  - Northeast Down __NED__
  - East Down      __ED__
@@ -215,9 +217,9 @@ public struct Direction: OptionSet, CustomStringConvertible {
      - Parameter theta: Angle value represent the angle in (x, y) plaen.
      - Parameter lambda: Angle value represent the angle in (p, z) plane where p is the projection in (x, y) plane.
      */
-    public init(theta: Angle, lambda: Angle) {
+    public init(theta: Angle, phi: Angle) {
         
-        let d_z = wrap(lambda / (Double.pi / 4)) % 4
+        let d_z = wrap(phi / (Double.pi / 4)) % 4
             
         switch d_z {
         case 0: // 0˚, 180˚, -180˚
@@ -233,7 +235,7 @@ public struct Direction: OptionSet, CustomStringConvertible {
             self = Direction(angle: theta)
             self.insert(.down)
         default:
-            self = .none
+            self = Direction(angle: theta)
         }
     }
     

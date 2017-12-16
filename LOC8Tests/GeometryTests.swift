@@ -12,7 +12,7 @@ import XCTest
 
 class GeometryTests: XCTestCase {
     
-    let accuracyLimit: Int = 100
+    let accuracyLimit: Int = 1
     
     //MARK:- Tests
     
@@ -170,7 +170,7 @@ class GeometryTests: XCTestCase {
         
         for _ in 0...accuracyLimit {
         
-            //Stub horisantel direction [N, NE, E, SE, S, SW, W, NW]
+            //Stub horisantel directions [N, NE, E, SE, S, SW, W, NW]
             let xyValues: [(direction: Direction, angle: Angle)] =
                 [
                     (Direction.north, RandomGenerator.angel(angle:0  , deference: 22.5)),
@@ -184,30 +184,37 @@ class GeometryTests: XCTestCase {
                     ([Direction.north, Direction.west], RandomGenerator.angel(angle:315, deference: 22.5))
                 ]
             
-            //Stub verticale direction [U, D]
+            //Stub verticale directions [U, D]
             let zValues: [(direction: Direction, angle: Angle)] =
                 [
-                    (Direction.none, RandomGenerator.angel(angle:90 , deference: 45)),
-                    (Direction.up,   RandomGenerator.angel(angle:0  , deference: 45)),
-                    (Direction.down, RandomGenerator.angel(angle:180, deference: 45)),
-                    (Direction.none, RandomGenerator.angel(angle:270, deference: 45))
+                    (Direction.none, RandomGenerator.angel(angle:0    , deference: 22.5)),
+                    (Direction.up,   RandomGenerator.angel(angle:45   , deference: 22.5)),
+                    (Direction.up,   RandomGenerator.angel(angle:90   , deference: 22.5)),
+                    (Direction.up,   RandomGenerator.angel(angle:135  , deference: 22.5)),
+                    (Direction.none, RandomGenerator.angel(angle:180  , deference: 22.5)),
+                    (Direction.none, RandomGenerator.angel(angle:-180 , deference: 22.5)),
+                    (Direction.down, RandomGenerator.angel(angle:-135 , deference: 22.5)),
+                    (Direction.down, RandomGenerator.angel(angle:-90  , deference: 22.5)),
+                    (Direction.down, RandomGenerator.angel(angle:-45  , deference: 22.5))
                 ]
+            //stub up dirctions [U, NU, NEU, EU, SEU, SU, SWU, WU, NWU]
+            //Stub down diractions [D, ND, NED, ED, SED, SD, SWD, WD, NWD]
             
             for zValue in zValues {
                 
                 for xyValue in xyValues {
                     
                     //Create direction
-                    let direction = Direction(theta: xyValue.angle, lambda: zValue.angle)
+                    let direction = Direction(theta: xyValue.angle.radian, lambda: zValue.angle.radian)
                     
                     //check verticale direction [U, D]
                     if !direction.contains(zValue.direction) {
-                        XCTFail("Direction \(direction.description) doesn't contains \(zValue.direction.description) with lambda(\(zValue.angle.degree)˚).")
+                        XCTFail("Direction \(direction.description) doesn't contains \(zValue.direction.description) with lambda(\(zValue.angle)˚).")
                     }
                     
                     //check horisantel direction [N, NE, E, SE, S, SW, W, NW]
                     if !direction.contains(xyValue.direction) {
-                        XCTFail("Direction \(direction.description) doesn't contains \(xyValue.direction.description)with theta(\(xyValue.angle.degree)˚).")
+                        XCTFail("Direction \(direction.description) doesn't contains \(xyValue.direction.description)with theta(\(xyValue.angle)˚).")
                     }
                     
                     //Logical check

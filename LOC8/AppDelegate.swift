@@ -15,6 +15,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+//        var thetas: [Double] = []
+//        var lambdas: [Double] = []
+//        
+//        var i = -360.0
+//        
+//        while i <= 360.0 {
+//            thetas.append(i)
+//            lambdas.append(i)
+//            i += 45.0
+//        }
+//        
+//        for lambda in lambdas {
+//            let d_z = wrap(lambda / (Double.pi / 4)) % 4
+//            for theta in thetas {
+//                let d_xy = wrap(theta / (Double.pi / 4)) % 8
+//                print("𝜆 = \(lambda) » \(d_z) \n𝜃 = \(theta) » \(d_xy)")
+//                let direction = Direction(theta: theta.radian, lambda: lambda.radian)
+//                print(direction)
+//                print("__________________")
+//            }
+//            print("******************")
+//            print("__________________")
+//        }
+        
         MultipeerManager.shared.isAdvertising = true
         
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: TabBarItemColor.Normal], for:UIControlState())
