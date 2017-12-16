@@ -187,27 +187,23 @@ public struct Direction: OptionSet, CustomStringConvertible {
      */
     public init(angle: Angle) {
         
-        let d_xy = wrap(angle / (Double.pi / 4)) % 8
+        self = []
         
-        switch d_xy {
-        case 0, 8: // 0˚, 360˚
-            self = .north
-        case 1: // 45˚
-            self = [.north, .east]
-        case 2: // 90˚
-            self = .east
-        case 3: // 135˚
-            self = [.south, .east]
-        case 4: // 180˚
-            self = .south
-        case 5: // 225˚
-            self = [.south, .west]
-        case 6: // 270˚
-            self = .west
-        case 7: // 315˚
-            self = [.north, .west]
-        default:
-            self = .none
+        let phi = angle
+        func isBetween(_ min: Angle, _ max: Angle) -> Bool {
+            return phi >= min.radian && phi <= max.radian
+        }
+        
+        if isBetween(-67.5, 67.5) {
+            self.insert(.north)
+        } else if isBetween(-180.0, -112.5) || isBetween(112.5, 180.0) {
+            self.insert(.south)
+        }
+        
+        if isBetween(22.5, 157.5) {
+            self.insert(.east)
+        } else if isBetween(-157.5, -22.5) {
+            self.insert(.west)
         }
     }
     
@@ -219,23 +215,24 @@ public struct Direction: OptionSet, CustomStringConvertible {
      */
     public init(theta: Angle, phi: Angle) {
         
-        let d_z = wrap(phi / (Double.pi / 4)) % 4
-            
-        switch d_z {
-        case 0: // 0˚, 180˚, -180˚
-            self = Direction(angle: theta)
-        case 2: //90˚
+        func isBetween(_ min: Angle, _ max: Angle) -> Bool {
+            return theta >= min.radian && theta <= max.radian
+        }
+        
+        if isBetween(0, 22.5) {
             self = .up
-        case -2: //-90˚
+            return
+        } else if isBetween(180.0, 112.5) || isBetween(-112.5, -180.0) {
             self = .down
-        case 1,3: // 45˚, 135˚
-            self = Direction(angle: theta)
+            return
+        }
+        
+        self = Direction(angle: phi)
+        
+        if isBetween(22.5, 67.5) {
             self.insert(.up)
-        case -1,-3: // -45˚, -135˚
-            self = Direction(angle: theta)
+        } else if isBetween(112.5, 157.5) {
             self.insert(.down)
-        default:
-            self = Direction(angle: theta)
         }
     }
     

@@ -16,23 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+//        /*
+//         𝜃 ∈ [0, +π] rad ([0° ≤ 𝜃 ≤ 180°])
+//         𝛷 ∈ [-π, +π] rad ([-180° ≤ 𝛷 < 180°]
+//         */
+//        
 //        var thetas: [Double] = []
-//        var lambdas: [Double] = []
+//        var phis: [Double] = []
 //        
-//        var i = -360.0
+//        var i = -180.0
 //        
-//        while i <= 360.0 {
-//            thetas.append(i)
-//            lambdas.append(i)
+//        while i <= 180.0 {
+//            if i >= 0 {
+//                thetas.append(i)
+//            }
+//            phis.append(i)
 //            i += 45.0
 //        }
-//        
-//        for lambda in lambdas {
-//            let d_z = wrap(lambda / (Double.pi / 4)) % 4
-//            for theta in thetas {
-//                let d_xy = wrap(theta / (Double.pi / 4)) % 8
-//                print("𝜆 = \(lambda) » \(d_z) \n𝜃 = \(theta) » \(d_xy)")
-//                let direction = Direction(theta: theta.radian, lambda: lambda.radian)
+//
+//        for theta in thetas {
+//            for phi in phis {
+//                print("𝛷 = \(phi) AND 𝜃 = \(theta)")
+//                let direction = Direction(theta: theta.radian, phi: phi.radian)
 //                print(direction)
 //                print("__________________")
 //            }
