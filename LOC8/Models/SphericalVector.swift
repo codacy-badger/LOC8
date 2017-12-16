@@ -21,7 +21,8 @@ import Foundation
  
  where r ∈ [0, ∞), θ ∈ [0, +π], φ ∈ [-π, +π]
  
- [Read more](https://en.wikipedia.org/wiki/Spherical_coordinate_system) about spherical coordinate
+ [Read more](https://en.wikipedia.org/wiki/Spherical_coordinate_system) about spherical coordinate.
+ 
  */
 public struct SphericalVector: CustomStringConvertible {
     
@@ -33,12 +34,12 @@ public struct SphericalVector: CustomStringConvertible {
     
     /// `Angle` value represent the inclination angle (or polar angle) between the z-axis and the vector. measured in radian
     ///
-    /// __𝜃 ∈ [0, +π] rad ([0° ≤ 𝜃 ≤ 180°])__
+    /// __𝜃 ∈ [0, +π] rad (0° ≤ 𝜃 ≤ 180°)__
     private(set) var theta: Angle = 0.0
     
     /// `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis. measured in radian
     ///
-    /// __𝛷 ∈ [-π, +π] rad ([-180° ≤ 𝛷 < 180°])__
+    /// __𝛷 ∈ [0, 2π) rad (0° ≤ 𝛷 < 360°)__
     private(set) var phi: Angle = 0.0
     
     /**
@@ -73,7 +74,7 @@ public struct SphericalVector: CustomStringConvertible {
         let rho = radial * sin(theta)
         let z = radial * cos(theta)
         
-        return CylindricalVector(radial: rho, phi: phi, height: z)
+        return CylindricalVector(rho: rho, phi: phi, height: z)
     }
     
     //MARK: Initialaization

@@ -52,7 +52,7 @@ public struct CartesianVector: CustomStringConvertible {
     /**
      `CylindricalVector` object represent the vector in cylindrical form.
      
-     __𝑟 = ²√[ 𝑥² + 𝑦²]__
+     __𝜌 = ²√[ 𝑥² + 𝑦²]__
      
      __𝛷 = tan⁻¹⁡( 𝑦 / 𝑥 )__
      
@@ -60,10 +60,10 @@ public struct CartesianVector: CustomStringConvertible {
      
      */
     public var cylindricalVector: CylindricalVector {
-        let radial = sqrt(pow(x, 2) + pow(y, 2))
+        let rho = sqrt(pow(x, 2) + pow(y, 2))
         let phi = atan2(y, x)
         
-        return CylindricalVector(radial: radial, phi: phi, height: z)
+        return CylindricalVector(rho: rho, phi: phi, height: z)
     }
     
     //MARK: Initialaization

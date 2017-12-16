@@ -18,19 +18,20 @@ import Foundation
  
  where 𝜌 ∈ [0, ∞), θ ∈ [0, +π], 𝑧 ∈ (-∞, +∞)
  
- [Read more](https://en.wikipedia.org/wiki/Cylindrical_coordinate_system) about cylindrical coordinate
+ [Read more](https://en.wikipedia.org/wiki/Cylindrical_coordinate_system) about cylindrical coordinate.
+ 
  */
 public struct CylindricalVector: CustomStringConvertible {
     
     /// `Double` value represent the radial distance
-    /// ρ is the Euclidean distance from the z-axis to the vector.
+    /// 𝜌 is the Euclidean distance in xy-plane for the vector.
     ///
-    /// __r ≥ 0__
-    private(set) var radial: Double = 0.0
+    /// __𝜌 ∈ [0, ∞) (𝜌 ≥ 0)__
+    private(set) var rho: Double = 0.0
     
-    /// `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.
+    /// `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis. measured in radian
     ///
-    /// __-180° ≤ 𝛷 < 180° ([-π, +π] rad)__
+    /// __𝛷 ∈ [0, 2π) rad (0° ≤ 𝛷 < 360°)__
     private(set) var phi: Angle = 0.0
     
     /// `Double` value represent the height z which the signed distance from the chosen plane to the vector.
@@ -39,15 +40,15 @@ public struct CylindricalVector: CustomStringConvertible {
     /**
      `CartesianVector` object represent the vector in cartesian form.
      
-     __𝑥 = 𝑟 cos⁡(𝛷)__
+     __𝑥 = 𝜌 cos⁡(𝛷)__
      
-     __𝑦 = 𝑟 sin⁡(𝛷)__
+     __𝑦 = 𝜌 sin⁡(𝛷)__
      
      __𝑧 = 𝑧__
      */
     public var cartesianVector: CartesianVector {
-        let x = radial * cos(phi)
-        let y = radial * sin(phi)
+        let x = rho * cos(phi)
+        let y = rho * sin(phi)
         let z = self.height
         
         return CartesianVector(x: x, y: y, z: z)
@@ -56,7 +57,7 @@ public struct CylindricalVector: CustomStringConvertible {
     /**
      `SphericalVector` object represent the vector in spherical form.
      
-     __𝜌 = ²√[ 𝑟² + 𝑧²]__
+     __𝑟 = ²√[ 𝜌² + 𝑧²]__
      
      __𝜃 = cos⁻¹(𝑧 / 𝜌)__
      
@@ -64,10 +65,10 @@ public struct CylindricalVector: CustomStringConvertible {
      
      */
     public var sphericalVector: SphericalVector {
-        let rho = sqrt(radial * radial + height * height)
-        let theta = acos(height / rho)
+        let radial = sqrt(pow(rho, 2) + pow(height, 2))
+        let theta = acos(height / radial)
         
-        return SphericalVector(radial: rho, theta: theta, phi: phi)
+        return SphericalVector(radial: radial, theta: theta, phi: phi)
     }
     
     //MARK: Initialaization
@@ -82,19 +83,19 @@ public struct CylindricalVector: CustomStringConvertible {
     /**
      Initialize `CartesianVector` object
      
-     - Parameter radial: `Double` value represent the magnitude of the vector.
+     - Parameter rho: `Double` value represent the magnitude of the vector.
      - Parameter phi: `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.
      - Parameter height: `Double` value represent the height z which the signed distance from the chosen plane to the point P.
      */
-    public init(radial: Double, phi: Angle, height: Angle) {
-        self.radial = radial
+    public init(rho: Double, phi: Angle, height: Double) {
+        self.rho = rho
         self.phi = phi
         self.height = height
     }
     
     //CustomStringConvertible Protocall
     public var description: String {
-        return String(format: "Cylindrical(%.2f, %.2f˚, %.2f)", Float(self.radial), Float(self.phi.degree), Float(self.height))
+        return String(format: "Cylindrical(%.2f, %.2f˚, %.2f)", Float(self.rho), Float(self.phi.degree), Float(self.height))
     }
 }
 

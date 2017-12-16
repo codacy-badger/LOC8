@@ -49,72 +49,59 @@ open class Vector3D: Measurement {
     
     //MARK: Spherical Properties
     
-    /// A `sphericalVector` object represent the vector in spherical coordinate.
+    /// A `SphericalVector` object represent the vector in spherical coordinate.
     private(set) var sphericalVector: SphericalVector!
     
     /// `Double` value represent the magnitude of the vector.
     /// radial distance r _(𝜌 (rho) is often used instead)_
     ///
-    /// __r ≥ 0__
+    /// __r ∈ [0, ∞) (r ≥ 0)__
     open var radial: Double {
         return sphericalVector.radial
         
     }
     
-    /// `Angle` value represent the polar angle between the z-axis and the vector.
+    /// `Angle` value represent the inclination angle (or polar angle) between the z-axis and the vector. measured in radian
     ///
-    /// __0° ≤ 𝜃 ≤ 180° ([0, π] rad)__
+    /// __𝜃 ∈ [0, +π] rad ([0° ≤ 𝜃 ≤ 180°])__
     open var theta: Angle {
         return sphericalVector.theta
         
     }
     
-    /// `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.
+    /// `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis. measured in radian
     ///
-    /// __-180° ≤ 𝛷 < 180° ([-π, +π] rad)__
+    /// __𝛷 ∈ [-π, +π] rad ([-180° ≤ 𝛷 < 180°])__
     open var phi: Angle {
         return sphericalVector.phi
         
     }
     
-//    //MARK: Polar Properties
-//
-//    /// A PolerVector object represent the vector in polar coordinate.
-//    private(set) var polarVector: PolarVector!
-//
-//    ///Angle value represent the angle between the projection on z-axis and xy-plan.
-//    open var theta: Angle {
-//        return polarVector.theta
-//
-//    }
-//
-//    ///Angle value represent the angle between the projection on xy-plan and x-axis.
-//    open var lambda: Angle {
-//        return polarVector.lambda
-//
-//    }
-//
-//    ///Double value represent the distance of the vector.
-//    open var magnitude: Double {
-//        return polarVector.magnitude
-//
-//    }
+    //MARK: Clyndrical Properties
+    
+    /// A `CylindricalVector` object represent the vector in cylindrical coordinate.
+    private(set) var cylindricalVector: CylindricalVector!
+    
+    /// `Double` value represent the radial distance
+    /// ρ is the Euclidean distance in xy-plane for the vector.
+    ///
+    /// __𝜌 ∈ [0, ∞) (𝜌 ≥ 0)__
+    open var rho: Double {
+        return self.cylindricalVector.rho
+    }
+    
+    /// `Double` value represent the height z which the signed distance from the chosen plane to the vector.
+    open var height: Double {
+        return self.cylindricalVector.height
+    }
+    
     
     //MARK: Vector Properties
     
     ///Return Direction that represent the vector heading.
     open var headingDirection: Direction {
-//        let maxAngle = 30.0
-//
-//        if lambda > maxAngle {
-//            return .up
-//        }
-//
-//        if lambda < -maxAngle {
-//            return .down
-//        }
         
-        return Direction(angle: theta)
+        return Direction.init(theta: self.theta, lambda: self.phi)
     }
     
     //MARK: Initialaization
@@ -126,6 +113,7 @@ open class Vector3D: Measurement {
         super.init()
         self.cartesianVector = CartesianVector()
         self.sphericalVector = self.cartesianVector.sphericalVector
+        self.cylindricalVector = self.cartesianVector.cylindricalVector
     }
     
     /**
@@ -139,6 +127,7 @@ open class Vector3D: Measurement {
         super.init()
         self.cartesianVector = CartesianVector(x: x, y: y, z: z)
         self.sphericalVector = self.cartesianVector.sphericalVector
+        self.cylindricalVector = self.cartesianVector.cylindricalVector
     }
     
     /**
@@ -152,6 +141,7 @@ open class Vector3D: Measurement {
         super.init()
         sphericalVector = SphericalVector(radial: radial, theta: theta, phi: phi)
         self.cartesianVector = self.sphericalVector.cartesianVector
+        self.cylindricalVector = self.sphericalVector.cylindricalVector
     }
     
     /**
@@ -163,6 +153,7 @@ open class Vector3D: Measurement {
         super.init()
         cartesianVector = CartesianVector(x: value, y: value, z: value)
         self.sphericalVector = self.cartesianVector.sphericalVector
+        self.cylindricalVector = self.cartesianVector.cylindricalVector
     }
     
     /**
@@ -182,6 +173,7 @@ open class Vector3D: Measurement {
         
         self.cartesianVector = CartesianVector(x: x, y: y, z: z)
         self.sphericalVector = cartesianVector.sphericalVector
+        self.cylindricalVector = self.cartesianVector.cylindricalVector
     }
     
     open override func encode(with aCoder: NSCoder) {

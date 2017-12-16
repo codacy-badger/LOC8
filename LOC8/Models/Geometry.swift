@@ -19,7 +19,7 @@ import Foundation
  
  - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Infinity)
  */
-public let infenity = Double.greatestFiniteMagnitude //DBL_MAX
+public let infenity = Double.greatestFiniteMagnitude
 
 /**
  Clamping of a value to a range of [max - min].
@@ -108,13 +108,13 @@ public func rotate(value: Double, min: Double, max: Double) -> Double {
         return value
     }
     
+    let delta = max - min
+    
     if value > max {// value is grater than the range
-        return min + Double(Int(value - max) % Int(max - min))
-    }
-    else if value < min {// value is less than the range
-        return max - Double(Int(min - value) % Int(max - min))
-    }
-    else {// value is within the range
+        return min + (value - max).truncatingRemainder(dividingBy: delta)
+    } else if value < min {// value is less than the range
+        return max - (min - value).truncatingRemainder(dividingBy: delta)
+    } else {// value is within the range
         return value
     }
 }
@@ -143,8 +143,6 @@ public func rotate(value: Double, min: Double, max: Double) -> Double {
 public func truncate(value: Double, decimalPlaces place: UInt) -> Double {
     let v = abs(value)
     let sign = value < 0 ? -1.0 : 1.0
-    return sign * Double(floor(pow(10.0, Double(place)) * v)/pow(10.0, Double(place)))
+    return sign * (floor(pow(10.0, Double(place)) * v) / pow(10.0, Double(place)))
 }
-
-
 
