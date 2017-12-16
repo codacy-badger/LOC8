@@ -39,7 +39,7 @@ public struct SphericalVector: CustomStringConvertible {
     
     /// `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis. measured in radian
     ///
-    /// __𝛷 ∈ [0, 2π) rad (0° ≤ 𝛷 < 360°)__
+    /// __𝛷 ∈ [-π, +π) rad (-180° ≤ 𝛷 < 180°)__
     private(set) var phi: Angle = 0.0
     
     /**
