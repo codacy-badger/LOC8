@@ -222,7 +222,7 @@ public struct Direction: OptionSet, CustomStringConvertible {
         if isBetween(0, 22.5) {
             self = .up
             return
-        } else if isBetween(180.0, 112.5) || isBetween(-112.5, -180.0) {
+        } else if isBetween(157.5, 180.0) {
             self = .down
             return
         }

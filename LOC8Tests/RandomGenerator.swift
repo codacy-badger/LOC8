@@ -134,7 +134,7 @@ public class RandomGenerator {
         // find the range sign either 1 or -1
         let sign = range / abs(minimum - maximum)
         
-        return sign * Double(Int(random) % Int(range)) + minimum
+        return sign * random.truncatingRemainder(dividingBy: range) + minimum
     }
     
     //MARK: Angels
@@ -163,7 +163,7 @@ public class RandomGenerator {
         
         if min < max {// the value is bettween [min, max]
             let angle = Angle(arc4random_uniform(UInt32(max - min))) + min
-            return angle.radian
+            return angle
         }
         else {// the value is between [min, (0˚ = 360˚), max]
             if self.boolean() {
@@ -196,6 +196,8 @@ public class RandomGenerator {
         if deference == 0 {
             return angle
         }
+        
+        
         
         let min = rotate(value: angle - deference, min:0, max:360)
         let max = rotate(value: angle + deference, min:0, max:360)

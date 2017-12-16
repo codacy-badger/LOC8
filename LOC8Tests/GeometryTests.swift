@@ -12,7 +12,7 @@ import XCTest
 
 class GeometryTests: XCTestCase {
     
-    let accuracyLimit: Int = 1
+    let accuracyLimit: Int = 100
     
     //MARK:- Tests
     
@@ -77,7 +77,6 @@ class GeometryTests: XCTestCase {
                 
                 clampTest(min: min, max: max, v_1: v_1, v_2: v_2, v_3: v_3)
             }
-            clampFloat()
             
             //Test for Double value.
             func clampDouble() {
@@ -166,66 +165,70 @@ class GeometryTests: XCTestCase {
      */
     func testDirectionModel() {
         
-        return
-        
         for _ in 0...accuracyLimit {
+            
+            typealias testValue = (direction: Direction, angle: Angle)
         
-            //Stub horisantel directions [N, NE, E, SE, S, SW, W, NW]
-            let xyValues: [(direction: Direction, angle: Angle)] =
-                [
-                    (Direction.north, RandomGenerator.angel(angle:0  , deference: 22.5)),
-                    (Direction.east,  RandomGenerator.angel(angle:90 , deference: 22.5)),
-                    (Direction.south, RandomGenerator.angel(angle:180, deference: 22.5)),
-                    (Direction.west,  RandomGenerator.angel(angle:270, deference: 22.5)),
-                    
-                    ([Direction.north, Direction.east], RandomGenerator.angel(angle:45 , deference: 22.5)),
-                    ([Direction.south, Direction.east], RandomGenerator.angel(angle:135, deference: 22.5)),
-                    ([Direction.south, Direction.west], RandomGenerator.angel(angle:225, deference: 22.5)),
-                    ([Direction.north, Direction.west], RandomGenerator.angel(angle:315, deference: 22.5))
-                ]
-            
-            //Stub verticale directions [U, D]
-            let zValues: [(direction: Direction, angle: Angle)] =
-                [
-                    (Direction.none, RandomGenerator.angel(angle:0    , deference: 22.5)),
-                    (Direction.up,   RandomGenerator.angel(angle:45   , deference: 22.5)),
-                    (Direction.up,   RandomGenerator.angel(angle:90   , deference: 22.5)),
-                    (Direction.up,   RandomGenerator.angel(angle:135  , deference: 22.5)),
-                    (Direction.none, RandomGenerator.angel(angle:180  , deference: 22.5)),
-                    (Direction.none, RandomGenerator.angel(angle:-180 , deference: 22.5)),
-                    (Direction.down, RandomGenerator.angel(angle:-135 , deference: 22.5)),
-                    (Direction.down, RandomGenerator.angel(angle:-90  , deference: 22.5)),
-                    (Direction.down, RandomGenerator.angel(angle:-45  , deference: 22.5))
-                ]
-            //stub up dirctions [U, NU, NEU, EU, SEU, SU, SWU, WU, NWU]
-            //Stub down diractions [D, ND, NED, ED, SED, SD, SWD, WD, NWD]
-            
-            for zValue in zValues {
+            func checkDirction(_ zValue: testValue, _ xyValue: testValue, _ isAbsolut: Bool = false) {
                 
-                for xyValue in xyValues {
-                    
-                    //Create direction
-                    let direction = Direction(theta: xyValue.angle.radian, lambda: zValue.angle.radian)
-                    
-                    //check verticale direction [U, D]
-                    if !direction.contains(zValue.direction) {
-                        XCTFail("Direction \(direction.description) doesn't contains \(zValue.direction.description) with lambda(\(zValue.angle)˚).")
-                    }
-                    
-                    //check horisantel direction [N, NE, E, SE, S, SW, W, NW]
-                    if !direction.contains(xyValue.direction) {
-                        XCTFail("Direction \(direction.description) doesn't contains \(xyValue.direction.description)with theta(\(xyValue.angle)˚).")
-                    }
-                    
-                    //Logical check
-                    if (direction.contains(Direction.up) && direction.contains(Direction.down)) ||
-                    (direction.contains(Direction.north) && direction.contains(Direction.south)) ||
-                     (direction.contains(Direction.east) && direction.contains(Direction.west)) {
-                        XCTFail("Direction \(direction) has conflicts.")
-                    }
+                //Create direction
+                let direction = Direction(theta: zValue.angle.radian, phi: xyValue.angle.radian)
+                
+                //check verticale direction [U, D]
+                if !direction.contains(zValue.direction) {
+                    XCTFail("Direction \(direction) doesn't contains \(zValue.direction) with theta(\(zValue.angle)˚) and phi(\(xyValue.angle)˚).")
                 }
                 
+                //check horisantel direction [N, NE, E, SE, S, SW, W, NW]
+                if isAbsolut {
+                    if direction.contains(xyValue.direction) {
+                        XCTFail("Direction \(direction) shouldn't contains \(xyValue.direction) with theta(\(zValue.angle)˚) and phi(\(xyValue.angle)˚).")
+                    }
+                } else if !direction.contains(xyValue.direction) {
+                    XCTFail("Direction \(direction) doesn't contains \(xyValue.direction) with theta(\(zValue.angle)˚) and phi(\(xyValue.angle)˚).")
+                }
+                
+                //Logical check
+                if (direction.contains(Direction.up) && direction.contains(Direction.down)) ||
+                    (direction.contains(Direction.north) && direction.contains(Direction.south)) ||
+                    (direction.contains(Direction.east) && direction.contains(Direction.west)) {
+                    XCTFail("Direction \(direction) has conflicts.")
+                }
             }
+            
+            func randomAngel(angle: Angle, deference: Angle) -> Angle {
+                return RandomGenerator.double(from: angle - deference, to: angle + deference)
+            }
+            
+            //Stub verticale directions
+            let absolutUP = (Direction.up, randomAngel(angle:11.25    , deference: 11.25))
+            let absolutDown = (Direction.down, randomAngel(angle:168.75  , deference: 11.25))
+            
+            //Stub horisantel directions
+            let xyValues: [testValue] = [(Direction.north, randomAngel(angle:11.25  , deference: 11.25)),
+                                         (Direction.east,  randomAngel(angle:90 , deference: 22.5)),
+                                         (Direction.south, randomAngel(angle:168.75, deference: 11.25)),
+                                         (Direction.west,  randomAngel(angle:-90, deference: 22.5)),
+                                         
+                                         ([Direction.north, Direction.east], randomAngel(angle:45 , deference: 22.5)),
+                                         ([Direction.south, Direction.east], randomAngel(angle:135, deference: 22.5)),
+                                         ([Direction.south, Direction.west], randomAngel(angle:-135, deference: 22.5)),
+                                         ([Direction.north, Direction.west], randomAngel(angle:-45, deference: 22.5))]
+            
+            //Stub in between diractions
+            let zValues: [testValue] = [(Direction.up,   randomAngel(angle:45   , deference: 22.5)),
+                                        (Direction.none, randomAngel(angle:90   , deference: 22.5)),
+                                        (Direction.down, randomAngel(angle:135  , deference: 22.5))]
+            
+            
+            for xyValue in xyValues {
+                checkDirction(absolutUP, xyValue, true)
+                checkDirction(absolutDown, xyValue, true)
+                for zValue in zValues {
+                    checkDirction(zValue, xyValue)
+                }
+            }
+            
         }
     }
     
@@ -237,27 +240,62 @@ class GeometryTests: XCTestCase {
         for _ in 0...accuracyLimit {
             
             let vector = RandomGenerator.vector()
+            let cartesian_1 = vector.cartesianVector
+            let spherical_1 = vector.sphericalVector
+            let cylindrical_1 = vector.cylindricalVector
             
-            let cartesian_1 = vector.cartesianVector!
-            
-            let polar_1 = vector.polarVector!
-            
-            let cartesian_2 = polar_1.cartesianVector
-            
-            let polar_2 = cartesian_1.polarVector
+            //spherical to cartesian
+            let cartesian_2 = spherical_1.cartesianVector
             
             if round(cartesian_1.x) != round(cartesian_2.x) ||
                round(cartesian_1.y) != round(cartesian_2.y) ||
                round(cartesian_1.z) != round(cartesian_2.z) {
-                XCTFail("Error in converting poler to cartesian in vector:\n\(vector.description) \norigenal cartesian:  \(cartesian_1.description) \nconverted cartesian: \(cartesian_2.description) \n\n\norigenal poler:  \(polar_1.description) \nconverted poler: \(polar_2.description) \n")
-                
+                XCTFail("Error in converting spherical to cartesian in vector:\n\(vector) \norigenal cartesian:  \(cartesian_1) \nconverted cartesian: \(cartesian_2) \n")
             }
             
-            if polar_1.magnitude != polar_2.magnitude ||
-               polar_1.theta     != polar_2.theta     ||
-               polar_1.lambda    != polar_2.lambda {
-                XCTFail("Error in converting cartesian to poler in vector:\n\(vector.description) \norigenal cartesian:  \(cartesian_1.description) \nconverted cartesian: \(cartesian_2.description) \n\n\norigenal poler:  \(polar_1.description) \nconverted poler: \(polar_2.description) \n")
-                
+            //cartesian to spherical
+            let spherical_2 = cartesian_1.sphericalVector
+            
+            if round(spherical_1.radial) != round(spherical_2.radial) ||
+               round(spherical_1.theta)  != round(spherical_2.theta)  ||
+               round(spherical_1.phi)    != round(spherical_2.phi)    {
+                XCTFail("Error in converting cartesian to spherical in vector:\n\(vector) \norigenal spherical:  \(spherical_1) \nconverted spherical: \(spherical_2) \n")
+            }
+            
+            //cylindrical to cartesian
+            let cartesian_3 = cylindrical_1.cartesianVector
+            
+            if round(cartesian_1.x) != round(cartesian_3.x) ||
+               round(cartesian_1.y) != round(cartesian_3.y) ||
+               round(cartesian_1.z) != round(cartesian_3.z) {
+                XCTFail("Error in converting cylindrica to cartesian in vector:\n\(vector) \norigenal cartesian:  \(cartesian_1) \nconverted cartesian: \(cartesian_3) \n")
+            }
+            
+            //cartesian to cylindrica
+            let cylindrical_2 = cartesian_1.cylindricalVector
+            
+            if round(cylindrical_1.rho)    != round(cylindrical_2.rho)    ||
+               round(cylindrical_1.height) != round(cylindrical_2.height) ||
+               round(cylindrical_1.phi)    != round(cylindrical_2.phi)    {
+                XCTFail("Error in converting cartesian to cylindrical in vector:\n\(vector) \norigenal cylindrical:  \(cylindrical_1) \nconverted cylindrical: \(cylindrical_2) \n")
+            }
+            
+            //cylindrica to spherical
+            let spherical_3 = cylindrical_1.sphericalVector
+            
+            if round(spherical_1.radial) != round(spherical_3.radial) ||
+               round(spherical_1.theta)  != round(spherical_3.theta)  ||
+               round(spherical_1.phi)    != round(spherical_3.phi)    {
+                XCTFail("Error in converting cylindrica to spherical in vector:\n\(vector) \norigenal spherical:  \(spherical_1) \nconverted spherical: \(spherical_3) \n")
+            }
+            
+            //spherical to cylindrica
+            let cylindrical_3 = spherical_1.cylindricalVector
+            
+            if round(cylindrical_1.rho)    != round(cylindrical_3.rho)    ||
+               round(cylindrical_1.height) != round(cylindrical_3.height) ||
+               round(cylindrical_1.phi)    != round(cylindrical_3.phi)    {
+                XCTFail("Error in converting spherical to cylindrical in vector:\n\(vector) \norigenal cylindrical:  \(cylindrical_1) \nconverted cylindrical: \(cylindrical_3) \n")
             }
         }
     }
