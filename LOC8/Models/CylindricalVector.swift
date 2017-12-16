@@ -81,7 +81,7 @@ public struct CylindricalVector: CustomStringConvertible {
     }
     
     /**
-     Initialize `CartesianVector` object
+     Initialize `CylindricalVector` object
      
      - Parameter rho: `Double` value represent the magnitude of the vector.
      - Parameter phi: `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.

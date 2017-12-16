@@ -27,7 +27,7 @@ open class Vector3D: Measurement {
     //MARK: Cartesian Properties
     
     /// A `CartesianVector` object represent the vector in cartesian coordinate.
-    private(set) var cartesianVector: CartesianVector!
+    private(set) var cartesianVector: CartesianVector
     
     /// `Double` value represent the projection on x-axis.
     open var x: Double {
@@ -50,7 +50,7 @@ open class Vector3D: Measurement {
     //MARK: Spherical Properties
     
     /// A `SphericalVector` object represent the vector in spherical coordinate.
-    private(set) var sphericalVector: SphericalVector!
+    private(set) var sphericalVector: SphericalVector
     
     /// `Double` value represent the magnitude of the vector.
     /// radial distance r _(𝜌 (rho) is often used instead)_
@@ -80,7 +80,7 @@ open class Vector3D: Measurement {
     //MARK: Clyndrical Properties
     
     /// A `CylindricalVector` object represent the vector in cylindrical coordinate.
-    private(set) var cylindricalVector: CylindricalVector!
+    private(set) var cylindricalVector: CylindricalVector
     
     /// `Double` value represent the radial distance
     /// ρ is the Euclidean distance in xy-plane for the vector.
@@ -110,50 +110,64 @@ open class Vector3D: Measurement {
      `Vector3D` Default initializer.
      */
     public override init() {
-        super.init()
         self.cartesianVector = CartesianVector()
         self.sphericalVector = self.cartesianVector.sphericalVector
         self.cylindricalVector = self.cartesianVector.cylindricalVector
+        super.init()
     }
     
     /**
-      Initialize Vector3D object in cartesian form.
+      Initialize `Vector3D` object in cartesian form.
      
       - Parameter x: `Double` value represent the projection on x-axis.
       - Parameter y: `Double` value represent the projection on y-axis.
       - Parameter z: `Double` value represent the projection on z-axis.
      */
     public init(x: Double, y: Double, z: Double) {
-        super.init()
         self.cartesianVector = CartesianVector(x: x, y: y, z: z)
         self.sphericalVector = self.cartesianVector.sphericalVector
         self.cylindricalVector = self.cartesianVector.cylindricalVector
+        super.init()
     }
     
     /**
       Initialize `Vector3D` object in spherical form.
      
-     - Parameter radial: `Double` value represent the magnitude of the vector..
-     - Parameter theta: `Angle` value represent the polar angle between the z-axis and the vector.
-     - Parameter phi: `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.
+      - Parameter radial: `Double` value represent the magnitude of the vector..
+      - Parameter theta: `Angle` value represent the polar angle between the z-axis and the vector.
+      - Parameter phi: `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.
      */
     public init(radial: Double, theta: Angle, phi: Angle) {
-        super.init()
-        sphericalVector = SphericalVector(radial: radial, theta: theta, phi: phi)
+        self.sphericalVector = SphericalVector(radial: radial, theta: theta, phi: phi)
         self.cartesianVector = self.sphericalVector.cartesianVector
         self.cylindricalVector = self.sphericalVector.cylindricalVector
+        super.init()
     }
     
     /**
-      Initialize Vector3D object with a unit value.
+     Initialize `Vector3D` object in cylindrical form.
+     
+     - Parameter rho: `Double` value represent the magnitude of the vector.
+     - Parameter phi: `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.
+     - Parameter height: `Double` value represent the height z which the signed distance from the chosen plane to the point P.
+     */
+    public init(rho: Double, phi: Angle, height: Double) {
+        self.cylindricalVector = CylindricalVector(rho: rho, phi: phi, height: height)
+        self.cartesianVector = self.cylindricalVector.cartesianVector
+        self.sphericalVector = self.cylindricalVector.sphericalVector
+        super.init()
+    }
+    
+    /**
+      Initialize `Vector3D` object with a unit value.
      
       - Parameter value: Double value represent the vector x y z value.
      */
     public init(value: Double) {
-        super.init()
-        cartesianVector = CartesianVector(x: value, y: value, z: value)
+        self.cartesianVector = CartesianVector(x: value, y: value, z: value)
         self.sphericalVector = self.cartesianVector.sphericalVector
         self.cylindricalVector = self.cartesianVector.cylindricalVector
+        super.init()
     }
     
     /**
@@ -166,7 +180,6 @@ open class Vector3D: Measurement {
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
         let x = aDecoder.decodeDouble(forKey: "x")
         let y = aDecoder.decodeDouble(forKey: "y")
         let z = aDecoder.decodeDouble(forKey: "z")
@@ -174,6 +187,7 @@ open class Vector3D: Measurement {
         self.cartesianVector = CartesianVector(x: x, y: y, z: z)
         self.sphericalVector = cartesianVector.sphericalVector
         self.cylindricalVector = self.cartesianVector.cylindricalVector
+        super.init(coder: aDecoder)
     }
     
     open override func encode(with aCoder: NSCoder) {
@@ -184,7 +198,7 @@ open class Vector3D: Measurement {
     }
     
     open override var description: String {
-        return "Vector3D[\n\t\(self.cartesianVector)\n\t\(self.sphericalVector)\n]"
+        return "Vector3D\n[\n\t\(self.cartesianVector)\n\t\(self.sphericalVector)\n\t\(self.cylindricalVector)\n]"
     }
     
     //MARK:Vectors Operators

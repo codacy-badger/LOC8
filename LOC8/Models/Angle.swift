@@ -14,7 +14,10 @@ import Foundation
  ### Discussion:
  The angle is the space between two intersecting lines or surfaces at or close to the point where they meet
  
- In planar geometry, an angle is the figure formed by two rays, called the sides of the angle, sharing a common endpoint, called the vertex of the angle. Angles formed by two rays lie in a plane, but this plane does not have to be a Euclidean plane. [Wikipedia](https://en.wikipedia.org/wiki/Angle)
+ In planar geometry, an angle is the figure formed by two rays, called the sides of the angle, sharing a common endpoint, called the vertex of the angle.
+ Angles formed by two rays lie in a plane, but this plane does not have to be a Euclidean plane.
+ 
+ [Read more](https://en.wikipedia.org/wiki/Angle) about angle.
  */
 public typealias Angle = Double
 

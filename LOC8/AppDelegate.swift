@@ -40,6 +40,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            print("__________________")
 //        }
         
+//        let vector = Vector3D(x: 1, y: 1, z: -1)
+//        print(vector)
+//        print("cartesian to spherical\t\t \(vector.cartesianVector.sphericalVector)")
+//        print("spherical to cartesian\t\t \(vector.sphericalVector.cartesianVector)\n")
+//        print("cartesian to cylindrical\t \(vector.cartesianVector.cylindricalVector)")
+//        print("cylindrical to cartesian\t \(vector.cylindricalVector.cartesianVector)\n")
+//        print("spherical to cylindrical\t \(vector.sphericalVector.cylindricalVector)")
+//        print("cylindrical to spherical\t \(vector.cylindricalVector.sphericalVector)\n")
+        
         MultipeerManager.shared.isAdvertising = true
         
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: TabBarItemColor.Normal], for:UIControlState())

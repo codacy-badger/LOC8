@@ -55,7 +55,7 @@ public struct SphericalVector: CustomStringConvertible {
     public var cartesianVector: CartesianVector {
         let x = radial * sin(theta) * cos(phi)
         let y = radial * sin(theta) * sin(phi)
-        let z = radial * sin(phi)
+        let z = radial * cos(theta)
         
         return CartesianVector(x: x, y: y, z: z)
     }
