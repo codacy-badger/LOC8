@@ -160,7 +160,6 @@ open class MapViewController: UIViewController {
             self.trackingSession.startTraking()
             self.trackingSession.estimationHandler = { estimation in
                 self.refreshSchene()
-                
             }
         } else {
 //            sender.backgroundColor = UIColor(red:0.48, green:0.8, blue:0.26, alpha:1)

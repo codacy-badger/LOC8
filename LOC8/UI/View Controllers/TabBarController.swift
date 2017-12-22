@@ -123,13 +123,17 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
     
     open func setColor(_ color: UIColor) {
         
-        UIView.animate(withDuration: 1.0, delay: 0, options: UIViewAnimationOptions.beginFromCurrentState.union(.transitionCrossDissolve), animations: { () -> Void in
-            self.navigationBar.barTintColor = color
-            }, completion: nil)
+//        UIView.animate(withDuration: 1.0, delay: 0, options: UIViewAnimationOptions.beginFromCurrentState.union(.transitionCrossDissolve), animations: { () -> Void in
+//            self.navigationBar.barTintColor = color
+//            }, completion: nil)
         
         UIView.transition(with: tabBar, duration: 1.0, options: UIViewAnimationOptions.beginFromCurrentState.union(.transitionCrossDissolve), animations: { () -> Void in
             self.tabBar.barTintColor = color
             }, completion: nil)
+        
+        UIView.transition(with: navigationBar, duration: 1.0, options: UIViewAnimationOptions.beginFromCurrentState.union(.transitionCrossDissolve), animations: { () -> Void in
+            self.navigationBar.barTintColor = color
+        }, completion: nil)
     }
     
     @objc internal func updateColor(_ timer: Timer) {

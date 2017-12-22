@@ -127,12 +127,14 @@ open class Estimation: Measurement {
         
         let userInfo = notification.userInfo!
         
-//        let attitude = userInfo[DefaultKeys.AttitudeKey] as! Rotation3D
+        let attitude = userInfo[DefaultKeys.AttitudeKey] as! Rotation3D
 //        let rotationRate = userInfo[DefaultKeys.RotationRateKey] as! Vector3D
 //        let gravity = userInfo[DefaultKeys.GravityKey] as! Vector3D
-        let acceleration = userInfo[DefaultKeys.AccelerationKey] as! Vector3D
+//        let acceleration = userInfo[DefaultKeys.AccelerationKey] as! Vector3D
         
-        let newHeading = Motion(angle: acceleration.theta)
+        let velocity = MotinDetector.shared.velocity ^ attitude
+        
+        let newHeading = Motion(direction: velocity.headingDirection)
         
         if headings.count == 0 {
             headings.append(newHeading)

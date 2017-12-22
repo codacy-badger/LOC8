@@ -195,8 +195,7 @@ extension MultipeerManager: MCSessionDelegate {
     }
     
     // Received a byte stream from remote peer.
-    public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID)
-    {
+    public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
         
         debugPrint("Did receive stream: \(stream)")
     }

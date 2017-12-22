@@ -16,45 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-//        /*
-//         𝜃 ∈ [0, +π] rad ([0° ≤ 𝜃 ≤ 180°])
-//         𝛷 ∈ [-π, +π] rad ([-180° ≤ 𝛷 < 180°]
-//         */
-//        
-//        var thetas: [Double] = []
-//        var phis: [Double] = []
-//        
-//        var i = -180.0
-//        
-//        while i <= 180.0 {
-//            if i >= 0 {
-//                thetas.append(i)
-//            }
-//            phis.append(i)
-//            i += 45.0
-//        }
-//
-//        for theta in thetas {
-//            for phi in phis {
-//                print("𝛷 = \(phi) AND 𝜃 = \(theta)")
-//                let direction = Direction(theta: theta.radian, phi: phi.radian)
-//                print(direction)
-//                print("__________________")
-//            }
-//            print("******************")
-//            print("__________________")
-//        }
-        
-//        let vector = Vector3D(x: 1, y: 1, z: -1)
-//        print(vector)
-//        print("cartesian to spherical\t\t \(vector.cartesianVector.sphericalVector)")
-//        print("spherical to cartesian\t\t \(vector.sphericalVector.cartesianVector)\n")
-//        print("cartesian to cylindrical\t \(vector.cartesianVector.cylindricalVector)")
-//        print("cylindrical to cartesian\t \(vector.cylindricalVector.cartesianVector)\n")
-//        print("spherical to cylindrical\t \(vector.sphericalVector.cylindricalVector)")
-//        print("cylindrical to spherical\t \(vector.cylindricalVector.sphericalVector)\n")
-        
         MultipeerManager.shared.isAdvertising = true
+        let _ = SensorsManager.shared
         
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: TabBarItemColor.Normal], for:UIControlState())
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: TabBarItemColor.Selected], for:.selected)
