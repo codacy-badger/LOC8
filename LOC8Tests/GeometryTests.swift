@@ -12,7 +12,7 @@ import XCTest
 
 class GeometryTests: XCTestCase {
     
-    let accuracyLimit: Int = 100
+    let accuracyLimit: Int = 1000
     
     //MARK:- Tests
     
@@ -25,27 +25,27 @@ class GeometryTests: XCTestCase {
             
             func clampTest<T: Comparable>(min: T, max: T, v_1: T, v_2: T, v_3: T) {
                 
-                let r_1 = clamp(value: v_1, min: min, max: max)
+                let r_1 = Geometry.clamp(value: v_1, min: min, max: max)
                 if r_1 != v_1 {
                     XCTFail("Wrong result in \(T.self). \ncase [min < v < max] \nclamp(\(v_1), min: \(min), max: \(max)) = \(r_1)")
                 }
                 
-                let r_2 = clamp(value: v_2, min: min, max: max)
+                let r_2 = Geometry.clamp(value: v_2, min: min, max: max)
                 if r_2 != max {
                     XCTFail("Wrong result in \(T.self). \ncase [min < max < v] \nclamp(\(v_2), min: \(min), max: \(max)) = \(r_2)")
                 }
                 
-                let r_3 = clamp(value: v_3, min: min, max: max)
+                let r_3 = Geometry.clamp(value: v_3, min: min, max: max)
                 if r_3 != min {
                     XCTFail("Wrong result in \(T.self). \ncase [v < min < max] \nclamp(\(v_3), min: \(min), max: \(max)) = \(r_3)")
                 }
                 
-                let r_4 = clamp(value: v_1, min: min, max: min)
+                let r_4 = Geometry.clamp(value: v_1, min: min, max: min)
                 if r_4 != min {
                     XCTFail("Wrong result in \(T.self). \ncase [min == max] \nclamp(\(v_1), min: \(min), max: \(min)) = \(r_4)")
                 }
                 
-                let r_5 = clamp(value: v_1, min: max, max: min)
+                let r_5 = Geometry.clamp(value: v_1, min: max, max: min)
                 if r_5 != v_1 {
                     XCTFail("Wrong result in \(T.self). \ncase [max < min] \nclamp(\(v_1), min: \(max), max: \(min)) = \(r_5)")
                 }
@@ -103,7 +103,7 @@ class GeometryTests: XCTestCase {
             
             func rotateTest(value: Double, min: Double, max: Double) {
                 
-                let result = rotate(value: value, min: min, max: max)
+                let result = Geometry.rotate(value: value, min: min, max: max)
                 if result > max && result < min {
                     XCTFail("Wrong result in value. \nrotate(\(value), min: \(min), max: \(max)) = \(result)")
                 }
@@ -136,7 +136,7 @@ class GeometryTests: XCTestCase {
             
             func wrapTest(value: Double) {
                 
-                let result = wrap(value)
+                let result = Geometry.wrap(value)
                 if result > 1 && result < 0 {
                     XCTFail("Wrong result in value. \nwrap(\(value)) = \(result)")
                 }

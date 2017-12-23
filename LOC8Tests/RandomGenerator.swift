@@ -199,8 +199,8 @@ public class RandomGenerator {
         
         
         
-        let min = rotate(value: angle - deference, min:0, max:360)
-        let max = rotate(value: angle + deference, min:0, max:360)
+        let min = Geometry.rotate(value: angle - deference, min:0, max:360)
+        let max = Geometry.rotate(value: angle + deference, min:0, max:360)
         
         let result = self.angel(min: min, max: max)
         
