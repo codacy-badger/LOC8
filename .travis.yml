@@ -1,0 +1,5 @@
+language: swift
+osx_image: xcode9.2
+xcode_project: LOC8.xcodeproj
+xcode_scheme: LOC8 
+xcode_sdk: iphonesimulator11.2

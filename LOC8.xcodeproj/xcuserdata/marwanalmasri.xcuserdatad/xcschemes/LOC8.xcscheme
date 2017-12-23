@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4DCDBBA91CA6895800AB4885"
+               BlueprintIdentifier = "4D40F5881FE2A61A006FDB69"
                BuildableName = "LOC8Tests.xctest"
                BlueprintName = "LOC8Tests"
                ReferencedContainer = "container:LOC8.xcodeproj">
