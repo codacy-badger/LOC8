@@ -1,14 +1,22 @@
 codecov:
   archive:
-    uploads: no
+    uploads: on
+  notify:
+    require_ci_to_pass: yes
 
 coverage:
   precision: 0
   range: 80...100
+  round: up
   ignore:
     - LOC8Tests/*
     - Documentation/*
     - docs/*
+
+status:
+  project: yes
+  patch: yes
+  changes: no
 
 comment:
   layout: "header, diff, changes"
