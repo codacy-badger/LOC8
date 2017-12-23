@@ -8,13 +8,11 @@
 
 import Foundation
 
-//MARK: Rotations
-
 /**
- # Rotation3D
+ An object the hold a geometrical rotation in three dimensions, in deferant forms.
  
-  ### Discussion:
-    A transformation in which a plane figure turns around a fixed center point.
+ ### Discussion:
+ A transformation in which a plane figure turns around a fixed center point.
  */
 open class Rotation3D: Measurement {
     

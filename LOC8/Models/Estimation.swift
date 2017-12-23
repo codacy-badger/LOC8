@@ -10,15 +10,12 @@ import Foundation
 import CoreLocation
 
 /**
- # Estimation Handler
- 
- ### Discussion:
  A closer type that take an `Estimation` object and retun nothing
  */
 public typealias EstimationHandler = ((Estimation) -> Void)
 
 /**
-  # Estimation
+ An object the represent an estimation for motions repeted over a segment of time.
 
   ### Discussion:
     Estimation is a model that is responseple to collect headings until distance value come up.
@@ -72,7 +69,7 @@ open class Estimation: Measurement {
     }
     
     
-    //MARK:Initialization
+    //MARK: Initialization
     
     /**
      `Estimation` Default initializer.
@@ -153,7 +150,7 @@ open class Estimation: Measurement {
         self.estimationHandler?(self)
     }
     
-    //MARK:Controlle
+    //MARK: Controlle
     
     /**
      Starts a series of continuous heading updates to the estimation.

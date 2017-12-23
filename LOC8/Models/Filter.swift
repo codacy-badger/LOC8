@@ -9,13 +9,7 @@
 import Foundation
 
 /**
- # FilterType
- 
  Enumerates the Filter types.
- 
-  - Lowpass
-  - Highpass
-  - Non
  */
 public enum FilterType: String {
     
@@ -42,8 +36,6 @@ public enum FilterType: String {
 }
 
 /**
- # Filter
- 
  An implentetion for a linear digital filter, that can be:
  
  - Lowpass filter
@@ -51,8 +43,8 @@ public enum FilterType: String {
  
  Also you can spacify if the filter is adptive or not.
  
-  ### Discussion:
-    A filter is a process that removes from a signal some unwanted component or feature.
+ ### Discussion:
+ A filter is a process that removes from a signal some unwanted component or feature.
  
  */
 open class Filter: NSObject {
@@ -154,7 +146,7 @@ open class Filter: NSObject {
         var alpha: Double = filterConstant!
 
         if adaptive {
-            let d: Double = clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = Geometry.clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = (1.0 - d) * filterConstant! / noiseAttenuation + d * filterConstant!
         }
 
@@ -174,7 +166,7 @@ open class Filter: NSObject {
         var alpha: Double = filterConstant!
 
         if adaptive {
-            let d: Double = clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = Geometry.clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = d * filterConstant! / noiseAttenuation + (1.0 - d) * filterConstant!
         }
         
@@ -189,8 +181,6 @@ open class Filter: NSObject {
 }
 
 /**
- # Acceleration Filter
- 
  An implentetion for a linear digital filter, that is responsable for processing acceleration data, and remove thae noise. this filter can be:
  
  - Lowpass filter
@@ -307,7 +297,7 @@ open class AccelerationFilter: NSObject {
         var alpha: Double = filterConstant!
         
         if adaptive {
-            let d: Double = clamp(value: abs(~self.value - ~value / minStep) - 1.0, min: 0.0, max: 1.0)
+            let d: Double = Geometry.clamp(value: abs(~self.value - ~value / minStep) - 1.0, min: 0.0, max: 1.0)
             alpha = (1.0 - d) * filterConstant! / noiseAttenuation + d * filterConstant!
         }
         
@@ -336,7 +326,7 @@ open class AccelerationFilter: NSObject {
         var alpha: Double = filterConstant!
         
         if adaptive {
-            let d: Double = clamp(value: fabs(~self.value - ~value) / minStep - 1.0, min: 0.0, max: 1.0)
+            let d: Double = Geometry.clamp(value: fabs(~self.value - ~value) / minStep - 1.0, min: 0.0, max: 1.0)
             alpha = d * filterConstant! / noiseAttenuation + (1.0 - d) * filterConstant!
         }
         x = alpha * (x + value.x - lastValue.x)

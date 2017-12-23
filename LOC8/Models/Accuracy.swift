@@ -9,15 +9,7 @@
 import Foundation
 
 /**
- # Accuracy
- 
- ### Discussion:
- 
  Enumerates the level of accuracy.
- - None
- - Low
- - Medium
- - High
  */
 public enum Accuracy : Int, CustomStringConvertible {
     

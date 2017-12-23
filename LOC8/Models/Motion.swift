@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- # Motion
+ An object the represent a motion in three dimensions.
  
  ### Discussion:
  In physics, motion is a description of the position of an object over time. Motion may be described in terms of displacement, distance, velocity, acceleration, time and speed.
@@ -30,7 +30,7 @@ open class Motion: Measurement {
     open var wight: UInt = 0
     
     
-    //MARK:Initialization
+    //MARK: Initialization
     
     /**
      Initialize Motion object with an angel

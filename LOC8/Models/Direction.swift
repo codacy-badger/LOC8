@@ -10,10 +10,11 @@
 import Foundation
 
 /**
- # Direction
+ An object the hold a geometrical dirction in three dimensions.
  
  ### Discussion:
- The four cardinal directions or cardinal points are the directions of north, east, south, and west, commonly denoted by their initials: __N, E, S, W__. East and west are at right angles to north and south, with east being in the clockwise direction of rotation from north and west being directly opposite east.
+ The four cardinal directions or cardinal points are the directions of north, east, south, and west, commonly denoted by their initials: __N, E, S, W__.
+ East and west are at right angles to north and south, with east being in the clockwise direction of rotation from north and west being directly opposite east.
  
  Intermediate points between the four cardinal directions form the points of the compass. The intermediate (intercardinal, or ordinal) directions are:
  
@@ -46,20 +47,11 @@ import Foundation
  - West Down      __WD__
  - Northwest Down __NWD__
  
- ## Available Values
- 
- - None
- - North
- - East
- - South
- - West
- - Up
- - Down
- 
  */
 public struct Direction: OptionSet, CustomStringConvertible {
     
-    //MARK:- Main directions
+    //MARK:-
+    //MARK: Main directions
     
     ///None
     public static let none = Direction(rawValue: 0)
@@ -83,7 +75,7 @@ public struct Direction: OptionSet, CustomStringConvertible {
     public static let down = Direction(rawValue:1 << 5)
     
     
-    //MARK:- Extra directions
+    //MARK:-
     
     //MARK: Horizantel direction
     
@@ -168,7 +160,8 @@ public struct Direction: OptionSet, CustomStringConvertible {
     ///and 180° in (p, z) plane where p is the projection in (x, y) plane.
     public static let northWestDown = [Direction.north, Direction.west, Direction.down]
     
-    //MARK:- Methods
+    //MARK:-
+    //MARK: Methods
     
     public let rawValue : Int
     

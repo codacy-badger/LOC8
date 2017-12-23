@@ -9,10 +9,9 @@
 import Foundation
 
 /**
- # CartesianVector
+ Type represent a cartesian coordinate in three-dimensional coordinate system.
  
  ### Discussion:
- Type represent a cartesian coordinate in three-dimensional coordinate system.
  If v is an instance of `CartesianVector`, mathematically it represents
  the following vector: __v = (𝑥 ,𝑦 ,𝑧)__
  
@@ -32,7 +31,9 @@ public struct CartesianVector: CustomStringConvertible {
     private(set) var z: Double = 0.0
     
     /**
-     `SphericalVector` object represent the vector in spherical form.
+     A `SphericalVector` object represent the vector in spherical form.
+     
+     Generated as using the following roles:
      
      __𝑟 = ²√[ 𝑥² + 𝑦² + 𝑧²]__
      
@@ -50,7 +51,9 @@ public struct CartesianVector: CustomStringConvertible {
     }
     
     /**
-     `CylindricalVector` object represent the vector in cylindrical form.
+     A `CylindricalVector` object represent the vector in cylindrical form.
+     
+     Generated as using the following roles:
      
      __𝜌 = ²√[ 𝑥² + 𝑦²]__
      

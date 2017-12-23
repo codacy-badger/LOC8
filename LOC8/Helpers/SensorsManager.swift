@@ -79,7 +79,7 @@ open class SensorsManager: NSObject {
     
     fileprivate var motionActivityManager: CMMotionActivityManager!
     
-    //MARK:Initialization
+    //MARK: Initialization
     
     public override init() {
         super.init()

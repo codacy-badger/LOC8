@@ -9,12 +9,9 @@
 import Foundation
 
 /**
- # SphericalVector
- 
- ### Discussion:
  Type represent a spherical coordinate in three-dimensional coordinate system.
  
- 
+ ### Discussion:
  Spherical coordinates as commonly used in physics (ISO convention)
  If v is an instance of `SphericalVector`, mathematically it represents the
  following vector: __v = (r, 𝜃, 𝛷)__
@@ -43,7 +40,9 @@ public struct SphericalVector: CustomStringConvertible {
     private(set) var phi: Angle = 0.0
     
     /**
-     `CartesianVector` object represent the vector in cartesian form.
+     A `CartesianVector` object represent the vector in cartesian form.
+     
+     Generated as using the following roles:
      
      __𝑥 = 𝑟 sin⁡(𝜃) cos⁡(𝛷)__
      
@@ -61,7 +60,9 @@ public struct SphericalVector: CustomStringConvertible {
     }
     
     /**
-     `CylindricalVector` object represent the vector in cylindrical form.
+     A `CylindricalVector` object represent the vector in cylindrical form.
+     
+     Generated as using the following roles:
      
      __𝜌 = 𝑟 sin(𝜃)__
      

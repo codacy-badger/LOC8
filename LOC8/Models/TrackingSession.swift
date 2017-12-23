@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- # TrackingSession
+ An object the represent a session for traking estimations and managing them.
  
  ### Discussion:
  TrackingSession is a model that is responseple to create a series of estimations. also responseble for recieve distance from `SensorsManager` and update the estimations.
@@ -37,7 +37,7 @@ open class TrackingSession: Measurement {
     /// A `Double` value represent the total distance for the session.
     open var distance: Double = 0
     
-    //MARK:Initialization
+    //MARK: Initialization
     
     /**
      `TrackingSession` Default initializer.
@@ -90,7 +90,7 @@ open class TrackingSession: Measurement {
         
     }
     
-    //MARK:Controlles
+    //MARK: Controlles
     
     /**
      Starts a series of continuous estimation updates to the session. 

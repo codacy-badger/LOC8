@@ -9,10 +9,9 @@
 import Foundation
 
 /**
- # Quaternion
+ Type represents a quaternion (one way of parameterizing rotation).
  
  ### Discussion:
- Type represents a quaternion (one way of parameterizing rotation).
  If quaternion is an instance of `Quaternion`, mathematically it represents the
  following quaternion:
  

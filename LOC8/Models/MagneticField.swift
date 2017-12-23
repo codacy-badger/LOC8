@@ -9,10 +9,13 @@
 import Foundation
 
 /**
- # MagneticField
+ An object the represent a magnetic field vector in three dimensions.
  
  ### Discussion:
- A magnetic field is a force field that is created by moving electric charges and magnetic dipoles, and exerts a force on other nearby moving charges and magnetic dipoles. [Wikipedia](https://en.wikipedia.org/wiki/Magnetic_field)
+ A magnetic field is a force field that is created by moving electric charges and magnetic dipoles,
+ and exerts a force on other nearby moving charges and magnetic dipoles.
+ 
+ - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Magnetic_field)
  */
 public class MagneticField: Measurement {
     

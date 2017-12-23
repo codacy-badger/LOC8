@@ -9,10 +9,9 @@
 import Foundation
 
 /**
- # EulerAngles
+ Type represents a Euler angles (one way of parameterizing rotation).
  
  ### Discussion:
- Type represents a Euler angles (one way of parameterizing rotation).
  The Euler angles are three angles describe the orientation of a rigid body.
  To describe such an orientation in 3-dimensional Euclidean space three
  parameters are required: __[roll, pich, yaw]__

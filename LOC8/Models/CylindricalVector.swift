@@ -9,10 +9,9 @@
 import Foundation
 
 /**
- # CylindricalVector
+ Type represent a cylindrical coordinate in three-dimensional coordinate system.
  
  ### Discussion:
- Type represent a cylindrical coordinate in three-dimensional coordinate system.
  If v is an instance of `CylindricalVector`, mathematically it represents the
  following vector: __v = (𝜌, 𝛷, 𝑧)__
  
@@ -38,7 +37,9 @@ public struct CylindricalVector: CustomStringConvertible {
     private(set) var height: Double = 0.0
     
     /**
-     `CartesianVector` object represent the vector in cartesian form.
+     A `CartesianVector` object represent the vector in cartesian form.
+     
+     Generated as using the following roles:
      
      __𝑥 = 𝜌 cos⁡(𝛷)__
      
@@ -55,7 +56,9 @@ public struct CylindricalVector: CustomStringConvertible {
     }
     
     /**
-     `SphericalVector` object represent the vector in spherical form.
+     A `SphericalVector` object represent the vector in spherical form.
+     
+     Generated as using the following roles:
      
      __𝑟 = ²√[ 𝜌² + 𝑧²]__
      

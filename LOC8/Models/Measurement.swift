@@ -8,13 +8,8 @@
 
 import Foundation
 
-//MARK: Physics
-
 /**
- # Measurement
- 
-  ### Discussion:
-    An object represent the size or amount of something with the relation to a time.
+ An object represent the size or amount of something with the relation to a time.
  */
 open class Measurement: CustomStringConvertible, NSCoding {
     

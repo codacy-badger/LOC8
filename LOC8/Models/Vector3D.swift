@@ -9,18 +9,15 @@
 import Foundation
 import CoreLocation
 
-
-
-//MARK: Vector3D Operators
 prefix operator ~
 infix operator ~
 infix operator ^
 
 /**
- # Vector3D
+ An object the hold a geometrical vector in three dimensions, in deferant forms.
 
-  ### Discussion:
-    A vector is an object that has both a magnitude and a direction. Geometrically.
+ ### Discussion:
+ A vector is an object that has both a magnitude and a direction. Geometrically.
  */
 open class Vector3D: Measurement {
     
@@ -201,7 +198,7 @@ open class Vector3D: Measurement {
         return "Vector3D\n[\n\t\(self.cartesianVector)\n\t\(self.sphericalVector)\n\t\(self.cylindricalVector)\n]"
     }
     
-    //MARK:Vectors Operators
+    //MARK: Vectors Operators
 
     /**
       A uniry operator calculate the length of a vector (Norm).

@@ -9,16 +9,16 @@
 import Foundation
 
 /**
-   # MotionActivity
- 
-   ### Discussion:
-     An estimate of the user's activity based on the motion of the device.
-     This object contains the motion activity of the user along with the confidence of this activity.
+ An object the represent a human activity for motions.
+
+ ### Discussion:
+ An estimate of the user's activity based on the motion of the device.
+ This object contains the motion activity of the user along with the confidence of this activity.
  
  */
 open class MotionActivity: Measurement {
     
-    //MARK:Properties
+    //MARK: Properties
     
     ///`MotionActivityStatus` object represent the state of the activity.
     private(set) var status: MotionActivityStatus!
@@ -26,7 +26,7 @@ open class MotionActivity: Measurement {
     ///`MotionActivityConfidence` object represent the confidance of the activity state.
     private(set) var confidence: Accuracy!
     
-    //MARK:Initialaization
+    //MARK: Initialaization
     
     /**
      `MotionActivity` Default initializer.
