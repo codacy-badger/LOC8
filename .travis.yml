@@ -3,8 +3,15 @@ osx_image: xcode9.2
 xcode_project: LOC8.xcodeproj
 xcode_scheme: LOC8
 xcode_sdk: iphonesimulator11.2
+
+branches:
+only:
+- master
+- development
+
 script:
   - xcodebuild -version
   - xcodebuild -project LOC8.xcodeproj -scheme LOC8  -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.2' ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES test
+
 after_success:
   - bash <(curl -s https://codecov.io/bash) -cF ios
