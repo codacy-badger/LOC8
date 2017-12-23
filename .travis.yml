@@ -4,6 +4,7 @@ xcode_project: LOC8.xcodeproj
 xcode_scheme: LOC8
 xcode_sdk: iphonesimulator11.2
 script:
-  - xcodebuild -scheme LOC8 -project LOC8.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=11.2' build test
+  # - xcodebuild -scheme LOC8 -project LOC8.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone x,OS=11.2' build test
+  - xcodebuild -project LOC8.xcodeproj -scheme LOC8  -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone x,OS=11.2' ONLY_ACTIVE_ARCH=NO build test
 after_success:
   - bash <(curl -s https://codecov.io/bash

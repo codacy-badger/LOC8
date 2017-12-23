@@ -108,13 +108,6 @@
 			remoteGlobalIDString = 4DCDBB911CA6895800AB4885;
 			remoteInfo = LOC8;
 		};
-		4D40F5A91FE2ACF2006FDB69 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4DCDBB8A1CA6895800AB4885 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4DCDBC1A1CA68B2C00AB4885;
-			remoteInfo = "LOC8 App";
-		};
 		4D660BC31FEEC60F008267F5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4DCDBB8A1CA6895800AB4885 /* Project object */;
@@ -418,7 +411,6 @@
 			);
 			dependencies = (
 				4D40F58F1FE2A61A006FDB69 /* PBXTargetDependency */,
-				4D40F5AA1FE2ACF2006FDB69 /* PBXTargetDependency */,
 			);
 			name = LOC8Tests;
 			productName = LOC8Tests;
@@ -658,11 +650,6 @@
 			isa = PBXTargetDependency;
 			target = 4DCDBB911CA6895800AB4885 /* LOC8 */;
 			targetProxy = 4D40F58E1FE2A61A006FDB69 /* PBXContainerItemProxy */;
-		};
-		4D40F5AA1FE2ACF2006FDB69 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4DCDBC1A1CA68B2C00AB4885 /* LOC8 App */;
-			targetProxy = 4D40F5A91FE2ACF2006FDB69 /* PBXContainerItemProxy */;
 		};
 		4D660BC41FEEC60F008267F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
