@@ -101,7 +101,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4DCDBC461CA6AFEA00AB4885 /* PBXContainerItemProxy */ = {
+		4D660BC91FEEDF2B008267F5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4DCDBB8A1CA6895800AB4885 /* Project object */;
 			proxyType = 1;
@@ -396,6 +396,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4D660BCA1FEEDF2B008267F5 /* PBXTargetDependency */,
 			);
 			name = LOC8Tests;
 			productName = LOC8Tests;
@@ -430,7 +431,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4DCDBC471CA6AFEA00AB4885 /* PBXTargetDependency */,
 			);
 			name = "LOC8 App";
 			productName = "LOC8 App";
@@ -630,10 +630,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4DCDBC471CA6AFEA00AB4885 /* PBXTargetDependency */ = {
+		4D660BCA1FEEDF2B008267F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4DCDBB911CA6895800AB4885 /* LOC8 */;
-			targetProxy = 4DCDBC461CA6AFEA00AB4885 /* PBXContainerItemProxy */;
+			targetProxy = 4D660BC91FEEDF2B008267F5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
