@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Geometry  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Geometry  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">LOC8 Docs</a></p>
+        <p class="header-right"><a href="https://github.com/Marwan-Al-Masri/LOC8"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">LOC8 Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Geometry  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="fundamentals.html">Fundamentals</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="development.html">Development</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Geometry.html">Geometry</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Geometry.html">Geometry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Angle.html">Angle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/EulerAngles.html">EulerAngles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/RotationMatrix.html">RotationMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Quaternion.html">Quaternion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Rotation3D.html">Rotation3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CartesianVector.html">CartesianVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SphericalVector.html">SphericalVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CylindricalVector.html">CylindricalVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Vector3D.html">Vector3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Direction.html">Direction</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Physics.html">Physics</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Physics.html">Physics</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Measurement.html">Measurement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC812Accelerationa">Acceleration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC88Velocitya">Velocity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC88Distancea">Distance</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/Accuracy.html">Accuracy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MagneticField.html">MagneticField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Heading.html">Heading</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Motion.html">Motion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/MotionActivityStatus.html">MotionActivityStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MotionActivity.html">MotionActivity</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Models.html">Models</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/FilterType.html">FilterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Filter.html">Filter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AccelerationFilter.html">AccelerationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Models.html#/s:4LOC817EstimationHandlera">EstimationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Estimation.html">Estimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TrackingSession.html">TrackingSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/LogRecord.html">LogRecord</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Managers and Services.html">Managers and Services</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Log.html">Log</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Extensions.html">Other Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/MCSessionState.html">MCSessionState</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Geometry</h1>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC88GeometryV"></a>
+                    <a name="//apple_ref/swift/Struct/Geometry" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC88GeometryV">Geometry</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>a structure that hold genaric mathatical functions and constants.</p>
+
+                        <a href="Structs/Geometry.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Geometry</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC85Anglea"></a>
+                    <a name="//apple_ref/swift/Extension/Angle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC85Anglea">Angle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The angle is the space between two intersecting lines or surfaces at or close to the point where they meet</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>In planar geometry, an angle is the figure formed by two rays, called the sides of the angle, sharing a common endpoint, called the vertex of the angle.
+Angles formed by two rays lie in a plane, but this plane does not have to be a Euclidean plane.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Angle">Read more</a> about angle.</p>
+
+                        <a href="Extensions/Angle.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Angle</span> <span class="o">=</span> <span class="kt">Double</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC811EulerAnglesV"></a>
+                    <a name="//apple_ref/swift/Struct/EulerAngles" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC811EulerAnglesV">EulerAngles</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Type represents a Euler angles (one way of parameterizing rotation).</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>The Euler angles are three angles describe the orientation of a rigid body.
+To describe such an orientation in 3-dimensional Euclidean space three
+parameters are required: <strong>[roll, pich, yaw]</strong></p>
+
+                        <a href="Structs/EulerAngles.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">EulerAngles</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC814RotationMatrixV"></a>
+                    <a name="//apple_ref/swift/Struct/RotationMatrix" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC814RotationMatrixV">RotationMatrix</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Type represents a rotation matrix in three-dimensional space.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>In linear algebra, a rotation matrix is a matrix that is used to perform a rotation in Euclidean space.</p>
+
+                        <a href="Structs/RotationMatrix.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RotationMatrix</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC810QuaternionV"></a>
+                    <a name="//apple_ref/swift/Struct/Quaternion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC810QuaternionV">Quaternion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Type represents a quaternion (one way of parameterizing rotation).</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>If quaternion is an instance of <code>Quaternion</code>, mathematically it represents the
+following quaternion:</p>
+
+<p><strong>p = xi + yj + zk + w</strong></p>
+
+<p>Where: <strong>i² = j² = k² = ijk = −1</strong></p>
+
+                        <a href="Structs/Quaternion.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Quaternion</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC810Rotation3DC"></a>
+                    <a name="//apple_ref/swift/Class/Rotation3D" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC810Rotation3DC">Rotation3D</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object the hold a geometrical rotation in three dimensions, in deferant forms.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>A transformation in which a plane figure turns around a fixed center point.</p>
+
+                        <a href="Classes/Rotation3D.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">Rotation3D</span><span class="p">:</span> <span class="kt"><a href="Classes/Measurement.html">Measurement</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC815CartesianVectorV"></a>
+                    <a name="//apple_ref/swift/Struct/CartesianVector" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC815CartesianVectorV">CartesianVector</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Type represent a cartesian coordinate in three-dimensional coordinate system.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>If v is an instance of <code>CartesianVector</code>, mathematically it represents
+the following vector: <strong>v = (𝑥 ,𝑦 ,𝑧)</strong></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Read more</a> about cartesian coordinate</p>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    this structure derives from the right hand rule.
+
+</div>
+
+                        <a href="Structs/CartesianVector.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CartesianVector</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC815SphericalVectorV"></a>
+                    <a name="//apple_ref/swift/Struct/SphericalVector" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC815SphericalVectorV">SphericalVector</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Type represent a spherical coordinate in three-dimensional coordinate system.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>Spherical coordinates as commonly used in physics (ISO convention)
+If v is an instance of <code>SphericalVector</code>, mathematically it represents the
+following vector: <strong>v = (r, 𝜃, 𝛷)</strong></p>
+
+<p>where r ∈ [0, ∞), θ ∈ [0, +π], φ ∈ [-π, +π]</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Spherical_coordinate_system">Read more</a> about spherical coordinate.</p>
+
+                        <a href="Structs/SphericalVector.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SphericalVector</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC817CylindricalVectorV"></a>
+                    <a name="//apple_ref/swift/Struct/CylindricalVector" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC817CylindricalVectorV">CylindricalVector</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Type represent a cylindrical coordinate in three-dimensional coordinate system.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>If v is an instance of <code>CylindricalVector</code>, mathematically it represents the
+following vector: <strong>v = (𝜌, 𝛷, 𝑧)</strong></p>
+
+<p>where 𝜌 ∈ [0, ∞), θ ∈ [0, +π], 𝑧 ∈ (-∞, +∞)</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Cylindrical_coordinate_system">Read more</a> about cylindrical coordinate.</p>
+
+                        <a href="Structs/CylindricalVector.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CylindricalVector</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC88Vector3DC"></a>
+                    <a name="//apple_ref/swift/Class/Vector3D" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC88Vector3DC">Vector3D</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object the hold a geometrical vector in three dimensions, in deferant forms.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>A vector is an object that has both a magnitude and a direction. Geometrically.</p>
+
+                        <a href="Classes/Vector3D.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">Vector3D</span><span class="p">:</span> <span class="kt"><a href="Classes/Measurement.html">Measurement</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC89DirectionV"></a>
+                    <a name="//apple_ref/swift/Struct/Direction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC89DirectionV">Direction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object the hold a geometrical dirction in three dimensions.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>The four cardinal directions or cardinal points are the directions of north, east, south, and west, commonly denoted by their initials: <strong>N, E, S, W</strong>.
+East and west are at right angles to north and south, with east being in the clockwise direction of rotation from north and west being directly opposite east.</p>
+
+<p>Intermediate points between the four cardinal directions form the points of the compass. The intermediate (intercardinal, or ordinal) directions are:</p>
+
+<ul>
+<li>Northeast <strong>NE</strong></li>
+<li>Northwest <strong>NW</strong></li>
+<li>Southeast <strong>SE</strong></li>
+<li>Southwest <strong>SW</strong></li>
+</ul>
+
+<p>Alos the two vertical directions or cardinal points are the directions of up and down, commonly denoted by their initials: <strong>U, D</strong></p>
+
+<p><strong>Up Diraction</strong></p>
+
+<ul>
+<li>Up           <strong>U</strong></li>
+<li>North Up     <strong>NU</strong></li>
+<li>Northeast Up <strong>NEU</strong></li>
+<li>East Up      <strong>EU</strong></li>
+<li>Southeast Up <strong>SEU</strong></li>
+<li>South Up     <strong>SU</strong></li>
+<li>Southwest Up <strong>SWU</strong></li>
+<li>West Up      <strong>WU</strong></li>
+<li>Northwest Up <strong>NWU</strong></li>
+</ul>
+
+<p><strong>Down Diraction</strong></p>
+
+<ul>
+<li>Down           <strong>D</strong></li>
+<li>North Down     <strong>ND</strong></li>
+<li>Northeast Down <strong>NED</strong></li>
+<li>East Down      <strong>ED</strong></li>
+<li>Southeast Down <strong>SED</strong></li>
+<li>South Down     <strong>SD</strong></li>
+<li>Southwest Down <strong>SWD</strong></li>
+<li>West Down      <strong>WD</strong></li>
+<li>Northwest Down <strong>NWD</strong></li>
+</ul>
+
+                        <a href="Structs/Direction.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Direction</span><span class="p">:</span> <span class="kt">OptionSet</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>© 2017 LOC8. All rights reserved.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

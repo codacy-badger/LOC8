@@ -1,53 +1,73 @@
 # Run jazzy from the current directory to generate documentation.
 
 module: 'LOC8'
-author: 'LOC8'
-# author_url: https://www.LOC8.com
-copyright: Copyright © 2017 LOC8. All rights reserved.'
+module_version: '0.1.0'
+author: 'Marwan Al Masri'
+# author_url:       https://www.LOC8.com
+copyright: '© 2017 LOC8. All rights reserved.'
 github_url: 'https://github.com/Marwan-Al-Masri/LOC8'
-min_acl: 'public'
+min_acl: 'private'
 output: 'docs'
-skip_undocumented: true
-clean: true
-docset_icon: 'Icon.png'
-exclude: 'LOC8/UI, LOC8/Graphics, LOC8/Helpers, LOC8/LOC8/Constants\ and\ Extensions'
-# theme: fullwidth
+docset_icon: './icon.png'
+documentation: 'Documentation/*.md'
 
-# custom_categories:
-#     - name: Geometry & Physics
-#       children:
-#       - Radian
-#       - Degree
-#       - CartesianVector
-#       - PolarVector
-#       - Vector3D
-#       - EulerAngles
-#       - RotationMatrix
-#       - Quaternion
-#       - Rotation3D
-#       - Physics
-#       - Measurement
-#       - Acceleration
-#       - Velocity
-#       - Distance
-#     - name: Models
-#       children:
-#         - Filter
-#         - FilterType
-#         - AccelerationFilter
-#         - Direction
-#         - Heading
-#         - MotionActivityConfidence
-#         - MotionActivityStatus
-#         - MotionActivity
-#         - EstimationHandler
-#         - Estimation
-#         - TrackingSession
-#     - name: Generic
-#       children:
-#       - degreesToRadians
-#       - degreesToRadians
-#       - clamp
-#       - wrap
-#       - ^
-#       - ~
+hide_documentation_coverage: true
+skip_undocumented:  true
+clean: false
+
+exclude:
+    - 'LOC8/UI'
+    - 'LOC8/Graphics'
+    - 'LOC8/Constants and Extensions'
+    - 'LOC8 App'
+
+custom_categories:
+  - name: 'Guides'
+    children:
+    - 'Fundamentals'
+    - 'Development'
+  - name: 'Geometry'
+    children:
+    - 'Geometry'
+    - 'Angle'
+    - 'EulerAngles'
+    - 'RotationMatrix'
+    - 'Quaternion'
+    - 'Rotation3D'
+    - 'CartesianVector'
+    - 'SphericalVector'
+    - 'CylindricalVector'
+    - 'Vector3D'
+    - 'Direction'
+  - name: 'Physics'
+    children:
+    - 'Physics'
+    - 'Measurement'
+    - 'Acceleration'
+    - 'Velocity'
+    - 'Distance'
+    - 'Accuracy'
+    - 'MagneticField'
+    - 'Heading'
+    - 'Motion'
+    - 'MotionActivityStatus'
+    - 'MotionActivity'
+
+  - name: 'Models'
+    children:
+    - 'FilterType'
+    - 'Filter'
+    - 'AccelerationFilter'
+    - 'EstimationHandler'
+    - 'Estimation'
+    - 'TrackingSession'
+    - 'LogLevel'
+    - 'LogRecord'
+
+  - name: 'Managers and Services'
+    children:
+      - 'Log'
+      - 'MotinDetector'
+      - 'SensorsManager'
+      - 'MultipeerManager'
+      - 'SettingsService'

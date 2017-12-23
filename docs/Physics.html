@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Physics  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Physics  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">LOC8 Docs</a></p>
+        <p class="header-right"><a href="https://github.com/Marwan-Al-Masri/LOC8"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">LOC8 Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Physics  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="fundamentals.html">Fundamentals</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="development.html">Development</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Geometry.html">Geometry</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Geometry.html">Geometry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Angle.html">Angle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/EulerAngles.html">EulerAngles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/RotationMatrix.html">RotationMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Quaternion.html">Quaternion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Rotation3D.html">Rotation3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CartesianVector.html">CartesianVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SphericalVector.html">SphericalVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CylindricalVector.html">CylindricalVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Vector3D.html">Vector3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Direction.html">Direction</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Physics.html">Physics</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Physics.html">Physics</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Measurement.html">Measurement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC812Accelerationa">Acceleration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC88Velocitya">Velocity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC88Distancea">Distance</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/Accuracy.html">Accuracy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MagneticField.html">MagneticField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Heading.html">Heading</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Motion.html">Motion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/MotionActivityStatus.html">MotionActivityStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MotionActivity.html">MotionActivity</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Models.html">Models</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/FilterType.html">FilterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Filter.html">Filter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AccelerationFilter.html">AccelerationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Models.html#/s:4LOC817EstimationHandlera">EstimationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Estimation.html">Estimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TrackingSession.html">TrackingSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/LogRecord.html">LogRecord</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Managers and Services.html">Managers and Services</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Log.html">Log</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Extensions.html">Other Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/MCSessionState.html">MCSessionState</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Physics</h1>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC87PhysicsV"></a>
+                    <a name="//apple_ref/swift/Struct/Physics" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC87PhysicsV">Physics</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A structure that contain physics constants:</p>
+
+                        <a href="Structs/Physics.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Physics</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC812Accelerationa"></a>
+                    <a name="//apple_ref/swift/Alias/Acceleration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC812Accelerationa">Acceleration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <h1 id='acceleration' class='heading'>Acceleration</h1>
+
+<p>Acceleration is defined as the rate of change of velocity.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>Acceleration is inherently a vector quantity, and an object will have non-zero acceleration
+if its speed and/or direction is changing. The average acceleration is given by:
+<strong>v = ∂v / ∂t</strong></p>
+
+<p><img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7D%20v%20%3D%20%5Cfrac%7B%5Cpartial%20v%7D%7B%5Cpartial%20t%7D%20%3D%20%5Cfrac%7Bv_%7B2%7D%20-%20v_%7B1%7D%7D%7Bt_%7B2%7D%20-%20t_%7B1%7D%7D" alt="Equation"></p>
+<h3 id='where' class='heading'>where:</h3>
+<li><strong>v</strong> is velocity (m/s)</li>
+<li><p><strong>t</strong> is time (s)</p></li>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>measurment unit is meater per second sequer (m/s²)</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Acceleration</span> <span class="o">=</span> <span class="kt"><a href="Classes/Vector3D.html">Vector3D</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC88Velocitya"></a>
+                    <a name="//apple_ref/swift/Alias/Velocity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC88Velocitya">Velocity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <h1 id='velocity' class='heading'>Velocity</h1>
+
+<p>The average speed of an object is defined as the distance traveled divided by the time elapsed.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>Velocity is a vector quantity, and average velocity can be defined as the displacement
+divided by the time.For the special case of straight line motion in the x direction,
+the average velocity is given by:
+<strong>v = ∂x / ∂t</strong></p>
+
+<p><img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7D%20v%20%3D%20%5Cfrac%7B%5Cpartial%20x%7D%7B%5Cpartial%20t%7D%20%3D%20%5Cfrac%7Bx_%7B2%7D%20-%20x_%7B1%7D%7D%7Bt_%7B2%7D%20-%20t_%7B1%7D%7D" alt="Equation"></p>
+<h3 id='where' class='heading'>where:</h3>
+<li><strong>x</strong> is distance (m)</li>
+<li><p><strong>t</strong> is time (s)</p></li>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>measurment unit is meater per second (m/s)</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Velocity</span> <span class="o">=</span> <span class="kt"><a href="Classes/Vector3D.html">Vector3D</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC88Distancea"></a>
+                    <a name="//apple_ref/swift/Alias/Distance" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC88Distancea">Distance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <h1 id='distance' class='heading'>Distance</h1>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>Distance is a scalar quantity that refers to <q>how much ground an object has covered</q> during its motion.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    measurment unit is meater (m)
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Distance</span> <span class="o">=</span> <span class="kt"><a href="Classes/Vector3D.html">Vector3D</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC811MeasurementC"></a>
+                    <a name="//apple_ref/swift/Class/Measurement" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC811MeasurementC">Measurement</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object represent the size or amount of something with the relation to a time.</p>
+
+                        <a href="Classes/Measurement.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">Measurement</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span><span class="p">,</span> <span class="kt">NSCoding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC88AccuracyO"></a>
+                    <a name="//apple_ref/swift/Enum/Accuracy" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC88AccuracyO">Accuracy</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enumerates the level of accuracy.</p>
+
+                        <a href="Enums/Accuracy.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Accuracy</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC813MagneticFieldC"></a>
+                    <a name="//apple_ref/swift/Class/MagneticField" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC813MagneticFieldC">MagneticField</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object the represent a magnetic field vector in three dimensions.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>A magnetic field is a force field that is created by moving electric charges and magnetic dipoles,
+and exerts a force on other nearby moving charges and magnetic dipoles.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <a href="https://en.wikipedia.org/wiki/Magnetic_field">Wikipedia</a>
+
+</div>
+
+                        <a href="Classes/MagneticField.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MagneticField</span><span class="p">:</span> <span class="kt"><a href="Classes/Measurement.html">Measurement</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC87HeadingC"></a>
+                    <a name="//apple_ref/swift/Class/Heading" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC87HeadingC">Heading</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object the represent a magnetic headin information.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>In a contemporary land navigation context, heading is measured with true north, magnetic north, or grid north being 0° in a 360-degree system.</p>
+
+                        <a href="Classes/Heading.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">Heading</span><span class="p">:</span> <span class="kt"><a href="Classes/Measurement.html">Measurement</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC86MotionC"></a>
+                    <a name="//apple_ref/swift/Class/Motion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC86MotionC">Motion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object the represent a motion in three dimensions.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>In physics, motion is a description of the position of an object over time. Motion may be described in terms of displacement, distance, velocity, acceleration, time and speed.</p>
+
+<p>This object contains distance and waight also to present the repetition of the object along distance.</p>
+
+                        <a href="Classes/Motion.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">Motion</span><span class="p">:</span> <span class="kt"><a href="Classes/Measurement.html">Measurement</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC820MotionActivityStatusO"></a>
+                    <a name="//apple_ref/swift/Enum/MotionActivityStatus" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC820MotionActivityStatusO">MotionActivityStatus</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An estimate of the user&rsquo;s activity based on the motion of the device.</p>
+
+                        <a href="Enums/MotionActivityStatus.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">MotionActivityStatus</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC814MotionActivityC"></a>
+                    <a name="//apple_ref/swift/Class/MotionActivity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC814MotionActivityC">MotionActivity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object the represent a human activity for motions.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>An estimate of the user&rsquo;s activity based on the motion of the device.
+This object contains the motion activity of the user along with the confidence of this activity.</p>
+
+                        <a href="Classes/MotionActivity.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">MotionActivity</span><span class="p">:</span> <span class="kt"><a href="Classes/Measurement.html">Measurement</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>© 2017 LOC8. All rights reserved.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Models  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Models  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">LOC8 Docs</a></p>
+        <p class="header-right"><a href="https://github.com/Marwan-Al-Masri/LOC8"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">LOC8 Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Models  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="fundamentals.html">Fundamentals</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="development.html">Development</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Geometry.html">Geometry</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Geometry.html">Geometry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Angle.html">Angle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/EulerAngles.html">EulerAngles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/RotationMatrix.html">RotationMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Quaternion.html">Quaternion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Rotation3D.html">Rotation3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CartesianVector.html">CartesianVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SphericalVector.html">SphericalVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CylindricalVector.html">CylindricalVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Vector3D.html">Vector3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Direction.html">Direction</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Physics.html">Physics</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Physics.html">Physics</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Measurement.html">Measurement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC812Accelerationa">Acceleration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC88Velocitya">Velocity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC88Distancea">Distance</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/Accuracy.html">Accuracy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MagneticField.html">MagneticField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Heading.html">Heading</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Motion.html">Motion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/MotionActivityStatus.html">MotionActivityStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MotionActivity.html">MotionActivity</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Models.html">Models</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/FilterType.html">FilterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Filter.html">Filter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AccelerationFilter.html">AccelerationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Models.html#/s:4LOC817EstimationHandlera">EstimationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Estimation.html">Estimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TrackingSession.html">TrackingSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/LogRecord.html">LogRecord</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Managers and Services.html">Managers and Services</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Log.html">Log</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Extensions.html">Other Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/MCSessionState.html">MCSessionState</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Models</h1>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC810FilterTypeO"></a>
+                    <a name="//apple_ref/swift/Enum/FilterType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC810FilterTypeO">FilterType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enumerates the Filter types.</p>
+
+                        <a href="Enums/FilterType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">FilterType</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@LOC8@objc(cs)Filter"></a>
+                    <a name="//apple_ref/swift/Class/Filter" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@LOC8@objc(cs)Filter">Filter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An implentetion for a linear digital filter, that can be:</p>
+
+<ul>
+<li>Lowpass filter</li>
+<li>Highpass filter</li>
+</ul>
+
+<p>Also you can spacify if the filter is adptive or not.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>A filter is a process that removes from a signal some unwanted component or feature.</p>
+
+                        <a href="Classes/Filter.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">Filter</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@LOC8@objc(cs)AccelerationFilter"></a>
+                    <a name="//apple_ref/swift/Class/AccelerationFilter" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@LOC8@objc(cs)AccelerationFilter">AccelerationFilter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An implentetion for a linear digital filter, that is responsable for processing acceleration data, and remove thae noise. this filter can be:</p>
+
+<ul>
+<li>Lowpass filter</li>
+<li>Highpass filter</li>
+</ul>
+
+<p>Also you can spacify if the filter is adptive or not.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>A filter is a process that removes from a signal some unwanted component or feature.
+This object is responseabel of processing an acceleration data to remove noise.</p>
+
+                        <a href="Classes/AccelerationFilter.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">AccelerationFilter</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC817EstimationHandlera"></a>
+                    <a name="//apple_ref/swift/Alias/EstimationHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC817EstimationHandlera">EstimationHandler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A closer type that take an <code><a href="Classes/Estimation.html">Estimation</a></code> object and retun nothing</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">EstimationHandler</span> <span class="o">=</span> <span class="p">((</span><span class="kt"><a href="Classes/Estimation.html">Estimation</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC810EstimationC"></a>
+                    <a name="//apple_ref/swift/Class/Estimation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC810EstimationC">Estimation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object the represent an estimation for motions repeted over a segment of time.</p>
+
+<p>### Discussion:
+   Estimation is a model that is responseple to collect headings until distance value come up.</p>
+
+                        <a href="Classes/Estimation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">Estimation</span><span class="p">:</span> <span class="kt"><a href="Classes/Measurement.html">Measurement</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC815TrackingSessionC"></a>
+                    <a name="//apple_ref/swift/Class/TrackingSession" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC815TrackingSessionC">TrackingSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object the represent a session for traking estimations and managing them.</p>
+<h3 id='discussion' class='heading'>Discussion:</h3>
+
+<p>TrackingSession is a model that is responseple to create a series of estimations. also responseble for recieve distance from <code>SensorsManager</code> and update the estimations.</p>
+
+                        <a href="Classes/TrackingSession.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">TrackingSession</span><span class="p">:</span> <span class="kt"><a href="Classes/Measurement.html">Measurement</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC88LogLevelO"></a>
+                    <a name="//apple_ref/swift/Enum/LogLevel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC88LogLevelO">LogLevel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An enumenator that descrip log levels.</p>
+
+                        <a href="Enums/LogLevel.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">LogLevel</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@LOC8@objc(cs)LogRecord"></a>
+                    <a name="//apple_ref/swift/Class/LogRecord" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@LOC8@objc(cs)LogRecord">LogRecord</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A class represent a log record.</p>
+
+                        <a href="Classes/LogRecord.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">LogRecord</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span>  <span class="kt">NSCoding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>© 2017 LOC8. All rights reserved.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
