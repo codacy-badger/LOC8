@@ -8,40 +8,38 @@
 
 import Foundation
 
-//MARK: Rotations
-
 /**
- # Rotation3D
+ An object the hold a geometrical rotation in three dimensions, in deferant forms.
  
-  ### Discussion:
-    A transformation in which a plane figure turns around a fixed center point.
+ ### Discussion:
+ A transformation in which a plane figure turns around a fixed center point.
  */
 open class Rotation3D: Measurement {
     
     //MARK: Properties
     
-    ///Angle value represent a rotation around x-axis.
+    /// `Angle` value represent a rotation around x-axis.
     open var roll: Angle {
         return eulerAngles.roll
     }
     
-    ///Angle value represent a rotation around y-axis.
+    /// `Angle` value represent a rotation around y-axis.
     open var pitch: Angle {
         return eulerAngles.pitch
     }
     
-    ///Angle value represent a rotation around z-axis.
+    /// `Angle` value represent a rotation around z-axis.
     open var yaw: Angle {
         return eulerAngles.yaw
     }
     
-    /// An EulerAngles object represent the rotaion.
+    /// An `EulerAngles` object represent the rotaion.
     private(set) var eulerAngles: EulerAngles!
     
-    /// An Quaternion object represent the rotaion.
+    /// An `Quaternion` object represent the rotaion.
     private(set) var quaternion: Quaternion!
     
-    /// An RotationMatrix object represent the rotaion.
+    /// An `RotationMatrix` object represent the rotaion.
     private(set) var rotationMatrix: RotationMatrix!
     
     //MARK: Initialaization

@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- # TrackingSession
+ An object the represent a session for traking estimations and managing them.
  
  ### Discussion:
  TrackingSession is a model that is responseple to create a series of estimations. also responseble for recieve distance from `SensorsManager` and update the estimations.
@@ -37,7 +37,7 @@ open class TrackingSession: Measurement {
     /// A `Double` value represent the total distance for the session.
     open var distance: Double = 0
     
-    //MARK:Initialization
+    //MARK: Initialization
     
     /**
      `TrackingSession` Default initializer.
@@ -79,7 +79,7 @@ open class TrackingSession: Measurement {
     }
     
     ///An action tregered whene the `SensorsManager` recieve a device motion update.
-    open func didUpdateDeviceMotion(_ notification: Notification) {
+    @objc open func didUpdateDeviceMotion(_ notification: Notification) {
         
 //        let userInfo = notification.userInfo!
 //
@@ -90,7 +90,7 @@ open class TrackingSession: Measurement {
         
     }
     
-    //MARK:Controlles
+    //MARK: Controlles
     
     /**
      Starts a series of continuous estimation updates to the session. 
@@ -107,7 +107,7 @@ open class TrackingSession: Measurement {
         
         NotificationCenter.default.addObserver(self, selector: #selector(TrackingSession.didUpdateDistance(_:)), name: SensorsManager.DistanceUpdateNotification, object: nil)
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TrackingSession.didUpdateDeviceMotion(_:)), name: SensorsManager.DeviceMotionUpdate, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(TrackingSession.didUpdateDeviceMotion(_:)), name: SensorsManager.DeviceMotionUpdateNotification, object: nil)
     }
     
     /**
@@ -117,11 +117,11 @@ open class TrackingSession: Measurement {
         
         NotificationCenter.default.removeObserver(self, name: SensorsManager.DistanceUpdateNotification, object: nil)
         
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: SensorsManager.FloorUpdate, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: SensorsManager.FloorUpdateNotification, object: nil)
         
-        NotificationCenter.default.removeObserver(self, name: SensorsManager.AltitudeUpdateNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: SensorsManager.AltitudeUpdateNotification, object: nil)
         
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: SensorsManager.DeviceMotionUpdate, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: SensorsManager.DeviceMotionUpdateNotification, object: nil)
         
         self.estimations.removeLast()
     }

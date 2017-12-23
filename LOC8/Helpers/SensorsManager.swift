@@ -39,7 +39,7 @@ open class SensorsManager: NSObject {
     //MARK:Filters
     
     //Motion Manager
-    open var motionManagerSamplingFrequency: Double = SettingsService.shared.motionManagerSamplingFrequency {
+    open var motionManagerSamplingFrequency: Double = DefaultValues.DefaultSamplingFrequency {
         didSet {
             setupMotionManager()
         }
@@ -79,7 +79,7 @@ open class SensorsManager: NSObject {
     
     fileprivate var motionActivityManager: CMMotionActivityManager!
     
-    //MARK:Initialization
+    //MARK: Initialization
     
     public override init() {
         super.init()

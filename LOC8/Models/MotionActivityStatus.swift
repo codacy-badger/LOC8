@@ -9,18 +9,7 @@
 import Foundation
 
 /**
- # Motion Activity Status
- 
- ### Discussion:
- 
  An estimate of the user's activity based on the motion of the device.
- 
- - Walking
- - Running
- - Automotive
- - Stationary
- - Cycling
- - Unknown
  */
 public enum MotionActivityStatus : Int, CustomStringConvertible {
     

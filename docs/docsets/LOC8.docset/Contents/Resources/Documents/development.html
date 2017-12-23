@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Development  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Development  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">LOC8 Docs</a></p>
+        <p class="header-right"><a href="https://github.com/Marwan-Al-Masri/LOC8"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">LOC8 Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Development  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="fundamentals.html">Fundamentals</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="development.html">Development</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Geometry.html">Geometry</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Geometry.html">Geometry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Angle.html">Angle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/EulerAngles.html">EulerAngles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/RotationMatrix.html">RotationMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Quaternion.html">Quaternion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Rotation3D.html">Rotation3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CartesianVector.html">CartesianVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SphericalVector.html">SphericalVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CylindricalVector.html">CylindricalVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Vector3D.html">Vector3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Direction.html">Direction</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Physics.html">Physics</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Physics.html">Physics</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Measurement.html">Measurement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC812Accelerationa">Acceleration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC88Velocitya">Velocity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Physics.html#/s:4LOC88Distancea">Distance</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/Accuracy.html">Accuracy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MagneticField.html">MagneticField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Heading.html">Heading</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Motion.html">Motion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/MotionActivityStatus.html">MotionActivityStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MotionActivity.html">MotionActivity</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Models.html">Models</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/FilterType.html">FilterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Filter.html">Filter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AccelerationFilter.html">AccelerationFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Models.html#/s:4LOC817EstimationHandlera">EstimationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Estimation.html">Estimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TrackingSession.html">TrackingSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/LogRecord.html">LogRecord</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Managers and Services.html">Managers and Services</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Log.html">Log</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Extensions.html">Other Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/MCSessionState.html">MCSessionState</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='development-workflow' class='heading'>Development Workflow</h1>
+<h2 id='branching-strategy' class='heading'>Branching Strategy</h2>
+
+<p>We are following <code>git-flow</code> branching strategy.</p>
+
+<ul>
+<li><strong>Master branch</strong> - Stable release branch with tag</li>
+<li><strong>Development branch</strong> - a branch with new features</li>
+<li><strong>Hotfix branch</strong> - a bug fixes on release, it should branch out from master and merged into Master and Development branch</li>
+<li><strong>Feature branch</strong> - a branch where you development new feature, naming <code>feature/&lt; FEATURE_NAME &gt;</code></li>
+<li><strong>Enhancement branch</strong> - a branch where you modify existing feature, naming <code>enhancement/&lt; ENHANCEMENT_NAME &gt;</code></li>
+</ul>
+<h2 id='understanding-of-folder-structure' class='heading'>Understanding of folder structure</h2>
+<h3 id='constants-and-extensions' class='heading'>Constants and Extensions</h3>
+
+<p>This is all the constants that need to be defined and the extensions for existing types.</p>
+<h3 id='models' class='heading'>Models</h3>
+
+<p>This is all calculations and measurements related functions that represent the core of LOC8.</p>
+<h3 id='graphics' class='heading'>Graphics</h3>
+
+<p>Graphics folder contain every thing related to graphic components and functions such as drawing etc.</p>
+<h3 id='helpers' class='heading'>Helpers</h3>
+
+<p>Helpers simple are data sources and services that shares across the app.</p>
+<h3 id='ui' class='heading'>UI</h3>
+
+<p>All files that relates to UI, this includes <code>View</code> and <code>ViewController</code>.<br>
+Relation: <code>View</code> -&gt; <code>ViewController</code></p>
+
+<ol>
+<li>Cells</li>
+<li>Custom Views</li>
+<li>View Controllers - Controllers for views, including changing text and such.</li>
+</ol>
+<h2 id='how-to-release' class='heading'>How to release</h2>
+
+<ol>
+<li>merge <code>development</code> to <code>master</code></li>
+<li>create a release on <code>github</code> with auto tagging (possibly automate it)</li>
+</ol>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>© 2017 LOC8. All rights reserved.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -270,7 +270,7 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="upText" value="0°"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="90°"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="downText" value="180°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="270°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="⊳"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="pointerColor">
                                                             <color key="value" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
@@ -278,13 +278,19 @@
                                                             <color key="value" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enabelSymbols" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKi-En-Nz3" userLabel="Lambda" customClass="UIHeadingView" customModule="LOC8" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKi-En-Nz3" userLabel="Phi" customClass="UIHeadingView" customModule="LOC8" customModuleProvider="target">
                                                     <rect key="frame" x="223" y="155" width="81" height="81"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="λ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlR-31-gxD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="6" height="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="𝛷" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlR-31-gxD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="8" height="12"/>
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                                             <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -303,15 +309,18 @@
                                                             <color key="value" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enabelSymbols" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="upText" value="-90°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="0°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="downText" value="90°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="⊳"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="upText" value="0°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="90°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="downText" value="180°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="-90°"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="pointerColor">
                                                             <color key="value" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                            <real key="value" value="90"/>
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                            <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -892,7 +901,7 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="upText" value="0°"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="90°"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="downText" value="180°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="270°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="⊳"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="pointerColor">
                                                             <color key="value" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
@@ -903,13 +912,16 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="angle">
                                                             <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0P-UV-Xdp" userLabel="Lambda" customClass="UIHeadingView" customModule="LOC8" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0P-UV-Xdp" userLabel="Phi" customClass="UIHeadingView" customModule="LOC8" customModuleProvider="target">
                                                     <rect key="frame" x="223" y="135" width="81" height="81"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="λ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gep-zh-YOb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="6" height="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="𝛷" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gep-zh-YOb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="8" height="12"/>
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                                             <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -928,15 +940,18 @@
                                                             <color key="value" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enabelSymbols" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="upText" value="-90°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="0°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="downText" value="90°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="⊳"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="upText" value="0°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="90°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="downText" value="180°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="-90º"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="pointerColor">
                                                             <color key="value" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                            <real key="value" value="90"/>
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                            <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -1187,7 +1202,7 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="upText" value="0°"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="90°"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="downText" value="180°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="270°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="⊳"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="pointerColor">
                                                             <color key="value" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
@@ -1195,13 +1210,19 @@
                                                             <color key="value" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enabelSymbols" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSB-s7-Mz2" userLabel="Lambda" customClass="UIHeadingView" customModule="LOC8" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSB-s7-Mz2" userLabel="Phi" customClass="UIHeadingView" customModule="LOC8" customModuleProvider="target">
                                                     <rect key="frame" x="223" y="135" width="81" height="81"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="λ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKl-4Y-Ohb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="6" height="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="𝛷" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKl-4Y-Ohb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="8" height="12"/>
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                                             <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1220,15 +1241,18 @@
                                                             <color key="value" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enabelSymbols" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="upText" value="-90°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="0°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="downText" value="90°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="⊳"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="upText" value="0°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="90°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="downText" value="180°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="-90"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="pointerColor">
                                                             <color key="value" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                            <real key="value" value="90"/>
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                            <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -1482,17 +1506,23 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="upText" value="0°"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="90°"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="downText" value="180°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="270°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="⊳"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="pointerColor">
                                                             <color key="value" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTd-eA-rWS" userLabel="Lambda" customClass="UIHeadingView" customModule="LOC8" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTd-eA-rWS" userLabel="Phi" customClass="UIHeadingView" customModule="LOC8" customModuleProvider="target">
                                                     <rect key="frame" x="223" y="155" width="81" height="81"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="λ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2Q-Ot-9rs">
-                                                            <rect key="frame" x="0.0" y="0.0" width="6" height="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="𝛷" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2Q-Ot-9rs">
+                                                            <rect key="frame" x="0.0" y="0.0" width="8" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
                                                             <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1510,15 +1540,18 @@
                                                             <color key="value" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enabelSymbols" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="upText" value="-90°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="0°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="downText" value="90°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="⊳"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="upText" value="0°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="90°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="downText" value="180°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="-90"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="pointerColor">
                                                             <color key="value" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                            <real key="value" value="90"/>
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                            <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -1725,17 +1758,23 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="upText" value="0°"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="90°"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="downText" value="180°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="270°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="⊳"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="pointerColor">
                                                             <color key="value" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abm-ek-j6q" userLabel="Lambda" customClass="UIHeadingView" customModule="LOC8" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abm-ek-j6q" userLabel="Phi" customClass="UIHeadingView" customModule="LOC8" customModuleProvider="target">
                                                     <rect key="frame" x="223" y="155" width="81" height="81"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="λ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72z-d3-Doi">
-                                                            <rect key="frame" x="0.0" y="0.0" width="6" height="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="𝛷" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72z-d3-Doi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="8" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
                                                             <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1753,15 +1792,15 @@
                                                             <color key="value" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enabelSymbols" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="upText" value="-90°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="0°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="downText" value="90°"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="⊳"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="upText" value="0°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="90°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="downText" value="180°"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="-90º"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="pointerColor">
                                                             <color key="value" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                            <real key="value" value="90"/>
+                                                            <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -2232,7 +2271,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bgE-oX-V0a">
-                                                    <rect key="frame" x="365" y="11" width="215" height="29"/>
+                                                    <rect key="frame" x="140" y="11" width="215" height="29"/>
                                                     <segments>
                                                         <segment title="Non"/>
                                                         <segment title="Lowpass"/>
@@ -2269,7 +2308,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCL-Hb-oDI">
-                                                    <rect key="frame" x="531" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="306" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="valueSwitchChangedValue:" destination="ZiX-Fb-mQi" eventType="valueChanged" id="VgG-Yl-6NP"/>
                                                     </connections>
@@ -2298,7 +2337,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIf-32-591">
-                                                    <rect key="frame" x="32" y="8" width="536" height="30"/>
+                                                    <rect key="frame" x="32" y="8" width="311" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <state key="normal" title="Restart Sensors">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2323,7 +2362,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIi-kk-I7Q" userLabel="Reset All Settings">
-                                                    <rect key="frame" x="32" y="8" width="536" height="30"/>
+                                                    <rect key="frame" x="32" y="8" width="311" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <state key="normal" title="Reset All Settings">
                                                         <color key="titleColor" red="0.90196078430000004" green="0.18039215689999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

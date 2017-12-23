@@ -9,7 +9,6 @@
 import Foundation
 
 /**
- # LogRecord
  A class represent a log record.
  */
 public class LogRecord : NSObject,  NSCoding {

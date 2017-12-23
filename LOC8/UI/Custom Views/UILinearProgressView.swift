@@ -69,7 +69,7 @@ open class UILinearProgressView: UIView {
     
     private(set) var valueLabel: UILabel!
     
-    //MARK:Initialization
+    //MARK: Initialization
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -197,7 +197,7 @@ open class UIDifferentialLinearProgressView: UIView {
     
     private(set) var valueLabel: UILabel!
     
-    //MARK:Initialization
+    //MARK: Initialization
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -296,7 +296,7 @@ open class UIDiscreteProgressView: UIView {
     fileprivate var mainLayer: CAShapeLayer!
     fileprivate var barsLayars: [CAShapeLayer] = []
     
-    //MARK:Initialization
+    //MARK: Initialization
 //    override public init(frame: CGRect) {
 //        super.init(frame: frame)
 //        setup()

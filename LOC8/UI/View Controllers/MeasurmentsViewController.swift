@@ -99,8 +99,8 @@ extension MeasurmentsViewController {
         
         attitudeCell.rotation = attitude
         
-        accelerationCell.vector = acceleration //acceleration ^ attitude
-        accelerationGraphCell.addValue(acceleration)
+        accelerationCell.vector = acceleration// ^ attitude
+        accelerationGraphCell.addValue(acceleration)// ^ attitude)
         
         velocityCell.vector = velocity //velocity ^ attitude
         velocityGraphCell.addValue(velocity)

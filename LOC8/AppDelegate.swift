@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         MultipeerManager.shared.isAdvertising = true
+        let _ = SensorsManager.shared
         
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: TabBarItemColor.Normal], for:UIControlState())
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: TabBarItemColor.Selected], for:.selected)

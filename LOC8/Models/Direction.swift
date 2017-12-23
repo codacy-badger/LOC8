@@ -10,10 +10,11 @@
 import Foundation
 
 /**
- # Direction
+ An object the hold a geometrical dirction in three dimensions.
  
  ### Discussion:
- The four cardinal directions or cardinal points are the directions of north, east, south, and west, commonly denoted by their initials: __N, E, S, W__. East and west are at right angles to north and south, with east being in the clockwise direction of rotation from north and west being directly opposite east.
+ The four cardinal directions or cardinal points are the directions of north, east, south, and west, commonly denoted by their initials: __N, E, S, W__.
+ East and west are at right angles to north and south, with east being in the clockwise direction of rotation from north and west being directly opposite east.
  
  Intermediate points between the four cardinal directions form the points of the compass. The intermediate (intercardinal, or ordinal) directions are:
  
@@ -25,6 +26,7 @@ import Foundation
  Alos the two vertical directions or cardinal points are the directions of up and down, commonly denoted by their initials: __U, D__
  
  __Up Diraction__
+ - Up           __U__
  - North Up     __NU__
  - Northeast Up __NEU__
  - East Up      __EU__
@@ -35,6 +37,7 @@ import Foundation
  - Northwest Up __NWU__
  
  __Down Diraction__
+ - Down           __D__
  - North Down     __ND__
  - Northeast Down __NED__
  - East Down      __ED__
@@ -44,20 +47,11 @@ import Foundation
  - West Down      __WD__
  - Northwest Down __NWD__
  
- ## Available Values
- 
- - None
- - North
- - East
- - South
- - West
- - Up
- - Down
- 
  */
 public struct Direction: OptionSet, CustomStringConvertible {
     
-    //MARK:- Main directions
+    //MARK:-
+    //MARK: Main directions
     
     ///None
     public static let none = Direction(rawValue: 0)
@@ -81,7 +75,7 @@ public struct Direction: OptionSet, CustomStringConvertible {
     public static let down = Direction(rawValue:1 << 5)
     
     
-    //MARK:- Extra directions
+    //MARK:-
     
     //MARK: Horizantel direction
     
@@ -166,7 +160,8 @@ public struct Direction: OptionSet, CustomStringConvertible {
     ///and 180° in (p, z) plane where p is the projection in (x, y) plane.
     public static let northWestDown = [Direction.north, Direction.west, Direction.down]
     
-    //MARK:- Methods
+    //MARK:-
+    //MARK: Methods
     
     public let rawValue : Int
     
@@ -185,27 +180,23 @@ public struct Direction: OptionSet, CustomStringConvertible {
      */
     public init(angle: Angle) {
         
-        let d_xy = wrap(angle / (Double.pi / 4)) % 8
+        self = []
         
-        switch d_xy {
-        case 0, 8: // 0˚, 360˚
-            self = .north
-        case 1: // 45˚
-            self = [.north, .east]
-        case 2: // 90˚
-            self = .east
-        case 3: // 135˚
-            self = [.south, .east]
-        case 4: // 180˚
-            self = .south
-        case 5: // 225˚
-            self = [.south, .west]
-        case 6: // 270˚
-            self = .west
-        case 7: // 315˚
-            self = [.north, .west]
-        default:
-            self = .none
+        let phi = angle
+        func isBetween(_ min: Angle, _ max: Angle) -> Bool {
+            return phi >= min.radian && phi <= max.radian
+        }
+        
+        if isBetween(-67.5, 67.5) {
+            self.insert(.north)
+        } else if isBetween(-180.0, -112.5) || isBetween(112.5, 180.0) {
+            self.insert(.south)
+        }
+        
+        if isBetween(22.5, 157.5) {
+            self.insert(.east)
+        } else if isBetween(-157.5, -22.5) {
+            self.insert(.west)
         }
     }
     
@@ -215,25 +206,26 @@ public struct Direction: OptionSet, CustomStringConvertible {
      - Parameter theta: Angle value represent the angle in (x, y) plaen.
      - Parameter lambda: Angle value represent the angle in (p, z) plane where p is the projection in (x, y) plane.
      */
-    public init(theta: Angle, lambda: Angle) {
+    public init(theta: Angle, phi: Angle) {
         
-        let d_z = wrap(lambda / (Double.pi / 4)) % 4
-            
-        switch d_z {
-        case 0: // 0˚, 180˚, -180˚
-            self = Direction(angle: theta)
-        case 2: //90˚
+        func isBetween(_ min: Angle, _ max: Angle) -> Bool {
+            return theta >= min.radian && theta <= max.radian
+        }
+        
+        if isBetween(0, 22.5) {
             self = .up
-        case -2: //-90˚
+            return
+        } else if isBetween(157.5, 180.0) {
             self = .down
-        case 1,3: // 45˚, 135˚
-            self = Direction(angle: theta)
+            return
+        }
+        
+        self = Direction(angle: phi)
+        
+        if isBetween(22.5, 67.5) {
             self.insert(.up)
-        case -1,-3: // -45˚, -135˚
-            self = Direction(angle: theta)
+        } else if isBetween(112.5, 157.5) {
             self.insert(.down)
-        default:
-            self = .none
         }
     }
     

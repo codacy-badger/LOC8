@@ -9,10 +9,10 @@
 import Foundation
 
 /**
- # RotationMatrix
+ Type represents a rotation matrix in three-dimensional space.
  
  ### Discussion:
- Type represents a rotation matrix in three-dimensional space.
+ In linear algebra, a rotation matrix is a matrix that is used to perform a rotation in Euclidean space.
  */
 public struct RotationMatrix: CustomStringConvertible {
     

@@ -10,10 +10,10 @@ import Foundation
 import CoreLocation
 
 /**
- # Heading
+ An object the represent a magnetic headin information.
  
-   ### Discussion:
-    In a contemporary land navigation context, heading is measured with true north, magnetic north, or grid north being 0° in a 360-degree system.
+ ### Discussion:
+ In a contemporary land navigation context, heading is measured with true north, magnetic north, or grid north being 0° in a 360-degree system.
  
  */
 open class Heading: Measurement {
@@ -32,7 +32,7 @@ open class Heading: Measurement {
     // The geomagnetic vector (measured in microteslas)
     private(set) var field: Vector3D!
     
-    //MARK:Initialization
+    //MARK: Initialization
     
     /**
       Initialize Heading object with an angel
