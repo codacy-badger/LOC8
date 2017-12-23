@@ -39,6 +39,11 @@
                BlueprintName = "LOC8Tests"
                ReferencedContainer = "container:LOC8.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "LOC8Tests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
