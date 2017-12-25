@@ -4,169 +4,200 @@
     <title>LOC8  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
 
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
+
+
     <a title="LOC8  Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p><a href="index.html">LOC8 Docs</a></p>
-        <p class="header-right"><a href="https://github.com/Marwan-Al-Masri/LOC8"><img src="img/gh.png"/>View on GitHub</a></p>
-      </div>
-    </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="index.html">LOC8 Reference</a>
-        <img id="carat" src="img/carat.png" />
-        LOC8  Reference
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          LOC8 Docs
+        </a>
+
       </p>
-    </div>
+
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/Marwan-Al-Masri/LOC8">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">LOC8 Reference</a>
+      <img class="carat" src="img/carat.png" />
+      LOC8  Reference
+    </p>
+
     <div class="content-wrapper">
-      <nav class="sidebar">
+      <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Guides.html">Guides</a>
+            <a class="nav-group-name-link" href="Guides.html">Guides</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="fundamentals.html">Fundamentals</a>
+                <a class="nav-group-task-link" href="fundamentals.html">Fundamentals</a>
               </li>
               <li class="nav-group-task">
-                <a href="development.html">Development</a>
+                <a class="nav-group-task-link" href="development.html">Development</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Geometry.html">Geometry</a>
+            <a class="nav-group-name-link" href="Geometry.html">Geometry</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs/Geometry.html">Geometry</a>
+                <a class="nav-group-task-link" href="Structs/Geometry.html">Geometry</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/Angle.html">Angle</a>
+                <a class="nav-group-task-link" href="Extensions/Angle.html">Angle</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/EulerAngles.html">EulerAngles</a>
+                <a class="nav-group-task-link" href="Structs/EulerAngles.html">EulerAngles</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/RotationMatrix.html">RotationMatrix</a>
+                <a class="nav-group-task-link" href="Structs/RotationMatrix.html">RotationMatrix</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/Quaternion.html">Quaternion</a>
+                <a class="nav-group-task-link" href="Structs/Quaternion.html">Quaternion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/Rotation3D.html">Rotation3D</a>
+                <a class="nav-group-task-link" href="Classes/Rotation3D.html">Rotation3D</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/CartesianVector.html">CartesianVector</a>
+                <a class="nav-group-task-link" href="Structs/CartesianVector.html">CartesianVector</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/SphericalVector.html">SphericalVector</a>
+                <a class="nav-group-task-link" href="Structs/SphericalVector.html">SphericalVector</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/CylindricalVector.html">CylindricalVector</a>
+                <a class="nav-group-task-link" href="Structs/CylindricalVector.html">CylindricalVector</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/Vector3D.html">Vector3D</a>
+                <a class="nav-group-task-link" href="Classes/Vector3D.html">Vector3D</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/Direction.html">Direction</a>
+                <a class="nav-group-task-link" href="Structs/Direction.html">Direction</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Physics.html">Physics</a>
+            <a class="nav-group-name-link" href="Physics.html">Physics</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs/Physics.html">Physics</a>
+                <a class="nav-group-task-link" href="Structs/Physics.html">Physics</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/Measurement.html">Measurement</a>
+                <a class="nav-group-task-link" href="Classes/Measurement.html">Measurement</a>
               </li>
               <li class="nav-group-task">
-                <a href="Physics.html#/s:4LOC812Accelerationa">Acceleration</a>
+                <a class="nav-group-task-link" href="Physics.html#/s:4LOC812Accelerationa">Acceleration</a>
               </li>
               <li class="nav-group-task">
-                <a href="Physics.html#/s:4LOC88Velocitya">Velocity</a>
+                <a class="nav-group-task-link" href="Physics.html#/s:4LOC88Velocitya">Velocity</a>
               </li>
               <li class="nav-group-task">
-                <a href="Physics.html#/s:4LOC88Distancea">Distance</a>
+                <a class="nav-group-task-link" href="Physics.html#/s:4LOC88Distancea">Distance</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/Accuracy.html">Accuracy</a>
+                <a class="nav-group-task-link" href="Enums/Accuracy.html">Accuracy</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/MagneticField.html">MagneticField</a>
+                <a class="nav-group-task-link" href="Classes/MagneticField.html">MagneticField</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/Heading.html">Heading</a>
+                <a class="nav-group-task-link" href="Classes/Heading.html">Heading</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/Motion.html">Motion</a>
+                <a class="nav-group-task-link" href="Classes/Motion.html">Motion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/MotionActivityStatus.html">MotionActivityStatus</a>
+                <a class="nav-group-task-link" href="Enums/MotionActivityStatus.html">MotionActivityStatus</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/MotionActivity.html">MotionActivity</a>
+                <a class="nav-group-task-link" href="Classes/MotionActivity.html">MotionActivity</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Models.html">Models</a>
+            <a class="nav-group-name-link" href="Models.html">Models</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/FilterType.html">FilterType</a>
+                <a class="nav-group-task-link" href="Enums/FilterType.html">FilterType</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/Filter.html">Filter</a>
+                <a class="nav-group-task-link" href="Classes/Filter.html">Filter</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/AccelerationFilter.html">AccelerationFilter</a>
+                <a class="nav-group-task-link" href="Classes/AccelerationFilter.html">AccelerationFilter</a>
               </li>
               <li class="nav-group-task">
-                <a href="Models.html#/s:4LOC817EstimationHandlera">EstimationHandler</a>
+                <a class="nav-group-task-link" href="Models.html#/s:4LOC817EstimationHandlera">EstimationHandler</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/Estimation.html">Estimation</a>
+                <a class="nav-group-task-link" href="Classes/Estimation.html">Estimation</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/TrackingSession.html">TrackingSession</a>
+                <a class="nav-group-task-link" href="Classes/TrackingSession.html">TrackingSession</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/LogLevel.html">LogLevel</a>
+                <a class="nav-group-task-link" href="Enums/LogLevel.html">LogLevel</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/LogRecord.html">LogRecord</a>
+                <a class="nav-group-task-link" href="Classes/LogRecord.html">LogRecord</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Managers and Services.html">Managers and Services</a>
+            <a class="nav-group-name-link" href="Managers and Services.html">Managers and Services</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes/Log.html">Log</a>
+                <a class="nav-group-task-link" href="Classes/Log.html">Log</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Other Extensions.html">Other Extensions</a>
+            <a class="nav-group-name-link" href="Other Extensions.html">Other Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Extensions/MCSessionState.html">MCSessionState</a>
+                <a class="nav-group-task-link" href="Extensions/MCSessionState.html">MCSessionState</a>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
       <article class="main-content">
-        <section>
-          <section class="section">
 
-            <p><img style="margin-top: 25px;" src="../cover.png" alt="cover photo.png"></p>
-<h1 id='loc8-a-href-https-travis-ci-com-marwan-al-masri-loc8-img-src-https-travis-ci-com-marwan-al-masri-loc8-svg-token-h9czx6r8weaxyxtfxabz-branch-master-alt-build-status-a-img-src-docs-badge-svg-alt-documentation-a-href-https-codecov-io-gh-marwan-al-masri-loc8-img-src-https-codecov-io-gh-marwan-al-masri-loc8-branch-master-graph-badge-svg-token-g1kcxuosg6-alt-codecov-a' class='heading'>LOC8 <a href="https://travis-ci.com/Marwan-Al-Masri/LOC8"><img src="https://travis-ci.com/Marwan-Al-Masri/LOC8.svg?token=H9CZx6r8wEAXyxtfxAbz&branch=master" alt="Build Status"></a> <img src="./badge.svg" alt="Documentation"> <a href="https://codecov.io/gh/Marwan-Al-Masri/LOC8"><img src="https://codecov.io/gh/Marwan-Al-Masri/LOC8/branch/master/graph/badge.svg?token=g1kcxuoSG6" alt="codecov"></a></h1>
+        <section class="section">
+          <div class="section-content">
+
+            <p><img src="../cover.png" alt="cover photo.png"></p>
+
+<p><img src="https://img.shields.io/badge/Vesion-0.0.1-4B8A88.svg?style=for-the-badge" alt="Vesion">
+<img src="https://img.shields.io/badge/Swift-4.0-orange.svg?style=for-the-badge" alt="Swift">
+<img src="https://img.shields.io/badge/Xcode-9.2-blue.svg?style=for-the-badge" alt="Xcode">
+<img src="https://img.shields.io/badge/%EF%A3%BF-iOS%20%7C%20macOS-lightgray.svg?style=for-the-badge" alt="Platforms">
+<a href="https://travis-ci.com/Marwan-Al-Masri/LOC8"><img src="https://img.shields.io/badge/Build-Passing-brightgreen.svg?style=for-the-badge" alt="Build Status"></a>
+<img src="https://img.shields.io/badge/Documentation-69%25-yellowgreen.svg?style=for-the-badge" alt="Documentation"> <a href="https://codecov.io/gh/Marwan-Al-Masri/LOC8"><img src="https://img.shields.io/badge/Coverage-20%25-red.svg?style=for-the-badge" alt="CodeCov"></a></p>
+
+<h1 id='loc8' class='heading'>LOC8</h1>
 
 <p>LOC8 is a mobile application project that detect a human motion in three dimensions.</p>
 <h2 id='requirements' class='heading'>Requirements</h2>
@@ -188,14 +219,16 @@
 
 <p>LOC8 Sdn Bhd</p>
 
-          </section>
+          </div>
         </section>
-        <section id="footer">
-          <p>© 2017 LOC8. All rights reserved.</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-        </section>
+
+
       </article>
     </div>
+    <section class="footer">
+      <p>Copyright © 2017 LOC8. All rights reserved.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
   </body>
 </div>
 </html>
