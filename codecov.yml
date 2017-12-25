@@ -9,13 +9,15 @@ coverage:
   range: 80...100
   round: up
   ignore:
-    - LOC8Tests/*
-    - Documentation/*
-    - docs/*
+    - 'LOC8Tests/*'
+    - 'Documentation/*'
+    - 'docs/*'
+    - 'LOC8/Graphics/*'
+    - 'LOC8/UI/*'
 
 status:
   project: yes
-  patch: yes
+  patch: no
   changes: no
 
 comment:

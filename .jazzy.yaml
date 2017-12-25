@@ -3,14 +3,14 @@
 module: 'LOC8'
 module_version: '0.1.0'
 author: 'Marwan Al Masri'
-# author_url:       https://www.LOC8.com
-copyright: '© 2017 LOC8. All rights reserved.'
+author_url: 'http://marwan-al-masri.github.io/LOC8'
+copyright: 'Copyright © 2017 LOC8. All rights reserved.'
 github_url: 'https://github.com/Marwan-Al-Masri/LOC8'
 min_acl: 'private'
 output: 'docs'
 docset_icon: './icon.png'
 documentation: 'Documentation/*.md'
-
+theme: 'fullwidth'
 hide_documentation_coverage: true
 skip_undocumented:  true
 clean: false
