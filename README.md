@@ -4,7 +4,7 @@
 ![Vesion](https://img.shields.io/badge/Vesion-0.0.1-376568.svg)
 ![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-9.2-blue.svg)
-![Platforms](https://img.shields.io/badge/-iOS | macOS-lightgray.svg) |
+![Platforms](https://img.shields.io/badge/-iOS | macOS-lightgray.svg)
 [![Build Status](https://travis-ci.com/Marwan-Al-Masri/LOC8.svg?token=H9CZx6r8wEAXyxtfxAbz&branch=master)](https://travis-ci.com/Marwan-Al-Masri/LOC8)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/487a286297ef436d8284fa4e1b4dbf17)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Marwan-Al-Masri/LOC8&amp;utm_campaign=Badge_Grade)
 ![Documentation](./docs/badge.svg)
