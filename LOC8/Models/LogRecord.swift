@@ -13,16 +13,16 @@ import Foundation
  */
 public class LogRecord : NSObject,  NSCoding {
     
-    ///the sender object.
+    /// The sender object.
     private(set) var sender: AnyObject!
     
-    ///the logging content message that will be dispalyed
+    /// The logging content message that will be dispalyed
     private(set) var message: String!
     
-    ///the time of logging, if it's nil it will record the current time (now).
+    /// The time of logging, if it's nil it will record the current time (now).
     private(set) var time: TimeInterval!
     
-    ///the logging level Eg. (error, info, warning.. etc.)
+    /// The logging level Eg. (error, info, warning.. etc.)
     private(set) var level: LogLevel!
     
     
@@ -88,7 +88,7 @@ public class LogRecord : NSObject,  NSCoding {
             }
         }
         
-        //Print record to console
+        // Print record to console
         switch self.level {
         case .debug:
             Swift.debugPrint(self.description)

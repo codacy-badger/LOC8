@@ -18,7 +18,7 @@ import CoreLocation
  */
 open class Heading: Measurement {
     
-    //MARK: Properties
+    // MARK: Properties
     
     // The heading (measured in radian) relative to magnetic north.
     private(set) var magnetic: Angle!
@@ -32,7 +32,7 @@ open class Heading: Measurement {
     // The geomagnetic vector (measured in microteslas)
     private(set) var field: Vector3D!
     
-    //MARK: Initialization
+    // MARK: Initialization
     
     /**
       Initialize Heading object with an angel

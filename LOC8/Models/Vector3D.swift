@@ -21,7 +21,7 @@ infix operator ^
  */
 open class Vector3D: Measurement {
     
-    //MARK: Cartesian Properties
+    // MARK: Cartesian Properties
     
     /// A `CartesianVector` object represent the vector in cartesian coordinate.
     private(set) var cartesianVector: CartesianVector
@@ -44,7 +44,7 @@ open class Vector3D: Measurement {
         
     }
     
-    //MARK: Spherical Properties
+    // MARK: Spherical Properties
     
     /// A `SphericalVector` object represent the vector in spherical coordinate.
     private(set) var sphericalVector: SphericalVector
@@ -74,7 +74,7 @@ open class Vector3D: Measurement {
         
     }
     
-    //MARK: Clyndrical Properties
+    // MARK: Clyndrical Properties
     
     /// A `CylindricalVector` object represent the vector in cylindrical coordinate.
     private(set) var cylindricalVector: CylindricalVector
@@ -93,15 +93,15 @@ open class Vector3D: Measurement {
     }
     
     
-    //MARK: Vector Properties
+    // MARK: Vector Properties
     
-    ///Return Direction that represent the vector heading.
+    /// Return Direction that represent the vector heading.
     open var headingDirection: Direction {
         
         return Direction.init(theta: self.theta, phi: self.phi)
     }
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `Vector3D` Default initializer.
@@ -198,7 +198,7 @@ open class Vector3D: Measurement {
         return "Vector3D\n[\n\t\(self.cartesianVector)\n\t\(self.sphericalVector)\n\t\(self.cylindricalVector)\n]"
     }
     
-    //MARK: Vectors Operators
+    // MARK: Vectors Operators
 
     /**
       A uniry operator calculate the length of a vector (Norm).
@@ -242,7 +242,7 @@ open class Vector3D: Measurement {
         )
     }
 
-    //MARK: Arithmetic operators
+    // MARK: Arithmetic operators
     
     prefix static func - (vector: Vector3D) -> Vector3D {
         return Vector3D(x: -vector.x, y: -vector.y, z: -vector.z)
@@ -272,7 +272,7 @@ open class Vector3D: Measurement {
         return Vector3D(x: left.x / right.x, y: left.y / right.y, z: left.z / right.z)
     }
 
-    //MARK: Logical operators
+    // MARK: Logical operators
     
     public static func == (left: Vector3D, right: Vector3D) -> Bool {
         return (left.x == right.x) && (left.y == right.y) && (left.z == right.z)

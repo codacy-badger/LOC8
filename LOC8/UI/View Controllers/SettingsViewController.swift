@@ -11,7 +11,7 @@ import MultipeerConnectivity
 
 open class settingsViewController: UITableViewController {
     
-    //MARK:Properties
+    // MARK: Properties
     
     @IBOutlet weak var connectionCell: UITableViewCell!
     
@@ -34,7 +34,7 @@ open class settingsViewController: UITableViewController {
         return SettingsService.shared
     }
     
-    //MARK:Lifcycle
+    // MARK: Lifcycle
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +66,7 @@ open class settingsViewController: UITableViewController {
         
     }
     
-    //MARK: Initialization
+    // MARK: Initialization
     open func initializeCells() {
         
         let tabBarController = self.tabBarController! as! TabBarController
@@ -114,7 +114,7 @@ open class settingsViewController: UITableViewController {
         }
     }
 
-    //MARK:IBActions
+    // MARK: IBActions
     @IBAction func restartButtonDidPressed(_ sender: AnyObject) {
         settings.clear()
     }
@@ -137,7 +137,7 @@ open class settingsViewController: UITableViewController {
     }
 }
 
-//MARK: MCBrowserViewControllerDelegate
+// MARK: MCBrowserViewControllerDelegate
 extension settingsViewController: MCBrowserViewControllerDelegate {
     public func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
         

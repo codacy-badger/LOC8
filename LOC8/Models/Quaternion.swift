@@ -61,7 +61,7 @@ public struct Quaternion: CustomStringConvertible {
         return matrix
     }
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `Quaternion` Default initializer.

@@ -74,7 +74,7 @@ public struct CylindricalVector: CustomStringConvertible {
         return SphericalVector(radial: radial, theta: theta, phi: phi)
     }
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `CartesianVector` Default initializer.
@@ -96,7 +96,7 @@ public struct CylindricalVector: CustomStringConvertible {
         self.height = height
     }
     
-    //CustomStringConvertible Protocall
+    // CustomStringConvertible Protocall
     public var description: String {
         return String(format: "Cylindrical(%.2f, %.2f˚, %.2f)", Float(self.rho), Float(self.phi.degree), Float(self.height))
     }

@@ -28,7 +28,7 @@ public struct RotationMatrix: CustomStringConvertible {
     var m32: Double = 0.0
     var m33: Double = 0.0
     
-    ///EulerAngles object represent the rotation in euler angles form
+    /// EulerAngles object represent the rotation in euler angles form
     public var eulerAngles: EulerAngles {
         var yaw: Angle = 0
         var pitch: Angle = 0
@@ -53,7 +53,7 @@ public struct RotationMatrix: CustomStringConvertible {
         return EulerAngles(roll: roll, pitch: pitch, yaw: yaw)
     }
     
-    ///Quaternion object represent the rotation in quaternion form.
+    /// Quaternion object represent the rotation in quaternion form.
     public var quaternion: Quaternion {
         let w = sqrt(1 + m11 + m22 + m33) / 2
         let x = (m23 - m32) / (w * 4)
@@ -62,7 +62,7 @@ public struct RotationMatrix: CustomStringConvertible {
         return Quaternion(x: x, y: y, z: z, w: w)
     }
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `RotationMatrix` Default initializer.

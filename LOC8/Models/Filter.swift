@@ -31,7 +31,7 @@ public enum FilterType: String {
      */
     case Highpass = "Highpass"
     
-    ///No filter type just pass the data as it is.
+    /// No filter type just pass the data as it is.
     case Non = "Non"
 }
 
@@ -49,7 +49,7 @@ public enum FilterType: String {
  */
 open class Filter: NSObject {
     
-    //MARK: Properties
+    // MARK: Properties
     
     ///`Double` value represent the filter minimum step.
     fileprivate let minStep = 0.02
@@ -66,19 +66,19 @@ open class Filter: NSObject {
      */
     open var adaptive: Bool = true
     
-    ///A `Double` value that represent the filter time constant.
+    /// A `Double` value that represent the filter time constant.
     open let filterConstant: Double!
     
-    ///A `FilterType` value that represent the filter type.
+    /// A `FilterType` value that represent the filter type.
     open let type: FilterType!
     
-    ///A `Double` value that represent the current value.
+    /// A `Double` value that represent the current value.
     private(set) var value: Double = 0
     
-    ///A `Double` value that represent the last value.
+    /// A `Double` value that represent the last value.
     fileprivate var lastValue: Double = 0
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `Filter` Default initializer.
@@ -112,7 +112,7 @@ open class Filter: NSObject {
         super.init()
     }
     
-    //MARK: Methods
+    // MARK: Methods
     
     /**
      Add new value to the filter.
@@ -195,7 +195,7 @@ open class Filter: NSObject {
  */
 open class AccelerationFilter: NSObject {
     
-    //MARK: Properties
+    // MARK: Properties
     
     ///`Double` value represent the filter minimum step.
     fileprivate let minStep = 0.02
@@ -212,19 +212,19 @@ open class AccelerationFilter: NSObject {
      */
     open var adaptive: Bool = true
     
-    ///A `Double` value that represent the filter time constant.
+    /// A `Double` value that represent the filter time constant.
     open let filterConstant: Double!
     
-    ///A `FilterType` value that represent the filter type.
+    /// A `FilterType` value that represent the filter type.
     open let type: FilterType!
     
-    ///A `Acceleration` value that represent the current acceleration.
+    /// A `Acceleration` value that represent the current acceleration.
     private(set) var value: Acceleration = Acceleration()
     
-    ///A `Acceleration` value that represent the last acceleration.
+    /// A `Acceleration` value that represent the last acceleration.
     fileprivate var lastValue: Acceleration = Acceleration()
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `Filter` Default initializer.
@@ -258,7 +258,7 @@ open class AccelerationFilter: NSObject {
         super.init()
     }
     
-    //MARK: Methods
+    // MARK: Methods
     
     /**
      Add new value to the filter.

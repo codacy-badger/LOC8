@@ -8,11 +8,11 @@
 
 import UIKit
 
-//MARK: UIRotationView
+// MARK: UIRotationView
 @IBDesignable
 open class UIRotationView: UIView {
     
-    //MARK:UI Elements
+    // MARK: UI Elements
     @IBInspectable open var angle: CGFloat = 0 {
         didSet {
             
@@ -82,11 +82,11 @@ open class UIRotationView: UIView {
     
     open var textFont: UIFont = UIFont.systemFont(ofSize: 10)
     
-    //MARK:UI Objects
+    // MARK: UI Objects
     fileprivate var rotationLayer: CAShapeLayer!
     fileprivate var marksLayer: CAShapeLayer!
     
-    //MARK:UI Drawings
+    // MARK:UI Drawings
     open override func draw(_ rect: CGRect) {
         super.draw(rect)
         
@@ -192,11 +192,11 @@ open class UIRotationView: UIView {
     }
 }
 
-//MARK: UIDirectionView
+// MARK: UIDirectionView
 @IBDesignable
 open class UIDirectionView: UIRotationView {
     
-    //MARK:Override Methods
+    // MARK: Override Methods
     open override func drawView(_ rect: CGRect) {
         
         let center = CGPoint(x: rect.midX, y: rect.midY)
@@ -242,11 +242,11 @@ open class UIDirectionView: UIRotationView {
     }
 }
 
-//MARK: UIHeadingView
+// MARK: UIHeadingView
 @IBDesignable
 open class UIHeadingView: UIRotationView {
     
-    //MARK:Override Methods
+    // MARK: Override Methods
     open override func drawView(_ rect: CGRect) {
         
         let center = CGPoint(x: rect.midX, y: rect.midY)
@@ -280,11 +280,11 @@ open class UIHeadingView: UIRotationView {
     }
 }
 
-//MARK: UICompassView
+// MARK: UICompassView
 @IBDesignable
 open class UICompassView: UIRotationView {
     
-    //MARK:Override Methods
+    // MARK: Override Methods
     open override func drawView(_ rect: CGRect) {
         
         let center = CGPoint(x: rect.midX, y: rect.midY)

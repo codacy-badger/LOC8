@@ -14,19 +14,19 @@ public class MultipeerManager: NSObject {
     /// Get currently used MultipeerManager, singleton pattern
     public static let shared = MultipeerManager()
     
-    ///Returns the found peer update notification. Which is use to register with notification center.
+    /// Returns the found peer update notification. Which is use to register with notification center.
     public static let FoundPeerNotification = Notification.Name(rawValue: "FoundPeer")
     
-    ///Returns the lost peer update notification. Which is use to register with notification center.
+    /// Returns the lost peer update notification. Which is use to register with notification center.
     public static let LostPeerNotification = Notification.Name(rawValue: "LostPeer")
     
-    ///Returns the received invitation update notification. Which is use to register with notification center.
+    /// Returns the received invitation update notification. Which is use to register with notification center.
     public static let ReceivedInvitationNotification = Notification.Name(rawValue: "ReceivedInvitation")
     
-    ///Returns the Connection state did changed notification. Which is use to register with notification center.
+    /// Returns the Connection state did changed notification. Which is use to register with notification center.
     public static let ConnectionStateChangedNotification = Notification.Name(rawValue: "ConnectionStateChanged")
     
-    ///Returns the received data update notification. Which is use to register with notification center.
+    /// Returns the received data update notification. Which is use to register with notification center.
     public static let ReceivedDataNotification = Notification.Name(rawValue: "ReceivedData")
     
     open let ServiceType: String = "LOC8"

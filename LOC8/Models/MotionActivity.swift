@@ -18,7 +18,7 @@ import Foundation
  */
 open class MotionActivity: Measurement {
     
-    //MARK: Properties
+    // MARK: Properties
     
     ///`MotionActivityStatus` object represent the state of the activity.
     private(set) var status: MotionActivityStatus!
@@ -26,7 +26,7 @@ open class MotionActivity: Measurement {
     ///`MotionActivityConfidence` object represent the confidance of the activity state.
     private(set) var confidence: Accuracy!
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `MotionActivity` Default initializer.

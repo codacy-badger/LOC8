@@ -18,16 +18,16 @@ import Foundation
  */
 public struct EulerAngles: CustomStringConvertible {
     
-    ///Angle value represent a rotation around x-axis.
+    /// Angle value represent a rotation around x-axis.
     private(set) var roll: Angle = 0
     
-    ///Angle value represent a rotation around y-axis.
+    /// Angle value represent a rotation around y-axis.
     private(set) var pitch: Angle = 0
     
-    ///Angle value represent a rotation around z-axis.
+    /// Angle value represent a rotation around z-axis.
     private(set) var yaw: Angle = 0
     
-    ///RotationMatrix object represent the rotation in matrix form.
+    /// RotationMatrix object represent the rotation in matrix form.
     public var rotationMatrix: RotationMatrix {
         
         var matrix = RotationMatrix()
@@ -45,7 +45,7 @@ public struct EulerAngles: CustomStringConvertible {
         return matrix
     }
     
-    ///Quaternion object represent the rotation in quaternion form.
+    /// Quaternion object represent the rotation in quaternion form.
     public var quaternion: Quaternion {
         let c1 = cos(yaw / 2)
         let s1 = sin(yaw / 2)
@@ -62,7 +62,7 @@ public struct EulerAngles: CustomStringConvertible {
         return Quaternion(x: x, y: y, z: z, w: w)
     }
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `EulerAngles` Default initializer.

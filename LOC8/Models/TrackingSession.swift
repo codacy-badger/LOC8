@@ -16,7 +16,7 @@ import Foundation
  */
 open class TrackingSession: Measurement {
     
-    //MARK: Properties
+    // MARK: Properties
     
     /// `EstimationHandler` object act as a deleget.
     open var estimationHandler: EstimationHandler?
@@ -37,7 +37,7 @@ open class TrackingSession: Measurement {
     /// A `Double` value represent the total distance for the session.
     open var distance: Double = 0
     
-    //MARK: Initialization
+    // MARK: Initialization
     
     /**
      `TrackingSession` Default initializer.
@@ -50,9 +50,9 @@ open class TrackingSession: Measurement {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Motion Updates
+    // MARK: Motion Updates
     
-    ///An action tregered whene the `SensorsManager` recieve a distance update.
+    /// An action tregered whene the `SensorsManager` recieve a distance update.
     @objc open func didUpdateDistance(_ notification: Notification) {
         let distance = notification.userInfo![DefaultKeys.DistanceKey] as! NSNumber
         
@@ -78,7 +78,7 @@ open class TrackingSession: Measurement {
         self.estimations.append(newEstimation)
     }
     
-    ///An action tregered whene the `SensorsManager` recieve a device motion update.
+    /// An action tregered whene the `SensorsManager` recieve a device motion update.
     @objc open func didUpdateDeviceMotion(_ notification: Notification) {
         
 //        let userInfo = notification.userInfo!
@@ -90,7 +90,7 @@ open class TrackingSession: Measurement {
         
     }
     
-    //MARK: Controlles
+    // MARK: Controlles
     
     /**
      Starts a series of continuous estimation updates to the session. 

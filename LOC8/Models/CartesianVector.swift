@@ -69,7 +69,7 @@ public struct CartesianVector: CustomStringConvertible {
         return CylindricalVector(rho: rho, phi: phi, height: z)
     }
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `CartesianVector` Default initializer.
@@ -91,7 +91,7 @@ public struct CartesianVector: CustomStringConvertible {
         self.z = z
     }
 
-    //CustomStringConvertible Protocall
+    // CustomStringConvertible Protocall
     public var description: String {
         return String(format: "Cartesian(%.2f, %.2f, %.2f)", Float(x), Float(y), Float(z))
     }

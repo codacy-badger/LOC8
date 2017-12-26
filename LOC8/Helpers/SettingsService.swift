@@ -13,7 +13,7 @@ open class SettingsService {
     /// Get currently used SettingsService, singleton pattern
     public static let shared = SettingsService()
     
-    //MARK:General Settings
+    // MARK: General Settings
     
     open var colorIndex: Int! {
         set {
@@ -62,7 +62,7 @@ open class SettingsService {
         }
     }
     
-    //MARK:Acceleration Settings
+    // MARK: Acceleration Settings
     open var accelerationFilterCutoffFrequency : Double! {
         set {
             UserDefaults.standard.set(newValue, forKey: "acceleration-filter-cutoff-frequency")
@@ -104,7 +104,7 @@ open class SettingsService {
     }
     
     
-    //MARK: Initialization
+    // MARK: Initialization
     
     public init() {
         if !UserDefaults.standard.bool(forKey: "first-lunch") {
@@ -113,7 +113,7 @@ open class SettingsService {
         }
     }
     
-    //MARK: Controlles
+    // MARK: Controlles
     open func reset() {
         colorIndex = 0
         enableAnimation = false

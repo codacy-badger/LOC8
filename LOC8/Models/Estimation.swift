@@ -22,7 +22,7 @@ public typealias EstimationHandler = ((Estimation) -> Void)
  */
 open class Estimation: Measurement {
     
-    //MARK: Properties
+    // MARK: Properties
     
     /// `EstimationHandler` object act as a deleget.
     open var estimationHandler: EstimationHandler?
@@ -69,7 +69,7 @@ open class Estimation: Measurement {
     }
     
     
-    //MARK: Initialization
+    // MARK: Initialization
     
     /**
      `Estimation` Default initializer.
@@ -93,9 +93,9 @@ open class Estimation: Measurement {
         return result
     }
     
-    //MARK: Motion Updates
+    // MARK: Motion Updates
     
-    ///An action tregered whene the `SensorsManager` recieve a heading update.
+    /// An action tregered whene the `SensorsManager` recieve a heading update.
     @objc open func didUpdateHeading (_ notification: Notification) {
         
         let heading = notification.userInfo![DefaultKeys.HeadingKey] as! CLHeading
@@ -119,7 +119,7 @@ open class Estimation: Measurement {
         self.estimationHandler?(self)
     }
     
-    ///An action tregered whene the `SensorsManager` recieve a device motion update.
+    /// An action tregered whene the `SensorsManager` recieve a device motion update.
     open func didUpdateDeviceMotion(_ notification: Notification) {
         
         let userInfo = notification.userInfo!
@@ -150,7 +150,7 @@ open class Estimation: Measurement {
         self.estimationHandler?(self)
     }
     
-    //MARK: Controlle
+    // MARK: Controlle
     
     /**
      Starts a series of continuous heading updates to the estimation.

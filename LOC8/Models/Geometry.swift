@@ -47,7 +47,7 @@ public struct Geometry {
      */
     public static func clamp<T: Comparable>(value: T, min: T, max: T) -> T {
         
-        //insanaty check
+        // Insanaty check
         if max == min {
             return min
         }
@@ -56,7 +56,7 @@ public struct Geometry {
         
         var maximum = max
         
-        //insanaty check
+        // Insanaty check
         if minimum > maximum { // swap minimum and maximum
             swap(&minimum, &maximum)
         }
@@ -106,7 +106,7 @@ public struct Geometry {
      */
     public static func rotate(value: Double, min: Double, max: Double) -> Double {
         
-        //insanaty check
+        // Insanaty check
         if max < min {
             return value
         }

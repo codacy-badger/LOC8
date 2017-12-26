@@ -13,13 +13,13 @@ import Foundation
 */
 public struct Physics {
     
-    ///Earth gravity in m/s².
+    /// Earth gravity in m/s².
     public static let EarthGravity: Double = 9.80665 // m/s²
     
-    ///Earth maximum magnetic field in microteslas.
+    /// Earth maximum magnetic field in microteslas.
     public static let EarthMaxMagneticField: Double = 65.0 // microteslas
     
-    ///Earth minimum magnetic field in microteslas.
+    /// Earth minimum magnetic field in microteslas.
     public static let EarthMinMagneticField: Double = 25.0 // microteslas
 }
 

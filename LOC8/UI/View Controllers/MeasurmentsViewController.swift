@@ -12,7 +12,7 @@ import CoreLocation
 
 open class MeasurmentsViewController: UITableViewController {
     
-    //MARK:Properties
+    // MARK: Properties
     
     @IBOutlet weak var headingCell: AngleTableViewCell!
     
@@ -42,7 +42,7 @@ open class MeasurmentsViewController: UITableViewController {
     
     @IBOutlet weak var rotationRateCell: Vector3DTableViewCell!
     
-    //MARK:Lifcycle
+    // MARK: Lifcycle
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(MeasurmentsViewController.didUpdateHeading(_:)), name:  SensorsManager.HeadingUpdateNotification, object: nil)
@@ -66,10 +66,10 @@ open class MeasurmentsViewController: UITableViewController {
     }
 }
 
-//MARK: Motion values
+// MARK: Motion values
 extension MeasurmentsViewController {
     
-    //MARK: Receiving and handling motion values
+    // MARK: Receiving and handling motion values
     @objc public func didUpdateHeading(_ notification: Notification) {
         
         let heading = notification.userInfo![DefaultKeys.HeadingKey] as! CLHeading
@@ -102,7 +102,7 @@ extension MeasurmentsViewController {
         accelerationCell.vector = acceleration// ^ attitude
         accelerationGraphCell.addValue(acceleration)// ^ attitude)
         
-        velocityCell.vector = velocity //velocity ^ attitude
+        velocityCell.vector = velocity // velocity ^ attitude
         velocityGraphCell.addValue(velocity)
         
         gravityCell.vector = gravity
