@@ -53,7 +53,7 @@ open class settingsViewController: UITableViewController {
         
         DispatchQueue.main.async {
             if let peer = userInfo[MultipeerManagerKeys.PeerId] {
-                self.connectionCell.textLabel?.text = "🖥 " + peer.displayName
+                self.connectionCell.textLabel?.text = "💻 " + peer.displayName
             }
             else {
                 self.connectionCell.textLabel?.text = "No Device Availible"

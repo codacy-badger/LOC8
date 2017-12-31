@@ -114,6 +114,7 @@ extension MultipeerManager: MCNearbyServiceBrowserDelegate {
     public func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         
         foundPeers.append(peerID)
+        print(foundPeers)
         
         let userInfo: [AnyHashable: Any] = [MultipeerManagerKeys.PeerId: peerID]
         
