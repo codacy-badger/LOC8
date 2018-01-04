@@ -6,8 +6,8 @@
 //  Copyright © 2015 LOC8. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 /**
  An object the represent a magnetic headin information.
@@ -18,7 +18,7 @@ import CoreLocation
  */
 open class Heading: Measurement {
     
-    //MARK: Properties
+    // MARK: Properties
     
     // The heading (measured in radian) relative to magnetic north.
     private(set) var magnetic: Angle!
@@ -32,7 +32,7 @@ open class Heading: Measurement {
     // The geomagnetic vector (measured in microteslas)
     private(set) var field: Vector3D!
     
-    //MARK: Initialization
+    // MARK: Initialization
     
     /**
       Initialize Heading object with an angel
@@ -55,7 +55,7 @@ open class Heading: Measurement {
         self.magnetic = aDecoder.decodeDouble(forKey: "magnetic")
         self.true = aDecoder.decodeDouble(forKey: "true")
         self.accuracy = aDecoder.decodeDouble(forKey: "Accuracy")
-        self.field = aDecoder.decodeObject(forKey: "field") as! Vector3D
+        self.field = aDecoder.decodeObject(forKey: "field") as? Vector3D ?? Vector3D()
     }
     
     open override func encode(with aCoder: NSCoder) {
@@ -79,4 +79,3 @@ open class Heading: Measurement {
         return "Heading {\t\nMagnetic = \(self.magnetic)\n\tTrue = \(self.true)\n\tAccuracy = \(self.accuracy)\n\tGeomagnetic Field = \(self.field)\n}."
     }
 }
-

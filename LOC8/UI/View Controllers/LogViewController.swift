@@ -10,7 +10,7 @@ import UIKit
 
 open class LogViewController: UIViewController {
     
-    //MARK:Properties
+    // MARK: Properties
     @IBOutlet weak var log: UITextView!
     
     override open func viewWillAppear(_ animated: Bool) {
@@ -22,14 +22,14 @@ open class LogViewController: UIViewController {
         self.log.scrollToBotom()
     }
     
-    //MARK:Lifcycle
+    // MARK: Lifcycle
     override open func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         NotificationCenter.default.removeObserver(self, name: Log.LogUpdateNotification, object: nil)
     }
     
-    //MARK:Updateing Log
+    // MARK: Updateing Log
     @objc open func didUpdateLog (_ notification: Notification) {
         
         DispatchQueue.main.async {

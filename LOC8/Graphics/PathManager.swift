@@ -11,7 +11,7 @@ import SceneKit
 
 class PathManager {
     
-    ///Get currently used PathManager, singleton pattern
+    /// Get currently used PathManager, singleton pattern
     static let shared: PathManager  = PathManager()
     
     let startPoint = SCNVector3Make(0, 0, 0)

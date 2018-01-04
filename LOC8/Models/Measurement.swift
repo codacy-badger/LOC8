@@ -16,7 +16,7 @@ open class Measurement: CustomStringConvertible, NSCoding {
     /// A `TimeInterval` value represent the time when the measurment was taken.
     private(set) var timestamp: TimeInterval!
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     public init() {
         timestamp = Date().timeIntervalSince1970

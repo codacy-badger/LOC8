@@ -18,7 +18,7 @@ import Foundation
  */
 open class MotionActivity: Measurement {
     
-    //MARK: Properties
+    // MARK: Properties
     
     ///`MotionActivityStatus` object represent the state of the activity.
     private(set) var status: MotionActivityStatus!
@@ -26,7 +26,7 @@ open class MotionActivity: Measurement {
     ///`MotionActivityConfidence` object represent the confidance of the activity state.
     private(set) var confidence: Accuracy!
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `MotionActivity` Default initializer.
@@ -36,7 +36,6 @@ open class MotionActivity: Measurement {
         status = .unknown
         confidence = .low
     }
-    
     
     /**
       Initialize MotionActivity object
@@ -79,7 +78,7 @@ open class MotionActivity: Measurement {
          - Warning: Please make note that this method is only available for iOS 7.0 or later.
          */
         @available(iOS 7.0, *)
-        public convenience init(activity: CMMotionActivity) {
+        convenience init(activity: CMMotionActivity) {
             self.init(status: MotionActivityStatus(activity: activity), confidence: Accuracy(activity: activity))
         }
     }

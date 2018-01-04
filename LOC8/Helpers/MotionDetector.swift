@@ -13,9 +13,9 @@ open class MotinDetector: NSObject {
     /// Get currently used MotinDetector, singleton pattern
     public static let shared = MotinDetector()
     
-    //MARK:Filters
+    // MARK:Filters
     
-    //Acceleration
+    // Acceleration
     fileprivate var filter: AccelerationFilter!
     
     open var cutoffFrequency: Double = SettingsService.shared.accelerationFilterCutoffFrequency {

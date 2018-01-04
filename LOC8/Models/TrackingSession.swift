@@ -16,7 +16,7 @@ import Foundation
  */
 open class TrackingSession: Measurement {
     
-    //MARK: Properties
+    // MARK: Properties
     
     /// `EstimationHandler` object act as a deleget.
     open var estimationHandler: EstimationHandler?
@@ -37,7 +37,7 @@ open class TrackingSession: Measurement {
     /// A `Double` value represent the total distance for the session.
     open var distance: Double = 0
     
-    //MARK: Initialization
+    // MARK: Initialization
     
     /**
      `TrackingSession` Default initializer.
@@ -50,36 +50,40 @@ open class TrackingSession: Measurement {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Motion Updates
+    // MARK: Motion Updates
     
-    ///An action tregered whene the `SensorsManager` recieve a distance update.
-    @objc open func didUpdateDistance(_ notification: Notification) {
-        let distance = notification.userInfo![DefaultKeys.DistanceKey] as! NSNumber
+    /// An action tregered whene the `SensorsManager` recieve a distance update.
+    @objc
+    open func didUpdateDistance(_ notification: Notification) {
         
-        if let oldEstimation = self.currentEstimation {
+        if let distance = notification.userInfo![DefaultKeys.DistanceKey] as? NSNumber {
             
-            if oldEstimation.headings.count == 0 {
-                if let previousEstimation = previousEstimation {
-                    previousEstimation.stopEstimation((distance.doubleValue - self.distance) + oldEstimation.distance)
-                    self.distance = distance.doubleValue
-                    estimationHandler?(previousEstimation)
-                    return
+            if let oldEstimation = self.currentEstimation {
+                
+                if oldEstimation.headings.isEmpty {
+                    if let previousEstimation = previousEstimation {
+                        previousEstimation.stopEstimation((distance.doubleValue - self.distance) + oldEstimation.distance)
+                        self.distance = distance.doubleValue
+                        estimationHandler?(previousEstimation)
+                        return
+                    }
                 }
+                
+                oldEstimation.stopEstimation(distance.doubleValue - self.distance )
+                Log.info(sender: self, message: oldEstimation.description)
+                estimationHandler?(oldEstimation)
             }
             
-            oldEstimation.stopEstimation(distance.doubleValue - self.distance )
-            Log.info(sender: self, message: oldEstimation.description)
-            estimationHandler?(oldEstimation)
+            self.distance = distance.doubleValue
+            let newEstimation = Estimation()
+            newEstimation.startEstimation(estimationHandler)
+            self.estimations.append(newEstimation)
         }
-        
-        self.distance = distance.doubleValue
-        let newEstimation = Estimation()
-        newEstimation.startEstimation(estimationHandler)
-        self.estimations.append(newEstimation)
     }
     
-    ///An action tregered whene the `SensorsManager` recieve a device motion update.
-    @objc open func didUpdateDeviceMotion(_ notification: Notification) {
+    /// An action tregered whene the `SensorsManager` recieve a device motion update.
+    @objc
+    open func didUpdateDeviceMotion(_ notification: Notification) {
         
 //        let userInfo = notification.userInfo!
 //
@@ -90,7 +94,7 @@ open class TrackingSession: Measurement {
         
     }
     
-    //MARK: Controlles
+    // MARK: Controlles
     
     /**
      Starts a series of continuous estimation updates to the session. 

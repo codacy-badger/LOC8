@@ -17,7 +17,7 @@ open class AdjustmentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var valueSlider: UISlider!
     
-    open var value: Double{
+    open var value: Double {
         set {
             valueSlider.value = Float(newValue)
             valueLabel.text = String(format: "%.2f", Float(newValue))

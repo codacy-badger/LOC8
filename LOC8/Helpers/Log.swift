@@ -14,28 +14,28 @@ import Foundation
  */
 public class Log {
     
-    ///Get currently used Log, singleton pattern
+    /// Get currently used Log, singleton pattern
     public static let shared = Log()
     
-    ///Returns the log update notification. Which is use to register with notification center.
+    /// Returns the log update notification. Which is use to register with notification center.
     public static let LogUpdateNotification = Notification.Name(rawValue: "com.LOC8.LogUpdateSensorsManager")
     
-    ///An `AnyObject` object witch the log print will be restrected to.
-    ///Spacify nil for all objects.
+    /// An `AnyObject` object witch the log print will be restrected to.
+    /// Spacify nil for all objects.
     public static var restrictObject: AnyObject? = nil
     
-    ///An `LogLevel` object witch the log print will be restrected to.
-    ///Spacify nil for all levels.
+    /// An `LogLevel` object witch the log print will be restrected to.
+    /// Spacify nil for all levels.
     public static var restrictLevel: LogLevel? = nil
     
-    ///An array of `LogRecord` that represent the logs containaer.
+    /// An array of `LogRecord` that represent the logs containaer.
     private(set) var logRecords: [LogRecord]! = [] {
         didSet {
             NotificationCenter.default.post(name: Log.LogUpdateNotification, object: nil)
         }
     }
     
-    ///Returns the full log report with the header info.
+    /// Returns the full log report with the header info.
     public static var fullLog: String {
         if Log.shared.logRecords.count < 1 {
             return "No Record Has Been Loged."
@@ -47,7 +47,7 @@ public class Log {
         return text
     }
     
-    //MARK: Controlles
+    // MARK: Controlles
     
     /**
      Any error that is forcing a shutdown of the service or application to prevent data loss (or further data loss).

@@ -40,7 +40,7 @@ public class MagneticField: Measurement {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.accuracy = Accuracy(rawValue: aDecoder.decodeInteger(forKey: "accuracy"))!
-        self.field = aDecoder.decodeObject(forKey: "field") as! Vector3D
+        self.field = aDecoder.decodeObject(forKey: "field") as? Vector3D ?? Vector3D()
     }
     
     open override func encode(with aCoder: NSCoder) {
@@ -55,8 +55,6 @@ public class MagneticField: Measurement {
     
 }
 
-
-
 #if os(iOS)
     import CoreMotion
     
@@ -68,7 +66,7 @@ public class MagneticField: Measurement {
          - Parameter magneticField: `CMCalibratedMagneticField` object represent the calibrated magnetic field.
          - Warning: Please make note that this method is only available for iOS 7.0 or later.
          */
-        public convenience init(magneticField: CMCalibratedMagneticField) {
+        convenience init(magneticField: CMCalibratedMagneticField) {
             let accuracy = Accuracy(magneticField: magneticField)
             let field = Vector3D(magneticField: magneticField)
             self.init(field: field, accuracy: accuracy)

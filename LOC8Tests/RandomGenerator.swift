@@ -12,7 +12,7 @@ import LOC8
 
 public class RandomGenerator {
     
-    //MARK: Types and Numeric
+    // MARK: Types and Numeric
     
     /**
      Random boolean
@@ -40,7 +40,7 @@ public class RandomGenerator {
      */
     public class func integer(from start: Int = -2000, to end: Int = 2000) -> Int {
         
-        //Inanity check
+        // Inanity check
         if start == end {
             return start
         }
@@ -49,7 +49,7 @@ public class RandomGenerator {
         
         var maximum = end
         
-        //prevent negative crashes
+        // Prevent negative crashes
         if minimum > maximum { // swap minimum and maximum
             swap(&minimum, &maximum)
         }
@@ -63,7 +63,7 @@ public class RandomGenerator {
      Method that takes tow `Float` values that represent a range, and return a random `Float` value within that range.
      
      ```swift
-     float(-1.2, end: 10.9) //value in range [-1.2 » 10.9]
+     float(-1.2, end: 10.9) // value in range [-1.2 » 10.9]
      ```
      - Parameters:
          - start: A `Float` value represent the range start value. __Default value is -2000__
@@ -73,7 +73,7 @@ public class RandomGenerator {
      */
     public class func float(from start: Float = -2000, to end: Float = 2000) -> Float {
         
-        //Inanity check
+        // Inanity check
         if start == end {
             return start
         }
@@ -82,7 +82,7 @@ public class RandomGenerator {
         
         var maximum = end
         
-        //prevent negative crashes
+        // Prevent negative crashes
         if minimum > maximum { // swap minimum and maximum
             swap(&minimum, &maximum)
         }
@@ -103,7 +103,7 @@ public class RandomGenerator {
      Method that takes tow `Double` values that represent a range, and return a random `Double` value within that range.
      
      ```swift
-     double(-134.652, end: 301.794) //value in range [-134.652 » 301.794]
+     double(-134.652, end: 301.794) // value in range [-134.652 » 301.794]
      ```
      - Parameters:
          - start: A `Double` value represent the range start value. __Default value is -2000__
@@ -113,7 +113,7 @@ public class RandomGenerator {
      */
     public class func double(from start: Double = -2000, to end: Double = 2000) -> Double {
         
-        //Inanity check
+        // Inanity check
         if start == end {
             return start
         }
@@ -122,7 +122,7 @@ public class RandomGenerator {
         
         var maximum = end
         
-        //prevent negative crashes
+        // Prevent negative crashes
         if minimum > maximum { // swap minimum and maximum
             swap(&minimum, &maximum)
         }
@@ -137,7 +137,7 @@ public class RandomGenerator {
         return sign * random.truncatingRemainder(dividingBy: range) + minimum
     }
     
-    //MARK: Angels
+    // MARK: Angels
     
     /**
      Random Angel
@@ -145,8 +145,8 @@ public class RandomGenerator {
      Method that takes tow angles in `Angle` and return a random angle in `Angle`.
      
      ```swift
-     angel(30, max: 60) //angle is [30˚ » 60˚]
-     angel(60, max: 30) //angle is [60˚ » 360˚ » 30˚]
+     angel(30, max: 60) // angle is [30˚ » 60˚]
+     angel(60, max: 30) // angle is [60˚ » 360˚ » 30˚]
      ```
      - Parameters:
          - min: `Angle` value represent minimum angle. __Default value is 0˚__
@@ -156,7 +156,7 @@ public class RandomGenerator {
      */
     public class func angel(min: Angle = 0, max: Angle = 360) -> Angle {
         
-        //Inanity check
+        // Inanity check
         if min == max {
             return min
         }
@@ -181,8 +181,8 @@ public class RandomGenerator {
      Method that takes an angle and a deference in `Angle`, and return a random angle in `Angle` withun the range (angle ± deference).
      
      ```swift
-     angel(60, deference: 30) //angle is [30˚ » 90˚]
-     angel(0, deference: 30) //angle is [330˚ » 30˚]
+     angel(60, deference: 30) // angle is [30˚ » 90˚]
+     angel(0, deference: 30) // angle is [330˚ » 30˚]
      ```
      - Parameters:
          - angle: `Angle` value represent the base angle.
@@ -192,7 +192,7 @@ public class RandomGenerator {
      */
     public class func angel(angle: Angle, deference: Angle = 0) -> Angle {
         
-        //Inanity check
+        // Inanity check
         if deference == 0 {
             return angle
         }
@@ -208,7 +208,7 @@ public class RandomGenerator {
         
     }
     
-    //MARK: Geometry
+    // MARK: Geometry
     
     /**
      Random vector
