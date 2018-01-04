@@ -110,21 +110,16 @@ class GeometryTests: XCTestCase {
                 }
             }
             
-            // Test for Double value.
-            func rotateDouble() {
-                
-                let min = RandomGenerator.double()
-                let max = RandomGenerator.double(from: min)
-                
-                let v_1 = RandomGenerator.double(from: min, to: max)
-                let v_2 = RandomGenerator.double(from: max)
-                let v_3 = RandomGenerator.double(to: min)
-                
-                rotateTest(value: v_1, min: min, max: max)
-                rotateTest(value: v_2, min: min, max: max)
-                rotateTest(value: v_3, min: min, max: max)
-            }
-            rotateDouble()
+            let min = RandomGenerator.double()
+            let max = RandomGenerator.double(from: min)
+            
+            let v_1 = RandomGenerator.double(from: min, to: max)
+            let v_2 = RandomGenerator.double(from: max)
+            let v_3 = RandomGenerator.double(to: min)
+            
+            rotateTest(value: v_1, min: min, max: max)
+            rotateTest(value: v_2, min: min, max: max)
+            rotateTest(value: v_3, min: min, max: max)
         }
     }
     
@@ -297,6 +292,27 @@ class GeometryTests: XCTestCase {
                round(cylindrical_1.height) != round(cylindrical_3.height) ||
                round(cylindrical_1.phi)    != round(cylindrical_3.phi)    {
                 XCTFail("Error in converting spherical to cylindrical in vector:\n\(vector) \norigenal cylindrical:  \(cylindrical_1) \nconverted cylindrical: \(cylindrical_3) \n")
+            }
+        }
+    }
+
+    /*
+     Test method that test Angle model logic.
+     */
+    func testAngel() {
+        
+        for _ in 0...accuracyLimit {
+            let degree = RandomGenerator.angel()
+            let radian = degree.radian
+            let degree2 = radian.degree
+            let radian2 = degree2.radian
+            
+            if round(degree) != round(degree2) {
+                XCTFail("Error in converting radian to degree for [\(degree)º, \(degree2)º] with [\(radian)] in radian")
+            }
+            
+            if round(radian) != round(radian2) {
+                XCTFail("Error in converting degree to radian for [\(radian), \(radian2)] in radian with [\(degree2)]")
             }
         }
     }
