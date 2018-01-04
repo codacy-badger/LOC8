@@ -6,8 +6,8 @@
 //  Copyright © 2015 LOC8. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 prefix operator ~
 infix operator ~
@@ -92,13 +92,12 @@ open class Vector3D: Measurement {
         return self.cylindricalVector.height
     }
     
-    
     // MARK: Vector Properties
     
     /// Return Direction that represent the vector heading.
     open var headingDirection: Direction {
         
-        return Direction.init(theta: self.theta, phi: self.phi)
+        return Direction(theta: self.theta, phi: self.phi)
     }
     
     // MARK: Initialaization
@@ -311,7 +310,7 @@ open class Vector3D: Measurement {
          - Warning: Please make note that this method is only available for iOS 8.1 or later.
          */
         @available(iOS 8.1, *)
-        public convenience init(acceleration: CMAcceleration) {
+        convenience init(acceleration: CMAcceleration) {
             
             let x = acceleration.x * Physics.EarthGravity
             let y = acceleration.y * Physics.EarthGravity
@@ -325,7 +324,7 @@ open class Vector3D: Measurement {
          
          - Parameter rotationRate: `CMRotationRate` object represent the rotation rate vector.
          */
-        public convenience init(rotationRate: CMRotationRate) {
+        convenience init(rotationRate: CMRotationRate) {
             self.init(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z)
         }
         
@@ -336,7 +335,7 @@ open class Vector3D: Measurement {
          - Warning: Please make note that this method is only available for iOS 8.1 or later.
          */
         @available(iOS 8.1, *)
-        public convenience init(field: CMMagneticField) {
+        convenience init(field: CMMagneticField) {
             self.init(x: field.x, y: field.y, z: field.z)
         }
         
@@ -346,7 +345,7 @@ open class Vector3D: Measurement {
          - Parameter magneticField: `CMCalibratedMagneticField` object represent the calibrated magnetic field.
          - Warning: Please make note that this method is only available for iOS 7.0 or later.
          */
-        public convenience init(magneticField: CMCalibratedMagneticField) {
+        convenience init(magneticField: CMCalibratedMagneticField) {
             self.init(field: magneticField.field)
         }
     }

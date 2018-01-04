@@ -141,7 +141,7 @@ open class Rotation3D: Measurement {
          - Warning: Please make note that this method is only available for iOS 8.0 or later.
          */
         @available(iOS 8.0, *)
-        public convenience init(attitude: CMAttitude) {
+        convenience init(attitude: CMAttitude) {
             self.init()
             self.eulerAngles = EulerAngles(attitude: attitude)
             self.rotationMatrix = RotationMatrix(matrix: attitude.rotationMatrix)

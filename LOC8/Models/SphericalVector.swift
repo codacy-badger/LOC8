@@ -27,14 +27,16 @@ public struct SphericalVector: CustomStringConvertible {
     /// radial distance r _(𝜌 (rho) is often used instead)_
     ///
     /// __r ∈ [0, ∞) (r ≥ 0)__
-    private(set) var radial : Double = 0.0
+    private(set) var radial: Double = 0.0
     
-    /// `Angle` value represent the inclination angle (or polar angle) between the z-axis and the vector. measured in radian
+    /// `Angle` value represent the inclination angle (or polar angle) between the z-axis and the vector.
+    /// measured in radian
     ///
     /// __𝜃 ∈ [0, +π] rad (0° ≤ 𝜃 ≤ 180°)__
     private(set) var theta: Angle = 0.0
     
-    /// `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis. measured in radian
+    /// `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.
+    /// measured in radian
     ///
     /// __𝛷 ∈ [-π, +π) rad (-180° ≤ 𝛷 < 180°)__
     private(set) var phi: Angle = 0.0

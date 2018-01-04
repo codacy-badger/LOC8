@@ -37,7 +37,6 @@ open class MotionActivity: Measurement {
         confidence = .low
     }
     
-    
     /**
       Initialize MotionActivity object
      
@@ -79,7 +78,7 @@ open class MotionActivity: Measurement {
          - Warning: Please make note that this method is only available for iOS 7.0 or later.
          */
         @available(iOS 7.0, *)
-        public convenience init(activity: CMMotionActivity) {
+        convenience init(activity: CMMotionActivity) {
             self.init(status: MotionActivityStatus(activity: activity), confidence: Accuracy(activity: activity))
         }
     }

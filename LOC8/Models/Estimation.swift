@@ -6,8 +6,8 @@
 //  Copyright © 2015 LOC8. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 /**
  A closer type that take an `Estimation` object and retun nothing
@@ -49,7 +49,7 @@ open class Estimation: Measurement {
     
     /// A computed property return the sample mean for all the collected headings wight.
     open var mean: Double {
-        if headings.count == 0 {
+        if headings.isEmpty {
             return 0
         }
         return Double(self.wight) / Double(headings.count)
@@ -67,7 +67,6 @@ open class Estimation: Measurement {
         variance = variance / Double(headings.count - 1)
         return sqrt(variance)
     }
-    
     
     // MARK: Initialization
     
@@ -96,19 +95,20 @@ open class Estimation: Measurement {
     // MARK: Motion Updates
     
     /// An action tregered whene the `SensorsManager` recieve a heading update.
-    @objc open func didUpdateHeading (_ notification: Notification) {
+    @objc
+    open func didUpdateHeading (_ notification: Notification) {
         
-        let heading = notification.userInfo![DefaultKeys.HeadingKey] as! CLHeading
+        let heading = notification.userInfo![DefaultKeys.HeadingKey] as? CLHeading ?? CLHeading()
         
         let newHeading = Motion(angle: heading.magneticHeading)
         
-        if headings.count == 0 {
+        if headings.isEmpty {
             headings.append(newHeading)
         } else {
             
             if let oldHeading = headings.last {
                 
-                if oldHeading == newHeading{
+                if oldHeading == newHeading {
                     oldHeading.wight += 1
                 } else {
                     headings.append(newHeading)
@@ -124,7 +124,7 @@ open class Estimation: Measurement {
         
         let userInfo = notification.userInfo!
         
-        let attitude = userInfo[DefaultKeys.AttitudeKey] as! Rotation3D
+        let attitude = userInfo[DefaultKeys.AttitudeKey] as? Rotation3D ?? Rotation3D()
 //        let rotationRate = userInfo[DefaultKeys.RotationRateKey] as! Vector3D
 //        let gravity = userInfo[DefaultKeys.GravityKey] as! Vector3D
 //        let acceleration = userInfo[DefaultKeys.AccelerationKey] as! Vector3D
@@ -133,13 +133,13 @@ open class Estimation: Measurement {
         
         let newHeading = Motion(direction: velocity.headingDirection)
         
-        if headings.count == 0 {
+        if headings.isEmpty {
             headings.append(newHeading)
         } else {
             
             if let oldHeading = headings.last {
                 
-                if oldHeading == newHeading{
+                if oldHeading == newHeading {
                     oldHeading.wight += 1
                 } else {
                     headings.append(newHeading)

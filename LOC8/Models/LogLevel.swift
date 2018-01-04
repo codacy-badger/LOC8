@@ -11,7 +11,7 @@ import Foundation
 /**
  An enumenator that descrip log levels.
  */
-public enum LogLevel: Int, CustomStringConvertible{
+public enum LogLevel: Int, CustomStringConvertible {
     
     /// Any error that is forcing a shutdown of the service or application to prevent data loss (or further data loss).
     case fatal = 0

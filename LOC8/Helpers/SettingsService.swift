@@ -87,8 +87,8 @@ open class SettingsService {
             if let value = UserDefaults.standard.object(forKey: "acceleration-filter-type") as? String {
                 return FilterType(rawValue: value)
             } else {
-                UserDefaults.standard.set(FilterType.Non.rawValue, forKey: "acceleration-filter-type")
-                return FilterType.Non
+                UserDefaults.standard.set(FilterType.non.rawValue, forKey: "acceleration-filter-type")
+                return FilterType.non
             }
         }
     }
@@ -122,7 +122,7 @@ open class SettingsService {
         motionManagerSamplingFrequency = DefaultValues.DefaultSamplingFrequency
         
         accelerationFilterCutoffFrequency = DefaultValues.DefaultCutoffFrequency
-        accelerationFilterType = .Non
+        accelerationFilterType = .non
         accelerationAdaptiveFilter = true
     }
     

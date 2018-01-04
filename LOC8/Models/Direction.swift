@@ -50,32 +50,28 @@ import Foundation
  */
 public struct Direction: OptionSet, CustomStringConvertible {
     
-    // MARK:-
     // MARK: Main directions
     
     /// None
     public static let none = Direction(rawValue: 0)
     
     /// North (N): 0° = 360° in (x, y) plane
-    public static let north = Direction(rawValue:1)
+    public static let north = Direction(rawValue: 1)
     
     /// East (E): 90° in (x, y) plane
-    public static let east = Direction(rawValue:1 << 1)
+    public static let east = Direction(rawValue: 1 << 1)
     
     /// South (S): 180° in (x, y) plane
-    public static let south = Direction(rawValue:1 << 2)
+    public static let south = Direction(rawValue: 1 << 2)
     
     /// West (W): 270° in (x, y) plane
-    public static let west = Direction(rawValue:1 << 3)
+    public static let west = Direction(rawValue: 1 << 3)
     
     /// Up (U): 0° = 360° in (p, z) plane where p is the projection in (x, y) plane.
-    public static let up = Direction(rawValue:1 << 4)
+    public static let up = Direction(rawValue: 1 << 4)
     
     /// Down (D): 180° in (p, z) plane where p is the projection in (x, y) plane.
-    public static let down = Direction(rawValue:1 << 5)
-    
-    
-    // MARK:-
+    public static let down = Direction(rawValue: 1 << 5)
     
     // MARK: Horizantel direction
     
@@ -125,7 +121,6 @@ public struct Direction: OptionSet, CustomStringConvertible {
     /// and 0° = 360° in (p, z) plane where p is the projection in (x, y)
     public static let northWestUp = [Direction.north, Direction.west, Direction.up]
     
-    
     // MARK: Vertical down directions
     
     /// North Down (ND): 0° = 360° in (x, y) plane
@@ -160,12 +155,11 @@ public struct Direction: OptionSet, CustomStringConvertible {
     /// and 180° in (p, z) plane where p is the projection in (x, y) plane.
     public static let northWestDown = [Direction.north, Direction.west, Direction.down]
     
-    // MARK:-
     // MARK: Methods
     
-    public let rawValue : Int
+    public let rawValue: Int
     
-    public init(rawValue:Int){
+    public init(rawValue: Int) {
         self.rawValue = rawValue
     }
     

@@ -23,7 +23,6 @@ public struct Physics {
     public static let EarthMinMagneticField: Double = 25.0 // microteslas
 }
 
-
 /**
  # Acceleration
  
@@ -76,4 +75,3 @@ public typealias Velocity = Vector3D
  - Note: measurment unit is meater (m)
  */
 public typealias Distance = Vector3D 
-

@@ -88,7 +88,8 @@ public struct CylindricalVector: CustomStringConvertible {
      
      - Parameter rho: `Double` value represent the magnitude of the vector.
      - Parameter phi: `Angle` value represent the azimuthal angle between the projection on xy-plan and the x-axis.
-     - Parameter height: `Double` value represent the height z which the signed distance from the chosen plane to the point P.
+     - Parameter height: `Double` value represent the height z which the signed distance from the chosen plane
+     to the point P.
      */
     public init(rho: Double, phi: Angle, height: Double) {
         self.rho = rho
@@ -98,7 +99,9 @@ public struct CylindricalVector: CustomStringConvertible {
     
     // CustomStringConvertible Protocall
     public var description: String {
-        return String(format: "Cylindrical(%.2f, %.2f˚, %.2f)", Float(self.rho), Float(self.phi.degree), Float(self.height))
+        return String(format: "Cylindrical(%.2f, %.2f˚, %.2f)",
+                      Float(self.rho),
+                      Float(self.phi.degree),
+                      Float(self.height))
     }
 }
-

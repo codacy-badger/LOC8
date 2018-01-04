@@ -36,9 +36,9 @@ public struct Quaternion: CustomStringConvertible {
     /// `EulerAngles` object represent the rotation in euler angles form.
     public var eulerAngles: EulerAngles {
         
-        let roll  = atan2(2 * y * w - 2 * z * x , 1 - 2 * pow(y, 2) - 2 * pow(x, 2))
+        let roll  = atan2(2 * y * w - 2 * z * x, 1 - 2 * pow(y, 2) - 2 * pow(x, 2))
         let pitch =  asin(2 * y * z + 2 * x * w)
-        let yaw   = atan2(2 * z * w - 2 * y * x , 1 - 2 * pow(z, 2) - 2 * pow(x, 2))
+        let yaw   = atan2(2 * z * w - 2 * y * x, 1 - 2 * pow(z, 2) - 2 * pow(x, 2))
         
         return EulerAngles(roll: roll, pitch: pitch, yaw: yaw)
     }
@@ -93,7 +93,7 @@ public struct Quaternion: CustomStringConvertible {
 #if os(iOS)
     import CoreMotion
     
-    extension Quaternion {
+    public extension Quaternion {
         
         /**
          Initialize `Quaternion` object with `CMQuaternion` in iOS Core Motion.
@@ -102,7 +102,7 @@ public struct Quaternion: CustomStringConvertible {
          - Warning: Please make note that this method is only available for iOS 8.1 or later.
          */
         @available(iOS 8.1, *)
-        public init(quaternion: CMQuaternion) {
+        init(quaternion: CMQuaternion) {
             self.x = quaternion.x
             self.y = quaternion.y
             self.z = quaternion.z

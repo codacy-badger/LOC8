@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /// :nodoc:
 public typealias Angle = Double
 
@@ -16,7 +15,8 @@ public typealias Angle = Double
  The angle is the space between two intersecting lines or surfaces at or close to the point where they meet
  
  ### Discussion:
- In planar geometry, an angle is the figure formed by two rays, called the sides of the angle, sharing a common endpoint, called the vertex of the angle.
+ In planar geometry, an angle is the figure formed by two rays, called the sides of the angle,
+ sharing a common endpoint, called the vertex of the angle.
  Angles formed by two rays lie in a plane, but this plane does not have to be a Euclidean plane.
  
  [Read more](https://en.wikipedia.org/wiki/Angle) about angle.
@@ -36,7 +36,7 @@ public extension Angle {
      
      - Returns: The angle in dgree unit asuming that the current value is in radian unit.
      */
-    public var degree: Angle {
+    var degree: Angle {
         return self * 57.29577951308232286465
     }
     
@@ -54,7 +54,7 @@ public extension Angle {
      
      - Returns: The angle in radian unit asuming that the current value is in dgree unit.
      */
-    public var radian: Angle {
+    var radian: Angle {
         return self * 0.01745329251994329547
     }
 }

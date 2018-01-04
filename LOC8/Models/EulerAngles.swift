@@ -92,7 +92,7 @@ public struct EulerAngles: CustomStringConvertible {
 #if os(iOS)
     import CoreMotion
     
-    extension EulerAngles {
+    public extension EulerAngles {
         
         /**
          Initialize `EulerAngles` object with `CMAttitude` in iOS Core Motion.
@@ -101,7 +101,7 @@ public struct EulerAngles: CustomStringConvertible {
          - Warning: Please make note that this method is only available for iOS 8.1 or later.
          */
         @available(iOS 8.1, *)
-        public init(attitude: CMAttitude) {
+        init(attitude: CMAttitude) {
             self.roll = attitude.roll
             self.pitch = attitude.pitch
             self.yaw = attitude.yaw

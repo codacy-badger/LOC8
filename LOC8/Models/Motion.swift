@@ -29,7 +29,6 @@ open class Motion: Measurement {
     /// Integer value present the wight of the motion.
     open var wight: UInt = 0
     
-    
     // MARK: Initialization
     
     /**
@@ -80,12 +79,11 @@ open class Motion: Measurement {
     
     // MARK: Logical operators
     
-    public static func ==(lhs: Motion, rhs: Motion) -> Bool {
+    public static func == (lhs: Motion, rhs: Motion) -> Bool {
         return lhs.direction == rhs.direction
     }
     
-    public static func !=(lhs: Motion, rhs: Motion) -> Bool {
+    public static func != (lhs: Motion, rhs: Motion) -> Bool {
         return lhs.direction != rhs.direction
     }
 }
-
