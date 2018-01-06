@@ -177,7 +177,6 @@ class NumericalIntegrationTest: LOC8Tests {
         }
         
         test(data: self.trigonometricTastData)
-        test(data: self.polynomialTastData)
         
     }
     
@@ -191,7 +190,6 @@ class NumericalIntegrationTest: LOC8Tests {
         }
         
         test(data: self.trigonometricTastData)
-        test(data: self.polynomialTastData)
     }
     
     func testTrapezoidal() {
