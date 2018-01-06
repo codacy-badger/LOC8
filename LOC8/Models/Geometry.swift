@@ -124,7 +124,7 @@ public struct Geometry {
      Example:
      
      ```swift
-     let value = truncate(3.14159265, decimalPlaces: 4)
+     let value = Geometry.truncate(3.14159265, decimalPlaces: 4)
      // value will be 3.1415
      ```
      

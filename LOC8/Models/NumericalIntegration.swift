@@ -131,8 +131,6 @@ public class NumericalIntegration {
      
      - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Numerical_integration)
      
-     - Warning: the data set counr should be an even number, otherwise the function will return 0.
-     
      - Parameter set: represent the data set for the integration.
      - Parameter dx: represent the sampling deferance of the data set.
      
@@ -146,31 +144,22 @@ public class NumericalIntegration {
             return 0
         }
         
-        if set.count % 2 != 0 {
-            return 0
-        }
-        
-        var sum1: Double = 0.0
-        var sum2: Double = 0.0
-        
-        var i = 1
-        
-        while i < (set.count - 1) {
-            
-            let a = set[i]
-            let x1 = 4 * a
-            sum1 += x1
-            
-            let b = set[i+1]
-            let x2 = 2 * b
-            sum2 += x2
-            
-            i += 2
-        }
-        
+        let n = set.count - 1
         let x0 = set[0]
-        let xn = set[set.count - 1]
+        let xn = set[n]
         
-        return dx/3 * (x0 + (4 * sum1) + (2 * sum2) + xn)
+        var sum4x: Double = 0.0
+        var sum2x: Double = 0.0
+        
+        for i in 1..<n {
+            let x = set[i]
+            if (i % 2) == 0 {    // sum of evens. multiblay by 2
+                sum2x += 2 * x
+            } else {             // sum of odds. multibly by 4
+                sum4x += 4 * x
+            }
+        }
+        
+        return dx/3 * (x0 + sum4x + sum2x + xn)
     }
 }
