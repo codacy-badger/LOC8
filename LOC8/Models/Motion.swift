@@ -18,19 +18,18 @@ import Foundation
  */
 open class Motion: Measurement {
     
-    //MARK: Properties
+    // MARK: Properties
     
-    ///Direction value prosent the direction of the motion.
+    /// Direction value prosent the direction of the motion.
     open var direction: Direction = .north
     
-    ///Double value present the distance for the motion.
+    /// Double value present the distance for the motion.
     open var distance: Double = 0
     
-    ///Integer value present the wight of the motion.
+    /// Integer value present the wight of the motion.
     open var wight: UInt = 0
     
-    
-    //MARK: Initialization
+    // MARK: Initialization
     
     /**
      Initialize Motion object with an angel
@@ -78,14 +77,13 @@ open class Motion: Measurement {
         return result
     }
     
-    //MARK: Logical operators
+    // MARK: Logical operators
     
-    public static func ==(lhs: Motion, rhs: Motion) -> Bool {
+    public static func == (lhs: Motion, rhs: Motion) -> Bool {
         return lhs.direction == rhs.direction
     }
     
-    public static func !=(lhs: Motion, rhs: Motion) -> Bool {
+    public static func != (lhs: Motion, rhs: Motion) -> Bool {
         return lhs.direction != rhs.direction
     }
 }
-

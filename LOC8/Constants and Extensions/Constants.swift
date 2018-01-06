@@ -8,10 +8,10 @@
 
 import Foundation
 
-//MARK: Structures
+// MARK: Structures
 public struct DefaultValues {
     
-    public static let DefaultSamplingFrequency: Double = 60.0 //Hz
+    public static let DefaultSamplingFrequency: Double = 60.0 // Hz
     public static let DefaultCutoffFrequency: Double = 0.5
     public static let DefaultFloorHeight: Double = 4.0
     

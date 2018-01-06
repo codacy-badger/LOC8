@@ -15,37 +15,37 @@ open class SensorsManager: NSObject {
     /// Get currently used SensorsManager, singleton pattern
     public static let shared = SensorsManager()
     
-    ///Returns the headingg update notification. Which is use to register with notification center.
+    /// Returns the headingg update notification. Which is use to register with notification center.
     public static let  HeadingUpdateNotification = Notification.Name(rawValue: "com.LOC8.heading-update-notification")
     
-    ///Returns the distance update notification. Which is use to register with notification center.
+    /// Returns the distance update notification. Which is use to register with notification center.
     public static let  DistanceUpdateNotification = Notification.Name(rawValue: "com.LOC8.distance-update-notification")
     
-    ///Returns the altitude update notification. Which is use to register with notification center.
+    /// Returns the altitude update notification. Which is use to register with notification center.
     public static let  AltitudeUpdateNotification = Notification.Name(rawValue: "com.LOC8.altitude-update-notification")
     
-    ///Returns the floor update notification. Which is use to register with notification center.
+    /// Returns the floor update notification. Which is use to register with notification center.
     public static let  FloorUpdateNotification = Notification.Name(rawValue: "com.LOC8.floor-update-notification")
     
-    ///Returns the divice motion update notification. Which is use to register with notification center.
+    /// Returns the divice motion update notification. Which is use to register with notification center.
     public static let  DeviceMotionUpdateNotification = Notification.Name(rawValue: "com.LOC8.device-motion-update-notification")
     
-    ///Returns the setp count update notification. Which is use to register with notification center.
+    /// Returns the setp count update notification. Which is use to register with notification center.
     public static let  StepCountUpdateNotification = Notification.Name(rawValue: "com.LOC8.step-count-update-notification")
     
-    ///Returns the motion activity update notification. Which is use to register with notification center.
+    /// Returns the motion activity update notification. Which is use to register with notification center.
     public static let  MotionActivityUpdateNotification = Notification.Name(rawValue: "com.LOC8.motion-activity-update-notification")
     
-    //MARK:Filters
+    // MARK: Filters
     
-    //Motion Manager
+    // Motion Manager
     open var motionManagerSamplingFrequency: Double = DefaultValues.DefaultSamplingFrequency {
         didSet {
             setupMotionManager()
         }
     }
     
-    //MARK:Current Measurements
+    // MARK: Current Measurements
     
     private(set) var currentAcceleration: Acceleration!
     
@@ -67,7 +67,7 @@ open class SensorsManager: NSObject {
     
     private(set) var currentMotionActivity: MotionActivity = MotionActivity()
     
-    //MARK:Properties
+    // MARK: Properties
     
     fileprivate var pedometer: CMPedometer!
     
@@ -79,7 +79,7 @@ open class SensorsManager: NSObject {
     
     fileprivate var motionActivityManager: CMMotionActivityManager!
     
-    //MARK: Initialization
+    // MARK: Initialization
     
     public override init() {
         super.init()
@@ -260,7 +260,7 @@ open class SensorsManager: NSObject {
         }
     }
     
-    //MARK:Controlles
+    // MARK: Controlles
     
     open func reset() {
         motionManagerSamplingFrequency = DefaultValues.DefaultSamplingFrequency
@@ -287,7 +287,7 @@ open class SensorsManager: NSObject {
         setupMotionActivityManager()
     }
     
-    //MARK:Data Display
+    // MARK: Data Display
     
     fileprivate func printPedometerData(_ data: CMPedometerData) -> String {
         
@@ -334,7 +334,7 @@ open class SensorsManager: NSObject {
     
 }
 
-//MARK:Location Manager Delegate
+// MARK: Location Manager Delegate
 extension SensorsManager: CLLocationManagerDelegate {
 
     public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {

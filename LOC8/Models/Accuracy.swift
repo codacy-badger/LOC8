@@ -11,8 +11,7 @@ import Foundation
 /**
  Enumerates the level of accuracy.
  */
-public enum Accuracy : Int, CustomStringConvertible {
-    
+public enum Accuracy: Int, CustomStringConvertible {
     
     /// Accuracy is low.
     case none = 0
@@ -43,13 +42,14 @@ public enum Accuracy : Int, CustomStringConvertible {
 #if os(iOS)
     import CoreMotion
     public extension Accuracy {
+        
         /**
          Initialize `Accuracy` object with `CMMotionActivityConfidence` in iOS Core Motion.
          
          - Parameter confidence: `CMAccuracy` object represent the motion activity confidence.
          - Warning: Please make note that this method is only available for iOS 7.0 or later.
          */
-        public init(confidence: CMMotionActivityConfidence) {
+        init(confidence: CMMotionActivityConfidence) {
             switch confidence {
             case .low:
                 self = .low
@@ -60,14 +60,13 @@ public enum Accuracy : Int, CustomStringConvertible {
             }
         }
         
-        
         /**
          Initialize `Accuracy` object with `CMMotionActivity` in iOS Core Motion.
          
          - Parameter activity: `CMMotionActivity` object represent the motion activity.
          - Warning: Please make note that this method is only available for iOS 7.0 or later.
          */
-        public init(activity: CMMotionActivity) {
+        init(activity: CMMotionActivity) {
             self.init(confidence: activity.confidence)
         }
         
@@ -77,7 +76,7 @@ public enum Accuracy : Int, CustomStringConvertible {
          - Parameter accuracy: `CMAccuracy` object represent the motion activity confidence.
          - Warning: Please make note that this method is only available for iOS 7.0 or later.
          */
-        public init(accuracy: CMMagneticFieldCalibrationAccuracy) {
+        init(accuracy: CMMagneticFieldCalibrationAccuracy) {
             switch accuracy {
             case .uncalibrated:
                 self = .none
@@ -90,16 +89,14 @@ public enum Accuracy : Int, CustomStringConvertible {
             }
         }
         
-        
         /**
          Initialize `Accuracy` object with `CMCalibratedMagneticField` in iOS Core Motion.
          
          - Parameter activity: `CMCalibratedMagneticField` object represent the motion activity.
          - Warning: Please make note that this method is only available for iOS 7.0 or later.
          */
-        public init(magneticField: CMCalibratedMagneticField) {
+        init(magneticField: CMCalibratedMagneticField) {
             self.init(accuracy: magneticField.accuracy)
         }
     }
 #endif
-

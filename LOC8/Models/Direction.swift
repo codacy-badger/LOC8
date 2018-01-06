@@ -50,122 +50,116 @@ import Foundation
  */
 public struct Direction: OptionSet, CustomStringConvertible {
     
-    //MARK:-
-    //MARK: Main directions
+    // MARK: Main directions
     
-    ///None
+    /// None
     public static let none = Direction(rawValue: 0)
     
-    ///North (N): 0° = 360° in (x, y) plane
-    public static let north = Direction(rawValue:1)
+    /// North (N): 0° = 360° in (x, y) plane
+    public static let north = Direction(rawValue: 1)
     
-    ///East (E): 90° in (x, y) plane
-    public static let east = Direction(rawValue:1 << 1)
+    /// East (E): 90° in (x, y) plane
+    public static let east = Direction(rawValue: 1 << 1)
     
-    ///South (S): 180° in (x, y) plane
-    public static let south = Direction(rawValue:1 << 2)
+    /// South (S): 180° in (x, y) plane
+    public static let south = Direction(rawValue: 1 << 2)
     
-    ///West (W): 270° in (x, y) plane
-    public static let west = Direction(rawValue:1 << 3)
+    /// West (W): 270° in (x, y) plane
+    public static let west = Direction(rawValue: 1 << 3)
     
-    ///Up (U): 0° = 360° in (p, z) plane where p is the projection in (x, y) plane.
-    public static let up = Direction(rawValue:1 << 4)
+    /// Up (U): 0° = 360° in (p, z) plane where p is the projection in (x, y) plane.
+    public static let up = Direction(rawValue: 1 << 4)
     
-    ///Down (D): 180° in (p, z) plane where p is the projection in (x, y) plane.
-    public static let down = Direction(rawValue:1 << 5)
+    /// Down (D): 180° in (p, z) plane where p is the projection in (x, y) plane.
+    public static let down = Direction(rawValue: 1 << 5)
     
+    // MARK: Horizantel direction
     
-    //MARK:-
-    
-    //MARK: Horizantel direction
-    
-    ///North East (NE): 45° in (x, y) plane.
+    /// North East (NE): 45° in (x, y) plane.
     public static let northEast = [Direction.north, Direction.east]
     
-    ///South East (SE): 135° in (x, y) plane.
+    /// South East (SE): 135° in (x, y) plane.
     public static let southEast = [Direction.south, Direction.east]
     
-    ///South West (SW): 225° in (x, y) plane.
+    /// South West (SW): 225° in (x, y) plane.
     public static let southWest = [Direction.south, Direction.west]
     
-    ///North West (NW): 315° in (x, y) plane.
+    /// North West (NW): 315° in (x, y) plane.
     public static let northWest = [Direction.north, Direction.west]
     
-    //MARK: Vertical up directions
+    // MARK: Vertical up directions
     
-    ///North Up (NU): 0° = 360° in (x, y) plane
-    ///and 0° = 360° in (p, z) plane where p is the projection in (x, y) plane.
+    /// North Up (NU): 0° = 360° in (x, y) plane
+    /// and 0° = 360° in (p, z) plane where p is the projection in (x, y) plane.
     public static let northUp = [Direction.north, Direction.up]
     
-    ///North East Up (NEU): 45° in (x, y) plane
-    ///and 0° = 360° in (p, z) plane where p is the projection in (x, y) plane.
+    /// North East Up (NEU): 45° in (x, y) plane
+    /// and 0° = 360° in (p, z) plane where p is the projection in (x, y) plane.
     public static let northEastUp = [Direction.north, Direction.east, Direction.up]
     
-    ///East Up (EU): 90° in (x, y) plane
-    ///and 0° = 360° in (p, z) plane where p is the projection in (x, y)
+    /// East Up (EU): 90° in (x, y) plane
+    /// and 0° = 360° in (p, z) plane where p is the projection in (x, y)
     public static let eastUp = [Direction.east, Direction.up]
     
-    ///South East Up (SEU): 135° in (x, y) plane
-    ///and 0° = 360° in (p, z) plane where p is the projection in (x, y)
+    /// South East Up (SEU): 135° in (x, y) plane
+    /// and 0° = 360° in (p, z) plane where p is the projection in (x, y)
     public static let southEastUp = [Direction.south, Direction.east, Direction.up]
     
-    ///South UP (SU): 180° in (x, y) plane
-    ///and 0° = 360° in (p, z) plane where p is the projection in (x, y)
+    /// South UP (SU): 180° in (x, y) plane
+    /// and 0° = 360° in (p, z) plane where p is the projection in (x, y)
     public static let southUp = [Direction.south, Direction.up]
     
-    ///South West UP (SWU): 225° in (x, y) plane
-    ///and 0° = 360° in (p, z) plane where p is the projection in (x, y)
+    /// South West UP (SWU): 225° in (x, y) plane
+    /// and 0° = 360° in (p, z) plane where p is the projection in (x, y)
     public static let southWestUp = [Direction.south, Direction.west, Direction.up]
     
-    ///West UP (WU): 270° in (x, y) plane
-    ///and 0° = 360° in (p, z) plane where p is the projection in (x, y)
+    /// West UP (WU): 270° in (x, y) plane
+    /// and 0° = 360° in (p, z) plane where p is the projection in (x, y)
     public static let westUp = [Direction.west, Direction.up]
     
-    ///North West UP (NWU): 315° in (x, y) plane
-    ///and 0° = 360° in (p, z) plane where p is the projection in (x, y)
+    /// North West UP (NWU): 315° in (x, y) plane
+    /// and 0° = 360° in (p, z) plane where p is the projection in (x, y)
     public static let northWestUp = [Direction.north, Direction.west, Direction.up]
     
+    // MARK: Vertical down directions
     
-    //MARK: Vertical down directions
-    
-    ///North Down (ND): 0° = 360° in (x, y) plane
-    ///and 180° in (p, z) plane where p is the projection in (x, y) plane.
+    /// North Down (ND): 0° = 360° in (x, y) plane
+    /// and 180° in (p, z) plane where p is the projection in (x, y) plane.
     public static let northDown = [Direction.north, Direction.down]
     
-    ///North East Down (NED): 45° in (x, y) plane
-    ///and 180° in (p, z) plane where p is the projection in (x, y) plane.
+    /// North East Down (NED): 45° in (x, y) plane
+    /// and 180° in (p, z) plane where p is the projection in (x, y) plane.
     public static let northEastDown = [Direction.north, Direction.east, Direction.down]
     
-    ///East Down (ED): 90° in (x, y) plane
-    ///and 180° in (p, z) plane where p is the projection in (x, y) plane.
+    /// East Down (ED): 90° in (x, y) plane
+    /// and 180° in (p, z) plane where p is the projection in (x, y) plane.
     public static let eastDown = [Direction.east, Direction.down]
     
-    ///South East Down (SED): 135° in (x, y) plane
-    ///and 180° in (p, z) plane where p is the projection in (x, y) plane.
+    /// South East Down (SED): 135° in (x, y) plane
+    /// and 180° in (p, z) plane where p is the projection in (x, y) plane.
     public static let southEastDown = [Direction.south, Direction.east, Direction.down]
     
-    ///South Down (SD): 180° in (x, y) plane
-    ///and 180° in (p, z) plane where p is the projection in (x, y) plane.
+    /// South Down (SD): 180° in (x, y) plane
+    /// and 180° in (p, z) plane where p is the projection in (x, y) plane.
     public static let southDown = [Direction.south, Direction.down]
     
-    ///South West Down (SWD): 225° in (x, y) plane
-    ///and 180° in (p, z) plane where p is the projection in (x, y) plane.
+    /// South West Down (SWD): 225° in (x, y) plane
+    /// and 180° in (p, z) plane where p is the projection in (x, y) plane.
     public static let southWestDown = [Direction.south, Direction.west, Direction.down]
     
-    ///West Down (WD): 270° in (x, y) plane
-    ///and 180° in (p, z) plane where p is the projection in (x, y) plane.
+    /// West Down (WD): 270° in (x, y) plane
+    /// and 180° in (p, z) plane where p is the projection in (x, y) plane.
     public static let westDown = [Direction.west, Direction.down]
     
-    ///North West Down (NWD): 315° in (x, y) plane
-    ///and 180° in (p, z) plane where p is the projection in (x, y) plane.
+    /// North West Down (NWD): 315° in (x, y) plane
+    /// and 180° in (p, z) plane where p is the projection in (x, y) plane.
     public static let northWestDown = [Direction.north, Direction.west, Direction.down]
     
-    //MARK:-
-    //MARK: Methods
+    // MARK: Methods
     
-    public let rawValue : Int
+    public let rawValue: Int
     
-    public init(rawValue:Int){
+    public init(rawValue: Int) {
         self.rawValue = rawValue
     }
     

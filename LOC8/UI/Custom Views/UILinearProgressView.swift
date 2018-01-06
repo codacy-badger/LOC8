@@ -8,11 +8,11 @@
 
 import UIKit
 
-//MARK: UILinearProgressView
+// MARK: UILinearProgressView
 @IBDesignable
 open class UILinearProgressView: UIView {
     
-    //MARK:UI Elements
+    // MARK: UI Elements
     @IBInspectable open var titel: String = "" {
         didSet {
             titelLabel.text = titel
@@ -62,14 +62,14 @@ open class UILinearProgressView: UIView {
         }
     }
     
-    //MARK:UI Objects
+    // MARK: UI Objects
     private(set) var titelLabel: UILabel!
     
     private(set) var progress: UIProgressView!
     
     private(set) var valueLabel: UILabel!
     
-    //MARK: Initialization
+    // MARK: Initialization
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -123,11 +123,11 @@ open class UILinearProgressView: UIView {
     }
 }
 
-//MARK: UIDifferentialLinearProgressView
+// MARK: UIDifferentialLinearProgressView
 @IBDesignable
 open class UIDifferentialLinearProgressView: UIView {
     
-    //MARK:UI Elements
+    // MARK: UI Elements
     @IBInspectable open var titel: String = "" {
         didSet {
             titelLabel.text = titel
@@ -188,7 +188,7 @@ open class UIDifferentialLinearProgressView: UIView {
         }
     }
     
-    //MARK:UI Objects
+    // MARK: UI Objects
     private(set) var titelLabel: UILabel!
     
     private(set) var leftProgress: UIProgressView!
@@ -197,7 +197,7 @@ open class UIDifferentialLinearProgressView: UIView {
     
     private(set) var valueLabel: UILabel!
     
-    //MARK: Initialization
+    // MARK: Initialization
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -263,11 +263,11 @@ open class UIDifferentialLinearProgressView: UIView {
     }
 }
 
-//MARK: UIDiscreteProgressView
+// MARK: UIDiscreteProgressView
 @IBDesignable
 open class UIDiscreteProgressView: UIView {
     
-    //MARK:UI Elements
+    // MARK: UI Elements
     @IBInspectable open var numberOfValues: UInt = 0 {
         didSet {
             self.setNeedsDisplay()
@@ -292,11 +292,11 @@ open class UIDiscreteProgressView: UIView {
         }
     }
     
-    //MARK:UI Objects
+    // MARK: UI Objects
     fileprivate var mainLayer: CAShapeLayer!
     fileprivate var barsLayars: [CAShapeLayer] = []
     
-    //MARK: Initialization
+    // MARK: Initialization
 //    override public init(frame: CGRect) {
 //        super.init(frame: frame)
 //        setup()
@@ -315,7 +315,7 @@ open class UIDiscreteProgressView: UIView {
 //        #endif
 //    }
     
-    //MARK:UI Drawings
+    // MARK: UI Drawings
     open override func draw(_ rect: CGRect) {
         super.draw(rect)
         

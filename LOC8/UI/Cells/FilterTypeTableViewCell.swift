@@ -39,17 +39,17 @@ open class FilterTypeTableViewCell: UITableViewCell {
     
     fileprivate func typeFor(_ index: Int) -> FilterType {
         switch index {
-        case 1: return .Lowpass
-        case 2: return .Highpass
-        default: return .Non
+        case 1: return .lowpass
+        case 2: return .highpass
+        default: return .non
         }
     }
     
     fileprivate func indexFor(_ type: FilterType) -> Int {
         switch type {
-        case .Non: return 0
-        case .Lowpass: return 1
-        case .Highpass: return 2
+        case .non: return 0
+        case .lowpass: return 1
+        case .highpass: return 2
         }
     }
     

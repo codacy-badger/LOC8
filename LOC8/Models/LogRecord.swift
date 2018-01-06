@@ -11,20 +11,19 @@ import Foundation
 /**
  A class represent a log record.
  */
-public class LogRecord : NSObject,  NSCoding {
+public class LogRecord: NSObject, NSCoding {
     
-    ///the sender object.
+    /// The sender object.
     private(set) var sender: AnyObject!
     
-    ///the logging content message that will be dispalyed
+    /// The logging content message that will be dispalyed
     private(set) var message: String!
     
-    ///the time of logging, if it's nil it will record the current time (now).
+    /// The time of logging, if it's nil it will record the current time (now).
     private(set) var time: TimeInterval!
     
-    ///the logging level Eg. (error, info, warning.. etc.)
+    /// The logging level Eg. (error, info, warning.. etc.)
     private(set) var level: LogLevel!
-    
     
     /**
      # Initializer
@@ -35,24 +34,23 @@ public class LogRecord : NSObject,  NSCoding {
      - Parameter time: the time of logging, if it's nil it will record the current time (now).
      - Parameter level: the logging level Eg. (error, info, warning.. etc.)
      */
-    public init(sender: AnyObject, message: String , time: TimeInterval? = nil, level: LogLevel) {
+    public init(sender: AnyObject, message: String, time: TimeInterval? = nil, level: LogLevel) {
         super.init()
         self.sender = sender
         self.message = message
         self.level = level
         if let time = time {
             self.time = time
-        }
-        else {
+        } else {
             self.time = NSDate().timeIntervalSince1970
         }
     }
     
     public required init?(coder aDecoder: NSCoder) {
         self.sender = aDecoder.decodeObject(forKey: "sender") as AnyObject!
-        self.message = aDecoder.decodeObject(forKey: "message") as! String
-        self.time = aDecoder.decodeObject(forKey: "time") as! TimeInterval
-        self.level = LogLevel(rawValue: aDecoder.decodeObject(forKey: "level") as! Int)
+        self.message = aDecoder.decodeObject(forKey: "message") as? String ?? ""
+        self.time = aDecoder.decodeObject(forKey: "time") as? TimeInterval ?? 0
+        self.level = LogLevel(rawValue: aDecoder.decodeInteger(forKey: "level"))
     }
     
     public func encode(with aCoder: NSCoder) {
@@ -88,7 +86,7 @@ public class LogRecord : NSObject,  NSCoding {
             }
         }
         
-        //Print record to console
+        // Print record to console
         switch self.level {
         case .debug:
             Swift.debugPrint(self.description)

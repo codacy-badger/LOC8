@@ -12,7 +12,7 @@ import SceneKit
 
 open class MapViewController: UIViewController {
     
-    //MARK:Properties
+    // MARK: Properties
     @IBOutlet weak var compass: UICompassView!
     
     @IBOutlet var sceneView: SCNView!
@@ -27,7 +27,7 @@ open class MapViewController: UIViewController {
         return self.sceneView.scene!.rootNode.childNodes[0]
     }
     
-    //MARK:Lifcycle
+    // MARK: Lifcycle
     override open func viewDidLoad() {
         super.viewDidLoad()
         
@@ -92,7 +92,7 @@ open class MapViewController: UIViewController {
         
     }
     
-    // MARK:Drawing
+    // MARK: Drawing
     func drawData() {
         
         var lastPosition = SCNVector3Make(0, 0, 0)
@@ -100,12 +100,12 @@ open class MapViewController: UIViewController {
         var lastDirection: Direction = .north // whatever, it will be reset
         let scene = self.sceneView.scene!
         
-        //Clear all the previous nodes
+        // Clear all the previous nodes
         for node in scene.rootNode.childNodes {
             node.removeFromParentNode()
         }
         
-        //Draw the new nodes
+        // Draw the new nodes
         for movement in path.movements {
             if index == 0 {
                 lastDirection = movement.direction
@@ -141,7 +141,7 @@ open class MapViewController: UIViewController {
         
     }
     
-    //MARK:Event contolles and IBActions
+    // MARK: Event contolles and IBActions
     open func refreshSchene() {
         if self.trackingSession != nil {
             path = Path(data: self.trackingSession.trackingMap())
@@ -170,7 +170,7 @@ open class MapViewController: UIViewController {
         
     }
     
-    //MARK:Receiving and handling motion values
+    // MARK: Receiving and handling motion values
     @objc open func didUpdateHeading(_ notification: Notification) {
         
         let heading = notification.userInfo![DefaultKeys.HeadingKey] as! CLHeading

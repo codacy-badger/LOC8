@@ -28,19 +28,19 @@ public struct RotationMatrix: CustomStringConvertible {
     var m32: Double = 0.0
     var m33: Double = 0.0
     
-    ///EulerAngles object represent the rotation in euler angles form
+    /// EulerAngles object represent the rotation in euler angles form
     public var eulerAngles: EulerAngles {
         var yaw: Angle = 0
         var pitch: Angle = 0
         var roll: Angle = 0
         
-        if (m21 > 0.998) { // singularity at north pole
+        if m21 > 0.998 { // singularity at north pole
             yaw = atan2(m13, m33)
             pitch = (Double.pi / 2) / 2
             roll = 0
         }
         
-        if (m21 < -0.998) { // singularity at south pole
+        if m21 < -0.998 { // singularity at south pole
             yaw = atan2(m13, m33)
             pitch = -(Double.pi / 2) / 2
             roll = 0
@@ -53,7 +53,7 @@ public struct RotationMatrix: CustomStringConvertible {
         return EulerAngles(roll: roll, pitch: pitch, yaw: yaw)
     }
     
-    ///Quaternion object represent the rotation in quaternion form.
+    /// Quaternion object represent the rotation in quaternion form.
     public var quaternion: Quaternion {
         let w = sqrt(1 + m11 + m22 + m33) / 2
         let x = (m23 - m32) / (w * 4)
@@ -62,7 +62,7 @@ public struct RotationMatrix: CustomStringConvertible {
         return Quaternion(x: x, y: y, z: z, w: w)
     }
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `RotationMatrix` Default initializer.
@@ -79,7 +79,7 @@ public struct RotationMatrix: CustomStringConvertible {
 #if os(iOS)
     import CoreMotion
     
-    extension RotationMatrix {
+    public extension RotationMatrix {
         
         /**
          Initialize `RotationMatrix` object with `CMRotationMatrix` in iOS Core Motion.
@@ -88,7 +88,7 @@ public struct RotationMatrix: CustomStringConvertible {
          - Warning: Please make note that this method is only available for iOS 8.1 or later.
          */
         @available(iOS 8.1, *)
-        public init(matrix: CMRotationMatrix) {
+        init(matrix: CMRotationMatrix) {
             self.m11 = matrix.m11
             self.m12 = matrix.m12
             self.m13 = matrix.m13

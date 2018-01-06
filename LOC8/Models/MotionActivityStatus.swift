@@ -11,25 +11,25 @@ import Foundation
 /**
  An estimate of the user's activity based on the motion of the device.
  */
-public enum MotionActivityStatus : Int, CustomStringConvertible {
+public enum MotionActivityStatus: Int, CustomStringConvertible {
     
-    ///The state when the device is on a walking person.
+    /// The state when the device is on a walking person.
     case walking = 0
     
-    ///The state when the device is on a running person.
+    /// The state when the device is on a running person.
     case running = 1
     
-    ///The state when the device is in a vehicle.
+    /// The state when the device is in a vehicle.
     case automotive = 2
     
-    ///The state when the device is not moving.
+    /// The state when the device is not moving.
     case stationary = 3
     
-    ///The state when the device is on a bicycle.
+    /// The state when the device is on a bicycle.
     case cycling = 4
     
-    ///The state when there is no estimate of the current state.
-    ///This can happen if the device was turned off.
+    /// The state when there is no estimate of the current state.
+    /// This can happen if the device was turned off.
     case unknown = 5
     
     public var description: String {
@@ -50,7 +50,6 @@ public enum MotionActivityStatus : Int, CustomStringConvertible {
     }
 }
 
-
 #if os(iOS)
     import CoreMotion
     
@@ -63,7 +62,7 @@ public enum MotionActivityStatus : Int, CustomStringConvertible {
          - Warning: Please make note that this method is only available for iOS 7.0 or later.
          */
         @available(iOS 7.0, *)
-        public init(activity: CMMotionActivity) {
+        init(activity: CMMotionActivity) {
             if activity.walking {
                 self = .walking
             } else if activity.running {

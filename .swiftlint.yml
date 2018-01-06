@@ -1,0 +1,53 @@
+included:
+  - LOC8/Models
+excluded:
+  - LOC8/Helpers
+  - LOC8/Graphics
+  - LOC8/UI
+  - LOC8 App
+  - LOC8Test
+opt_in_rules: # some rules are only opt-in
+  - empty_count
+  - file_header
+  - explicit_init
+  - closure_spacing
+  - overridden_super_call
+  - redundant_nil_coalescing
+  - private_outlet
+  - nimble_operator
+  - attributes
+  - operator_usage_whitespace
+  - closure_end_indentation
+  - first_where
+  - sorted_imports
+  - object_literal
+  - number_separator
+  - prohibited_super_call
+  - fatal_error_message
+  - vertical_parameter_alignment_on_call
+  - let_var_whitespace
+  - unneeded_parentheses_in_closure_argument
+  - extension_access_modifier
+  - pattern_matching_keywords
+  - array_init
+  - literal_expression_end_indentation
+
+disabled_rules: # rule identifiers to exclude from running
+  # - leading_whitespace
+  - trailing_whitespace
+  - number_separator
+  - identifier_name
+  - line_length
+  - shorthand_operator
+  - operator_usage_whitespace
+
+
+file_header:
+  required_pattern: |
+                    \/\/
+                    \/\/  .*?\.swift
+                    \/\/  LOC8
+                    \/\/
+                    \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{2}\.
+                    \/\/  Copyright © \d{4} LOC8\. All rights reserved\.
+                    \/\/

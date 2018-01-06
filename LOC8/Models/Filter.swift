@@ -20,7 +20,7 @@ public enum FilterType: String {
      
      - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/Low-pass_filter).
      */
-    case Lowpass = "Lowpass"
+    case lowpass = "Lowpass"
     
     /**
      A high-pass filter is a filter that passes signals with a frequency higher than a certain cutoff frequency and attenuates signals with frequencies lower than the cutoff frequency.
@@ -29,10 +29,10 @@ public enum FilterType: String {
      
      - SeeAlso: For more information and details, see [Wikipedia](http://en.wikipedia.org/wiki/High-pass_filter).
      */
-    case Highpass = "Highpass"
+    case highpass = "Highpass"
     
-    ///No filter type just pass the data as it is.
-    case Non = "Non"
+    /// No filter type just pass the data as it is.
+    case non = "Non"
 }
 
 /**
@@ -49,7 +49,7 @@ public enum FilterType: String {
  */
 open class Filter: NSObject {
     
-    //MARK: Properties
+    // MARK: Properties
     
     ///`Double` value represent the filter minimum step.
     fileprivate let minStep = 0.02
@@ -66,25 +66,25 @@ open class Filter: NSObject {
      */
     open var adaptive: Bool = true
     
-    ///A `Double` value that represent the filter time constant.
+    /// A `Double` value that represent the filter time constant.
     open let filterConstant: Double!
     
-    ///A `FilterType` value that represent the filter type.
+    /// A `FilterType` value that represent the filter type.
     open let type: FilterType!
     
-    ///A `Double` value that represent the current value.
+    /// A `Double` value that represent the current value.
     private(set) var value: Double = 0
     
-    ///A `Double` value that represent the last value.
+    /// A `Double` value that represent the last value.
     fileprivate var lastValue: Double = 0
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `Filter` Default initializer.
      */
     public override init() {
-        self.type = .Non
+        self.type = .non
         filterConstant = 0
         super.init()
     }
@@ -104,15 +104,15 @@ open class Filter: NSObject {
         let RC: Double = 1.0 / freq // time constant
         
         switch type {
-        case .Lowpass: filterConstant = dt / (dt + RC)
-        case .Highpass: filterConstant = RC / (dt + RC)
-        case .Non: filterConstant = 0
+        case .lowpass: filterConstant = dt / (dt + RC)
+        case .highpass: filterConstant = RC / (dt + RC)
+        case .non: filterConstant = 0
         }
         
         super.init()
     }
     
-    //MARK: Methods
+    // MARK: Methods
     
     /**
      Add new value to the filter.
@@ -121,9 +121,9 @@ open class Filter: NSObject {
     open func addValue(_ value: Double) {
         
         switch self.type! {
-        case FilterType.Lowpass:self.addValueToLowpass(value)
-        case FilterType.Highpass:self.addValueToHighpass(value)
-        case .Non: self.addValueWithoutFilter(value)
+        case FilterType.lowpass:self.addValueToLowpass(value)
+        case FilterType.highpass:self.addValueToHighpass(value)
+        case .non: self.addValueWithoutFilter(value)
         }
     }
     
@@ -176,7 +176,7 @@ open class Filter: NSObject {
     }
     
     open override var description: String {
-        return (adaptive ? "Adaptive " : "") + (type != .Non ? "\(type) " : "") + "Filter"
+        return (adaptive ? "Adaptive " : "") + (type != .non ? "\(type) " : "") + "Filter"
     }
 }
 
@@ -195,7 +195,7 @@ open class Filter: NSObject {
  */
 open class AccelerationFilter: NSObject {
     
-    //MARK: Properties
+    // MARK: Properties
     
     ///`Double` value represent the filter minimum step.
     fileprivate let minStep = 0.02
@@ -212,25 +212,25 @@ open class AccelerationFilter: NSObject {
      */
     open var adaptive: Bool = true
     
-    ///A `Double` value that represent the filter time constant.
+    /// A `Double` value that represent the filter time constant.
     open let filterConstant: Double!
     
-    ///A `FilterType` value that represent the filter type.
+    /// A `FilterType` value that represent the filter type.
     open let type: FilterType!
     
-    ///A `Acceleration` value that represent the current acceleration.
+    /// A `Acceleration` value that represent the current acceleration.
     private(set) var value: Acceleration = Acceleration()
     
-    ///A `Acceleration` value that represent the last acceleration.
+    /// A `Acceleration` value that represent the last acceleration.
     fileprivate var lastValue: Acceleration = Acceleration()
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `Filter` Default initializer.
      */
     public override init() {
-        self.type = .Non
+        self.type = .non
         filterConstant = 0
         super.init()
     }
@@ -250,15 +250,15 @@ open class AccelerationFilter: NSObject {
         let RC: Double = 1.0 / freq // time constant
         
         switch type {
-        case .Lowpass: filterConstant = dt / (dt + RC)
-        case .Highpass: filterConstant = RC / (dt + RC)
-        case .Non: filterConstant = 0
+        case .lowpass: filterConstant = dt / (dt + RC)
+        case .highpass: filterConstant = RC / (dt + RC)
+        case .non: filterConstant = 0
         }
         
         super.init()
     }
     
-    //MARK: Methods
+    // MARK: Methods
     
     /**
      Add new value to the filter.
@@ -267,9 +267,9 @@ open class AccelerationFilter: NSObject {
     open func addValue(_ value: Acceleration) {
         
         switch self.type! {
-        case FilterType.Lowpass:self.addValueToLowpass(value)
-        case FilterType.Highpass:self.addValueToHighpass(value)
-        case .Non: self.addValueWithoutFilter(value)
+        case FilterType.lowpass:self.addValueToLowpass(value)
+        case FilterType.highpass:self.addValueToHighpass(value)
+        case .non: self.addValueWithoutFilter(value)
         }
     }
     
@@ -339,6 +339,6 @@ open class AccelerationFilter: NSObject {
     }
     
     open override var description: String {
-        return "Acceleration" + (adaptive ? "Adaptive " : "") + (type != .Non ? "\(type) " : "") + "Filter"
+        return "Acceleration" + (adaptive ? "Adaptive " : "") + (type != .non ? "\(type) " : "") + "Filter"
     }
 }

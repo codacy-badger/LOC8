@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -656,6 +657,9 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="SRC-jI-YUG"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -680,13 +684,13 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="6SU-a1-fYO" viewBased="YES" id="D2f-1Z-GtM">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="370"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="297" minWidth="40" maxWidth="1000" id="Iff-ay-60T">
+                                                <tableColumn identifier="" width="297" minWidth="40" maxWidth="1000" id="Iff-ay-60T">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Availabile Peers">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -712,23 +716,21 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N4m-Iv-qeH">
-                                                                    <rect key="frame" x="183" y="-2" width="112" height="32"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="100" id="S54-x4-uKM"/>
-                                                                    </constraints>
+                                                                    <rect key="frame" x="203" y="-2" width="92" height="32"/>
                                                                     <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2fE-Hm-96X">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system"/>
+                                                                        <connections>
+                                                                            <action selector="ConnectionDidPressed:" target="SCI-28-RDD" id="Vci-Qy-ouK"/>
+                                                                        </connections>
                                                                     </buttonCell>
-                                                                    <connections>
-                                                                        <action selector="connectButtonDidPressed:" target="SCI-28-RDD" id="KlN-PZ-SjC"/>
-                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="N4m-Iv-qeH" firstAttribute="centerY" secondItem="SCI-28-RDD" secondAttribute="centerY" id="0wD-Qj-T45"/>
                                                                 <constraint firstAttribute="trailing" secondItem="wZN-uR-tiE" secondAttribute="trailing" id="1oM-R9-exE"/>
                                                                 <constraint firstItem="wZN-uR-tiE" firstAttribute="leading" secondItem="SCI-28-RDD" secondAttribute="leading" constant="8" id="3Og-et-QJd"/>
+                                                                <constraint firstItem="N4m-Iv-qeH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SCI-28-RDD" secondAttribute="leading" constant="20" symbolic="YES" id="8xQ-br-qD1"/>
                                                                 <constraint firstItem="wZN-uR-tiE" firstAttribute="centerY" secondItem="SCI-28-RDD" secondAttribute="centerY" id="LFU-26-6pX"/>
                                                                 <constraint firstAttribute="trailing" secondItem="N4m-Iv-qeH" secondAttribute="trailing" constant="8" id="zdC-0F-AIR"/>
                                                             </constraints>
@@ -742,7 +744,6 @@
                                             </tableColumns>
                                         </tableView>
                                     </subviews>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="xIT-6b-dQ9">
                                     <rect key="frame" x="0.0" y="377" width="300" height="16"/>

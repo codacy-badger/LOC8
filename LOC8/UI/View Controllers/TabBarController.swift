@@ -27,7 +27,7 @@ public struct TabBarItemColor {
 
 open class TabBarController : UITabBarController, UITabBarControllerDelegate {
     
-    //MARK:Properties
+    // MARK: Properties
     fileprivate var navigationBar: UINavigationBar {
         return self.navigationController!.navigationBar
     }
@@ -36,7 +36,7 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
     
     open var peer: MCPeerID?
     
-    //MARK:Lifcycle
+    // MARK: Lifcycle
     override open func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -94,7 +94,7 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
         }
     }
     
-    //MARK:UITabBarController Delegate
+    // MARK: UITabBarController Delegate
     open func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.navigationItem.title = viewController.navigationItem.title
         self.navigationItem.leftBarButtonItem = viewController.navigationItem.leftBarButtonItem
@@ -107,7 +107,7 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
         
     }
     
-    //MARK:Animations
+    // MARK: Animations
     open func startAnimation(_ duration: TimeInterval) {
         if timer != nil {
             stopAnimation()

@@ -6,8 +6,8 @@
 //  Copyright © 2015 LOC8. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 prefix operator ~
 infix operator ~
@@ -21,7 +21,7 @@ infix operator ^
  */
 open class Vector3D: Measurement {
     
-    //MARK: Cartesian Properties
+    // MARK: Cartesian Properties
     
     /// A `CartesianVector` object represent the vector in cartesian coordinate.
     private(set) var cartesianVector: CartesianVector
@@ -44,7 +44,7 @@ open class Vector3D: Measurement {
         
     }
     
-    //MARK: Spherical Properties
+    // MARK: Spherical Properties
     
     /// A `SphericalVector` object represent the vector in spherical coordinate.
     private(set) var sphericalVector: SphericalVector
@@ -74,7 +74,7 @@ open class Vector3D: Measurement {
         
     }
     
-    //MARK: Clyndrical Properties
+    // MARK: Clyndrical Properties
     
     /// A `CylindricalVector` object represent the vector in cylindrical coordinate.
     private(set) var cylindricalVector: CylindricalVector
@@ -92,16 +92,15 @@ open class Vector3D: Measurement {
         return self.cylindricalVector.height
     }
     
+    // MARK: Vector Properties
     
-    //MARK: Vector Properties
-    
-    ///Return Direction that represent the vector heading.
+    /// Return Direction that represent the vector heading.
     open var headingDirection: Direction {
         
-        return Direction.init(theta: self.theta, phi: self.phi)
+        return Direction(theta: self.theta, phi: self.phi)
     }
     
-    //MARK: Initialaization
+    // MARK: Initialaization
     
     /**
      `Vector3D` Default initializer.
@@ -198,7 +197,7 @@ open class Vector3D: Measurement {
         return "Vector3D\n[\n\t\(self.cartesianVector)\n\t\(self.sphericalVector)\n\t\(self.cylindricalVector)\n]"
     }
     
-    //MARK: Vectors Operators
+    // MARK: Vectors Operators
 
     /**
       A uniry operator calculate the length of a vector (Norm).
@@ -242,7 +241,7 @@ open class Vector3D: Measurement {
         )
     }
 
-    //MARK: Arithmetic operators
+    // MARK: Arithmetic operators
     
     prefix static func - (vector: Vector3D) -> Vector3D {
         return Vector3D(x: -vector.x, y: -vector.y, z: -vector.z)
@@ -272,7 +271,7 @@ open class Vector3D: Measurement {
         return Vector3D(x: left.x / right.x, y: left.y / right.y, z: left.z / right.z)
     }
 
-    //MARK: Logical operators
+    // MARK: Logical operators
     
     public static func == (left: Vector3D, right: Vector3D) -> Bool {
         return (left.x == right.x) && (left.y == right.y) && (left.z == right.z)
@@ -311,7 +310,7 @@ open class Vector3D: Measurement {
          - Warning: Please make note that this method is only available for iOS 8.1 or later.
          */
         @available(iOS 8.1, *)
-        public convenience init(acceleration: CMAcceleration) {
+        convenience init(acceleration: CMAcceleration) {
             
             let x = acceleration.x * Physics.EarthGravity
             let y = acceleration.y * Physics.EarthGravity
@@ -325,7 +324,7 @@ open class Vector3D: Measurement {
          
          - Parameter rotationRate: `CMRotationRate` object represent the rotation rate vector.
          */
-        public convenience init(rotationRate: CMRotationRate) {
+        convenience init(rotationRate: CMRotationRate) {
             self.init(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z)
         }
         
@@ -336,7 +335,7 @@ open class Vector3D: Measurement {
          - Warning: Please make note that this method is only available for iOS 8.1 or later.
          */
         @available(iOS 8.1, *)
-        public convenience init(field: CMMagneticField) {
+        convenience init(field: CMMagneticField) {
             self.init(x: field.x, y: field.y, z: field.z)
         }
         
@@ -346,7 +345,7 @@ open class Vector3D: Measurement {
          - Parameter magneticField: `CMCalibratedMagneticField` object represent the calibrated magnetic field.
          - Warning: Please make note that this method is only available for iOS 7.0 or later.
          */
-        public convenience init(magneticField: CMCalibratedMagneticField) {
+        convenience init(magneticField: CMCalibratedMagneticField) {
             self.init(field: magneticField.field)
         }
     }

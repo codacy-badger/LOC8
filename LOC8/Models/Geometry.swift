@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 /**
  a structure that hold genaric mathatical functions and constants.
  */
@@ -47,31 +45,27 @@ public struct Geometry {
      */
     public static func clamp<T: Comparable>(value: T, min: T, max: T) -> T {
         
-        //insanaty check
+        // Insanaty check
         if max == min {
             return min
         }
         
         var minimum = min
-        
         var maximum = max
         
-        //insanaty check
+        // Insanaty check
         if minimum > maximum { // swap minimum and maximum
             swap(&minimum, &maximum)
         }
         
         if value > maximum {// value is grater than the range
             return maximum
-        }
-        else if value < minimum {// value is less than the range
+        } else if value < minimum {// value is less than the range
             return minimum
-        }
-        else {// value is within the range
+        } else {// value is within the range
             return value
         }
     }
-    
     
     /**
      Wrapping of a value to a range of [0 - 1].
@@ -106,7 +100,7 @@ public struct Geometry {
      */
     public static func rotate(value: Double, min: Double, max: Double) -> Double {
         
-        //insanaty check
+        // Insanaty check
         if max < min {
             return value
         }
@@ -149,6 +143,3 @@ public struct Geometry {
         return sign * (floor(pow(10.0, Double(place)) * v) / pow(10.0, Double(place)))
     }
 }
-
-
-

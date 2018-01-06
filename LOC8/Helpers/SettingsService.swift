@@ -13,7 +13,7 @@ open class SettingsService {
     /// Get currently used SettingsService, singleton pattern
     public static let shared = SettingsService()
     
-    //MARK:General Settings
+    // MARK: General Settings
     
     open var colorIndex: Int! {
         set {
@@ -62,7 +62,7 @@ open class SettingsService {
         }
     }
     
-    //MARK:Acceleration Settings
+    // MARK: Acceleration Settings
     open var accelerationFilterCutoffFrequency : Double! {
         set {
             UserDefaults.standard.set(newValue, forKey: "acceleration-filter-cutoff-frequency")
@@ -87,8 +87,8 @@ open class SettingsService {
             if let value = UserDefaults.standard.object(forKey: "acceleration-filter-type") as? String {
                 return FilterType(rawValue: value)
             } else {
-                UserDefaults.standard.set(FilterType.Non.rawValue, forKey: "acceleration-filter-type")
-                return FilterType.Non
+                UserDefaults.standard.set(FilterType.non.rawValue, forKey: "acceleration-filter-type")
+                return FilterType.non
             }
         }
     }
@@ -104,7 +104,7 @@ open class SettingsService {
     }
     
     
-    //MARK: Initialization
+    // MARK: Initialization
     
     public init() {
         if !UserDefaults.standard.bool(forKey: "first-lunch") {
@@ -113,7 +113,7 @@ open class SettingsService {
         }
     }
     
-    //MARK: Controlles
+    // MARK: Controlles
     open func reset() {
         colorIndex = 0
         enableAnimation = false
@@ -122,7 +122,7 @@ open class SettingsService {
         motionManagerSamplingFrequency = DefaultValues.DefaultSamplingFrequency
         
         accelerationFilterCutoffFrequency = DefaultValues.DefaultCutoffFrequency
-        accelerationFilterType = .Non
+        accelerationFilterType = .non
         accelerationAdaptiveFilter = true
     }
     
