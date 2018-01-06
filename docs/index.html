@@ -67,6 +67,9 @@
                 <a class="nav-group-task-link" href="Structs/Geometry.html">Geometry</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NumericalIntegration.html">NumericalIntegration</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/Angle.html">Angle</a>
               </li>
               <li class="nav-group-task">
@@ -188,7 +191,7 @@
         <section class="section">
           <div class="section-content">
 
-            <p><img src="https://user-images.githubusercontent.com/6648552/34352047-24a21748-ea5b-11e7-8bb4-e3b2a5297d92.png" alt="Cover Photo"></p>
+            <p><img src="https://user-images.githubusercontent.com/6648552/34352047-24a21748-ea5b-11e7-8bb4-e3b2a5297d92.png" alt="cover"></p>
 
 <!-- ![Vesion](https://img.shields.io/badge/vesion-0.0.1-157575.svg)
 ![Swift vesion](https://img.shields.io/badge/swift-4.0-orange.svg)
@@ -225,15 +228,36 @@
 <h2 id='requirements' class='heading'>Requirements</h2>
 
 <ul>
-<li>Swift 4.0</li>
-<li>Xcode 9.0 and above</li>
-<li>Mac OS 10.13 and above</li>
+<li><p>macOS 10.13 and above</p></li>
+<li><p>Xcode 9.0 and above</p></li>
+<li><p><a href="https://github.com/realm/SwiftLint">SwiftLint</a></p></li>
 </ul>
+
+<blockquote>
+<p>_Insure swift style and</p>
+</blockquote>
+
+<ul>
+<li><a href="https://github.com/realm/jazzy">Jazzy</a></li>
+</ul>
+
+<blockquote>
+<p><em>Generates project documentation</em></p>
+</blockquote>
 <h2 id='get-started' class='heading'>Get Started</h2>
+<pre class="highlight shell"><code><span class="c"># install [SwiftLint</span>
+brew install swiftlint
+
+<span class="c"># install Jazzy</span>
+gem install jazzy <span class="c"># you may need sudo</span>
+</code></pre>
 
 <p>before you start you should read the <a href="fundamentals.html">project fundamentals</a></p>
-<pre class="highlight shell"><code>open LOC8.xcodeproje
-</code></pre>
+<h2 id='documentation' class='heading'>Documentation</h2>
+
+<p>you can access the project documentation <a href="https://marwan-al-masri.github.io/LOC8/index.html">here</a>. before releasing make sure to generate the project documentation.</p>
+
+<p>to generate documentation run <code>jazzy</code> in the terminal.</p>
 <h2 id='contributing' class='heading'>Contributing</h2>
 
 <p>If you are new to this repository, please read <a href="development.html">development doc</a> first.</p>

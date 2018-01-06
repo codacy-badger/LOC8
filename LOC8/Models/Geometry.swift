@@ -26,7 +26,6 @@ public struct Geometry {
     /**
      Clamping of a value to a range of [max - min].
      
-     
      ### Discussion:
      Clamping is the process of limiting a position to an area.
      
@@ -125,15 +124,14 @@ public struct Geometry {
      Example:
      
      ```swift
-     let value = truncate(3.14159265, decimalPlaces: 4)
+     let value = Geometry.truncate(3.14159265, decimalPlaces: 4)
      // value will be 3.1415
      ```
      
      - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Truncation)
      
-     - Parameters:
-     - value: represent current value.
-     - decimalPlaces: represent value to a specified number after decimal places.
+     - Parameter value: represent current value.
+     - Parameter decimalPlaces: represent value to a specified number after decimal places.
      
      - Returns: the truncated value.
      */

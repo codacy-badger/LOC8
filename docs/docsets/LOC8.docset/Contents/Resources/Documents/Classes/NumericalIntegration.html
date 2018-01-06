@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CylindricalVector Structure Reference</title>
+    <title>NumericalIntegration Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Struct/CylindricalVector" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/NumericalIntegration" class="dashAnchor"></a>
 
-    <a title="CylindricalVector Structure Reference"></a>
+    <a title="NumericalIntegration Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">LOC8 Reference</a>
       <img class="carat" src="../img/carat.png" />
-      CylindricalVector Structure Reference
+      NumericalIntegration Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -191,22 +191,27 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>CylindricalVector</h1>
+            <h1>NumericalIntegration</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CylindricalVector</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">NumericalIntegration</span></code></pre>
 
                 </div>
               </div>
-            <p>Type represent a cylindrical coordinate in three-dimensional coordinate system.</p>
-<h3 id='discussion' class='heading'>Discussion:</h3>
+            <h3 id='discussion' class='heading'>Discussion</h3>
 
-<p>If v is an instance of <code>CylindricalVector</code>, mathematically it represents the
-following vector: <strong>v = (𝜌, 𝛷, 𝑧)</strong></p>
+<p>Numerical integration is a way to approximate the definite integral of a function. It is useful in two
+circumstances:</p>
 
-<p>where 𝜌 ∈ [0, ∞), θ ∈ [0, +π], 𝑧 ∈ (-∞, +∞)</p>
+<ol>
+<li>if we do not know the formula for the function, but only a table of values or a graph</li>
+<li>if an antiderivative of the integrand is unknown</li>
+</ol>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <a href="https://en.wikipedia.org/wiki/Numerical_integration">Wikipedia</a>
 
-<p><a href="https://en.wikipedia.org/wiki/Cylindrical_coordinate_system">Read more</a> about cylindrical coordinate.</p>
+</div>
 
           </div>
         </section>
@@ -218,9 +223,9 @@ following vector: <strong>v = (𝜌, 𝛷, 𝑧)</strong></p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4LOC817CylindricalVectorV3rhoSdv"></a>
-                    <a name="//apple_ref/swift/Property/rho" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4LOC817CylindricalVectorV3rhoSdv">rho</a>
+                    <a name="/s:4LOC820NumericalIntegrationC15rectangularLeftSdSaySdG3set_Sd2dxtFZ"></a>
+                    <a name="//apple_ref/swift/Method/rectangularLeft(set:dx:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC820NumericalIntegrationC15rectangularLeftSdSaySdG3set_Sd2dxtFZ">rectangularLeft(set:dx:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -228,208 +233,24 @@ following vector: <strong>v = (𝜌, 𝛷, 𝑧)</strong></p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p><code>Double</code> value represent the radial distance
-𝜌 is the Euclidean distance in xy-plane for the vector.</p>
+                        <p>Calculate the integral of a data set over a sampling deferance using <strong>left Riemann sum</strong>.</p>
+<h3 id='discussion' class='heading'>Discussion</h3>
 
-<p><strong>𝜌 ∈ [0, ∞) (𝜌 ≥ 0)</strong></p>
+<p>For the left Riemann sum, approximating the function by its value at the left-end point gives multiple rectangles with base <strong>Δx</strong> and height <strong>f(a + iΔx)</strong>. Doing this for <strong>i = 0, 1, &hellip;, n − 1</strong>, and adding up the resulting areas produces</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">rho</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">0.0</span></code></pre>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cint_a%5Eb%20f%28x%29%20%5C%2C%20dx%20%5Capprox%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%20%5C%20%5CDelta%20x%20f%28x_i%29" alt="Equation"></p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p><a href="https://en.wikipedia.org/wiki/Riemann_sum">Wikipedia</a></p>
 
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4LOC817CylindricalVectorV3phiSdv"></a>
-                    <a name="//apple_ref/swift/Property/phi" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4LOC817CylindricalVectorV3phiSdv">phi</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><code>Angle</code> value represent the azimuthal angle between the projection on xy-plan and the x-axis. measured in radian</p>
-
-<p><strong>𝛷 ∈ [-π, +π) rad (-180° ≤ 𝛷 &lt; 180°)</strong></p>
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">phi</span><span class="p">:</span> <span class="kt">Angle</span> <span class="o">=</span> <span class="mf">0.0</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4LOC817CylindricalVectorV6heightSdv"></a>
-                    <a name="//apple_ref/swift/Property/height" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4LOC817CylindricalVectorV6heightSdv">height</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><code>Double</code> value represent the height z which the signed distance from the chosen plane to the vector.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">0.0</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4LOC817CylindricalVectorV09cartesianC0AA09CartesianC0Vv"></a>
-                    <a name="//apple_ref/swift/Property/cartesianVector" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4LOC817CylindricalVectorV09cartesianC0AA09CartesianC0Vv">cartesianVector</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code><a href="../Structs/CartesianVector.html">CartesianVector</a></code> object represent the vector in cartesian form.</p>
-
-<p>Generated as using the following roles:</p>
-
-<p><strong>𝑥 = 𝜌 cos⁡(𝛷)</strong></p>
-
-<p><strong>𝑦 = 𝜌 sin⁡(𝛷)</strong></p>
-
-<p><strong>𝑧 = 𝑧</strong></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cartesianVector</span><span class="p">:</span> <span class="kt"><a href="../Structs/CartesianVector.html">CartesianVector</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4LOC817CylindricalVectorV09sphericalC0AA09SphericalC0Vv"></a>
-                    <a name="//apple_ref/swift/Property/sphericalVector" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4LOC817CylindricalVectorV09sphericalC0AA09SphericalC0Vv">sphericalVector</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code><a href="../Structs/SphericalVector.html">SphericalVector</a></code> object represent the vector in spherical form.</p>
-
-<p>Generated as using the following roles:</p>
-
-<p><strong>𝑟 = ²√[ 𝜌² + 𝑧²]</strong></p>
-
-<p><strong>𝜃 = cos⁻¹(𝑧 / 𝜌)</strong></p>
-
-<p><strong>𝛷 = 𝛷</strong></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">sphericalVector</span><span class="p">:</span> <span class="kt"><a href="../Structs/SphericalVector.html">SphericalVector</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Initialaization"></a>
-                <a name="//apple_ref/swift/Section/Initialaization" class="dashAnchor"></a>
-                <a href="#/Initialaization">
-                  <h3 class="section-name">Initialaization</h3>
-                </a>
-              </div>
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4LOC817CylindricalVectorVACycfc"></a>
-                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4LOC817CylindricalVectorVACycfc">init()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><code><a href="../Structs/CartesianVector.html">CartesianVector</a></code> Default initializer.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4LOC817CylindricalVectorVACSd3rho_Sd3phiSd6heighttcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(rho:phi:height:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4LOC817CylindricalVectorVACSd3rho_Sd3phiSd6heighttcfc">init(rho:phi:height:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Initialize <code>CylindricalVector</code> object</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rho</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">phi</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">rectangularLeft</span><span class="p">(</span><span class="nv">set</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">],</span> <span class="nv">dx</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span></code></pre>
 
                         </div>
                       </div>
@@ -440,42 +261,33 @@ following vector: <strong>v = (𝜌, 𝛷, 𝑧)</strong></p>
                             <tr>
                               <td>
                                 <code>
-                                <em>rho</em>
+                                <em>set</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p><code>Double</code> value represent the magnitude of the vector.</p>
+                                  <p>represent the data set for the integration.</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>phi</em>
+                                <em>dx</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p><code>Angle</code> value represent the azimuthal angle between the projection on xy-plan and the x-axis.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>height</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p><code>Double</code> value represent the height z which the signed distance from the chosen plane
-to the point P.</p>
+                                  <p>represent the sampling deferance of the data set.</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the intrgral of the data set provided over the sampling deferance.</p>
                       </div>
                     </section>
                   </div>
@@ -483,9 +295,9 @@ to the point P.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s23CustomStringConvertibleP11descriptionSSv"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s23CustomStringConvertibleP11descriptionSSv">description</a>
+                    <a name="/s:4LOC820NumericalIntegrationC16rectangularRightSdSaySdG3set_Sd2dxtFZ"></a>
+                    <a name="//apple_ref/swift/Method/rectangularRight(set:dx:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC820NumericalIntegrationC16rectangularRightSdSaySdG3set_Sd2dxtFZ">rectangularRight(set:dx:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -493,15 +305,209 @@ to the point P.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Calculate the integral of a data set over a sampling deferance using <strong>right Riemann sum</strong></p>
+<h3 id='discussion' class='heading'>Discussion</h3>
+
+<p>For the right Riemann sum, approximating the function by its value at the right-end point gives multiple rectangles with base <strong>Δx</strong> and height <strong>f(a + iΔx)</strong>. Doing this for <strong>i = 1, &hellip;, n</strong>, and adding up the resulting areas produces</p>
+
+<p><img src="https://latex.codecogs.com/png.latex?%5Cint_a%5Eb%20f%28x%29%20%5C%2C%20dx%20%5Capprox%20%5Csum_%7Bi%3D0%7D%5E%7Bn-1%7D%20%5C%20%5CDelta%20x%20f%28x_i%29" alt="Equation"></p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p><a href="https://en.wikipedia.org/wiki/Riemann_sum">Wikipedia</a></p>
+
+</div>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">rectangularRight</span><span class="p">(</span><span class="nv">set</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">],</span> <span class="nv">dx</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>set</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>represent the data set for the integration.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dx</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>represent the sampling deferance of the data set.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the intrgral of the data set provided over the sampling deferance.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC820NumericalIntegrationC11trapezoidalSdSaySdG3set_Sd2dxtFZ"></a>
+                    <a name="//apple_ref/swift/Method/trapezoidal(set:dx:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC820NumericalIntegrationC11trapezoidalSdSaySdG3set_Sd2dxtFZ">trapezoidal(set:dx:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate the integral of a data set over a sampling deferance using <strong>trapezoidal rule</strong></p>
+<h3 id='discussion' class='heading'>Discussion</h3>
+
+<p>The trapezoidal rule viewed as the result obtained by averaging the left and right Riemann sums,
+it&rsquo;s defined as the following:</p>
+
+<p><img src="https://latex.codecogs.com/png.latex?%5Cint_a%5Eb%20f%28x%29%20%5C%2C%20dx%20%5Capprox%20%5Csum_%7Bi%3D1%7D%5En%20%5Cfrac%7Bf%28x_%7Bi-1%7D%29&plus;f%28x_i%29%7D%7B2%7D%5C%20%5CDelta%20x_i" alt="Equation"></p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p><a href="https://en.wikipedia.org/wiki/Trapezoidal_rule">Wikipedia</a></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">trapezoidal</span><span class="p">(</span><span class="nv">set</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">],</span> <span class="nv">dx</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>set</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>represent the data set for the integration.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dx</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>represent the sampling deferance of the data set.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the intrgral of the data set provided over the sampling deferance.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4LOC820NumericalIntegrationC8simpsonsSdSaySdG3set_Sd2dxtFZ"></a>
+                    <a name="//apple_ref/swift/Method/simpsons(set:dx:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4LOC820NumericalIntegrationC8simpsonsSdSaySdG3set_Sd2dxtFZ">simpsons(set:dx:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate the integral of a data set over a sampling deferance using <strong>simpson’s rule</strong></p>
+<h3 id='discussion' class='heading'>Discussion</h3>
+
+<p>Simpson’s rule is obtained by interpolating the function between the table of values by a piecewise
+quadratic function, for points that are equally spaced</p>
+
+<p><img src="https://latex.codecogs.com/png.latex?%5Cint_a%5Eb%20f%28x%29%20%5C%2C%20dx%5Capprox%5Ctfrac%7Bh%7D%7B3%7D%20%5Cbigg%5Bf%28x_0%29&plus;2%5Csum_%7Bi%3D1%7D%5E%7Bn/2-1%7Df%28x_%7B2i%7D%29%20&plus;%204%5Csum_%7Bi%3D1%7D%5E%7Bn/2%7Df%28x_%7B2i-1%7D%29&plus;f%28x_n%29%5Cbigg%5D%2C" alt="Equation"></p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/en/6/67/Simpsonsrule2.gif" alt="Graph"></p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p><a href="https://en.wikipedia.org/wiki/Simpson%27s_rule">Wikipedia</a></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">simpsons</span><span class="p">(</span><span class="nv">set</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">],</span> <span class="nv">dx</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>set</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>represent the data set for the integration.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dx</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>represent the sampling deferance of the data set.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the intrgral of the data set provided over the sampling deferance.</p>
                       </div>
                     </section>
                   </div>

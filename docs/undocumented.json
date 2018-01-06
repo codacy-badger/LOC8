@@ -156,35 +156,35 @@
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Direction.swift",
-      "line": 172,
+      "line": 166,
       "symbol": "Direction.init(nilLiteral:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Direction.swift",
-      "line": 186,
+      "line": 180,
       "symbol": "Direction.init(angle:).isBetween(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Direction.swift",
-      "line": 211,
+      "line": 205,
       "symbol": "Direction.init(theta:phi:).isBetween(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Estimation.swift",
-      "line": 81,
+      "line": 80,
       "symbol": "Estimation.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Estimation.swift",
-      "line": 85,
+      "line": 84,
       "symbol": "Estimation.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -254,21 +254,21 @@
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/LogRecord.swift",
-      "line": 51,
+      "line": 49,
       "symbol": "LogRecord.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/LogRecord.swift",
-      "line": 58,
+      "line": 56,
       "symbol": "LogRecord.encode(with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/LogRecord.swift",
-      "line": 65,
+      "line": 63,
       "symbol": "LogRecord.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -317,56 +317,56 @@
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Motion.swift",
-      "line": 55,
+      "line": 54,
       "symbol": "Motion.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Motion.swift",
-      "line": 62,
+      "line": 61,
       "symbol": "Motion.encode(with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Motion.swift",
-      "line": 69,
+      "line": 68,
       "symbol": "Motion.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Motion.swift",
-      "line": 83,
+      "line": 82,
       "symbol": "Motion.==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Motion.swift",
-      "line": 87,
+      "line": 86,
       "symbol": "Motion.!=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/MotionActivity.swift",
-      "line": 53,
+      "line": 52,
       "symbol": "MotionActivity.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/MotionActivity.swift",
-      "line": 59,
+      "line": 58,
       "symbol": "MotionActivity.encode(with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/MotionActivity.swift",
-      "line": 65,
+      "line": 64,
       "symbol": "MotionActivity.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -527,112 +527,112 @@
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 179,
+      "line": 178,
       "symbol": "Vector3D.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 190,
+      "line": 189,
       "symbol": "Vector3D.encode(with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 197,
+      "line": 196,
       "symbol": "Vector3D.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 247,
+      "line": 246,
       "symbol": "Vector3D.-(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 251,
+      "line": 250,
       "symbol": "Vector3D.+(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 255,
+      "line": 254,
       "symbol": "Vector3D.-(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 259,
+      "line": 258,
       "symbol": "Vector3D.+=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 263,
+      "line": 262,
       "symbol": "Vector3D.-=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 267,
+      "line": 266,
       "symbol": "Vector3D.*(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 271,
+      "line": 270,
       "symbol": "Vector3D./(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 277,
+      "line": 276,
       "symbol": "Vector3D.==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 281,
+      "line": 280,
       "symbol": "Vector3D.!=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 285,
+      "line": 284,
       "symbol": "Vector3D.<=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 289,
+      "line": 288,
       "symbol": "Vector3D.>=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 293,
+      "line": 292,
       "symbol": "Vector3D.<(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/marwanalmasri/Apple/LOC8/LOC8/LOC8/Models/Vector3D.swift",
-      "line": 297,
+      "line": 296,
       "symbol": "Vector3D.>(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
