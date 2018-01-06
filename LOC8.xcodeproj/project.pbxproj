@@ -322,8 +322,8 @@
 		4DCDBBD21CA68A1B00AB4885 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4D67ED662000D369008D4D88 /* NumericalIntegration.swift */,
 				4DCDBC511CA77A6600AB4885 /* Geometry.swift */,
+				4D67ED662000D369008D4D88 /* NumericalIntegration.swift */,
 				4DD5BF6B1FE23B00006B6035 /* Angle.swift */,
 				4DD5BF591FE0D96A006B6035 /* CartesianVector.swift */,
 				4D40F5AE1FE3FC6B006FDB69 /* SphericalVector.swift */,

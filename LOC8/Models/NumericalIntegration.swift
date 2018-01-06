@@ -28,7 +28,7 @@ public class NumericalIntegration {
      
      ![Equation](https://latex.codecogs.com/png.latex?%5Cint_a%5Eb%20f%28x%29%20%5C%2C%20dx%20%5Capprox%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%20%5C%20%5CDelta%20x%20f%28x_i%29)
      
-     - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Numerical_integration)
+     - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Riemann_sum)
      
      - Parameter set: represent the data set for the integration.
      - Parameter dx: represent the sampling deferance of the data set.
@@ -60,7 +60,7 @@ public class NumericalIntegration {
      
      ![Equation](https://latex.codecogs.com/png.latex?%5Cint_a%5Eb%20f%28x%29%20%5C%2C%20dx%20%5Capprox%20%5Csum_%7Bi%3D0%7D%5E%7Bn-1%7D%20%5C%20%5CDelta%20x%20f%28x_i%29)
      
-     - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Numerical_integration)
+     - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Riemann_sum)
      
      - Parameter set: represent the data set for the integration.
      - Parameter dx: represent the sampling deferance of the data set.
@@ -93,7 +93,7 @@ public class NumericalIntegration {
      
      ![Equation](https://latex.codecogs.com/png.latex?%5Cint_a%5Eb%20f%28x%29%20%5C%2C%20dx%20%5Capprox%20%5Csum_%7Bi%3D1%7D%5En%20%5Cfrac%7Bf%28x_%7Bi-1%7D%29&plus;f%28x_i%29%7D%7B2%7D%5C%20%5CDelta%20x_i)
      
-     - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Numerical_integration)
+     - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Trapezoidal_rule)
      
      - Parameter set: represent the data set for the integration.
      - Parameter dx: represent the sampling deferance of the data set.
@@ -129,7 +129,7 @@ public class NumericalIntegration {
      
      ![Graph](https://upload.wikimedia.org/wikipedia/en/6/67/Simpsonsrule2.gif)
      
-     - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Numerical_integration)
+     - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Simpson%27s_rule)
      
      - Parameter set: represent the data set for the integration.
      - Parameter dx: represent the sampling deferance of the data set.
