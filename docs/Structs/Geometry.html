@@ -68,6 +68,9 @@
                 <a class="nav-group-task-link" href="../Structs/Geometry.html">Geometry</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NumericalIntegration.html">NumericalIntegration</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/Angle.html">Angle</a>
               </li>
               <li class="nav-group-task">
@@ -485,7 +488,7 @@
 <p>A method of approximating a decimal number by dropping all decimal places past a certain point without rounding.</p>
 
 <p>Example:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="nf">truncate</span><span class="p">(</span><span class="mf">3.14159265</span><span class="p">,</span> <span class="nv">decimalPlaces</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="kt">Geometry</span><span class="o">.</span><span class="nf">truncate</span><span class="p">(</span><span class="mf">3.14159265</span><span class="p">,</span> <span class="nv">decimalPlaces</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
 <span class="c1">// value will be 3.1415</span>
 </code></pre>
 <div class="aside aside-see-also">
@@ -493,8 +496,6 @@
     <p><a href="https://en.wikipedia.org/wiki/Truncation">Wikipedia</a></p>
 
 </div>
-<li><p>value: represent current value.</p></li>
-<li><p>decimalPlaces: represent value to a specified number after decimal places.</p></li>
 
                       </div>
                       <div class="declaration">
@@ -504,6 +505,37 @@
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">truncate</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="n">decimalPlaces</span> <span class="nv">place</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>represent current value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>decimalPlaces</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>represent value to a specified number after decimal places.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                       <div>
                         <h4>Return Value</h4>

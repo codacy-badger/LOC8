@@ -29,6 +29,7 @@ custom_categories:
   - name: 'Geometry'
     children:
     - 'Geometry'
+    - 'NumericalIntegration'
     - 'Angle'
     - 'EulerAngles'
     - 'RotationMatrix'

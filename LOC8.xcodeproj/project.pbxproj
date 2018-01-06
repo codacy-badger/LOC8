@@ -30,6 +30,12 @@
 		4D40F5AF1FE3FC6B006FDB69 /* SphericalVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5AE1FE3FC6B006FDB69 /* SphericalVector.swift */; };
 		4D40F5B01FE3FC6B006FDB69 /* SphericalVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40F5AE1FE3FC6B006FDB69 /* SphericalVector.swift */; };
 		4D5BFA641CAA8A1E001AA782 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BFA631CAA8A1E001AA782 /* Physics.swift */; };
+		4D67ED672000D369008D4D88 /* NumericalIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67ED662000D369008D4D88 /* NumericalIntegration.swift */; };
+		4D67ED682000D369008D4D88 /* NumericalIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67ED662000D369008D4D88 /* NumericalIntegration.swift */; };
+		4D67ED6C2000D746008D4D88 /* NumericalIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67ED6B2000D746008D4D88 /* NumericalIntegrationTest.swift */; };
+		4D67ED6E2000D778008D4D88 /* Vector3DTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67ED6D2000D778008D4D88 /* Vector3DTest.swift */; };
+		4D67ED702000D803008D4D88 /* AngelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67ED6F2000D803008D4D88 /* AngelTest.swift */; };
+		4D67ED722000D842008D4D88 /* DirectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67ED712000D842008D4D88 /* DirectionTest.swift */; };
 		4DC647811CAF9A1F007AB5D7 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC647801CAF9A1F007AB5D7 /* MotionDetector.swift */; };
 		4DCDBB961CA6895800AB4885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDBB951CA6895800AB4885 /* AppDelegate.swift */; };
 		4DCDBB9F1CA6895800AB4885 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCDBB9D1CA6895800AB4885 /* Main.storyboard */; };
@@ -124,6 +130,11 @@
 		4D40F5AB1FE2C821006FDB69 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
 		4D40F5AE1FE3FC6B006FDB69 /* SphericalVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphericalVector.swift; sourceTree = "<group>"; };
 		4D5BFA631CAA8A1E001AA782 /* Physics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
+		4D67ED662000D369008D4D88 /* NumericalIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericalIntegration.swift; sourceTree = "<group>"; };
+		4D67ED6B2000D746008D4D88 /* NumericalIntegrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericalIntegrationTest.swift; sourceTree = "<group>"; };
+		4D67ED6D2000D778008D4D88 /* Vector3DTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3DTest.swift; sourceTree = "<group>"; };
+		4D67ED6F2000D803008D4D88 /* AngelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelTest.swift; sourceTree = "<group>"; };
+		4D67ED712000D842008D4D88 /* DirectionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionTest.swift; sourceTree = "<group>"; };
 		4DC647801CAF9A1F007AB5D7 /* MotionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		4DCDBB921CA6895800AB4885 /* LOC8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOC8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCDBB951CA6895800AB4885 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,12 +223,32 @@
 		4D40F58A1FE2A61A006FDB69 /* LOC8Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4D40F5931FE2A653006FDB69 /* GeometryTests.swift */,
-				4D40F5941FE2A653006FDB69 /* RandomGenerator.swift */,
+				4D67ED6A2000D704008D4D88 /* Models */,
+				4D67ED692000D6D3008D4D88 /* Helpers */,
 				4D40F58B1FE2A61A006FDB69 /* LOC8Tests.swift */,
 				4D40F58D1FE2A61A006FDB69 /* Info.plist */,
 			);
 			path = LOC8Tests;
+			sourceTree = "<group>";
+		};
+		4D67ED692000D6D3008D4D88 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4D40F5941FE2A653006FDB69 /* RandomGenerator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4D67ED6A2000D704008D4D88 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4D40F5931FE2A653006FDB69 /* GeometryTests.swift */,
+				4D67ED6F2000D803008D4D88 /* AngelTest.swift */,
+				4D67ED6B2000D746008D4D88 /* NumericalIntegrationTest.swift */,
+				4D67ED6D2000D778008D4D88 /* Vector3DTest.swift */,
+				4D67ED712000D842008D4D88 /* DirectionTest.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4DCDBB891CA6895800AB4885 = {
@@ -292,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				4DCDBC511CA77A6600AB4885 /* Geometry.swift */,
+				4D67ED662000D369008D4D88 /* NumericalIntegration.swift */,
 				4DD5BF6B1FE23B00006B6035 /* Angle.swift */,
 				4DD5BF591FE0D96A006B6035 /* CartesianVector.swift */,
 				4D40F5AE1FE3FC6B006FDB69 /* SphericalVector.swift */,
@@ -542,8 +574,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D40F58C1FE2A61A006FDB69 /* LOC8Tests.swift in Sources */,
+				4D67ED702000D803008D4D88 /* AngelTest.swift in Sources */,
+				4D67ED6C2000D746008D4D88 /* NumericalIntegrationTest.swift in Sources */,
 				4D40F5951FE2A653006FDB69 /* GeometryTests.swift in Sources */,
 				4D40F5961FE2A653006FDB69 /* RandomGenerator.swift in Sources */,
+				4D67ED6E2000D778008D4D88 /* Vector3DTest.swift in Sources */,
+				4D67ED722000D842008D4D88 /* DirectionTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +613,7 @@
 				4DCDBC0A1CA68A1B00AB4885 /* SwitchTableViewCell.swift in Sources */,
 				4DCDBC0C1CA68A1B00AB4885 /* Vector3DTableViewCell.swift in Sources */,
 				4DCDBC101CA68A1B00AB4885 /* CustomCamera.swift in Sources */,
+				4D67ED672000D369008D4D88 /* NumericalIntegration.swift in Sources */,
 				4DCDBC131CA68A1B00AB4885 /* MeasurmentsViewController.swift in Sources */,
 				4D40F5AC1FE2C821006FDB69 /* Motion.swift in Sources */,
 				4DCDBC0E1CA68A1B00AB4885 /* UILinearProgressView.swift in Sources */,
@@ -623,6 +660,7 @@
 				4D40F5781FE27C4C006FDB69 /* Filter.swift in Sources */,
 				4D40F5791FE27C4C006FDB69 /* MagneticField.swift in Sources */,
 				4D40F57A1FE27C4C006FDB69 /* Accuracy.swift in Sources */,
+				4D67ED682000D369008D4D88 /* NumericalIntegration.swift in Sources */,
 				4DCDBC5D1CA7BD1200AB4885 /* MultipeerManager.swift in Sources */,
 				4DD5BF671FE0DA85006B6035 /* Quaternion.swift in Sources */,
 				4DD5BF5B1FE0D96A006B6035 /* CartesianVector.swift in Sources */,
