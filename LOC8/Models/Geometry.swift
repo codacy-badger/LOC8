@@ -26,7 +26,6 @@ public struct Geometry {
     /**
      Clamping of a value to a range of [max - min].
      
-     
      ### Discussion:
      Clamping is the process of limiting a position to an area.
      
@@ -131,9 +130,8 @@ public struct Geometry {
      
      - SeeAlso: [Wikipedia](https://en.wikipedia.org/wiki/Truncation)
      
-     - Parameters:
-     - value: represent current value.
-     - decimalPlaces: represent value to a specified number after decimal places.
+     - Parameter value: represent current value.
+     - Parameter decimalPlaces: represent value to a specified number after decimal places.
      
      - Returns: the truncated value.
      */
