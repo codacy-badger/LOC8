@@ -483,13 +483,14 @@
 					4D40F5881FE2A61A006FDB69 = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = 666BQEQ2MQ;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 4DCDBB911CA6895800AB4885;
 					};
 					4DCDBB911CA6895800AB4885 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 666BQEQ2MQ;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -499,6 +500,7 @@
 					4DCDBC1A1CA68B2C00AB4885 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 666BQEQ2MQ;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -738,7 +740,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.LOC8.LOC8Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LOC8.app/LOC8";
 			};
@@ -761,7 +763,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LOC8.LOC8Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LOC8.app/LOC8";
 			};
@@ -884,8 +886,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bookyaCom.bookya.LOC8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -901,8 +902,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bookyaCom.bookya.LOC8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -922,7 +922,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -941,7 +941,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

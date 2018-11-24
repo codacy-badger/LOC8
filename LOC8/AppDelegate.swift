@@ -14,13 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         MultipeerManager.shared.isAdvertising = true
         let _ = SensorsManager.shared
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: TabBarItemColor.Normal], for:UIControlState())
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: TabBarItemColor.Selected], for:.selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: TabBarItemColor.Normal], for:UIControl.State())
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: TabBarItemColor.Selected], for:.selected)
 
         return true
     }

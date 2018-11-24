@@ -96,14 +96,14 @@ open class UIRotationView: UIView {
             
             let center = CGPoint(x: rect.midX, y: rect.midY)
             
-            func getAttributesFor(_ alignment: NSTextAlignment) -> [NSAttributedStringKey: AnyObject] {
+            func getAttributesFor(_ alignment: NSTextAlignment) -> [NSAttributedString.Key: AnyObject] {
                 let paraStyle = NSMutableParagraphStyle()
                 paraStyle.alignment = alignment
                 
                 return [
-                    NSAttributedStringKey.foregroundColor: textColor,
-                    NSAttributedStringKey.paragraphStyle: paraStyle,
-                    NSAttributedStringKey.font: textFont
+                    NSAttributedString.Key.foregroundColor: textColor,
+                    NSAttributedString.Key.paragraphStyle: paraStyle,
+                    NSAttributedString.Key.font: textFont
                 ]
             }
             

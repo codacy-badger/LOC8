@@ -188,9 +188,9 @@ open class UIGraphTextView: UIView {
         paraStyle.alignment = .right
         
         let attribute = [
-            NSAttributedStringKey.foregroundColor: textColor,
-            NSAttributedStringKey.paragraphStyle: paraStyle,
-            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 10)
+            NSAttributedString.Key.foregroundColor: textColor,
+            NSAttributedString.Key.paragraphStyle: paraStyle,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10)
         ]
         
         "+3.0".draw(in: CGRect(x: 2.0, y: -56.0, width: 24.0, height: 16.0), withAttributes: attribute)

@@ -88,7 +88,7 @@ public class LogRecord: NSObject, NSCoding {
         
         // Print record to console
         switch self.level {
-        case .debug:
+        case .debug?:
             Swift.debugPrint(self.description)
         default:
             Swift.print(self.description)
