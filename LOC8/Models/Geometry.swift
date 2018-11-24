@@ -81,6 +81,7 @@ public struct Geometry {
     public static func wrap(_ value: Double) -> Int {
         let intValue = Int(value)
         let delta = value - Double(intValue)
+        
         return delta >= 0.5 ? intValue + 1 : intValue
     }
     
@@ -138,6 +139,7 @@ public struct Geometry {
     public static func truncate(value: Double, decimalPlaces place: UInt) -> Double {
         let v = abs(value)
         let sign = value < 0 ? -1.0 : 1.0
+        
         return sign * (floor(pow(10.0, Double(place)) * v) / pow(10.0, Double(place)))
     }
 }

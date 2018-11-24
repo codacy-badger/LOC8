@@ -67,10 +67,10 @@ open class Filter: NSObject {
     open var adaptive: Bool = true
     
     /// A `Double` value that represent the filter time constant.
-    open let filterConstant: Double!
+    public let filterConstant: Double!
     
     /// A `FilterType` value that represent the filter type.
-    open let type: FilterType!
+    public let type: FilterType!
     
     /// A `Double` value that represent the current value.
     private(set) var value: Double = 0
@@ -147,6 +147,7 @@ open class Filter: NSObject {
 
         if adaptive {
             let d: Double = Geometry.clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
+            
             alpha = (1.0 - d) * filterConstant! / noiseAttenuation + d * filterConstant!
         }
 
@@ -167,6 +168,7 @@ open class Filter: NSObject {
 
         if adaptive {
             let d: Double = Geometry.clamp(value: abs(self.value - value) / minStep - 1.0, min: 0.0, max: 1.0)
+            
             alpha = d * filterConstant! / noiseAttenuation + (1.0 - d) * filterConstant!
         }
         
@@ -176,7 +178,7 @@ open class Filter: NSObject {
     }
     
     open override var description: String {
-        return (adaptive ? "Adaptive " : "") + (type != .non ? "\(type) " : "") + "Filter"
+        return (adaptive ? "Adaptive " : "") + (type != .non ? "\(String(describing: type)) " : "") + "Filter"
     }
 }
 
@@ -213,10 +215,10 @@ open class AccelerationFilter: NSObject {
     open var adaptive: Bool = true
     
     /// A `Double` value that represent the filter time constant.
-    open let filterConstant: Double!
+    public let filterConstant: Double!
     
     /// A `FilterType` value that represent the filter type.
-    open let type: FilterType!
+    public let type: FilterType!
     
     /// A `Acceleration` value that represent the current acceleration.
     private(set) var value: Acceleration = Acceleration()
@@ -298,6 +300,7 @@ open class AccelerationFilter: NSObject {
         
         if adaptive {
             let d: Double = Geometry.clamp(value: abs(~self.value - ~value / minStep) - 1.0, min: 0.0, max: 1.0)
+            
             alpha = (1.0 - d) * filterConstant! / noiseAttenuation + d * filterConstant!
         }
         
@@ -327,6 +330,7 @@ open class AccelerationFilter: NSObject {
         
         if adaptive {
             let d: Double = Geometry.clamp(value: fabs(~self.value - ~value) / minStep - 1.0, min: 0.0, max: 1.0)
+            
             alpha = d * filterConstant! / noiseAttenuation + (1.0 - d) * filterConstant!
         }
         x = alpha * (x + value.x - lastValue.x)
@@ -339,6 +343,6 @@ open class AccelerationFilter: NSObject {
     }
     
     open override var description: String {
-        return "Acceleration" + (adaptive ? "Adaptive " : "") + (type != .non ? "\(type) " : "") + "Filter"
+        return "Acceleration" + (adaptive ? "Adaptive " : "") + (type != .non ? "\(String(describing: type)) " : "") + "Filter"
     }
 }

@@ -75,7 +75,9 @@ open class TrackingSession: Measurement {
             }
             
             self.distance = distance.doubleValue
+            
             let newEstimation = Estimation()
+            
             newEstimation.startEstimation(estimationHandler)
             self.estimations.append(newEstimation)
         }
@@ -106,6 +108,7 @@ open class TrackingSession: Measurement {
         self.estimationHandler = estimationHandler
         
         let newEstimation = Estimation()
+        
         newEstimation.startEstimation(estimationHandler)
         self.estimations.append(newEstimation)
         

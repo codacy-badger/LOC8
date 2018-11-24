@@ -31,6 +31,6 @@ open class Measurement: CustomStringConvertible, NSCoding {
     }
     
     public var description: String {
-        return "time of masurment \(self.timestamp) "
+        return "time of masurment \(String(describing: self.timestamp)) "
     }
 }

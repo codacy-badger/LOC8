@@ -39,6 +39,7 @@ public class LogRecord: NSObject, NSCoding {
         self.sender = sender
         self.message = message
         self.level = level
+        
         if let time = time {
             self.time = time
         } else {
@@ -47,7 +48,7 @@ public class LogRecord: NSObject, NSCoding {
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        self.sender = aDecoder.decodeObject(forKey: "sender") as AnyObject!
+        self.sender = aDecoder.decodeObject(forKey: "sender") as AnyObject
         self.message = aDecoder.decodeObject(forKey: "message") as? String ?? ""
         self.time = aDecoder.decodeObject(forKey: "time") as? TimeInterval ?? 0
         self.level = LogLevel(rawValue: aDecoder.decodeInteger(forKey: "level"))
@@ -62,8 +63,11 @@ public class LogRecord: NSObject, NSCoding {
     
     public override var description: String {
         let dateFormatter = DateFormatter()
+        
         dateFormatter.dateFormat = "hh:mm:ss"
+        
         let stringValue = dateFormatter.string(from: Date(timeIntervalSinceReferenceDate: self.time))
+        
         return "\(self.level.description):\t\(type(of: self.sender!))\t~\(stringValue)> \(self.message!)"
     }
     
