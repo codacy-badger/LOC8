@@ -29,7 +29,7 @@ public class MultipeerManager: NSObject {
     /// Returns the received data update notification. Which is use to register with notification center.
     public static let ReceivedDataNotification = Notification.Name(rawValue: "ReceivedData")
     
-    open let ServiceType: String = "LOC8"
+    public let ServiceType: String = "LOC8"
     
     var session: MCSession!
     

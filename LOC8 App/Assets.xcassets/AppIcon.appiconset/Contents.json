@@ -59,22 +59,6 @@
       "idiom" : "mac",
       "filename" : "Icon_512x512@2x.png",
       "scale" : "2x"
-    },
-    {
-      "filename" : "Icon_16x16@3x.png",
-      "unassigned" : true
-    },
-    {
-      "filename" : "Icon_32x32@3x.png",
-      "unassigned" : true
-    },
-    {
-      "filename" : "Icon_256x256@3x.png",
-      "unassigned" : true
-    },
-    {
-      "filename" : "Icon_512x512@3x.png",
-      "unassigned" : true
     }
   ],
   "info" : {

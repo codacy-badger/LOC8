@@ -46,6 +46,7 @@ public class NumericalIntegration {
         
         for i in 0..<(set.count - 1) {
             let x = set[i]
+            
             accumulator += x * dx
         }
         
@@ -78,6 +79,7 @@ public class NumericalIntegration {
         
         for i in 1..<set.count {
             let x = set[i]
+            
             accumulator += x * dx
         }
         
@@ -112,6 +114,7 @@ public class NumericalIntegration {
         for i in 0..<(set.count - 1) {
             let a = set[i]
             let b = set[i + 1]
+            
             accumulator += ((a + b) / 2) * dx
         }
         

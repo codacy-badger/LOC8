@@ -46,7 +46,7 @@ class Camera: SCNNode {
         case .began:
             if Holder.direction == .undefined {
                 let velocity = sender.velocity(in: sender.view)
-                let isVerticalGesture = fabs(velocity.y) > fabs(velocity.x)
+                let isVerticalGesture = abs(velocity.y) > abs(velocity.x)
                 if isVerticalGesture {
                     if velocity.y > 0 {
                         Holder.direction = .down

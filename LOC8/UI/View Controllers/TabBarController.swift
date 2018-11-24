@@ -48,7 +48,7 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
             }
         }
         
-        let attributs = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20), NSAttributedStringKey.foregroundColor: UIColor.white]
+        let attributs = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController!.navigationBar.titleTextAttributes = attributs
         UINavigationBar.appearance().titleTextAttributes = attributs
         
@@ -76,15 +76,15 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
         
         let peer = userInfo[MultipeerManagerKeys.PeerId] as! MCPeerID
         
-        let alert = UIAlertController(title: "", message: "\(peer.displayName) wants to connect with you.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "", message: "\(peer.displayName) wants to connect with you.", preferredStyle: UIAlertController.Style.alert)
         
-        let acceptAction: UIAlertAction = UIAlertAction(title: "Accept", style: UIAlertActionStyle.default) { (alertAction) -> Void in
+        let acceptAction: UIAlertAction = UIAlertAction(title: "Accept", style: UIAlertAction.Style.default) { (alertAction) -> Void in
             MultipeerManager.shared.invitationHandler?(true, MultipeerManager.shared.session)
             self.peer = peer
         }
         alert.addAction(acceptAction)
         
-        let declineAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (alertAction) -> Void in
+        let declineAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (alertAction) -> Void in
             MultipeerManager.shared.invitationHandler?(false, MultipeerManager.shared.session)
         }
         alert.addAction(declineAction)
@@ -127,11 +127,11 @@ open class TabBarController : UITabBarController, UITabBarControllerDelegate {
 //            self.navigationBar.barTintColor = color
 //            }, completion: nil)
         
-        UIView.transition(with: tabBar, duration: 1.0, options: UIViewAnimationOptions.beginFromCurrentState.union(.transitionCrossDissolve), animations: { () -> Void in
+        UIView.transition(with: tabBar, duration: 1.0, options: UIView.AnimationOptions.beginFromCurrentState.union(.transitionCrossDissolve), animations: { () -> Void in
             self.tabBar.barTintColor = color
             }, completion: nil)
         
-        UIView.transition(with: navigationBar, duration: 1.0, options: UIViewAnimationOptions.beginFromCurrentState.union(.transitionCrossDissolve), animations: { () -> Void in
+        UIView.transition(with: navigationBar, duration: 1.0, options: UIView.AnimationOptions.beginFromCurrentState.union(.transitionCrossDissolve), animations: { () -> Void in
             self.navigationBar.barTintColor = color
         }, completion: nil)
     }

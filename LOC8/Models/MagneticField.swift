@@ -50,7 +50,7 @@ public class MagneticField: Measurement {
     }
     
     open override var description: String {
-        return "Magnetic field with accuracy \(self.accuracy){\n\(self.field)\n"
+        return "Magnetic field with accuracy \(self.accuracy){\n\(String(describing: self.field))\n"
     }
     
 }
@@ -69,6 +69,7 @@ public class MagneticField: Measurement {
         convenience init(magneticField: CMCalibratedMagneticField) {
             let accuracy = Accuracy(magneticField: magneticField)
             let field = Vector3D(magneticField: magneticField)
+            
             self.init(field: field, accuracy: accuracy)
         }
     }

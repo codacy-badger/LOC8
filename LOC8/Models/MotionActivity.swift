@@ -62,7 +62,7 @@ open class MotionActivity: Measurement {
     }
     
     open override var description: String {
-        return "\(status) confidence \(confidence)"
+        return "\(String(describing: status)) confidence \(String(describing: confidence))"
     }
 }
 

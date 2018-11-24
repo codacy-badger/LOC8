@@ -123,7 +123,7 @@ class Cylinder: SCNNode {
         }
         
         
-        debugPrint("cylinder values: direction \(node.direction), distance: \(cylinder.height)")
+        debugPrint("cylinder values: direction \(String(describing: node.direction)), distance: \(cylinder.height)")
         
         return node
     }

@@ -76,6 +76,6 @@ open class Heading: Measurement {
     }
     
     open override var description: String {
-        return "Heading {\t\nMagnetic = \(self.magnetic)\n\tTrue = \(self.true)\n\tAccuracy = \(self.accuracy)\n\tGeomagnetic Field = \(self.field)\n}."
+        return "Heading {\t\nMagnetic = \(String(describing: self.magnetic))\n\tTrue = \(String(describing: self.true))\n\tAccuracy = \(String(describing: self.accuracy))\n\tGeomagnetic Field = \(String(describing: self.field))\n}."
     }
 }

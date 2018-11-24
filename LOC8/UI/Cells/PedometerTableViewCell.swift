@@ -55,11 +55,11 @@ open class PedometerTableViewCell: UITableViewCell {
             confidenceProgress.value = UInt(activity.confidence.rawValue + 1)
             
             switch activity.confidence {
-            case .low:
+            case .low?:
                 confidenceProgress.value = 1
-            case .medium:
+            case .medium?:
                 confidenceProgress.value = 2
-            case .high:
+            case .high?:
                 confidenceProgress.value = 3
             default:
                 confidenceProgress.value = 0

@@ -17,7 +17,7 @@ open class ColorsTableViewCell: UITableViewCell, UICollectionViewDelegate, UICol
     fileprivate var handler: CollectionHandler?
     
     open func initialize(_ item: Int, handler: @escaping CollectionHandler) {
-        self.collectionView.selectItem(at: IndexPath(item: item, section: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.right)
+        self.collectionView.selectItem(at: IndexPath(item: item, section: 0), animated: false, scrollPosition: UICollectionView.ScrollPosition.right)
         self.handler = handler
     }
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
