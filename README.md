@@ -2,8 +2,8 @@
 ![cover](https://user-images.githubusercontent.com/6648552/34352047-24a21748-ea5b-11e7-8bb4-e3b2a5297d92.png)
 
 ![Vesion](https://img.shields.io/badge/vesion-0.0.1-157575.svg)
-![Swift vesion](https://img.shields.io/badge/swift-4.0-orange.svg)
-![Xcode vesion](https://img.shields.io/badge/xcode-9.2-blue.svg)
+![Swift vesion](https://img.shields.io/badge/swift-4.2-orange.svg)
+![Xcode vesion](https://img.shields.io/badge/xcode-10.1-blue.svg)
 ![Platforms](https://img.shields.io/badge/platforms-iOS|macOS-lightgray.svg)
 [![Build Status](https://travis-ci.com/Marwan-Al-Masri/LOC8.svg?token=H9CZx6r8wEAXyxtfxAbz&branch=master)](https://travis-ci.com/Marwan-Al-Masri/LOC8)
 [![Code review Badge](https://api.codacy.com/project/badge/Grade/487a286297ef436d8284fa4e1b4dbf17)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Marwan-Al-Masri/LOC8&amp;utm_campaign=Badge_Grade)
@@ -36,7 +36,7 @@ Development | Production
 
 - [SwiftLint](https://github.com/realm/SwiftLint)
 
->_Insure swift style and
+>_Insure swift style and_
 
 - [Jazzy](https://github.com/realm/jazzy)
 
